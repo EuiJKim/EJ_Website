@@ -50,6 +50,7 @@ nav {
 .nav-links a {
   font-size: 14px; font-weight: 400; color: var(--gray-70);
   transition: color 0.15s;
+  display: inline-flex; align-items: center; min-height: 44px;
 }
 .nav-links a:hover { color: var(--dark); }
 .nav-contact {
