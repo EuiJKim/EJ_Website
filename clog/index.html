@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clog — 클라이밍 기록 앱 | Portfolio</title>
+  <link rel="stylesheet" href="../assets/global.css" />
+  <style>
+    .case-hero {
+      padding: 72px 48px 56px;
+      border-bottom: 1px solid var(--gray-20);
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; color: var(--gray-50);
+      margin-bottom: 40px; transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--dark); }
+    .case-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .meta-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; background: var(--accent-light); color: var(--accent); }
+    .meta-tag.neutral { background: var(--gray-10); color: var(--gray-70); }
+    .case-hero h1 { font-size: clamp(28px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px; }
+    .case-hero p { font-size: 17px; font-weight: 300; color: var(--gray-70); line-height: 1.7; max-width: 640px; margin-bottom: 36px; }
+    .case-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+    .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--gray-50); text-transform: uppercase; margin-bottom: 4px; }
+    .stat-val { font-size: 15px; font-weight: 500; color: var(--dark); }
+
+    /* 데스크톱 뷰어 안내 */
+    .desktop-notice {
+      margin: 0 48px 0;
+      padding: 16px 20px;
+      background: #fffbeb; border: 1px solid #f59e0b;
+      border-radius: 10px; display: flex; align-items: center; gap: 12px;
+    }
+    .desktop-notice p { font-size: 14px; color: #92400e; font-weight: 400; line-height: 1.5; }
+
+    /* 슬라이드 뷰어 */
+    .viewer {
+      padding: 40px 48px 80px;
+    }
+    .viewer-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .viewer-title { font-size: 13px; font-weight: 600; color: var(--gray-50); letter-spacing: 0.06em; }
+    .page-btns { display: flex; gap: 8px; }
+    .page-btn {
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid var(--gray-20); background: white;
+      font-size: 16px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      transition: all 0.15s; color: var(--dark);
+    }
+    .page-btn:hover { background: var(--dark); color: white; border-color: var(--dark); }
+
+    .slide-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--gray-20);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+      background: var(--gray-10);
+    }
+    .slide-frame iframe {
+      width: 1920px; height: 1080px;
+      transform-origin: top left;
+      border: none;
+      display: block;
+    }
+
+    .slide-dots {
+      display: flex; gap: 6px; justify-content: center; margin-top: 20px;
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gray-20); cursor: pointer; transition: background 0.15s;
+    }
+    .dot.active { background: var(--dark); }
+
+    .page-label {
+      text-align: center; font-size: 13px; color: var(--gray-50);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .case-hero { padding: 48px 24px 40px; }
+      .desktop-notice { margin: 0 24px; }
+      .viewer { padding: 32px 24px 60px; }
+      .case-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../" class="nav-logo">Portfolio</a>
+  <div class="nav-links">
+    <a href="../#works">Works</a>
+    <a href="../#about">About</a>
+  </div>
+  <a href="mailto:your@email.com" class="nav-contact">Contact</a>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="case-hero">
+    <a href="../" class="back-link">← Back to Works</a>
+    <div class="case-meta">
+      <span class="meta-tag">UX Research</span>
+      <span class="meta-tag">UI Design</span>
+      <span class="meta-tag neutral">B2C Service</span>
+      <span class="meta-tag neutral">Mobile</span>
+    </div>
+    <h1>Clog<br>클라이밍 기록 앱</h1>
+    <p>열심히 다니는데 실력이 늘고 있는 건지 모르겠어요. 방문·루트·컨디션·부상을 한 곳에 남기는 성장 기록 앱.</p>
+    <div class="case-stats">
+      <div><p class="stat-label">Role</p><p class="stat-val">서비스 기획 · UI Design</p></div>
+      <div><p class="stat-label">기여도</p><p class="stat-val">1인 100%</p></div>
+      <div><p class="stat-label">기간</p><p class="stat-val">2020.10 – 2020.11</p></div>
+      <div><p class="stat-label">Pages</p><p class="stat-val">10 Slides</p></div>
+    </div>
+  </div>
+
+  <div style="height:24px"></div>
+  <div class="desktop-notice">
+    <span style="font-size:18px">💡</span>
+    <p>이 케이스 스터디는 1920×1080 화면에 최적화되어 있습니다. 데스크톱에서 보시면 가장 잘 보입니다.</p>
+  </div>
+
+  <div class="viewer">
+    <div class="viewer-nav">
+      <span class="viewer-title" id="pageTitle">01 · 커버</span>
+      <div class="page-btns">
+        <button class="page-btn" onclick="prevPage()">←</button>
+        <button class="page-btn" onclick="nextPage()">→</button>
+      </div>
+    </div>
+
+    <div class="slide-frame" id="frameWrap">
+      <iframe id="clogFrame" src="01_cover.html" scrolling="no"></iframe>
+    </div>
+
+    <div class="slide-dots" id="dots"></div>
+    <p class="page-label" id="pageLabel">1 / 10</p>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-name">Clog — 클라이밍 기록 앱</span>
+  <a href="../resin/" style="font-size:13px;color:#888">Next: EEL Resin →</a>
+</footer>
+
+<script>
+const pages = [
+  { file: '01_cover.html',           label: '01 · 커버' },
+  { file: '02_toc.html',             label: '02 · 목차' },
+  { file: '03_research.html',        label: '03 · 문제 발견' },
+  { file: '04_journey.html',         label: '04 · Journey Map' },
+  { file: '05_concept_flow.html',    label: '05 · Key Concept & Flow' },
+  { file: '06_key_concept.html',     label: '06 · 3가지 컨셉' },
+  { file: '07_feature_checkin.html', label: '07 · Feature 01 체크인' },
+  { file: '08_feature_search.html',  label: '08 · Feature 02 검색' },
+  { file: '09_feature_calendar.html',label: '09 · Feature 03 캘린더' },
+  { file: '10_lesson_learn.html',    label: '10 · Lesson Learn' },
+];
+let cur = 0;
+
+function scaleFrame() {
+  const wrap = document.getElementById('frameWrap');
+  const iframe = document.getElementById('clogFrame');
+  const scale = wrap.clientWidth / 1920;
+  iframe.style.transform = `scale(${scale})`;
+  wrap.style.height = (1080 * scale) + 'px';
+}
+
+function goTo(idx) {
+  cur = idx;
+  const p = pages[idx];
+  document.getElementById('clogFrame').src = p.file;
+  document.getElementById('pageTitle').textContent = p.label;
+  document.getElementById('pageLabel').textContent = (idx + 1) + ' / ' + pages.length;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+
+function prevPage() { if (cur > 0) goTo(cur - 1); }
+function nextPage() { if (cur < pages.length - 1) goTo(cur + 1); }
+
+// Build dots
+const dotsEl = document.getElementById('dots');
+pages.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+});
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextPage();
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   prevPage();
+});
+
+window.addEventListener('resize', scaleFrame);
+window.addEventListener('load', scaleFrame);
+</script>
+</body>
+</html>

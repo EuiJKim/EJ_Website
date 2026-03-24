@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Clog – 6장 Key Concept</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="design-system.css" />
+  <style>
+    .page { padding-bottom: 60px; }
+
+    .concepts-area {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .concept-block {
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1.5px solid var(--gray-100);
+      background: white;
+    }
+    .concept-block.core {
+      border-color: var(--blue);
+    }
+
+    /* 상단 컬러 헤더 */
+    .cb-header {
+      padding: 28px 28px 22px;
+      background: var(--gray-50);
+    }
+    .concept-block.core .cb-header {
+      background: var(--blue);
+    }
+
+    .cb-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray-300);
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .concept-block.core .cb-num { color: rgba(255,255,255,0.5); }
+
+    .cb-en {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .concept-block.core .cb-en { color: white; }
+
+    .cb-ko {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+    .concept-block.core .cb-ko { color: rgba(255,255,255,0.75); }
+
+    /* 폰 스크린 이미지 영역 */
+    .cb-screen {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f2ff;
+      overflow: hidden;
+    }
+    .concept-block.core .cb-screen { background: #dde2f8; }
+
+    .cb-screen img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    /* 하단 설명 */
+    .cb-body {
+      padding: 20px 28px 24px;
+      border-top: 1px solid var(--gray-100);
+    }
+    .concept-block.core .cb-body { border-top-color: rgba(30,65,192,0.15); }
+
+    .cb-point {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .cb-point:last-child { margin-bottom: 0; }
+    .cb-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gray-300);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .concept-block.core .cb-dot { background: var(--blue); }
+    .cb-point p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <p class="t-step-label">Step 04 · 기능 정의</p>
+    <h1 class="t-headline">꾸준함을 눈으로 확인하다</h1>
+  </div>
+
+  <div class="concepts-area">
+
+    <!-- Concept 01 -->
+    <div class="concept-block">
+      <div class="cb-header">
+        <p class="cb-num">CONCEPT 01</p>
+        <p class="cb-en">Easy Access</p>
+        <p class="cb-ko">체크인 — 기록의 시작</p>
+      </div>
+      <div class="cb-screen">
+        <img src="img_checkin.jpg" alt="체크인 화면" />
+      </div>
+      <div class="cb-body">
+        <div class="cb-point"><div class="cb-dot"></div><p>내 위치 기반으로 주변 클라이밍장 자동 탐지</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>탭 한 번으로 체크인 — 기록이 바로 시작</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>방문 이력이 캘린더에 자동 누적</p></div>
+      </div>
+    </div>
+
+    <!-- Concept 02 -->
+    <div class="concept-block">
+      <div class="cb-header">
+        <p class="cb-num">CONCEPT 02</p>
+        <p class="cb-en">Clarity Information</p>
+        <p class="cb-ko">클라이밍장 정보 — 가기 전에 확인</p>
+      </div>
+      <div class="cb-screen">
+        <img src="img_search_result.jpg" alt="검색 결과 화면" />
+      </div>
+      <div class="cb-body">
+        <div class="cb-point"><div class="cb-dot"></div><p>운영 시간·난이도·위치를 한 화면에서 확인</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>검색으로 원하는 암장 빠르게 탐색</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>다녀온 후 리뷰로 커뮤니티 정보 공유</p></div>
+      </div>
+    </div>
+
+    <!-- Concept 03 (Core) -->
+    <div class="concept-block core">
+      <div class="cb-header">
+        <p class="cb-num">CONCEPT 03 · CORE</p>
+        <p class="cb-en">Calendar Growth</p>
+        <p class="cb-ko">성장 캘린더 — 기록이 쌓이면 보인다</p>
+      </div>
+      <div class="cb-screen">
+        <img src="img_calendar.jpg" alt="캘린더 화면" />
+      </div>
+      <div class="cb-body">
+        <div class="cb-point"><div class="cb-dot"></div><p>방문·루트·컨디션·부상이 날짜별로 누적</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>월별 캘린더로 나의 클라이밍 패턴 한눈에</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>배지 시스템으로 꾸준함을 시각적으로 확인</p></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="page-footer">
+  <span class="project-name">Climbing Project</span>
+  <span class="page-num">p. 06</span>
+</div>
+</body>
+</html>

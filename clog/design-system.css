@@ -1,0 +1,269 @@
+/* ============================================
+   Clog Portfolio — Design System
+   페이지 크기: 1200 x 850px
+   ============================================ */
+
+@font-face { font-family: 'Freesentation'; font-weight: 100; src: url('Freesentation_1.006/Freesentation-1Thin.ttf'); }
+@font-face { font-family: 'Freesentation'; font-weight: 200; src: url('Freesentation_1.006/Freesentation-2ExtraLight.ttf'); }
+@font-face { font-family: 'Freesentation'; font-weight: 300; src: url('Freesentation_1.006/Freesentation-3Light.ttf'); }
+@font-face { font-family: 'Freesentation'; font-weight: 400; src: url('Freesentation_1.006/Freesentation-4Regular.ttf'); }
+@font-face { font-family: 'Freesentation'; font-weight: 500; src: url('Freesentation_1.006/Freesentation-5Medium.ttf'); }
+@font-face { font-family: 'Freesentation'; font-weight: 600; src: url('Freesentation_1.006/Freesentation-6SemiBold.ttf'); }
+@font-face { font-family: 'Freesentation'; font-weight: 700; src: url('Freesentation_1.006/Freesentation-7Bold.ttf'); }
+@font-face { font-family: 'Freesentation'; font-weight: 800; src: url('Freesentation_1.006/Freesentation-8ExtraBold.ttf'); }
+@font-face { font-family: 'Freesentation'; font-weight: 900; src: url('Freesentation_1.006/Freesentation-9Black.ttf'); }
+
+/* ── Reset ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── 페이지 기본 ── */
+body {
+  width: 1920px;
+  height: 1080px;
+  background: #ffffff;
+  font-family: 'Freesentation', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── 색상 팔레트 ── */
+:root {
+  --blue:       #1E41C0;
+  --blue-light: #F0F2FF;
+  --blue-bg:    #F5F7FF;
+  --blue-mid:   #EEF1FF;
+  --dark:       #1A1A2E;
+  --gray-700:   #444444;
+  --gray-500:   #888888;
+  --gray-300:   #C0C0C0;
+  --gray-100:   #E8E8E8;
+  --gray-50:    #F5F5F5;
+  --white:      #FFFFFF;
+}
+
+/* ── 공통 페이지 레이아웃 ── */
+.page {
+  width: 1920px;
+  height: 1080px;
+  padding: 72px 120px 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 공통 헤더 ── */
+.page-header {
+  margin-bottom: 40px;
+}
+
+/* ── 타이포그래피 ── */
+
+/* Step 라벨: "Step 01 · 문제 발견" */
+.t-step-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* 페이지 헤드라인 */
+.t-headline {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
+.t-headline .quote {
+  color: var(--blue);
+}
+
+/* 컬럼 타이틀: "OBSERVATION" */
+.t-col-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-300);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+/* 섹션 소제목 */
+.t-section-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+}
+
+/* 본문 */
+.t-body {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--gray-700);
+  line-height: 1.7;
+}
+
+.t-body strong {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* 보조 텍스트 */
+.t-caption {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+/* ── 공통 컴포넌트 ── */
+
+/* 인용 블록 */
+.c-quote-block {
+  background: var(--blue-bg);
+  border-left: 4px solid var(--blue);
+  padding: 18px 20px;
+  border-radius: 0 10px 10px 0;
+  margin-bottom: 16px;
+}
+
+.c-quote-block p {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--gray-700);
+  line-height: 1.7;
+}
+
+.c-quote-block .source {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-top: 8px;
+}
+
+/* 강조 태그 */
+.c-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blue);
+  background: var(--blue-mid);
+  border-radius: 5px;
+  padding: 4px 9px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+/* 메트릭 박스 */
+.c-metric {
+  background: var(--blue-bg);
+  border-radius: 12px;
+  padding: 18px 22px;
+  text-align: center;
+}
+
+.c-metric .num {
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.c-metric .label {
+  font-size: 13px;
+  color: var(--gray-500);
+  font-weight: 300;
+}
+
+/* 불릿 리스트 */
+.c-bullet-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 13px;
+}
+
+.c-bullet-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.c-arrow-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 13px;
+}
+
+.c-arrow {
+  font-size: 16px;
+  color: var(--blue);
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+/* 솔루션 박스 */
+.c-solution-box {
+  background: var(--blue);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-top: 18px;
+}
+
+.c-solution-box .label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.c-solution-box p {
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* 구분선 */
+.c-divider {
+  width: 48px;
+  height: 3px;
+  background: var(--blue);
+  border-radius: 2px;
+  margin: 28px 0;
+}
+
+/* ── 페이지 공통 푸터 ── */
+.page-footer {
+  position: absolute;
+  bottom: 36px;
+  left: 120px;
+  right: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-footer .project-name {
+  font-size: 13px;
+  color: var(--gray-300);
+  font-weight: 300;
+}
+
+.page-footer .page-num {
+  font-size: 13px;
+  color: var(--gray-300);
+  font-weight: 300;
+}

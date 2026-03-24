@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f9f7;
+      --ink: #111;
+      --muted: #999;
+      --line: #e0e0e0;
+      --hover-bg: #f0f0ec;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      font-size: 18px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Wrapper ── */
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 64px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 72px 0 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .name {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .name-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .header-links {
+      display: flex;
+      gap: 32px;
+    }
+    .header-links a {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--muted);
+      transition: color 0.1s;
+    }
+    .header-links a:hover { color: var(--ink); }
+
+    /* ── Intro ── */
+    .intro {
+      padding: 64px 0 56px;
+      border-bottom: 1px solid var(--line);
+    }
+    .intro p {
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.75;
+      max-width: 720px;
+    }
+    .intro p em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    /* ── Work list ── */
+    .work-section {
+      padding-top: 0;
+    }
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 28px 0 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .work-header span {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* 각 행 */
+    .work-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+      transition: background 0.12s;
+      margin: 0 -64px;
+      padding: 32px 64px;
+    }
+    .work-row:hover,
+    .work-row:focus-visible { background: var(--hover-bg); outline: none; }
+    .work-row:hover .work-arrow,
+    .work-row:focus-visible .work-arrow { opacity: 1; }
+    .work-row:focus-visible { box-shadow: inset 0 0 0 2px #1E41C0; }
+
+    .work-left {}
+    .work-title {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .work-row:hover .work-title { text-decoration: underline; text-underline-offset: 4px; }
+    .work-desc {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .work-type {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .work-year {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      white-space: nowrap;
+      width: 44px;
+      text-align: right;
+    }
+
+    .work-arrow {
+      opacity: 0;
+      font-size: 18px;
+      color: var(--ink);
+      transition: opacity 0.12s;
+      margin-left: 8px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 64px 0 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    footer p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+    }
+    footer a {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      transition: color 0.1s;
+    }
+    footer a:hover { color: var(--ink); }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .wrap { padding: 0 28px; }
+      .work-row { margin: 0 -28px; padding: 28px 28px; }
+      header { padding: 48px 0 56px; }
+      .intro p { font-size: 20px; }
+      .work-type { display: none; }
+      .work-row { grid-template-columns: 1fr auto; }
+      .work-title { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Header -->
+  <header>
+    <div>
+      <p class="name">이름을 여기에</p>
+      <p class="name-sub">UX · Product · 기획</p>
+    </div>
+    <div class="header-links">
+      <a href="mailto:your@email.com">Email</a>
+      <a href="#" target="_blank">LinkedIn</a>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <div class="intro">
+    <p>리서치에서 시작해 사용자 여정을 그리고, 기능을 정의합니다.<br>
+    <em>디자인은 도구이고, 목표는 사람이 쉽게 쓰는 것입니다.</em></p>
+  </div>
+
+  <!-- Work -->
+  <div class="work-section" id="works">
+    <div class="work-header">
+      <span>Work</span>
+      <span>Year</span>
+    </div>
+
+    <a href="allaw/" class="work-row">
+      <div class="work-left">
+        <p class="work-title">ALLAW — 법률 AI 앱<span class="work-arrow"> →</span></p>
+        <p class="work-desc">73%가 법률 문제를 경험하지만 12%만 변호사에 도달한다. 이 공백을 채우는 AI 법률 상담 서비스.</p>
+      </div>
+      <span class="work-type">UX Research · UI Design</span>
+      <span class="work-year">2023</span>
+    </a>
+
+    <a href="clog/" class="work-row">
+      <div class="work-left">
+        <p class="work-title">Clog — 클라이밍 기록 앱<span class="work-arrow"> →</span></p>
+        <p class="work-desc">열심히 다니는데 실력이 늘고 있는 건지 모르겠어요. 방문·루트·컨디션을 한 곳에 남기는 성장 기록 앱.</p>
+      </div>
+      <span class="work-type">UX Research · UI Design</span>
+      <span class="work-year">2020</span>
+    </a>
+
+    <a href="resin/" class="work-row">
+      <div class="work-left">
+        <p class="work-title">EEL — 레진 아트퍼니처 웹사이트<span class="work-arrow"> →</span></p>
+        <p class="work-desc">프리미엄 수제 레진 테이블 브랜드. e-커머스 + BTO(Build-to-Order) 경험 설계.</p>
+      </div>
+      <span class="work-type">Brand · Web Design</span>
+      <span class="work-year">2026</span>
+    </a>
+
+  </div>
+
+  <!-- Footer -->
+  <footer id="about">
+    <p>이름을 여기에 · Seoul, KR</p>
+    <a href="mailto:your@email.com">your@email.com</a>
+  </footer>
+
+</div>
+</body>
+</html>

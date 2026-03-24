@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Clog – 9장 Feature 03 성장 캘린더</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="design-system.css" />
+  <style>
+    .page { padding-bottom: 60px; }
+    .feature-layout { flex: 1; display: flex; gap: 72px; }
+
+    .f-left {
+      width: 480px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .feature-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      border-radius: 8px;
+      padding: 6px 14px;
+      margin-bottom: 24px;
+      width: fit-content;
+    }
+    .feature-badge .fb-num { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); letter-spacing: 0.1em; }
+    .feature-badge .fb-name { font-size: 11px; font-weight: 700; color: white; letter-spacing: 0.06em; }
+
+    .f-title { font-size: 40px; font-weight: 900; color: var(--dark); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .f-sub { font-size: 17px; font-weight: 300; color: var(--gray-500); line-height: 1.75; margin-bottom: 36px; }
+
+    .insight-box {
+      background: var(--blue);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 32px;
+    }
+    .insight-box .ib-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+    .insight-box p { font-size: 15px; font-weight: 300; color: white; line-height: 1.65; }
+
+    .callout-list { display: flex; flex-direction: column; gap: 14px; }
+    .callout-item { display: flex; gap: 14px; align-items: flex-start; }
+    .callout-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--blue); color: white;
+      font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .callout-text strong { font-size: 15px; font-weight: 700; color: var(--dark); display: block; margin-bottom: 3px; }
+    .callout-text p { font-size: 14px; font-weight: 300; color: var(--gray-500); line-height: 1.6; }
+
+    /* 오른쪽: 폰 목업 */
+    .f-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    .phone-mock {
+      border-radius: 24px;
+      overflow: hidden;
+      background: white;
+    }
+    .phone-mock img { display: block; object-fit: cover; object-position: top; }
+    .phone-mock.main-phone { box-shadow: 0 24px 64px rgba(30,65,192,0.22); }
+    .phone-mock.main-phone img { width: 260px; height: 462px; }
+    .phone-mock.side-phone { box-shadow: 0 12px 36px rgba(0,0,0,0.10); align-self: flex-end; margin-bottom: 40px; }
+    .phone-mock.side-phone img { width: 200px; height: 356px; }
+
+    .bubble {
+      position: absolute;
+      background: white;
+      border-radius: 12px;
+      padding: 10px 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+    .bubble .b-num {
+      display: inline-block;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--blue); color: white;
+      font-size: 10px; font-weight: 700;
+      text-align: center; line-height: 18px;
+      margin-right: 6px;
+    }
+    .bubble-1 { top: 50px; right: 10px; }
+    .bubble-2 { top: 210px; right: 0px; }
+    .bubble-3 { bottom: 110px; right: 10px; }
+
+    /* 배지 하이라이트 */
+    .badge-highlight {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: white;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(30,65,192,0.35);
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <p class="t-step-label">Feature 03 · Calendar Growth</p>
+    <h1 class="t-headline">이번 달 몇 번 갔는지, 어디서 뭘 했는지</h1>
+  </div>
+
+  <div class="feature-layout">
+
+    <div class="f-left">
+      <div class="feature-badge">
+        <span class="fb-num">FEATURE 03</span>
+        <span style="color:rgba(255,255,255,0.4)">·</span>
+        <span class="fb-name">CALENDAR GROWTH</span>
+      </div>
+
+      <h2 class="f-title">기록이 쌓이면<br>성장이 보인다</h2>
+      <p class="f-sub">영상을 찍어도 실력이 늘었는지 알 수 없었다.<br>캘린더에 방문·루트·컨디션이 쌓이면 내 클라이밍이 한눈에 보인다.</p>
+
+      <div class="insight-box">
+        <p class="ib-label">Core Value</p>
+        <p>인터뷰 참여자 대부분이 "열심히 다니는 것 같은데 얼마나 늘었는지 모르겠다"고 했다. 성장 기록이 Clog의 핵심이다.</p>
+      </div>
+
+      <div class="callout-list">
+        <div class="callout-item">
+          <div class="callout-num">1</div>
+          <div class="callout-text">
+            <strong>월별 캘린더로 방문 패턴 확인</strong>
+            <p>어느 날, 얼마나 자주 다녔는지 달력으로 한눈에 보인다</p>
+          </div>
+        </div>
+        <div class="callout-item">
+          <div class="callout-num">2</div>
+          <div class="callout-text">
+            <strong>날짜별 루트·컨디션·부상 기록</strong>
+            <p>특정 날을 탭하면 그날의 모든 기록이 펼쳐진다</p>
+          </div>
+        </div>
+        <div class="callout-item">
+          <div class="callout-num">3</div>
+          <div class="callout-text">
+            <strong>배지로 꾸준함을 시각화</strong>
+            <p>방문 횟수·연속 출석 등 배지가 쌓여 동기부여로 이어진다</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="f-right">
+      <div class="phone-mock side-phone">
+        <img src="img_calendar_datepicker.jpg" alt="날짜 선택" />
+      </div>
+      <div class="phone-mock main-phone">
+        <img src="img_calendar.jpg" alt="캘린더 메인" />
+      </div>
+      <div class="phone-mock side-phone">
+        <img src="img_badge.jpg" alt="배지" />
+      </div>
+
+      <div class="bubble bubble-1"><span class="b-num">1</span>월별 방문 기록</div>
+      <div class="bubble bubble-2"><span class="b-num">2</span>날짜별 상세 보기</div>
+      <div class="bubble bubble-3"><span class="b-num">3</span>배지 달성</div>
+    </div>
+
+  </div>
+</div>
+<div class="page-footer">
+  <span class="project-name">Climbing Project</span>
+  <span class="page-num">p. 09</span>
+</div>
+</body>
+</html>

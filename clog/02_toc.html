@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Clog – 2장 목차</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="design-system.css" />
+  <style>
+    body { display: flex; }
+
+    .sidebar {
+      width: 380px; flex-shrink: 0;
+      background: var(--blue);
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 72px 56px;
+    }
+    .sidebar-label { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.5); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; }
+    .sidebar-title { font-size: 52px; font-weight: 900; color: white; line-height: 1.15; letter-spacing: -0.02em; }
+    .sidebar-desc { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.65); line-height: 1.85; margin-top: 24px; }
+    .sidebar-bottom { font-size: 14px; color: rgba(255,255,255,0.4); font-weight: 300; line-height: 1.7; }
+
+    .content { flex: 1; padding: 72px 96px; display: flex; flex-direction: column; justify-content: center; }
+    .content-label { font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 44px; }
+
+    table { width: 100%; border-collapse: collapse; }
+    thead tr { border-bottom: 1px solid var(--gray-100); }
+    thead th { font-size: 12px; font-weight: 700; color: var(--gray-300); letter-spacing: 0.1em; text-transform: uppercase; padding-bottom: 18px; text-align: left; }
+    thead th:first-child { width: 96px; }
+    thead th:nth-child(2) { width: 200px; }
+    thead th:last-child { width: 80px; text-align: right; }
+
+    tbody tr { border-bottom: 1px solid var(--gray-50); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td { padding: 28px 0; vertical-align: middle; }
+
+    .step-num { font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: 0.08em; }
+    .step-name { font-size: 24px; font-weight: 700; color: var(--dark); letter-spacing: -0.01em; }
+    .step-desc { font-size: 16px; font-weight: 300; color: var(--gray-500); line-height: 1.6; padding-right: 48px; }
+    .step-page { font-size: 15px; font-weight: 300; color: var(--gray-300); text-align: right; }
+    tr.highlight .step-name { color: var(--blue); }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <p class="sidebar-label">Design Process</p>
+      <h1 class="sidebar-title">목차</h1>
+      <p class="sidebar-desc">문제를 발견하고<br>사용자를 이해하고<br>기능으로 해결하기까지</p>
+    </div>
+    <div class="sidebar-bottom">Clog · Climbing Log<br>2020.10 – 2020.11</div>
+  </div>
+  <div class="content">
+    <p class="content-label">Table of Contents</p>
+    <table>
+      <thead>
+        <tr>
+          <th>STEP</th><th>단계</th><th>주요 내용</th><th>PAGE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="step-num">01</span></td>
+          <td><span class="step-name">문제 발견</span></td>
+          <td><span class="step-desc">클라이머는 왜 기록하지 않는가 — Observation & Pain Points</span></td>
+          <td><span class="step-page">p. 03</span></td>
+        </tr>
+        <tr>
+          <td><span class="step-num">02</span></td>
+          <td><span class="step-name">리서치</span></td>
+          <td><span class="step-desc">사용자 인터뷰 & Journey Map — 기록 없는 성장의 여정</span></td>
+          <td><span class="step-page">p. 04</span></td>
+        </tr>
+        <tr>
+          <td><span class="step-num">03</span></td>
+          <td><span class="step-name">설계</span></td>
+          <td><span class="step-desc">Key Concept & Flow Chart — 체크인 한 번의 흐름</span></td>
+          <td><span class="step-page">p. 05</span></td>
+        </tr>
+        <tr class="highlight">
+          <td><span class="step-num">04</span></td>
+          <td><span class="step-name">기능 정의</span></td>
+          <td><span class="step-desc">3가지 핵심 기능 — 체크인 · 클라이밍장 정보 · 성장 캘린더</span></td>
+          <td><span class="step-page">p. 06</span></td>
+        </tr>
+        <tr>
+          <td><span class="step-num">05</span></td>
+          <td><span class="step-name">회고</span></td>
+          <td><span class="step-desc">혼자 기획하며 배운 것들 — 다음 버전에서 하고 싶은 것</span></td>
+          <td><span class="step-page">p. 09</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Clog – 10장 Lesson Learn</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="design-system.css" />
+  <style>
+    body { display: flex; }
+
+    /* 왼쪽 사이드바 */
+    .sidebar {
+      width: 400px;
+      flex-shrink: 0;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 72px 52px;
+    }
+    .sidebar-label {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .sidebar-title {
+      font-size: 48px;
+      font-weight: 900;
+      color: white;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .sidebar-desc {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.85;
+    }
+    .sidebar-bottom {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* 오른쪽 내용 */
+    .content {
+      flex: 1;
+      padding: 72px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+    }
+
+    /* 배운 점 섹션 */
+    .lessons-section { margin-bottom: 44px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .lesson-card {
+      display: flex;
+      gap: 20px;
+      padding: 22px 24px;
+      background: var(--gray-50);
+      border-radius: 14px;
+      margin-bottom: 14px;
+      border-left: 4px solid transparent;
+    }
+    .lesson-card:last-child { margin-bottom: 0; }
+    .lesson-card.blue { border-left-color: var(--blue); background: var(--blue-bg); }
+    .lesson-card.dark { border-left-color: var(--dark); }
+    .lesson-card.mid  { border-left-color: var(--gray-300); }
+
+    .lc-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+    }
+    .lesson-card.dark .lc-num { color: var(--dark); }
+    .lesson-card.mid  .lc-num { color: var(--gray-300); }
+
+    .lc-text strong {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      display: block;
+      margin-bottom: 5px;
+    }
+    .lc-text p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-500);
+      line-height: 1.65;
+    }
+
+    /* 다음에 하고 싶은 것 */
+    .next-section { }
+    .next-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .next-item {
+      background: white;
+      border: 1.5px solid var(--gray-100);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .next-icon { font-size: 22px; margin-bottom: 8px; }
+    .next-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 5px;
+    }
+    .next-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <p class="sidebar-label">Lesson Learn</p>
+      <h1 class="sidebar-title">혼자<br>기획하며<br>배운 것들</h1>
+      <p class="sidebar-desc">정답이 없는 문제를<br>스스로 정의하고<br>풀어보는 과정</p>
+    </div>
+    <div class="sidebar-bottom">Clog · Climbing Log<br>2020.10 – 2020.11<br>1인 기획 · UI 디자인</div>
+  </div>
+
+  <div class="content">
+    <div class="lessons-section">
+      <p class="section-label">What I Learned</p>
+
+      <div class="lesson-card blue">
+        <div class="lc-num">01</div>
+        <div class="lc-text">
+          <strong>문제는 사용자 언어로 정의해야 한다</strong>
+          <p>"기록 앱"이 아니라 "열심히 다니는데 실력이 늘고 있는지 모르겠다"는 말에서 시작해야 했다. 기능보다 상황이 먼저였다.</p>
+        </div>
+      </div>
+
+      <div class="lesson-card dark">
+        <div class="lc-num">02</div>
+        <div class="lc-text">
+          <strong>기능 축소가 경험을 개선한다</strong>
+          <p>처음엔 SNS 공유, 커뮤니티, 레벨 시스템까지 넣으려 했다. 체크인·검색·캘린더 세 가지로 줄이고 나서야 플로우가 자연스러워졌다.</p>
+        </div>
+      </div>
+
+      <div class="lesson-card mid">
+        <div class="lc-num">03</div>
+        <div class="lc-text">
+          <strong>데이터가 없으면 설득이 안 된다</strong>
+          <p>인터뷰 없이 만든 초기 기획은 나의 경험을 일반화한 것이었다. 8명의 인터뷰가 "내 문제"를 "우리 문제"로 만들어줬다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-section">
+      <p class="section-label">Next Version</p>
+      <div class="next-grid">
+        <div class="next-item">
+          <div class="next-icon">📈</div>
+          <p class="next-title">루트 난이도 통계</p>
+          <p class="next-desc">월별로 어떤 난이도에 도전했는지 그래프로 확인하는 성장 대시보드</p>
+        </div>
+        <div class="next-item">
+          <div class="next-icon">🤝</div>
+          <p class="next-title">클라이밍 파트너 매칭</p>
+          <p class="next-desc">같은 수준·같은 암장 사용자끼리 같이 갈 파트너 연결 기능</p>
+        </div>
+        <div class="next-item">
+          <div class="next-icon">🩹</div>
+          <p class="next-title">부상 패턴 분석</p>
+          <p class="next-desc">어떤 루트·컨디션에서 부상이 잦았는지 데이터로 확인하는 인사이트 기능</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

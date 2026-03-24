@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Clog – 4장 Journey Map</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="stylesheet" href="design-system.css" />
+  <style>
+    .page { padding-bottom: 60px; }
+    .page-header { margin-bottom: 28px; }
+    .journey-wrap { display: flex; flex: 1; gap: 0; }
+
+    /* 페르소나 */
+    .persona { width: 220px; flex-shrink: 0; padding-right: 28px; border-right: 1px solid var(--gray-100); margin-right: 28px; }
+    .persona-avatar { width: 68px; height: 68px; border-radius: 50%; background: var(--blue-mid); display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 14px; }
+    .persona-name { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .persona-info { font-size: 13px; font-weight: 300; color: var(--gray-500); line-height: 1.7; margin-bottom: 16px; }
+    .persona-tag { display: inline-block; font-size: 12px; font-weight: 600; color: var(--blue); background: var(--blue-mid); border-radius: 5px; padding: 4px 9px; margin-bottom: 5px; }
+    .lesson-box { margin-top: 18px; padding: 14px 16px; background: var(--blue-bg); border-radius: 10px; }
+    .lesson-box .lb-label { font-size: 10px; font-weight: 700; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .lesson-box p { font-size: 13px; font-weight: 300; color: var(--gray-700); line-height: 1.65; }
+
+    /* 테이블 */
+    .journey-table { flex: 1; display: flex; flex-direction: column; }
+    .stages-row { display: grid; grid-template-columns: 80px repeat(5, 1fr); }
+    .stage-label-cell { font-size: 10px; font-weight: 700; color: var(--gray-300); letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: flex-end; padding-bottom: 10px; }
+    .stage-cell { padding: 10px 12px 12px; text-align: center; background: var(--blue); border-radius: 8px 8px 0 0; margin: 0 3px; }
+    .stage-cell .s-num { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; margin-bottom: 3px; }
+    .stage-cell .s-name { font-size: 14px; font-weight: 700; color: white; }
+
+    .data-row { display: grid; grid-template-columns: 80px repeat(5, 1fr); border-bottom: 1px solid var(--gray-50); }
+    .data-row:last-child { border-bottom: none; }
+    .row-label { font-size: 10px; font-weight: 700; color: var(--gray-300); letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; padding: 10px 8px 10px 0; line-height: 1.4; }
+    .data-cell { padding: 11px 12px; margin: 0 3px; font-size: 13px; font-weight: 300; color: var(--gray-700); line-height: 1.6; background: var(--gray-50); }
+
+    .emotion-row .data-cell { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 4px; }
+    .emotion-emoji { font-size: 20px; }
+    .emotion-text { font-size: 12px; font-weight: 300; color: var(--gray-500); }
+
+    .opp-row .data-cell { background: var(--blue-mid); font-size: 13px; font-weight: 500; color: var(--blue); line-height: 1.55; }
+    .opp-row .data-cell.empty { background: var(--gray-50); color: transparent; }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <p class="t-step-label">Step 02 · 리서치</p>
+    <h1 class="t-headline">"매주 가는데, 내가 얼마나 늘었는지는 모른다"</h1>
+  </div>
+  <div class="journey-wrap">
+    <div class="persona">
+      <div class="persona-avatar">🧗</div>
+      <p class="persona-name">김지연, 25세</p>
+      <p class="persona-info">마케터 / 직장인<br>클라이밍 경력 1년<br>주 2–3회 방문</p>
+      <span class="persona-tag"># 성장하고 싶음</span><br>
+      <span class="persona-tag"># 기록 습관 없음</span><br>
+      <span class="persona-tag"># SNS에 영상 공유</span>
+      <div class="lesson-box">
+        <p class="lb-label">Key Insight</p>
+        <p>열심히 다니지만 얼마나 성장했는지 확인할 방법이 없어 동기부여가 떨어진다</p>
+      </div>
+    </div>
+    <div class="journey-table">
+      <div class="stages-row">
+        <div class="stage-label-cell">STAGE</div>
+        <div class="stage-cell"><p class="s-num">01</p><p class="s-name">클라이밍짐 탐색</p></div>
+        <div class="stage-cell"><p class="s-num">02</p><p class="s-name">방문 & 운동</p></div>
+        <div class="stage-cell"><p class="s-num">03</p><p class="s-name">기록 시도</p></div>
+        <div class="stage-cell"><p class="s-num">04</p><p class="s-name">성장 점검</p></div>
+        <div class="stage-cell"><p class="s-num">05</p><p class="s-name">다음 방문 계획</p></div>
+      </div>
+      <div class="data-row">
+        <div class="row-label">ACTIONS</div>
+        <div class="data-cell">블로그·지인 추천으로 클라이밍짐 검색</div>
+        <div class="data-cell">루트 도전, 영상 촬영, SNS 업로드</div>
+        <div class="data-cell">메모앱이나 카톡에 간단히 남겨봄</div>
+        <div class="data-cell">지난 방문과 비교해보려 했지만 기록 없음</div>
+        <div class="data-cell">다음 목표 루트를 머릿속으로만 정함</div>
+      </div>
+      <div class="data-row">
+        <div class="row-label">THINK</div>
+        <div class="data-cell">"여기 요일마다 난이도가 달라지나?"</div>
+        <div class="data-cell">"오늘 이 루트 깼다! 다음엔 더 어려운 거 도전해야지"</div>
+        <div class="data-cell">"이걸 어디다 남겨야 하지? 귀찮은데..."</div>
+        <div class="data-cell">"저번 달에도 비슷한 루트 했던 것 같은데 늘었나?"</div>
+        <div class="data-cell">"그냥 가면서 생각해야겠다"</div>
+      </div>
+      <div class="data-row">
+        <div class="row-label">PAIN POINTS</div>
+        <div class="data-cell">정보가 흩어져 있어 방문 전 확인이 번거롭다</div>
+        <div class="data-cell">영상만 남기고 구체적인 기록은 없다</div>
+        <div class="data-cell">기록 도구가 없어 유지가 안 된다</div>
+        <div class="data-cell">성장을 확인할 데이터가 없어 막막하다</div>
+        <div class="data-cell">목표 설정이 감에 의존한다</div>
+      </div>
+      <div class="data-row emotion-row">
+        <div class="row-label">EMOTION</div>
+        <div class="data-cell"><span class="emotion-emoji">😐</span><span class="emotion-text">귀찮음</span></div>
+        <div class="data-cell"><span class="emotion-emoji">😊</span><span class="emotion-text">즐거움</span></div>
+        <div class="data-cell"><span class="emotion-emoji">😩</span><span class="emotion-text">번거로움</span></div>
+        <div class="data-cell"><span class="emotion-emoji">😔</span><span class="emotion-text">막막함</span></div>
+        <div class="data-cell"><span class="emotion-emoji">😶</span><span class="emotion-text">무감각</span></div>
+      </div>
+      <div class="data-row opp-row">
+        <div class="row-label">KEY OPP.</div>
+        <div class="data-cell empty">—</div>
+        <div class="data-cell">체크인 한 번으로 방문·루트 기록 자동화</div>
+        <div class="data-cell">기록을 습관으로 만드는 심플한 UI</div>
+        <div class="data-cell">캘린더로 한눈에 보는 나의 클라이밍</div>
+        <div class="data-cell empty">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-footer">
+  <span class="project-name">Climbing Project</span>
+  <span class="page-num">p. 04</span>
+</div>
+</body>
+</html>
