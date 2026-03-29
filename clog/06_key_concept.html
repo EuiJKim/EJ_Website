@@ -11,8 +11,10 @@
 
     .concepts-area {
       flex: 1;
+      min-height: 0;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr 1.35fr;
+      grid-template-rows: 1fr;
       gap: 28px;
     }
 
@@ -23,6 +25,7 @@
       overflow: hidden;
       border: 1.5px solid var(--gray-100);
       background: white;
+      min-height: 0;
     }
     .concept-block.core {
       border-color: var(--blue);
@@ -65,7 +68,8 @@
 
     /* 폰 스크린 이미지 영역 */
     .cb-screen {
-      flex: 1;
+      height: 530px;
+      flex-shrink: 0;
       position: relative;
       display: flex;
       align-items: center;
@@ -76,11 +80,26 @@
     .concept-block.core .cb-screen { background: #dde2f8; }
 
     .cb-screen img {
-      width: 100%;
+      width: auto;
       height: 100%;
       display: block;
-      object-fit: cover;
-      object-position: top;
+      object-fit: contain;
+    }
+
+    /* 화면 설명 오버레이 */
+    .screen-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 18px 16px;
+      background: linear-gradient(to top, rgba(10,20,60,0.72) 0%, transparent 100%);
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
     }
 
     /* 하단 설명 */
@@ -117,7 +136,8 @@
 <div class="page">
   <div class="page-header">
     <p class="t-step-label">Step 04 · 기능 정의</p>
-    <h1 class="t-headline">꾸준함을 눈으로 확인하다</h1>
+    <h1 class="t-headline">기록을 쉽게, 정보를 한곳에, 성장을 눈으로</h1>
+    <p style="font-size:15px; font-weight:300; color:var(--gray-500); margin-top:10px; line-height:1.6;">Journey Map에서 고통점이 가장 큰 3개 지점을 추출했다. 솔루션 방향은 <strong style="font-weight:700; color:var(--dark);">체크인 기반의 클라이밍 기록 앱</strong> — 방문, 루트, 컨디션을 캘린더로 쌓는다.</p>
   </div>
 
   <div class="concepts-area">
@@ -125,12 +145,13 @@
     <!-- Concept 01 -->
     <div class="concept-block">
       <div class="cb-header">
-        <p class="cb-num">CONCEPT 01</p>
+        <p class="cb-num">FEATURE 01</p>
         <p class="cb-en">Easy Access</p>
         <p class="cb-ko">체크인 — 기록의 시작</p>
       </div>
       <div class="cb-screen">
         <img src="img_checkin.jpg" alt="체크인 화면" />
+        <div class="screen-label">탭 한 번 → 위치·날짜·시간 자동 저장</div>
       </div>
       <div class="cb-body">
         <div class="cb-point"><div class="cb-dot"></div><p>내 위치 기반으로 주변 클라이밍장 자동 탐지</p></div>
@@ -142,12 +163,13 @@
     <!-- Concept 02 -->
     <div class="concept-block">
       <div class="cb-header">
-        <p class="cb-num">CONCEPT 02</p>
+        <p class="cb-num">FEATURE 02</p>
         <p class="cb-en">Clarity Information</p>
         <p class="cb-ko">클라이밍장 정보 — 가기 전에 확인</p>
       </div>
       <div class="cb-screen">
-        <img src="img_search_result.jpg" alt="검색 결과 화면" />
+        <img src="img_climbing_detail_v2.jpg" alt="클라이밍장 상세 화면" />
+        <div class="screen-label">운영 시간 · 난이도 · 위치 · 리뷰 한 화면에</div>
       </div>
       <div class="cb-body">
         <div class="cb-point"><div class="cb-dot"></div><p>운영 시간·난이도·위치를 한 화면에서 확인</p></div>
@@ -159,12 +181,14 @@
     <!-- Concept 03 (Core) -->
     <div class="concept-block core">
       <div class="cb-header">
-        <p class="cb-num">CONCEPT 03 · CORE</p>
+        <p class="cb-num">FEATURE 03 · CORE</p>
         <p class="cb-en">Calendar Growth</p>
         <p class="cb-ko">성장 캘린더 — 기록이 쌓이면 보인다</p>
+        <p style="font-size:12px; font-weight:500; color:rgba(255,255,255,0.55); margin-top:6px;">8명 중 7명 — "얼마나 늘었는지 모르겠다"</p>
       </div>
       <div class="cb-screen">
         <img src="img_calendar.jpg" alt="캘린더 화면" />
+        <div class="screen-label">방문·루트·컨디션이 날짜별로 쌓인다</div>
       </div>
       <div class="cb-body">
         <div class="cb-point"><div class="cb-dot"></div><p>방문·루트·컨디션·부상이 날짜별로 누적</p></div>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=375" />
+  <title>리뷰 팝업 v2</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 375px;
+      height: 812px;
+      font-family: -apple-system, 'Apple SD Gothic Neo', sans-serif;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* 배경 지도 (흐릿하게) */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #e8e8e8;
+      filter: blur(3px);
+    }
+
+    .popup {
+      position: relative;
+      width: 340px;
+      background: white;
+      border-radius: 20px;
+      padding: 28px 24px 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      z-index: 10;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 18px; right: 20px;
+      font-size: 20px;
+      color: #999;
+      cursor: pointer;
+    }
+
+    .popup-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1A1A2E;
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .popup-title .gym-name {
+      color: #1E41C0;
+    }
+
+    /* 별점 섹션 */
+    .rating-section { margin-bottom: 24px; }
+    .rating-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .rating-row:last-child { margin-bottom: 0; }
+    .rating-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1A1A2E;
+    }
+    .stars {
+      display: flex;
+      gap: 4px;
+    }
+    .star {
+      font-size: 26px;
+      color: #E8E8E8;
+    }
+    .star.filled { color: #1E41C0; }
+
+    /* 구분선 */
+    .divider {
+      height: 1px;
+      background: #F0F0F0;
+      margin: 20px 0;
+    }
+
+    /* 한줄 리뷰 (신규) */
+    .new-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      color: #1E41C0;
+      background: #EEF1FF;
+      border-radius: 4px;
+      padding: 2px 6px;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .review-input {
+      width: 100%;
+      height: 72px;
+      border: 1.5px solid #E8E8E8;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: #1A1A2E;
+      line-height: 1.5;
+      resize: none;
+      font-family: inherit;
+      background: #FAFAFA;
+    }
+    .review-input::placeholder { color: #C0C0C0; }
+    .char-count {
+      font-size: 11px;
+      color: #C0C0C0;
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    /* 추천 여부 (신규) */
+    .recommend-section { margin-top: 20px; }
+    .recommend-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 10px;
+    }
+    .recommend-btns {
+      display: flex;
+      gap: 10px;
+    }
+    .rec-btn {
+      flex: 1;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .rec-btn.active {
+      background: #1E41C0;
+      color: white;
+      border: none;
+    }
+    .rec-btn.inactive {
+      background: white;
+      color: #888;
+      border: 1.5px solid #E8E8E8;
+    }
+
+    /* 사진 첨부 */
+    .photo-btn {
+      margin-top: 16px;
+      width: 100%;
+      height: 42px;
+      border: 1.5px dashed #C0C0C0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #888;
+      background: white;
+    }
+
+    /* 등록 버튼 */
+    .submit-btn {
+      margin-top: 20px;
+      width: 100%;
+      height: 50px;
+      background: #1E41C0;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="popup">
+    <span class="close-btn">✕</span>
+    <p class="popup-title">
+      <span class="gym-name">'마운틴스타 클라이밍짐'</span><br>
+      방문은 어떠셨나요?
+    </p>
+
+    <div class="rating-section">
+      <div class="rating-row">
+        <span class="rating-label">청결도</span>
+        <div class="stars">
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-label">편의성</span>
+        <div class="stars">
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star">★</span>
+        </div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-label">만족도</span>
+        <div class="stars">
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star filled">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="new-badge">NEW</span>
+    <textarea class="review-input" placeholder="이 암장에 대해 한 줄로 알려주세요">볼더링 난이도가 다양해서 초보자도 즐길 수 있어요</textarea>
+    <p class="char-count">26 / 50</p>
+
+    <div class="recommend-section">
+      <p class="recommend-label">이 암장을 추천하시겠어요?</p>
+      <div class="recommend-btns">
+        <div class="rec-btn active">👍 추천해요</div>
+        <div class="rec-btn inactive">보통이에요</div>
+      </div>
+    </div>
+
+    <div class="photo-btn">📷 사진 첨부 (선택)</div>
+
+    <button class="submit-btn">리뷰 등록</button>
+  </div>
+</body>
+</html>

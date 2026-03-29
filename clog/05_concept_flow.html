@@ -3,84 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1920" />
-  <title>Clog – 5장 Key Concept & Flow</title>
+  <title>Clog – 5장 서비스 플로우</title>
   <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
   <link rel="stylesheet" href="design-system.css" />
   <style>
-    body { display: flex; flex-direction: column; }
     .page { padding-bottom: 60px; }
 
-    .main-area {
-      display: flex;
-      flex: 1;
-      gap: 72px;
-    }
-
-    /* ── 왼쪽: Key Concept 카드 ── */
-    .left-col {
-      width: 380px;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .concept-card {
-      border-radius: 14px;
-      padding: 22px 24px;
-      border: 1.5px solid var(--gray-100);
-    }
-    .concept-card.highlight {
-      background: var(--blue);
-      border-color: var(--blue);
-    }
-    .concept-card.highlight .card-num,
-    .concept-card.highlight .card-title,
-    .concept-card.highlight .card-desc {
-      color: white;
-    }
-    .concept-card.highlight .card-num {
-      color: rgba(255,255,255,0.55);
-    }
-    .concept-card.highlight .card-tag {
-      background: rgba(255,255,255,0.15);
-      color: white;
-    }
-
-    .card-num {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--gray-300);
-      letter-spacing: 0.12em;
-      margin-bottom: 8px;
-    }
-    .card-title {
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--dark);
-      margin-bottom: 6px;
-      letter-spacing: -0.01em;
-    }
-    .card-desc {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--gray-500);
-      line-height: 1.65;
-    }
-    .card-tag {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--blue);
-      background: var(--blue-mid);
-      border-radius: 5px;
-      padding: 3px 9px;
-      letter-spacing: 0.04em;
-    }
-
-    /* ── 오른쪽: Flow Chart ── */
-    .right-col {
+    .flow-area {
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -93,14 +22,13 @@
       color: var(--gray-300);
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 28px;
+      margin-bottom: 36px;
     }
 
     /* 메인 플로우 행 */
     .flow-row {
       display: flex;
       align-items: center;
-      gap: 0;
       margin-bottom: 0;
     }
 
@@ -108,14 +36,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 170px;
-      flex-shrink: 0;
+      flex: 1;
     }
 
     .node-box {
-      width: 150px;
-      padding: 16px 12px;
-      border-radius: 12px;
+      width: 200px;
+      padding: 22px 16px;
+      border-radius: 14px;
       background: var(--gray-50);
       border: 1.5px solid var(--gray-100);
       text-align: center;
@@ -129,7 +56,7 @@
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.1em;
-      margin-bottom: 5px;
+      margin-bottom: 7px;
     }
     .node-box.type-start .node-num   { color: rgba(255,255,255,0.5); }
     .node-box.type-growth .node-num  { color: rgba(255,255,255,0.5); }
@@ -138,7 +65,7 @@
     .node-box .node-num              { color: var(--gray-300); }
 
     .node-name {
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 700;
       line-height: 1.35;
     }
@@ -149,9 +76,9 @@
     .node-box .node-name             { color: var(--dark); }
 
     .node-sub {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 300;
-      margin-top: 5px;
+      margin-top: 6px;
       line-height: 1.5;
     }
     .node-box.type-start .node-sub  { color: rgba(255,255,255,0.6); }
@@ -160,27 +87,29 @@
     .node-box.type-clarity .node-sub { color: #7B8FE0; }
     .node-box .node-sub             { color: var(--gray-500); }
 
+    /* 기능 태그 (노드 아래) */
+    .feature-tag {
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-mid);
+      border-radius: 5px;
+      padding: 4px 10px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .feature-tag.growth { background: var(--blue); color: white; }
+    .feature-tag.start  { background: transparent; color: transparent; }
+
     /* 화살표 */
     .flow-arrow {
-      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-bottom: 20px; /* feature-tag 높이 맞춤 */
-    }
-    .flow-arrow::after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--gray-100);
-      position: relative;
-    }
-    .flow-arrow-inner {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 0;
+      padding-bottom: 28px;
+      width: 60px;
+      flex-shrink: 0;
     }
     .arrow-line {
       flex: 1;
@@ -188,35 +117,20 @@
       background: var(--gray-100);
     }
     .arrow-head {
-      font-size: 16px;
+      font-size: 20px;
       color: var(--gray-300);
       line-height: 1;
     }
 
-    /* 기능 태그 (노드 아래) */
-    .feature-tag {
-      margin-top: 10px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--blue);
-      background: var(--blue-mid);
-      border-radius: 5px;
-      padding: 3px 9px;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-    .feature-tag.growth { background: var(--blue); color: white; }
-    .feature-tag.start  { background: transparent; color: transparent; }
-
     /* 기록 입력 분기 */
     .branch-area {
-      margin-top: 32px;
-      padding: 24px 28px;
+      margin-top: 44px;
+      padding: 28px 36px;
       background: var(--gray-50);
       border-radius: 16px;
       border: 1.5px solid var(--gray-100);
       display: flex;
-      gap: 20px;
+      gap: 24px;
       align-items: flex-start;
     }
     .branch-label {
@@ -227,34 +141,51 @@
       text-transform: uppercase;
       padding-top: 4px;
       flex-shrink: 0;
-      width: 80px;
+      width: 100px;
+      line-height: 1.6;
     }
     .branch-items {
       display: flex;
-      gap: 14px;
+      gap: 16px;
       flex: 1;
     }
     .branch-item {
       flex: 1;
       background: white;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 1.5px solid var(--gray-100);
-      padding: 14px 16px;
+      padding: 18px 20px;
     }
     .branch-item.highlight-item {
       border-color: var(--blue);
       background: var(--blue-bg);
     }
-    .bi-icon { font-size: 20px; margin-bottom: 6px; }
+    .bi-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--blue-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+    .branch-item.highlight-item .bi-icon {
+      background: var(--blue);
+      color: white;
+    }
     .bi-title {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--dark);
       margin-bottom: 5px;
     }
     .branch-item.highlight-item .bi-title { color: var(--blue); }
     .bi-desc {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 300;
       color: var(--gray-500);
       line-height: 1.6;
@@ -266,142 +197,109 @@
   <div class="page-header">
     <p class="t-step-label">Step 03 · 설계</p>
     <h1 class="t-headline">체크인 한 번의 흐름</h1>
+    <p style="font-size:15px; font-weight:300; color:var(--gray-500); margin-top:10px; line-height:1.6;">인터뷰에서 기록의 가장 큰 장벽은 '시작'이었다. 체크인을 트리거로 삼아 나머지 기록이 자연스럽게 이어지도록 설계했다.</p>
   </div>
 
-  <div class="main-area">
+  <div class="flow-area">
+    <p class="flow-label">User Flow</p>
 
-    <!-- 왼쪽: Key Concept -->
-    <div class="left-col">
-      <div class="concept-card">
-        <p class="card-num">CONCEPT 01</p>
-        <p class="card-title">Easy Access</p>
-        <p class="card-desc">내 위치 기반으로 주변 클라이밍장을 빠르게 확인하고, 체크인 한 번으로 방문을 기록한다</p>
-        <span class="card-tag">체크인</span>
-      </div>
-      <div class="concept-card">
-        <p class="card-num">CONCEPT 02</p>
-        <p class="card-title">Clarity Information</p>
-        <p class="card-desc">운영 시간, 난이도, 리뷰 등 클라이밍장 정보를 한 화면에서 확인한다</p>
-        <span class="card-tag">클라이밍장 정보</span>
-      </div>
-      <div class="concept-card highlight">
-        <p class="card-num">CONCEPT 03</p>
-        <p class="card-title">Calendar Growth</p>
-        <p class="card-desc">방문·루트·컨디션·부상이 캘린더에 쌓여 나의 성장 과정을 눈으로 확인한다</p>
-        <span class="card-tag">성장 캘린더</span>
-      </div>
-    </div>
+    <!-- 메인 플로우 -->
+    <div class="flow-row">
 
-    <!-- 오른쪽: Flow Chart -->
-    <div class="right-col">
-      <p class="flow-label">User Flow</p>
-
-      <!-- 메인 플로우 -->
-      <div class="flow-row">
-
-        <div class="flow-node">
-          <div class="node-box type-start">
-            <p class="node-num">01</p>
-            <p class="node-name">앱 실행</p>
-            <p class="node-sub">스플래시</p>
-          </div>
-          <span class="feature-tag start">·</span>
+      <div class="flow-node">
+        <div class="node-box type-start">
+          <p class="node-num">01</p>
+          <p class="node-name">앱 실행</p>
+          <p class="node-sub">스플래시</p>
         </div>
-
-        <div class="flow-arrow">
-          <div class="flow-arrow-inner">
-            <div class="arrow-line"></div>
-            <span class="arrow-head">›</span>
-          </div>
-        </div>
-
-        <div class="flow-node">
-          <div class="node-box type-clarity">
-            <p class="node-num">02</p>
-            <p class="node-name">클라이밍장<br>탐색</p>
-            <p class="node-sub">검색 / 지도</p>
-          </div>
-          <span class="feature-tag">Clarity Info</span>
-        </div>
-
-        <div class="flow-arrow">
-          <div class="flow-arrow-inner">
-            <div class="arrow-line"></div>
-            <span class="arrow-head">›</span>
-          </div>
-        </div>
-
-        <div class="flow-node">
-          <div class="node-box type-access">
-            <p class="node-num">03</p>
-            <p class="node-name">체크인</p>
-            <p class="node-sub">위치 확인<br>후 기록 시작</p>
-          </div>
-          <span class="feature-tag">Easy Access</span>
-        </div>
-
-        <div class="flow-arrow">
-          <div class="flow-arrow-inner">
-            <div class="arrow-line"></div>
-            <span class="arrow-head">›</span>
-          </div>
-        </div>
-
-        <div class="flow-node">
-          <div class="node-box type-growth">
-            <p class="node-num">04</p>
-            <p class="node-name">기록 입력</p>
-            <p class="node-sub">루트·컨디션<br>부상 여부</p>
-          </div>
-          <span class="feature-tag growth">Calendar Growth</span>
-        </div>
-
-        <div class="flow-arrow">
-          <div class="flow-arrow-inner">
-            <div class="arrow-line"></div>
-            <span class="arrow-head">›</span>
-          </div>
-        </div>
-
-        <div class="flow-node">
-          <div class="node-box type-growth">
-            <p class="node-num">05</p>
-            <p class="node-name">캘린더<br>저장</p>
-            <p class="node-sub">성장 이력<br>시각화</p>
-          </div>
-          <span class="feature-tag growth">Calendar Growth</span>
-        </div>
-
+        <span class="feature-tag start">·</span>
       </div>
 
-      <!-- 기록 입력 상세 분기 -->
-      <div class="branch-area">
-        <p class="branch-label">기록 입력<br>상세</p>
-        <div class="branch-items">
-          <div class="branch-item">
-            <div class="bi-icon">🧗</div>
-            <p class="bi-title">루트 기록</p>
-            <p class="bi-desc">오늘 도전한 루트 색상과 난이도, 성공 여부를 남긴다</p>
-          </div>
-          <div class="branch-item highlight-item">
-            <div class="bi-icon">📊</div>
-            <p class="bi-title">컨디션 체크</p>
-            <p class="bi-desc">운동 강도, 피로감, 집중도를 간단한 슬라이더로 기록한다</p>
-          </div>
-          <div class="branch-item highlight-item">
-            <div class="bi-icon">🩹</div>
-            <p class="bi-title">부상 여부</p>
-            <p class="bi-desc">부위·강도 기록으로 반복 부상 원인을 추적할 수 있다</p>
-          </div>
-          <div class="branch-item">
-            <div class="bi-icon">📝</div>
-            <p class="bi-title">메모</p>
-            <p class="bi-desc">그날의 짧은 소감이나 특이사항을 자유롭게 남긴다</p>
-          </div>
+      <div class="flow-arrow">
+        <div class="arrow-line"></div>
+        <span class="arrow-head">›</span>
+      </div>
+
+      <div class="flow-node">
+        <div class="node-box type-clarity">
+          <p class="node-num">02</p>
+          <p class="node-name">클라이밍장<br>탐색</p>
+          <p class="node-sub">검색 / 지도</p>
         </div>
+        <span class="feature-tag">Clarity Info</span>
+      </div>
+
+      <div class="flow-arrow">
+        <div class="arrow-line"></div>
+        <span class="arrow-head">›</span>
+      </div>
+
+      <div class="flow-node">
+        <div class="node-box type-access">
+          <p class="node-num">03</p>
+          <p class="node-name">체크인</p>
+          <p class="node-sub">위치 확인<br>후 기록 시작</p>
+        </div>
+        <span class="feature-tag">Easy Access</span>
+      </div>
+
+      <div class="flow-arrow">
+        <div class="arrow-line"></div>
+        <span class="arrow-head">›</span>
+      </div>
+
+      <div class="flow-node">
+        <div class="node-box type-growth">
+          <p class="node-num">04</p>
+          <p class="node-name">기록 입력</p>
+          <p class="node-sub">루트·컨디션<br>부상 여부</p>
+        </div>
+        <span class="feature-tag growth">Calendar Growth</span>
+      </div>
+
+      <div class="flow-arrow">
+        <div class="arrow-line"></div>
+        <span class="arrow-head">›</span>
+      </div>
+
+      <div class="flow-node">
+        <div class="node-box type-growth">
+          <p class="node-num">05</p>
+          <p class="node-name">캘린더<br>저장</p>
+          <p class="node-sub">성장 이력<br>시각화</p>
+        </div>
+        <span class="feature-tag growth">Calendar Growth</span>
       </div>
 
     </div>
+
+    <!-- 기록 입력 상세 분기 -->
+    <div class="branch-area">
+      <p class="branch-label">기록 입력<br>상세</p>
+      <div class="branch-items">
+        <div class="branch-item">
+          <div class="bi-icon">루트</div>
+          <p class="bi-title">루트 기록</p>
+          <p class="bi-desc">오늘 도전한 루트 색상과 난이도, 성공 여부를 남긴다</p>
+        </div>
+        <div class="branch-item highlight-item">
+          <div class="bi-icon">컨디</div>
+          <p class="bi-title">컨디션 체크</p>
+          <p class="bi-desc">운동 강도, 피로감, 집중도를 간단한 슬라이더로 기록한다</p>
+        </div>
+        <div class="branch-item highlight-item">
+          <div class="bi-icon">부상</div>
+          <p class="bi-title">부상 여부</p>
+          <p class="bi-desc">부위·강도 기록으로 반복 부상 원인을 추적할 수 있다</p>
+        </div>
+        <div class="branch-item">
+          <div class="bi-icon">메모</div>
+          <p class="bi-title">메모</p>
+          <p class="bi-desc">그날의 짧은 소감이나 특이사항을 자유롭게 남긴다</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 <div class="page-footer">

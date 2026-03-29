@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Clog – 검증 & 개선</title>
+  <link rel="stylesheet" href="design-system.css" />
+  <style>
+    .page { padding-bottom: 60px; }
+    .page-header { margin-bottom: 16px; }
+
+    /* 상단 메타 */
+    .test-meta {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .test-meta-item {
+      background: var(--blue-bg);
+      border-radius: 10px;
+      padding: 12px 20px;
+      border: 1.5px solid rgba(30,65,192,0.11);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .tmi-num {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .tmi-label {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--gray-500);
+    }
+
+    /* 3열 파인딩 */
+    .findings {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      min-height: 0;
+    }
+
+    .finding-col {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    /* 파인딩 헤더 */
+    .finding-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .finding-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+    .finding-feedback {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--gray-700);
+      line-height: 1.6;
+      padding: 12px 14px;
+      background: var(--gray-50);
+      border-radius: 10px;
+      border: 1px solid var(--gray-100);
+      margin-bottom: 8px;
+    }
+    .finding-feedback .speaker {
+      font-size: 11px;
+      color: var(--gray-300);
+      margin-top: 6px;
+    }
+    .finding-change {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    /* AS-IS → TO-BE 이미지 영역 */
+    .screens-row {
+      flex: 1;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      min-height: 0;
+    }
+
+    .screen-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      min-height: 0;
+    }
+
+    .screen-label-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 5px;
+      flex-shrink: 0;
+    }
+    .screen-label-tag.as-is {
+      color: var(--gray-500);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+    }
+    .screen-label-tag.to-be {
+      color: var(--blue);
+      background: var(--blue-mid);
+      border: 1px solid rgba(30,65,192,0.15);
+    }
+
+    .screen-frame {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 2px solid var(--gray-100);
+      background: white;
+      height: 380px;
+    }
+    .screen-frame.improved {
+      border-color: var(--blue);
+      box-shadow: 0 4px 16px rgba(30,65,192,0.12);
+    }
+    .screen-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    /* 화살표 */
+    .arrow-between {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding-top: 24px;
+    }
+    .arrow-icon {
+      font-size: 18px;
+      color: var(--blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <p class="t-step-label">Step 05 · 검증</p>
+    <h1 class="t-headline">만들고 보여줬더니, 빠진 게 보였다</h1>
+    <p style="font-size:15px; font-weight:300; color:var(--gray-500); margin-top:8px; line-height:1.6;">Hi-Fi 프로토타입 완성 후, 클라이머 3명에게 주요 태스크를 수행하게 하며 피드백을 수집했다.</p>
+  </div>
+
+  <div class="test-meta">
+    <div class="test-meta-item">
+      <p class="tmi-num">3명</p>
+      <p class="tmi-label">테스트 참여자</p>
+    </div>
+    <div class="test-meta-item">
+      <p class="tmi-num">3개</p>
+      <p class="tmi-label">핵심 태스크</p>
+    </div>
+    <div class="test-meta-item">
+      <p class="tmi-num">3건</p>
+      <p class="tmi-label">주요 개선</p>
+    </div>
+  </div>
+
+  <div class="findings">
+
+    <!-- Finding 1 -->
+    <div class="finding-col">
+      <p class="finding-num">Finding 01</p>
+      <p class="finding-title">클라이밍장 상세 —<br>정보가 부족하다</p>
+      <div class="finding-feedback">
+        "운영시간만 보고는 갈지 말지 결정 못 해요. 난이도가 내 수준에 맞는지가 제일 중요한데."
+        <p class="speaker">— 참여자 A, 클라이밍 8개월</p>
+      </div>
+      <p class="finding-change">→ 난이도표 · 시설 정보 · 방문후기 추가</p>
+      <div class="screens-row">
+        <div class="screen-col">
+          <span class="screen-label-tag as-is">AS-IS</span>
+          <div class="screen-frame">
+            <img src="img_climbing_detail.jpg" alt="상세 v1" />
+          </div>
+        </div>
+        <div class="arrow-between"><span class="arrow-icon">→</span></div>
+        <div class="screen-col">
+          <span class="screen-label-tag to-be">TO-BE</span>
+          <div class="screen-frame improved">
+            <img src="img_climbing_detail_v2.jpg" alt="상세 v2" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finding 2 -->
+    <div class="finding-col">
+      <p class="finding-num">Finding 02</p>
+      <p class="finding-title">리뷰 작성 —<br>별점만으로는 부족하다</p>
+      <div class="finding-feedback">
+        "별점 3개로는 이 암장이 어떤 곳인지 알 수 없어요. 한마디라도 쓸 수 있으면 좋겠어요."
+        <p class="speaker">— 참여자 B, 클라이밍 1년</p>
+      </div>
+      <p class="finding-change">→ 한줄 리뷰 · 추천 여부 · 사진 첨부 추가</p>
+      <div class="screens-row">
+        <div class="screen-col">
+          <span class="screen-label-tag as-is">AS-IS</span>
+          <div class="screen-frame">
+            <img src="img_popup_review.jpg" alt="리뷰 v1" />
+          </div>
+        </div>
+        <div class="arrow-between"><span class="arrow-icon">→</span></div>
+        <div class="screen-col">
+          <span class="screen-label-tag to-be">TO-BE</span>
+          <div class="screen-frame improved">
+            <img src="img_popup_review_v2.jpg" alt="리뷰 v2" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finding 3 -->
+    <div class="finding-col">
+      <p class="finding-num">Finding 03</p>
+      <p class="finding-title">검색 빈 상태 —<br>가이드가 없다</p>
+      <div class="finding-feedback">
+        "검색을 눌렀는데 뭘 써야 할지 모르겠어요. 인기 있는 곳 먼저 보여주면 좋겠어요."
+        <p class="speaker">— 참여자 C, 클라이밍 6개월</p>
+      </div>
+      <p class="finding-change">→ 최근 검색 · 내 주변 인기 암장 표시</p>
+      <div class="screens-row">
+        <div class="screen-col">
+          <span class="screen-label-tag as-is">AS-IS</span>
+          <div class="screen-frame">
+            <img src="img_search_empty.jpg" alt="검색 v1" />
+          </div>
+        </div>
+        <div class="arrow-between"><span class="arrow-icon">→</span></div>
+        <div class="screen-col">
+          <span class="screen-label-tag to-be">TO-BE</span>
+          <div class="screen-frame improved">
+            <img src="img_search_v2.jpg" alt="검색 v2" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="page-footer">
+  <span class="project-name">Climbing Project</span>
+  <span class="page-num">p. 10</span>
+</div>
+</body>
+</html>

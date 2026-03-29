@@ -61,10 +61,10 @@
     /* 인사이트 박스 */
     .insight-box {
       background: var(--blue-bg);
-      border-left: 4px solid var(--blue);
-      border-radius: 0 10px 10px 0;
+      border-radius: 12px;
       padding: 16px 20px;
       margin-bottom: 32px;
+      border: 1.5px solid rgba(30,65,192,0.13);
     }
     .insight-box .ib-label {
       font-size: 10px;
@@ -73,6 +73,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 6px;
+      opacity: 0.7;
     }
     .insight-box p {
       font-size: 15px;
@@ -120,58 +121,80 @@
     .f-right {
       flex: 1;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      gap: 28px;
-      position: relative;
+      gap: 20px;
+      padding-bottom: 16px;
     }
 
+    /* 폰 + 레이블 컬럼 */
+    .phone-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .phone-col.side-col { padding-top: 125px; }
+
     .phone-mock {
-      border-radius: 24px;
+      border-radius: 4px;
       overflow: hidden;
       background: white;
-      box-shadow: 0 24px 64px rgba(30,65,192,0.18);
+      position: relative;
+      border: 2px solid var(--gray-100);
     }
     .phone-mock img {
       display: block;
-      object-fit: cover;
+      object-fit: contain;
       object-position: top;
     }
-    .phone-mock.main-phone img { width: 240px; height: 428px; }
-    .phone-mock.side-phone img { width: 200px; height: 356px; }
-    .phone-mock.side-phone {
-      box-shadow: 0 12px 36px rgba(0,0,0,0.10);
-      align-self: flex-end;
-      margin-bottom: 40px;
-    }
-
-    /* 콜아웃 말풍선 */
-    .bubble {
+    .screen-overlay {
       position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 14px 14px;
+      background: linear-gradient(to top, rgba(10,20,60,0.68) 0%, transparent 100%);
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .phone-mock.main-phone {
+      box-shadow: 0 32px 80px rgba(30,65,192,0.24);
+    }
+    .phone-mock.main-phone img { width: 340px; height: 605px; }
+    .phone-mock.side-phone {
+      box-shadow: 0 16px 44px rgba(0,0,0,0.13);
+    }
+    .phone-mock.side-phone img { width: 270px; height: 480px; }
+
+    /* 폰 아래 번호 레이블 */
+    .phone-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       background: white;
-      border-radius: 12px;
-      padding: 10px 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      border: 1.5px solid var(--gray-100);
+      border-radius: 10px;
+      padding: 8px 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
       font-size: 13px;
       font-weight: 500;
       color: var(--dark);
       white-space: nowrap;
     }
-    .bubble .b-num {
-      display: inline-block;
-      width: 18px; height: 18px;
+    .phone-label .pl-num {
+      width: 20px; height: 20px;
       border-radius: 50%;
       background: var(--blue);
       color: white;
       font-size: 10px;
       font-weight: 700;
-      text-align: center;
-      line-height: 18px;
-      margin-right: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .bubble-1 { top: 60px; right: 20px; }
-    .bubble-2 { top: 200px; right: 10px; }
-    .bubble-3 { bottom: 120px; right: 20px; }
   </style>
 </head>
 <body>
@@ -191,11 +214,11 @@
       </div>
 
       <h2 class="f-title">탭 한 번으로<br>오늘의 기록이 시작된다</h2>
-      <p class="f-sub">기록을 시작하는 가장 큰 장벽은 '어디서부터 남겨야 하는가'였다.<br>체크인 하나로 위치·날짜·시간이 자동으로 남는다.</p>
+      <p class="f-sub">기록이 번거로운 이유는 '어디서부터 남겨야 하는가'였다.<br>체크인 하나로 위치·날짜·시간이 자동으로 남는다.</p>
 
       <div class="insight-box">
         <p class="ib-label">Research Insight</p>
-        <p>인터뷰 8명 중 7명이 기록을 하지 않는 이유로 "번거롭다"를 꼽았다. 체크인 한 번으로 기록 진입 장벽을 없앤다.</p>
+        <p>"메모앱에 써봤는데 3일이면 안 하게 돼요." 기록의 장벽은 의지가 아니라 시작 비용이었다. 체크인 한 번으로 진입 장벽을 없앤다.</p>
       </div>
 
       <div class="callout-list">
@@ -224,19 +247,33 @@
     </div>
 
     <div class="f-right">
-      <div class="phone-mock side-phone">
-        <img src="img_main.jpg" alt="메인 지도 화면" />
+      <div class="phone-col side-col">
+        <div class="phone-mock side-phone">
+          <img src="img_main.jpg" alt="메인 지도 화면" />
+          <div class="screen-overlay">근처 암장 자동 표시</div>
+        </div>
+        <div class="phone-label">
+          <span class="pl-num">1</span>위치 자동 탐지
+        </div>
       </div>
-      <div class="phone-mock main-phone">
-        <img src="img_checkin.jpg" alt="체크인 화면" />
+      <div class="phone-col">
+        <div class="phone-mock main-phone">
+          <img src="img_checkin.jpg" alt="체크인 화면" />
+          <div class="screen-overlay">탭 한 번 → 위치·날짜·시간 자동 저장</div>
+        </div>
+        <div class="phone-label">
+          <span class="pl-num">2</span>체크인 완료
+        </div>
       </div>
-      <div class="phone-mock side-phone">
-        <img src="img_popup_review.jpg" alt="리뷰 팝업" />
+      <div class="phone-col side-col">
+        <div class="phone-mock side-phone">
+          <img src="img_popup_review.jpg" alt="리뷰 팝업" />
+          <div class="screen-overlay">체크인 후 기록으로 자동 연결</div>
+        </div>
+        <div class="phone-label">
+          <span class="pl-num">3</span>기록 연결
+        </div>
       </div>
-
-      <div class="bubble bubble-1"><span class="b-num">1</span>위치 자동 탐지</div>
-      <div class="bubble bubble-2"><span class="b-num">2</span>체크인 완료</div>
-      <div class="bubble bubble-3"><span class="b-num">3</span>기록 연결</div>
     </div>
 
   </div>

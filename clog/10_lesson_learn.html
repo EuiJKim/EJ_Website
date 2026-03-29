@@ -54,82 +54,90 @@
       padding: 72px 80px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 0;
     }
 
     /* 배운 점 섹션 */
-    .lessons-section { margin-bottom: 44px; }
+    .lessons-section { margin-bottom: 36px; }
     .section-label {
       font-size: 11px;
       font-weight: 700;
       color: var(--blue);
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .lesson-card {
       display: flex;
       gap: 20px;
-      padding: 22px 24px;
+      padding: 18px 22px;
       background: var(--gray-50);
-      border-radius: 14px;
-      margin-bottom: 14px;
-      border-left: 4px solid transparent;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      border: 1.5px solid var(--gray-100);
     }
     .lesson-card:last-child { margin-bottom: 0; }
-    .lesson-card.blue { border-left-color: var(--blue); background: var(--blue-bg); }
-    .lesson-card.dark { border-left-color: var(--dark); }
-    .lesson-card.mid  { border-left-color: var(--gray-300); }
+    .lesson-card.blue { background: var(--blue-bg); border-color: rgba(30,65,192,0.15); }
+    .lesson-card.dark { background: var(--gray-50); border-color: var(--gray-100); }
+    .lesson-card.mid  { background: var(--gray-50); border-color: var(--gray-100); }
 
     .lc-num {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 900;
       color: var(--blue);
       line-height: 1;
       flex-shrink: 0;
-      width: 32px;
+      width: 28px;
     }
     .lesson-card.dark .lc-num { color: var(--dark); }
     .lesson-card.mid  .lc-num { color: var(--gray-300); }
 
     .lc-text strong {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--dark);
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
     .lc-text p {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 300;
       color: var(--gray-500);
       line-height: 1.65;
     }
 
-    /* 다음에 하고 싶은 것 */
-    .next-section { }
-    .next-grid {
+    /* 검증 계획 섹션 */
+    .validate-section { }
+    .validate-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
-    .next-item {
+    .validate-item {
       background: white;
       border: 1.5px solid var(--gray-100);
       border-radius: 12px;
       padding: 18px 20px;
     }
-    .next-icon { font-size: 22px; margin-bottom: 8px; }
-    .next-title {
+    .vi-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .vi-hypo {
       font-size: 14px;
       font-weight: 700;
       color: var(--dark);
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      line-height: 1.4;
     }
-    .next-desc {
-      font-size: 13px;
+    .vi-method {
+      font-size: 12px;
       font-weight: 300;
       color: var(--gray-500);
       line-height: 1.6;
@@ -139,7 +147,7 @@
 <body>
   <div class="sidebar">
     <div>
-      <p class="sidebar-label">Lesson Learn</p>
+      <p class="sidebar-label">Step 06 · 회고</p>
       <h1 class="sidebar-title">혼자<br>기획하며<br>배운 것들</h1>
       <p class="sidebar-desc">정답이 없는 문제를<br>스스로 정의하고<br>풀어보는 과정</p>
     </div>
@@ -162,7 +170,7 @@
         <div class="lc-num">02</div>
         <div class="lc-text">
           <strong>기능 축소가 경험을 개선한다</strong>
-          <p>처음엔 SNS 공유, 커뮤니티, 레벨 시스템까지 넣으려 했다. 체크인·검색·캘린더 세 가지로 줄이고 나서야 플로우가 자연스러워졌다.</p>
+          <p>초기 아이디에이션에서는 더 많은 기능 후보가 있었다. 체크인·검색·캘린더 세 가지로 좁히고 나서야 플로우가 자연스러워졌다.</p>
         </div>
       </div>
 
@@ -175,26 +183,29 @@
       </div>
     </div>
 
-    <div class="next-section">
-      <p class="section-label">Next Version</p>
-      <div class="next-grid">
-        <div class="next-item">
-          <div class="next-icon">📈</div>
-          <p class="next-title">루트 난이도 통계</p>
-          <p class="next-desc">월별로 어떤 난이도에 도전했는지 그래프로 확인하는 성장 대시보드</p>
+    <div class="validate-section">
+      <p class="section-label">Next — 출시 후 검증하고 싶은 가설</p>
+      <div class="validate-grid">
+        <div class="validate-item">
+          <p class="vi-label">가설 01 · 핵심 기능</p>
+          <p class="vi-hypo">체크인 진입 장벽이 실제로 기록 습관을 만드는가</p>
+          <p class="vi-method">검증 방법: 2주 실사용 테스트 — 1회 체크인 완료율 + 재방문 기록률 측정</p>
         </div>
-        <div class="next-item">
-          <div class="next-icon">🤝</div>
-          <p class="next-title">클라이밍 파트너 매칭</p>
-          <p class="next-desc">같은 수준·같은 암장 사용자끼리 같이 갈 파트너 연결 기능</p>
+        <div class="validate-item">
+          <p class="vi-label">가설 02 · 성장 가시화</p>
+          <p class="vi-hypo">캘린더로 기록을 보았을 때 동기부여가 실제로 올라가는가</p>
+          <p class="vi-method">검증 방법: 캘린더 조회 빈도 + "다음에도 기록하고 싶다" 5점 척도 설문</p>
         </div>
-        <div class="next-item">
-          <div class="next-icon">🩹</div>
-          <p class="next-title">부상 패턴 분석</p>
-          <p class="next-desc">어떤 루트·컨디션에서 부상이 잦았는지 데이터로 확인하는 인사이트 기능</p>
+        <div class="validate-item">
+          <p class="vi-label">가설 03 · 정보 탐색</p>
+          <p class="vi-hypo">앱 내 검색이 기존 블로그·지인 추천을 대체하는가</p>
+          <p class="vi-method">검증 방법: 신규 클라이밍장 방문 전 정보 탐색 경로 추적 인터뷰</p>
         </div>
       </div>
     </div>
   </div>
+<div class="page-footer" style="position:fixed; bottom:36px; right:80px;">
+  <span class="page-num" style="font-size:13px; color:rgba(255,255,255,0.3); font-weight:300;">p. 11</span>
+</div>
 </body>
 </html>

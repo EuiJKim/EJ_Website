@@ -38,12 +38,12 @@
 
     .insight-box {
       background: var(--blue-bg);
-      border-left: 4px solid var(--blue);
-      border-radius: 0 10px 10px 0;
+      border-radius: 12px;
       padding: 16px 20px;
       margin-bottom: 32px;
+      border: 1.5px solid rgba(30,65,192,0.13);
     }
-    .insight-box .ib-label { font-size: 10px; font-weight: 700; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+    .insight-box .ib-label { font-size: 10px; font-weight: 700; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; opacity: 0.7; }
     .insight-box p { font-size: 15px; font-weight: 300; color: var(--gray-700); line-height: 1.65; }
 
     .callout-list { display: flex; flex-direction: column; gap: 14px; }
@@ -62,71 +62,108 @@
     .f-left-phones {
       flex: 1;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
       gap: 20px;
       order: 1;
-      position: relative;
+      padding-bottom: 16px;
     }
+
+    /* 폰 + 레이블 컬럼 */
+    .phone-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .phone-col.side-col { padding-top: 125px; }
 
     .phone-mock {
-      border-radius: 24px;
+      border-radius: 4px;
       overflow: hidden;
       background: white;
+      position: relative;
+      border: 2px solid var(--gray-100);
     }
-    .phone-mock img { display: block; object-fit: cover; object-position: top; }
-    .phone-mock.main-phone { box-shadow: 0 24px 64px rgba(30,65,192,0.18); }
-    .phone-mock.main-phone img { width: 240px; height: 428px; }
-    .phone-mock.side-phone { box-shadow: 0 12px 36px rgba(0,0,0,0.10); align-self: flex-end; margin-bottom: 40px; }
-    .phone-mock.side-phone img { width: 200px; height: 356px; }
-
-    .bubble {
+    .phone-mock img { display: block; object-fit: contain; object-position: top; }
+    .screen-overlay {
       position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 14px 14px;
+      background: linear-gradient(to top, rgba(10,20,60,0.68) 0%, transparent 100%);
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .phone-mock.main-phone { box-shadow: 0 32px 80px rgba(30,65,192,0.22); }
+    .phone-mock.main-phone img { width: 340px; height: 605px; }
+    .phone-mock.side-phone { box-shadow: 0 16px 44px rgba(0,0,0,0.13); }
+    .phone-mock.side-phone img { width: 270px; height: 480px; }
+
+    /* 폰 아래 번호 레이블 */
+    .phone-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       background: white;
-      border-radius: 12px;
-      padding: 10px 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      border: 1.5px solid var(--gray-100);
+      border-radius: 10px;
+      padding: 8px 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
       font-size: 13px;
       font-weight: 500;
       color: var(--dark);
       white-space: nowrap;
     }
-    .bubble .b-num {
-      display: inline-block;
-      width: 18px; height: 18px; border-radius: 50%;
+    .phone-label .pl-num {
+      width: 20px; height: 20px;
+      border-radius: 50%;
       background: var(--blue); color: white;
       font-size: 10px; font-weight: 700;
-      text-align: center; line-height: 18px;
-      margin-right: 6px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
-    .bubble-1 { top: 60px; left: 10px; }
-    .bubble-2 { top: 220px; left: 0px; }
-    .bubble-3 { bottom: 100px; left: 10px; }
   </style>
 </head>
 <body>
 <div class="page">
   <div class="page-header">
     <p class="t-step-label">Feature 02 · Clarity Information</p>
-    <h1 class="t-headline">가기 전에 확인하고, 다녀온 후엔 기록으로</h1>
+    <h1 class="t-headline">가기 전에 확인하고, 다녀온 후엔 리뷰로</h1>
   </div>
 
   <div class="feature-layout">
 
     <div class="f-left-phones">
-      <div class="phone-mock side-phone">
-        <img src="img_search_empty.jpg" alt="검색 화면" />
+      <div class="phone-col side-col">
+        <div class="phone-mock side-phone">
+          <img src="img_search_empty.jpg" alt="검색 화면" />
+          <div class="screen-overlay">키워드·지역으로 검색</div>
+        </div>
+        <div class="phone-label">
+          <span class="pl-num">1</span>키워드 검색
+        </div>
       </div>
-      <div class="phone-mock main-phone">
-        <img src="img_search_result.jpg" alt="검색 결과" />
+      <div class="phone-col">
+        <div class="phone-mock main-phone">
+          <img src="img_climbing_detail_v2.jpg" alt="클라이밍장 상세" style="object-fit: cover; object-position: top;" />
+          <div class="screen-overlay">운영 시간·난이도·위치 한 화면에</div>
+        </div>
+        <div class="phone-label">
+          <span class="pl-num">2</span>운영 정보 확인
+        </div>
       </div>
-      <div class="phone-mock side-phone">
-        <img src="img_climbing_detail.jpg" alt="암장 상세" />
+      <div class="phone-col side-col">
+        <div class="phone-mock side-phone">
+          <img src="img_climbing_detail.jpg" alt="암장 상세" />
+          <div class="screen-overlay">다녀온 후 리뷰로 정보 공유</div>
+        </div>
+        <div class="phone-label">
+          <span class="pl-num">3</span>리뷰 작성
+        </div>
       </div>
-
-      <div class="bubble bubble-1"><span class="b-num">1</span>키워드 검색</div>
-      <div class="bubble bubble-2"><span class="b-num">2</span>운영 정보 확인</div>
-      <div class="bubble bubble-3"><span class="b-num">3</span>리뷰 작성</div>
     </div>
 
     <div class="f-right-text">
@@ -141,7 +178,7 @@
 
       <div class="insight-box">
         <p class="ib-label">Research Insight</p>
-        <p>인터뷰 참여자 4명 중 4명이 새 클라이밍장 정보를 지인 추천이나 블로그에 의존하고 있었다. 정보가 흩어져 있어 방문 전 확인이 번거롭다.</p>
+        <p>인터뷰 참여자 8명 모두 새 클라이밍장 정보를 지인 추천이나 블로그에 의존하고 있었다. 정보가 흩어져 있어 방문 전 확인이 번거롭다.</p>
       </div>
 
       <div class="callout-list">

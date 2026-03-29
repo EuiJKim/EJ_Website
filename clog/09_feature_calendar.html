@@ -15,7 +15,8 @@
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
+      padding-top: 48px;
     }
 
     .feature-badge {
@@ -59,60 +60,67 @@
     .f-right {
       flex: 1;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
       gap: 20px;
-      position: relative;
+      padding-bottom: 16px;
     }
+
+    /* 폰 + 레이블 컬럼 */
+    .phone-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .phone-col.side-col { padding-top: 125px; }
 
     .phone-mock {
-      border-radius: 24px;
+      border-radius: 4px;
       overflow: hidden;
       background: white;
+      position: relative;
+      border: 2px solid var(--gray-100);
     }
-    .phone-mock img { display: block; object-fit: cover; object-position: top; }
-    .phone-mock.main-phone { box-shadow: 0 24px 64px rgba(30,65,192,0.22); }
-    .phone-mock.main-phone img { width: 260px; height: 462px; }
-    .phone-mock.side-phone { box-shadow: 0 12px 36px rgba(0,0,0,0.10); align-self: flex-end; margin-bottom: 40px; }
-    .phone-mock.side-phone img { width: 200px; height: 356px; }
-
-    .bubble {
+    .phone-mock img { display: block; object-fit: contain; object-position: top; }
+    .screen-overlay {
       position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 14px 14px;
+      background: linear-gradient(to top, rgba(10,20,60,0.68) 0%, transparent 100%);
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .phone-mock.main-phone { box-shadow: 0 32px 80px rgba(30,65,192,0.26); }
+    .phone-mock.main-phone img { width: 340px; height: 605px; }
+    .phone-mock.side-phone { box-shadow: 0 16px 44px rgba(0,0,0,0.13); }
+    .phone-mock.side-phone img { width: 270px; height: 480px; }
+
+    /* 폰 아래 번호 레이블 */
+    .phone-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       background: white;
-      border-radius: 12px;
-      padding: 10px 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      border: 1.5px solid var(--gray-100);
+      border-radius: 10px;
+      padding: 8px 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
       font-size: 13px;
       font-weight: 500;
       color: var(--dark);
       white-space: nowrap;
     }
-    .bubble .b-num {
-      display: inline-block;
-      width: 18px; height: 18px; border-radius: 50%;
+    .phone-label .pl-num {
+      width: 20px; height: 20px;
+      border-radius: 50%;
       background: var(--blue); color: white;
       font-size: 10px; font-weight: 700;
-      text-align: center; line-height: 18px;
-      margin-right: 6px;
-    }
-    .bubble-1 { top: 50px; right: 10px; }
-    .bubble-2 { top: 210px; right: 0px; }
-    .bubble-3 { bottom: 110px; right: 10px; }
-
-    /* 배지 하이라이트 */
-    .badge-highlight {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--blue);
-      color: white;
-      border-radius: 12px;
-      padding: 10px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      white-space: nowrap;
-      box-shadow: 0 8px 24px rgba(30,65,192,0.35);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -137,7 +145,7 @@
 
       <div class="insight-box">
         <p class="ib-label">Core Value</p>
-        <p>인터뷰 참여자 대부분이 "열심히 다니는 것 같은데 얼마나 늘었는지 모르겠다"고 했다. 성장 기록이 Clog의 핵심이다.</p>
+        <p>"3개월째 다니는데 처음이랑 뭐가 달라졌는지 모르겠어요." 성장의 감각은 있지만 확인할 방법이 없었다. 캘린더에 쌓이는 기록이 그 답이다.</p>
       </div>
 
       <div class="callout-list">
@@ -152,7 +160,7 @@
           <div class="callout-num">2</div>
           <div class="callout-text">
             <strong>날짜별 루트·컨디션·부상 기록</strong>
-            <p>특정 날을 탭하면 그날의 모든 기록이 펼쳐진다</p>
+            <p>특정 날을 탭하면 그날의 기록이 펼쳐진다. 부상 이력이 쌓이면 반복 원인이 보인다.</p>
           </div>
         </div>
         <div class="callout-item">
@@ -166,19 +174,33 @@
     </div>
 
     <div class="f-right">
-      <div class="phone-mock side-phone">
-        <img src="img_calendar_datepicker.jpg" alt="날짜 선택" />
+      <div class="phone-col side-col">
+        <div class="phone-mock side-phone">
+          <img src="img_calendar_datepicker.jpg" alt="날짜 선택" />
+          <div class="screen-overlay">월별 방문 기록 한눈에</div>
+        </div>
+        <div class="phone-label">
+          <span class="pl-num">1</span>월별 방문 기록
+        </div>
       </div>
-      <div class="phone-mock main-phone">
-        <img src="img_calendar.jpg" alt="캘린더 메인" />
+      <div class="phone-col">
+        <div class="phone-mock main-phone">
+          <img src="img_calendar.jpg" alt="캘린더 메인" />
+          <div class="screen-overlay">날짜 탭 → 루트·컨디션·부상 상세 기록</div>
+        </div>
+        <div class="phone-label">
+          <span class="pl-num">2</span>날짜별 상세 보기
+        </div>
       </div>
-      <div class="phone-mock side-phone">
-        <img src="img_badge.jpg" alt="배지" />
+      <div class="phone-col side-col">
+        <div class="phone-mock side-phone">
+          <img src="img_badge.jpg" alt="배지" />
+          <div class="screen-overlay">꾸준함이 배지로 쌓인다</div>
+        </div>
+        <div class="phone-label">
+          <span class="pl-num">3</span>배지 달성
+        </div>
       </div>
-
-      <div class="bubble bubble-1"><span class="b-num">1</span>월별 방문 기록</div>
-      <div class="bubble bubble-2"><span class="b-num">2</span>날짜별 상세 보기</div>
-      <div class="bubble bubble-3"><span class="b-num">3</span>배지 달성</div>
     </div>
 
   </div>

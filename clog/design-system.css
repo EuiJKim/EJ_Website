@@ -127,10 +127,10 @@ body {
 /* 인용 블록 */
 .c-quote-block {
   background: var(--blue-bg);
-  border-left: 4px solid var(--blue);
+  border-radius: 10px;
   padding: 18px 20px;
-  border-radius: 0 10px 10px 0;
   margin-bottom: 16px;
+  border: 1.5px solid rgba(30,65,192,0.11);
 }
 
 .c-quote-block p {
