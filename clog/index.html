@@ -26,69 +26,61 @@
     .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--gray-50); text-transform: uppercase; margin-bottom: 4px; }
     .stat-val { font-size: 15px; font-weight: 500; color: var(--dark); }
 
-    /* 데스크톱 뷰어 안내 */
+    /* 슬라이드 스택 */
+    .slides-section { padding: 0; }
+    .slide {
+      width: 100%;
+      border-bottom: 1px solid var(--gray-20);
+      position: relative;
+    }
+    .slide-inner {
+      width: 100%;
+      overflow: hidden;
+    }
+    .slide-inner iframe {
+      width: 1920px;
+      height: 1080px;
+      transform-origin: top left;
+      border: none;
+      display: block;
+      background: white;
+    }
+
+    /* 슬라이드 카운터 & 네비게이션 */
+    .slide-counter {
+      position: fixed; bottom: 38px; right: 104px;
+      font-size: 13px; font-weight: 500; color: var(--gray-50);
+      z-index: 50;
+    }
+    .slide-nav {
+      position: fixed; bottom: 32px; right: 32px;
+      display: flex; gap: 8px; z-index: 50;
+    }
+    .slide-nav button {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--dark); color: white; border: none;
+      font-size: 18px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transition: background 0.15s;
+    }
+    .slide-nav button:hover { background: var(--gray-70); }
+
+    /* 데스크톱 안내 */
     .desktop-notice {
-      margin: 0 48px 0;
+      margin: 0 48px;
       padding: 16px 20px;
       background: #fffbeb; border: 1px solid #f59e0b;
       border-radius: 10px; display: flex; align-items: center; gap: 12px;
     }
     .desktop-notice p { font-size: 14px; color: #92400e; font-weight: 400; line-height: 1.5; }
 
-    /* 슬라이드 뷰어 */
-    .viewer {
-      padding: 40px 48px 80px;
-    }
-    .viewer-nav {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 24px;
-    }
-    .viewer-title { font-size: 13px; font-weight: 600; color: var(--gray-50); letter-spacing: 0.06em; }
-    .page-btns { display: flex; gap: 8px; }
-    .page-btn {
-      width: 36px; height: 36px; border-radius: 8px;
-      border: 1px solid var(--gray-20); background: white;
-      font-size: 16px; cursor: pointer; display: flex;
-      align-items: center; justify-content: center;
-      transition: all 0.15s; color: var(--dark);
-    }
-    .page-btn:hover { background: var(--dark); color: white; border-color: var(--dark); }
-
-    .slide-frame {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--gray-20);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-      background: var(--gray-10);
-    }
-    .slide-frame iframe {
-      width: 1920px; height: 1080px;
-      transform-origin: top left;
-      border: none;
-      display: block;
-    }
-
-    .slide-dots {
-      display: flex; gap: 6px; justify-content: center; margin-top: 20px;
-    }
-    .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gray-20); cursor: pointer; transition: background 0.15s;
-    }
-    .dot.active { background: var(--dark); }
-
-    .page-label {
-      text-align: center; font-size: 13px; color: var(--gray-50);
-      margin-top: 12px;
-    }
-
     @media (max-width: 768px) {
       .case-hero { padding: 48px 24px 40px; }
       .desktop-notice { margin: 0 24px; }
-      .viewer { padding: 32px 24px 60px; }
       .case-stats { gap: 24px; }
+      .slide-nav { bottom: 20px; right: 20px; }
+      .slide-counter { bottom: 26px; right: 80px; }
     }
   </style>
 </head>
@@ -129,23 +121,26 @@
     <p>이 케이스 스터디는 1920×1080 화면에 최적화되어 있습니다. 데스크톱에서 보시면 가장 잘 보입니다.</p>
   </div>
 
-  <div class="viewer">
-    <div class="viewer-nav">
-      <span class="viewer-title" id="pageTitle">01 · 커버</span>
-      <div class="page-btns">
-        <button class="page-btn" onclick="prevPage()">←</button>
-        <button class="page-btn" onclick="nextPage()">→</button>
-      </div>
-    </div>
-
-    <div class="slide-frame" id="frameWrap">
-      <iframe id="clogFrame" src="01_cover.html" scrolling="no"></iframe>
-    </div>
-
-    <div class="slide-dots" id="dots"></div>
-    <p class="page-label" id="pageLabel">1 / 11</p>
+  <div class="slides-section" id="slides">
+    <div class="slide" id="slide-0"><div class="slide-inner"><iframe src="01_cover.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-1"><div class="slide-inner"><iframe src="02_toc.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-2"><div class="slide-inner"><iframe src="03_research.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-3"><div class="slide-inner"><iframe src="04_journey.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-4"><div class="slide-inner"><iframe src="05_concept_flow.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-5"><div class="slide-inner"><iframe src="06_key_concept.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-6"><div class="slide-inner"><iframe src="07_feature_checkin.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-7"><div class="slide-inner"><iframe src="08_feature_search.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-8"><div class="slide-inner"><iframe src="09_feature_calendar.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-9"><div class="slide-inner"><iframe src="10_validation.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-10"><div class="slide-inner"><iframe src="10_lesson_learn.html" scrolling="no"></iframe></div></div>
   </div>
 
+</div>
+
+<div class="slide-counter" id="counter">1 / 11</div>
+<div class="slide-nav">
+  <button onclick="scrollSlide(-1)">↑</button>
+  <button onclick="scrollSlide(1)">↓</button>
 </div>
 
 <footer>
@@ -154,58 +149,46 @@
 </footer>
 
 <script>
-const pages = [
-  { file: '01_cover.html',           label: '01 · 커버' },
-  { file: '02_toc.html',             label: '02 · 목차' },
-  { file: '03_research.html',        label: '03 · 문제 발견' },
-  { file: '04_journey.html',         label: '04 · Journey Map' },
-  { file: '05_concept_flow.html',    label: '05 · Key Concept & Flow' },
-  { file: '06_key_concept.html',     label: '06 · 3가지 컨셉' },
-  { file: '07_feature_checkin.html', label: '07 · Feature 01 체크인' },
-  { file: '08_feature_search.html',  label: '08 · Feature 02 검색' },
-  { file: '09_feature_calendar.html',label: '09 · Feature 03 캘린더' },
-  { file: '10_validation.html',     label: '10 · Validation' },
-  { file: '10_lesson_learn.html',    label: '11 · Lesson Learn' },
-];
-let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  let cur = 0;
 
-function scaleFrame() {
-  const wrap = document.getElementById('frameWrap');
-  const iframe = document.getElementById('clogFrame');
-  const scale = wrap.clientWidth / 1920;
-  iframe.style.transform = `scale(${scale})`;
-  wrap.style.height = (1080 * scale) + 'px';
-}
+  function scaleAllFrames() {
+    document.querySelectorAll('.slide-inner').forEach(inner => {
+      const iframe = inner.querySelector('iframe');
+      const scale = inner.clientWidth / 1920;
+      iframe.style.transform = `scale(${scale})`;
+      inner.style.height = (1080 * scale) + 'px';
+    });
+  }
 
-function goTo(idx) {
-  cur = idx;
-  const p = pages[idx];
-  document.getElementById('clogFrame').src = p.file;
-  document.getElementById('pageTitle').textContent = p.label;
-  document.getElementById('pageLabel').textContent = (idx + 1) + ' / ' + pages.length;
-  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === idx));
-}
+  function scrollSlide(dir) {
+    cur = Math.max(0, Math.min(slides.length - 1, cur + dir));
+    slides[cur].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('counter').textContent = (cur + 1) + ' / ' + slides.length;
+  }
 
-function prevPage() { if (cur > 0) goTo(cur - 1); }
-function nextPage() { if (cur < pages.length - 1) goTo(cur + 1); }
+  // Update counter on scroll
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = [...slides].indexOf(e.target);
+        if (idx >= 0) {
+          cur = idx;
+          document.getElementById('counter').textContent = (idx + 1) + ' / ' + slides.length;
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+  slides.forEach(s => obs.observe(s));
 
-// Build dots
-const dotsEl = document.getElementById('dots');
-pages.forEach((_, i) => {
-  const d = document.createElement('div');
-  d.className = 'dot' + (i === 0 ? ' active' : '');
-  d.onclick = () => goTo(i);
-  dotsEl.appendChild(d);
-});
+  // Keyboard nav
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); scrollSlide(1); }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); scrollSlide(-1); }
+  });
 
-// Keyboard nav
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextPage();
-  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   prevPage();
-});
-
-window.addEventListener('resize', scaleFrame);
-window.addEventListener('load', scaleFrame);
+  window.addEventListener('resize', scaleAllFrames);
+  window.addEventListener('load', scaleAllFrames);
 </script>
 </body>
 </html>
