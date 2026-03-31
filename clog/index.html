@@ -75,6 +75,19 @@
     }
     .desktop-notice p { font-size: 14px; color: #92400e; font-weight: 400; line-height: 1.5; }
 
+    /* Reveal animation */
+    @keyframes revealUp {
+      from { clip-path: inset(100% 0 0 0); opacity: 0; transform: translateY(20px); }
+      to { clip-path: inset(0); opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      animation: revealUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation-delay: var(--d, 0s);
+      animation-play-state: paused;
+    }
+    body.loaded .reveal { animation-play-state: running; }
+
     @media (max-width: 768px) {
       .case-hero { padding: 48px 24px 40px; }
       .desktop-notice { margin: 0 24px; }
@@ -98,20 +111,20 @@
 <div class="page-wrap">
 
   <div class="case-hero">
-    <a href="../" class="back-link">← Back to Works</a>
-    <div class="case-meta">
+    <a href="../" class="back-link reveal" style="--d:0s">← Back to Works</a>
+    <div class="case-meta reveal" style="--d:.07s">
       <span class="meta-tag">UX Research</span>
       <span class="meta-tag">UI Design</span>
       <span class="meta-tag neutral">B2C Service</span>
       <span class="meta-tag neutral">Mobile</span>
     </div>
-    <h1>Clog<br>클라이밍 기록 앱</h1>
-    <p>열심히 다니는데 실력이 늘고 있는 건지 모르겠어요. 방문·루트·컨디션·부상을 한 곳에 남기는 성장 기록 앱.</p>
-    <div class="case-stats">
+    <h1 class="reveal" style="--d:.14s">Clog<br>클라이밍 기록 앱</h1>
+    <p class="reveal" style="--d:.21s">체크인 한 번이면, 오늘의 클라이밍이 기록된다. 비기록 클라이머의 성장 경험 설계.</p>
+    <div class="case-stats reveal" style="--d:.28s">
       <div><p class="stat-label">Role</p><p class="stat-val">서비스 기획 · UI Design</p></div>
       <div><p class="stat-label">기여도</p><p class="stat-val">1인 100%</p></div>
       <div><p class="stat-label">기간</p><p class="stat-val">2020.10 – 2020.11</p></div>
-      <div><p class="stat-label">Pages</p><p class="stat-val">11 Slides</p></div>
+      <div><p class="stat-label">Pages</p><p class="stat-val">12 Slides</p></div>
     </div>
   </div>
 
@@ -126,18 +139,19 @@
     <div class="slide" id="slide-1"><div class="slide-inner"><iframe src="02_toc.html" scrolling="no"></iframe></div></div>
     <div class="slide" id="slide-2"><div class="slide-inner"><iframe src="03_research.html" scrolling="no"></iframe></div></div>
     <div class="slide" id="slide-3"><div class="slide-inner"><iframe src="04_journey.html" scrolling="no"></iframe></div></div>
-    <div class="slide" id="slide-4"><div class="slide-inner"><iframe src="05_concept_flow.html" scrolling="no"></iframe></div></div>
-    <div class="slide" id="slide-5"><div class="slide-inner"><iframe src="06_key_concept.html" scrolling="no"></iframe></div></div>
-    <div class="slide" id="slide-6"><div class="slide-inner"><iframe src="07_feature_checkin.html" scrolling="no"></iframe></div></div>
-    <div class="slide" id="slide-7"><div class="slide-inner"><iframe src="08_feature_search.html" scrolling="no"></iframe></div></div>
-    <div class="slide" id="slide-8"><div class="slide-inner"><iframe src="09_feature_calendar.html" scrolling="no"></iframe></div></div>
-    <div class="slide" id="slide-9"><div class="slide-inner"><iframe src="10_validation.html" scrolling="no"></iframe></div></div>
-    <div class="slide" id="slide-10"><div class="slide-inner"><iframe src="10_lesson_learn.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-4"><div class="slide-inner"><iframe src="05_rq_validation.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-5"><div class="slide-inner"><iframe src="06_design_decision.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-6"><div class="slide-inner"><iframe src="07_key_concept_new.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-7"><div class="slide-inner"><iframe src="07_feature_checkin.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-8"><div class="slide-inner"><iframe src="08_feature_search.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-9"><div class="slide-inner"><iframe src="09_feature_calendar.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-10"><div class="slide-inner"><iframe src="11_service_flow.html" scrolling="no"></iframe></div></div>
+    <div class="slide" id="slide-11"><div class="slide-inner"><iframe src="12_validation_lesson.html" scrolling="no"></iframe></div></div>
   </div>
 
 </div>
 
-<div class="slide-counter" id="counter">1 / 11</div>
+<div class="slide-counter" id="counter">1 / 12</div>
 <div class="slide-nav">
   <button onclick="scrollSlide(-1)">↑</button>
   <button onclick="scrollSlide(1)">↓</button>
@@ -189,6 +203,9 @@
 
   window.addEventListener('resize', scaleAllFrames);
   window.addEventListener('load', scaleAllFrames);
+
+  // Entrance animation
+  document.body.classList.add('loaded');
 </script>
 </body>
 </html>

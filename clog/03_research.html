@@ -7,7 +7,7 @@
   <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
   <link rel="stylesheet" href="design-system.css" />
   <style>
-    .columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 56px; flex: 1; }
+    .columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; flex: 1; }
     .interview-meta { display: flex; gap: 16px; margin-bottom: 24px; }
     .finding { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
     .finding p { font-size: 16px; color: var(--gray-700); line-height: 1.65; font-weight: 300; }
@@ -21,7 +21,7 @@
       background: var(--blue-bg);
       border-radius: 14px;
       border: 1.5px solid #D8DFFF;
-      margin-bottom: 28px;
+      margin-bottom: 18px;
       overflow: hidden;
     }
     .market-stat {
@@ -164,6 +164,48 @@
       </div>
     </div>
   </div>
+
+  <!-- RQ 브리지 -->
+  <div style="margin-top:28px; padding-top:24px; border-top:1px solid var(--gray-100);">
+    <p style="font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; margin-bottom:20px;">↳ 이 데이터로부터 3가지 Research Question을 도출했다</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+
+      <!-- RQ1 -->
+      <div style="background:var(--blue-bg); border-radius:12px; padding:20px 22px; border:1.5px solid rgba(30,65,192,0.11);">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <span style="font-size:11px; font-weight:700; color:var(--blue); letter-spacing:0.1em;">RQ 1</span>
+          <span style="font-size:11px; font-weight:700; color:var(--gray-300);">기록 진입</span>
+        </div>
+        <p style="font-size:15px; font-weight:700; color:var(--dark); line-height:1.5; margin-bottom:8px;">"기록의 시작 비용을 줄이면 습관이 될까?"</p>
+        <p style="font-size:12px; font-weight:300; color:var(--gray-500); line-height:1.6;">검증 기준: 체크인 후 추가 기록 작성률 > 50%</p>
+        <p style="font-size:11px; color:var(--gray-300); margin-top:6px;">근거: 87% 기록 안 함 · "3일이면 포기"</p>
+      </div>
+
+      <!-- RQ2 -->
+      <div style="background:var(--blue-bg); border-radius:12px; padding:20px 22px; border:1.5px solid rgba(30,65,192,0.11);">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <span style="font-size:11px; font-weight:700; color:var(--blue); letter-spacing:0.1em;">RQ 2</span>
+          <span style="font-size:11px; font-weight:700; color:var(--gray-300);">정보 탐색</span>
+        </div>
+        <p style="font-size:15px; font-weight:700; color:var(--dark); line-height:1.5; margin-bottom:8px;">"클라이밍장 정보를 앱에서 모으면 탐색 행동이 바뀔까?"</p>
+        <p style="font-size:12px; font-weight:300; color:var(--gray-500); line-height:1.6;">검증 기준: "앱에서 먼저 확인하겠다" 응답 3명+</p>
+        <p style="font-size:11px; color:var(--gray-300); margin-top:6px;">근거: 8/8명 지인·블로그 의존</p>
+      </div>
+
+      <!-- RQ3 -->
+      <div style="background:var(--blue-bg); border-radius:12px; padding:20px 22px; border:1.5px solid rgba(30,65,192,0.11);">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+          <span style="font-size:11px; font-weight:700; color:var(--blue); letter-spacing:0.1em;">RQ 3</span>
+          <span style="font-size:11px; font-weight:700; color:var(--gray-300);">성장 시각화</span>
+        </div>
+        <p style="font-size:15px; font-weight:700; color:var(--dark); line-height:1.5; margin-bottom:8px;">"캘린더에 기록이 쌓이면 성장을 체감할 수 있을까?"</p>
+        <p style="font-size:12px; font-weight:300; color:var(--gray-500); line-height:1.6;">검증 기준: "동기부여된다" 응답 3명+</p>
+        <p style="font-size:11px; color:var(--gray-300); margin-top:6px;">근거: 6/8명 "얼마나 늘었는지 모름"</p>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 <div class="page-footer">
   <span class="project-name">Climbing Project</span>

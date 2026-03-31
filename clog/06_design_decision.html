@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Clog – 설계 이터레이션</title>
+  <link rel="stylesheet" href="design-system.css" />
+  <style>
+    .page { padding-bottom: 60px; }
+    .page-header { margin-bottom: 28px; }
+
+    .subtitle {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--gray-500);
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
+    /* 3-column iteration grid */
+    .iteration-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      min-height: 0;
+    }
+
+    /* Each iteration card */
+    .iter-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-100);
+      border-radius: 16px;
+      padding: 28px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      transition: box-shadow 0.2s;
+    }
+
+    .iter-card:hover {
+      box-shadow: 0 4px 16px rgba(30,65,192,0.12);
+    }
+
+    /* Card header */
+    .iter-header {
+      margin-bottom: 20px;
+    }
+
+    .iter-num {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .iter-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .iter-rq-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-mid);
+      border-radius: 20px;
+      padding: 4px 12px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Screen comparison area */
+    .iter-screens {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .screen-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .screen-label-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .screen-label-tag.as-is {
+      color: var(--gray-500);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+    }
+
+    .screen-label-tag.to-be {
+      color: var(--blue);
+      background: var(--blue-mid);
+      border: 1px solid rgba(30,65,192,0.15);
+    }
+
+    .screen-frame {
+      width: 150px;
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1.5px solid var(--gray-100);
+      background: var(--white);
+    }
+
+    .screen-frame.improved {
+      border-color: var(--blue);
+      box-shadow: 0 4px 16px rgba(30,65,192,0.12);
+    }
+
+    .screen-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .arrow-between {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding-top: 22px;
+      width: 28px;
+    }
+
+    .arrow-icon {
+      font-size: 18px;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    /* Change description box — Clog quote-block style */
+    .iter-change-box {
+      background: var(--blue-bg);
+      border-radius: 12px;
+      padding: 16px 18px;
+      border: 1.5px solid rgba(30,65,192,0.11);
+      margin-top: auto;
+    }
+
+    .change-action {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .change-action .arrow {
+      color: var(--blue);
+      font-weight: 800;
+      margin-right: 4px;
+    }
+
+    .change-principle {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--blue);
+      line-height: 1.6;
+      padding-top: 10px;
+      border-top: 1px solid rgba(30,65,192,0.1);
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <p class="t-step-label">Step 04 · 설계</p>
+    <h1 class="t-headline">데이터 기반 3가지 핵심 이터레이션</h1>
+    <p class="subtitle">Research Question 검증에서 발견한 문제를, AS-IS → TO-BE로 해결했다</p>
+  </div>
+
+  <div class="iteration-grid">
+
+    <!-- Card 1: 정보 부족 -->
+    <div class="iter-card">
+      <div class="iter-header">
+        <p class="iter-num">#01</p>
+        <p class="iter-title">클라이밍장 상세 —<br>정보가 부족하다</p>
+        <span class="iter-rq-tag">RQ2 발견</span>
+      </div>
+      <div class="iter-screens">
+        <div class="screen-col">
+          <span class="screen-label-tag as-is">AS-IS</span>
+          <div class="screen-frame">
+            <img src="img_climbing_detail.jpg" alt="상세 v1" />
+          </div>
+        </div>
+        <div class="arrow-between"><span class="arrow-icon">→</span></div>
+        <div class="screen-col">
+          <span class="screen-label-tag to-be">TO-BE</span>
+          <div class="screen-frame improved">
+            <img src="img_climbing_detail_v2.jpg" alt="상세 v2" />
+          </div>
+        </div>
+      </div>
+      <div class="iter-change-box">
+        <p class="change-action"><span class="arrow">→</span>난이도표 · 시설 정보 · 방문후기 추가</p>
+        <p class="change-principle">RQ2에서 발견 — 의사결정에 필요한 정보의 종류가 달랐다</p>
+      </div>
+    </div>
+
+    <!-- Card 2: 리뷰 부족 -->
+    <div class="iter-card">
+      <div class="iter-header">
+        <p class="iter-num">#02</p>
+        <p class="iter-title">리뷰 작성 —<br>별점만으로 부족하다</p>
+        <span class="iter-rq-tag">RQ2 발견</span>
+      </div>
+      <div class="iter-screens">
+        <div class="screen-col">
+          <span class="screen-label-tag as-is">AS-IS</span>
+          <div class="screen-frame">
+            <img src="img_popup_review.jpg" alt="리뷰 v1" />
+          </div>
+        </div>
+        <div class="arrow-between"><span class="arrow-icon">→</span></div>
+        <div class="screen-col">
+          <span class="screen-label-tag to-be">TO-BE</span>
+          <div class="screen-frame improved">
+            <img src="img_popup_review_v2.jpg" alt="리뷰 v2" />
+          </div>
+        </div>
+      </div>
+      <div class="iter-change-box">
+        <p class="change-action"><span class="arrow">→</span>한줄 리뷰 · 추천 여부 · 사진 첨부 추가</p>
+        <p class="change-principle">별점만으로는 다음 방문자에게 정보가 전달되지 않는다</p>
+      </div>
+    </div>
+
+    <!-- Card 3: 빈 상태 -->
+    <div class="iter-card">
+      <div class="iter-header">
+        <p class="iter-num">#03</p>
+        <p class="iter-title">검색 빈 상태 —<br>가이드가 없다</p>
+        <span class="iter-rq-tag">RQ3 발견</span>
+      </div>
+      <div class="iter-screens">
+        <div class="screen-col">
+          <span class="screen-label-tag as-is">AS-IS</span>
+          <div class="screen-frame">
+            <img src="img_search_empty.jpg" alt="검색 v1" />
+          </div>
+        </div>
+        <div class="arrow-between"><span class="arrow-icon">→</span></div>
+        <div class="screen-col">
+          <span class="screen-label-tag to-be">TO-BE</span>
+          <div class="screen-frame improved">
+            <img src="img_search_v2.jpg" alt="검색 v2" />
+          </div>
+        </div>
+      </div>
+      <div class="iter-change-box">
+        <p class="change-action"><span class="arrow">→</span>최근 검색 · 내 주변 인기 암장 표시</p>
+        <p class="change-principle">빈 상태가 탐색의 시작점을 제공해야 한다</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-footer">
+  <span class="project-name">Climbing Project</span>
+  <span class="page-num">p. 06</span>
+</div>
+</body>
+</html>

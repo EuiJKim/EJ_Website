@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Clog – 7장 Key Concept</title>
+  <link rel="stylesheet" href="design-system.css" />
+  <style>
+    .page { padding-bottom: 60px; }
+
+    /* Flow diagram */
+    .flow-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-bg);
+      border: 1.5px solid rgba(30,65,192,0.12);
+      border-radius: 8px;
+      padding: 8px 18px;
+    }
+    .flow-step .flow-icon {
+      font-size: 16px;
+    }
+    .flow-step .flow-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+    }
+    .flow-arrow {
+      font-size: 18px;
+      color: var(--gray-300);
+      font-weight: 700;
+    }
+
+    .concepts-area {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.35fr;
+      grid-template-rows: 1fr;
+      gap: 28px;
+    }
+
+    .concept-block {
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1.5px solid var(--gray-100);
+      background: white;
+      min-height: 0;
+    }
+    .concept-block.core {
+      border-color: var(--blue);
+    }
+
+    /* 상단 컬러 헤더 */
+    .cb-header {
+      padding: 28px 28px 22px;
+      background: var(--gray-50);
+    }
+    .concept-block.core .cb-header {
+      background: var(--blue);
+    }
+
+    .cb-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gray-300);
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .concept-block.core .cb-num { color: rgba(255,255,255,0.5); }
+
+    .cb-en {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .concept-block.core .cb-en { color: white; }
+
+    .cb-ko {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+    .concept-block.core .cb-ko { color: rgba(255,255,255,0.75); }
+
+    .cb-rq {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-top: 8px;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+    }
+    .concept-block.core .cb-rq {
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* 폰 스크린 이미지 영역 */
+    .cb-screen {
+      height: 480px;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f2ff;
+      overflow: hidden;
+    }
+    .concept-block.core .cb-screen { background: #dde2f8; }
+
+    .cb-screen img {
+      width: auto;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* 화면 설명 오버레이 */
+    .screen-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 18px 16px;
+      background: linear-gradient(to top, rgba(10,20,60,0.72) 0%, transparent 100%);
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
+    }
+
+    /* 하단 설명 */
+    .cb-body {
+      padding: 20px 28px 24px;
+      border-top: 1px solid var(--gray-100);
+    }
+    .concept-block.core .cb-body { border-top-color: rgba(30,65,192,0.15); }
+
+    .cb-point {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .cb-point:last-child { margin-bottom: 0; }
+    .cb-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gray-300);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .concept-block.core .cb-dot { background: var(--blue); }
+    .cb-point p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <p class="t-step-label">Step 05 · 기능 구현</p>
+    <h1 class="t-headline">결정이 구현된 3가지 핵심 기능</h1>
+    <p style="font-size:15px; font-weight:300; color:var(--gray-500); margin-top:10px; line-height:1.6;">Research Question 검증과 이터레이션에서 도출한 설계를, 3가지 핵심 기능으로 구현했다</p>
+  </div>
+
+  <!-- Flow Logic Line -->
+  <div class="flow-line">
+    <div class="flow-step">
+      <span class="flow-icon">&#x1F4CD;</span>
+      <span class="flow-text">체크인 (기록 시작)</span>
+    </div>
+    <span class="flow-arrow">&#x2192;</span>
+    <div class="flow-step">
+      <span class="flow-icon">&#x1F50D;</span>
+      <span class="flow-text">클라이밍장 정보 (탐색)</span>
+    </div>
+    <span class="flow-arrow">&#x2192;</span>
+    <div class="flow-step">
+      <span class="flow-icon">&#x1F4C5;</span>
+      <span class="flow-text">캘린더 (성장 확인)</span>
+    </div>
+  </div>
+
+  <div class="concepts-area">
+
+    <!-- Concept 01 -->
+    <div class="concept-block">
+      <div class="cb-header">
+        <p class="cb-num">FEATURE 01</p>
+        <p class="cb-en">Easy Access</p>
+        <p class="cb-ko">체크인 — 기록의 시작</p>
+        <p class="cb-rq">RQ1 &rarr; 기록 시작 비용을 0으로</p>
+      </div>
+      <div class="cb-screen">
+        <img src="img_checkin.jpg" alt="체크인 화면" />
+        <div class="screen-label">탭 한 번 → 위치·날짜·시간 자동 저장</div>
+      </div>
+      <div class="cb-body">
+        <div class="cb-point"><div class="cb-dot"></div><p>내 위치 기반으로 주변 클라이밍장 자동 탐지</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>탭 한 번으로 체크인 — 기록이 바로 시작</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>방문 이력이 캘린더에 자동 누적</p></div>
+      </div>
+    </div>
+
+    <!-- Concept 02 -->
+    <div class="concept-block">
+      <div class="cb-header">
+        <p class="cb-num">FEATURE 02</p>
+        <p class="cb-en">Clarity Information</p>
+        <p class="cb-ko">클라이밍장 정보 — 가기 전에 확인</p>
+        <p class="cb-rq">RQ2 &rarr; 의사결정에 필요한 정보 제공</p>
+      </div>
+      <div class="cb-screen">
+        <img src="img_climbing_detail_v2.jpg" alt="클라이밍장 상세 화면" />
+        <div class="screen-label">운영 시간 · 난이도 · 위치 · 리뷰 한 화면에</div>
+      </div>
+      <div class="cb-body">
+        <div class="cb-point"><div class="cb-dot"></div><p>운영 시간·난이도·위치를 한 화면에서 확인</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>검색으로 원하는 암장 빠르게 탐색</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>다녀온 후 리뷰로 커뮤니티 정보 공유</p></div>
+      </div>
+    </div>
+
+    <!-- Concept 03 (Core) -->
+    <div class="concept-block core">
+      <div class="cb-header">
+        <p class="cb-num">FEATURE 03 · CORE</p>
+        <p class="cb-en">Calendar Growth</p>
+        <p class="cb-ko">성장 캘린더 — 기록이 쌓이면 보인다</p>
+        <p class="cb-rq">RQ3 &rarr; 기록이 쌓여 성장이 보인다</p>
+        <p style="font-size:12px; font-weight:500; color:rgba(255,255,255,0.55); margin-top:6px;">8명 중 7명 — "얼마나 늘었는지 모르겠다"</p>
+      </div>
+      <div class="cb-screen">
+        <img src="img_calendar.jpg" alt="캘린더 화면" />
+        <div class="screen-label">방문·루트·컨디션이 날짜별로 쌓인다</div>
+      </div>
+      <div class="cb-body">
+        <div class="cb-point"><div class="cb-dot"></div><p>방문·루트·컨디션·부상이 날짜별로 누적</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>월별 캘린더로 나의 클라이밍 패턴 한눈에</p></div>
+        <div class="cb-point"><div class="cb-dot"></div><p>배지 시스템으로 꾸준함을 시각적으로 확인</p></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="page-footer">
+  <span class="project-name">Climbing Project</span>
+  <span class="page-num">p. 07</span>
+</div>
+</body>
+</html>

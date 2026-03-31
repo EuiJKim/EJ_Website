@@ -133,7 +133,7 @@
       color: var(--ink);
       margin-bottom: 6px;
     }
-    .work-row:hover .work-title { text-decoration: underline; text-underline-offset: 4px; }
+    .work-row:hover .work-title { text-decoration: none; }
     .work-desc {
       font-size: 16px;
       font-weight: 300;
@@ -162,7 +162,6 @@
       opacity: 0;
       font-size: 18px;
       color: var(--ink);
-      transition: opacity 0.12s;
       margin-left: 8px;
     }
 
@@ -191,6 +190,82 @@
     }
     footer a:hover { color: var(--ink); }
 
+    /* ── Reveal animation ── */
+    @keyframes revealUp {
+      from {
+        clip-path: inset(100% 0 0 0);
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        clip-path: inset(0);
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      animation: revealUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation-delay: var(--d, 0s);
+      animation-play-state: paused;
+    }
+    body.loaded .reveal {
+      animation-play-state: running;
+    }
+
+    /* ── Hover enhancements ── */
+    .work-title {
+      transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .work-row:hover .work-title {
+      transform: translateX(4px);
+      text-decoration: none;
+    }
+
+    .work-arrow {
+      transition: opacity 0.2s, transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform: translateX(-8px);
+    }
+    .work-row:hover .work-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .work-desc {
+      transition: color 0.2s;
+    }
+    .work-row:hover .work-desc {
+      color: var(--ink);
+    }
+
+    /* ── Thumbnail preview ── */
+    .work-preview {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0;
+      width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      z-index: 100;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      transform: scale(0.96);
+      object-fit: cover;
+    }
+    .work-preview.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ── Page transition ── */
+    .wrap {
+      transition: opacity 0.25s ease-in, transform 0.25s ease-in;
+    }
+    .wrap.leaving {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+
     /* ── Mobile ── */
     @media (max-width: 768px) {
       .wrap { padding: 0 28px; }
@@ -201,13 +276,16 @@
       .work-row { grid-template-columns: 1fr auto; }
       .work-title { font-size: 19px; }
     }
+    @media (hover: none) {
+      .work-preview { display: none; }
+    }
   </style>
 </head>
 <body>
 <div class="wrap">
 
   <!-- Header -->
-  <header>
+  <header class="reveal" style="--d:0s">
     <div>
       <h1 class="name">김의준</h1>
       <p class="name-sub">서비스 기획 · UX Research</p>
@@ -218,19 +296,19 @@
   </header>
 
   <!-- Intro -->
-  <div class="intro">
+  <div class="intro reveal" style="--d:.07s">
     <p>문제를 발견하고 서비스 구조로 답을 만듭니다.<br>
     <em>리서치가 출발점이고, 기획이 결과물입니다.</em></p>
   </div>
 
   <!-- Work -->
   <div class="work-section" id="works">
-    <div class="work-header">
+    <div class="work-header reveal" style="--d:.14s">
       <span>Work</span>
       <span>Year</span>
     </div>
 
-    <a href="allaw/" class="work-row">
+    <a href="allaw/" class="work-row reveal" style="--d:.21s" data-preview="allaw/assets/Resume_2.jpg">
       <div class="work-left">
         <h2 class="work-title">ALLAW — 법률 AI 앱<span class="work-arrow"> →</span></h2>
         <p class="work-desc">73%가 법률 문제를 경험하지만 12%만 변호사에 도달한다. 이 공백을 채우는 AI 법률 상담 서비스.</p>
@@ -239,7 +317,7 @@
       <span class="work-year">2023</span>
     </a>
 
-    <a href="clog/" class="work-row">
+    <a href="clog/" class="work-row reveal" style="--d:.28s" data-preview="clog/img_main.jpg">
       <div class="work-left">
         <h2 class="work-title">Clog — 클라이밍 기록 앱<span class="work-arrow"> →</span></h2>
         <p class="work-desc">열심히 다니는데 실력이 늘고 있는 건지 모르겠어요. 방문·루트·컨디션을 한 곳에 남기는 성장 기록 앱.</p>
@@ -248,7 +326,7 @@
       <span class="work-year">2020</span>
     </a>
 
-    <a href="resin/" class="work-row">
+    <a href="resin/" class="work-row reveal" style="--d:.35s" data-preview="resin/thumb.jpg">
       <div class="work-left">
         <h2 class="work-title">EEL — 레진 아트퍼니처 웹사이트<span class="work-arrow"> →</span></h2>
         <p class="work-desc">프리미엄 수제 레진 테이블 브랜드. e-커머스 + BTO(Build-to-Order) 경험 설계.</p>
@@ -260,11 +338,68 @@
   </div>
 
   <!-- Footer -->
-  <footer id="about">
+  <footer id="about" class="reveal" style="--d:.42s">
     <p>김의준 · Seoul, KR</p>
     <a href="mailto:sjkim942884@gmail.com">sjkim942884@gmail.com</a>
   </footer>
 
+  <!-- Thumbnail preview -->
+  <img class="work-preview" src="" alt="">
+
 </div>
+
+<script>
+  // Entrance animation trigger
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
+  });
+
+  // Thumbnail preview on hover
+  (() => {
+    const preview = document.querySelector('.work-preview');
+    const rows = document.querySelectorAll('.work-row[data-preview]');
+    if (!preview || !rows.length) return;
+
+    rows.forEach(row => {
+      row.addEventListener('mouseenter', () => {
+        preview.src = row.dataset.preview;
+        preview.classList.add('visible');
+      });
+
+      row.addEventListener('mouseleave', () => {
+        preview.classList.remove('visible');
+      });
+
+      row.addEventListener('mousemove', (e) => {
+        preview.style.left = e.clientX + 20 + 'px';
+        preview.style.top = e.clientY - 60 + 'px';
+      });
+    });
+  })();
+
+  // Page transition on click
+  (() => {
+    const wrap = document.querySelector('.wrap');
+    const rows = document.querySelectorAll('.work-row');
+
+    rows.forEach(row => {
+      row.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = row.getAttribute('href');
+        wrap.classList.add('leaving');
+        document.querySelector('.work-preview').classList.remove('visible');
+        setTimeout(() => { window.location = href; }, 250);
+      });
+    });
+
+    // Handle back navigation — reset state
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) {
+        wrap.classList.remove('leaving');
+        document.body.classList.add('loaded');
+      }
+    });
+  })();
+</script>
 </body>
 </html>

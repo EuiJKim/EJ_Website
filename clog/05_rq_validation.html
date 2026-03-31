@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Clog – 5장 RQ 검증</title>
+  <link rel="stylesheet" href="design-system.css" />
+  <style>
+    .subtitle {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--gray-500);
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    /* ── 2+1 Layout ── */
+    .rq-layout {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 55% 1fr;
+      gap: 28px;
+    }
+
+    .rq-left {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    /* ── Card base ── */
+    .rq-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1.5px solid var(--gray-100);
+      background: white;
+      min-height: 0;
+    }
+
+    .rq-card.featured {
+      border-color: var(--blue);
+    }
+
+    /* ── Header band ── */
+    .rq-header {
+      padding: 24px 26px 20px;
+      background: var(--gray-50);
+    }
+
+    .rq-card.featured .rq-header {
+      background: var(--blue);
+    }
+
+    .rq-header-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .rq-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-mid);
+      border-radius: 5px;
+      padding: 4px 10px;
+      letter-spacing: 0.06em;
+    }
+
+    .rq-card.featured .rq-tag {
+      color: var(--blue);
+      background: rgba(255,255,255,0.92);
+    }
+
+    .rq-badge {
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 5px;
+      padding: 3px 9px;
+      letter-spacing: 0.02em;
+    }
+
+    .rq-badge--confirmed {
+      color: var(--blue);
+      background: var(--blue-bg);
+      border: 1px solid rgba(30,65,192,0.15);
+    }
+
+    .rq-card.featured .rq-badge--confirmed {
+      color: white;
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .rq-badge--discovery {
+      color: white;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .rq-header-title {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--gray-500);
+      line-height: 1.5;
+    }
+
+    .rq-card.featured .rq-header-title {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+    }
+
+    /* ── Card body ── */
+    .rq-body {
+      padding: 22px 26px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .rq-card.featured .rq-body {
+      border-top-color: rgba(30,65,192,0.15);
+    }
+
+    .rq-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.4;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .rq-card.featured .rq-title {
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    /* ── Quote block (Clog c-quote-block style) ── */
+    .rq-quote {
+      background: var(--blue-bg);
+      border-radius: 10px;
+      padding: 16px 18px;
+      border: 1.5px solid rgba(30,65,192,0.11);
+      margin-bottom: 16px;
+    }
+
+    .rq-card.featured .rq-quote {
+      padding: 18px 20px;
+    }
+
+    .rq-quote p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-700);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .rq-card.featured .rq-quote p {
+      font-size: 15px;
+    }
+
+    .rq-quote .source {
+      font-size: 12px;
+      color: var(--gray-500);
+      margin-top: 8px;
+      font-style: normal;
+    }
+
+    /* ── Insight ── */
+    .rq-insight {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-700);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .rq-card.featured .rq-insight {
+      font-size: 15px;
+    }
+
+    .rq-insight strong {
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    /* ── Bottom note ── */
+    .rq-bottom-note {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--gray-100);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      line-height: 1.55;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .rq-bottom-note .arrow {
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    /* ── Discovery highlight box (featured card only) ── */
+    .rq-discovery-box {
+      margin-top: 16px;
+      background: var(--blue-bg);
+      border: 1.5px solid rgba(30,65,192,0.11);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+
+    .rq-discovery-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .rq-discovery-box p {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <p class="t-step-label">Step 03 · 인사이트</p>
+    <h1 class="t-headline">
+      <span class="quote">"</span>2가지를 확인하고, 1가지를 발견했다<span class="quote">"</span>
+    </h1>
+    <p class="subtitle">8명 인터뷰와 Hi-Fi 프로토타입 테스트에서 Research Question을 검증했다</p>
+  </div>
+
+  <div class="rq-layout">
+
+    <!-- Left: RQ1 + RQ3 (confirmed) -->
+    <div class="rq-left">
+
+      <!-- RQ1 -->
+      <div class="rq-card">
+        <div class="rq-header">
+          <div class="rq-header-top">
+            <span class="rq-tag">RQ 1 · 기록 진입</span>
+            <span class="rq-badge rq-badge--confirmed">확인 ✓</span>
+          </div>
+          <p class="rq-header-title">기록의 시작 비용을 줄이면 습관이 될까?</p>
+        </div>
+        <div class="rq-body">
+          <p class="rq-title">체크인은 통했다</p>
+          <div class="rq-quote">
+            <p>"체크인 누르니까 바로 기록이 시작돼요. 이거면 매일 할 수 있을 것 같아요"</p>
+            <p class="source">— 참여자 A</p>
+          </div>
+          <p class="rq-insight">
+            기록의 시작 비용을 줄이면 습관이 된다는 가정은 맞았다. 그러나 <strong>체크인 후 루트·컨디션 기록으로 넘어가는 연결이 약해</strong> 추가 기록 완료율이 떨어졌다.
+          </p>
+          <div class="rq-bottom-note">
+            <span class="arrow">→</span>
+            <span>체크인 후 기록 연결 플로우 개선 필요</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RQ3 -->
+      <div class="rq-card">
+        <div class="rq-header">
+          <div class="rq-header-top">
+            <span class="rq-tag">RQ 3 · 성장 시각화</span>
+            <span class="rq-badge rq-badge--confirmed">확인 ✓</span>
+          </div>
+          <p class="rq-header-title">기록이 쌓이면 성장을 체감할까?</p>
+        </div>
+        <div class="rq-body">
+          <p class="rq-title">캘린더는 답이었다</p>
+          <div class="rq-quote">
+            <p>"3개월째 다니는데 처음이랑 뭐가 달라졌는지 모르겠어요. 이렇게 보니까 확실히 늘었네."</p>
+            <p class="source">— 참여자 C</p>
+          </div>
+          <p class="rq-insight">
+            캘린더에 기록이 쌓이면 성장을 체감한다는 가정은 맞았다. 다만 <strong>기록 자체가 없으면 빈 캘린더가 오히려 좌절감을 줄 수 있다</strong>는 점을 발견했다.
+          </p>
+          <div class="rq-bottom-note">
+            <span class="arrow">→</span>
+            <span>빈 상태 UX 설계 필요</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: RQ2 (featured / discovery) -->
+    <div class="rq-card featured">
+      <div class="rq-header">
+        <div class="rq-header-top">
+          <span class="rq-tag">RQ 2 · 정보 탐색</span>
+          <span class="rq-badge rq-badge--discovery">확인 + 발견 ★</span>
+        </div>
+        <p class="rq-header-title">사용자는 어떤 정보를 모아서 결정할까?</p>
+      </div>
+      <div class="rq-body">
+        <p class="rq-title">정보를 모으는 건 맞았다 — 근데 어떤 정보가 달랐다</p>
+        <div class="rq-quote">
+          <p>"운영시간만 보고는 갈지 말지 결정 못 해요. 난이도가 내 수준에 맞는지가 제일 중요한데."</p>
+          <p class="source">— 참여자 A</p>
+        </div>
+        <p class="rq-insight">
+          앱에서 정보를 한 곳에 모으는 방향은 유효했다. 하지만 사용자가 실제로 의사결정에 필요한 정보는 <strong>운영 시간이 아니라 난이도표와 실제 방문 후기</strong>였다.
+        </p>
+        <div class="rq-discovery-box">
+          <p class="rq-discovery-label">DISCOVERY</p>
+          <p>예상 못한 발견: 의사결정 정보의 종류가 달랐다</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-footer">
+  <span class="project-name">Climbing Project</span>
+  <span class="page-num">p. 05</span>
+</div>
+</body>
+</html>

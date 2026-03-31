@@ -69,6 +69,19 @@
     .wip-notice p { font-size: 14px; color: var(--accent); font-weight: 400; line-height: 1.6; }
     .wip-notice strong { font-weight: 600; }
 
+    /* Reveal animation */
+    @keyframes revealUp {
+      from { clip-path: inset(100% 0 0 0); opacity: 0; transform: translateY(20px); }
+      to { clip-path: inset(0); opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      animation: revealUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation-delay: var(--d, 0s);
+      animation-play-state: paused;
+    }
+    body.loaded .reveal { animation-play-state: running; }
+
     @media (max-width: 768px) {
       .case-hero, .live-section, .context-section { padding-left: 24px; padding-right: 24px; }
       .context-grid { grid-template-columns: 1fr; }
@@ -91,16 +104,16 @@
 <div class="page-wrap">
 
   <div class="case-hero">
-    <a href="../" class="back-link">← Back to Works</a>
-    <div class="case-meta">
+    <a href="../" class="back-link reveal" style="--d:0s">← Back to Works</a>
+    <div class="case-meta reveal" style="--d:.07s">
       <span class="meta-tag">Web Design</span>
       <span class="meta-tag">Brand</span>
       <span class="meta-tag neutral">e-Commerce</span>
       <span class="meta-tag neutral">BTO</span>
     </div>
-    <h1>EEL<br>레진 아트퍼니처 웹사이트</h1>
-    <p>제품이 공간을 채우고, 공간이 제품을 빛나게 한다. 프리미엄 수제 레진 테이블 브랜드의 e-커머스 + BTO(Build-to-Order) 경험 설계.</p>
-    <div class="case-stats">
+    <h1 class="reveal" style="--d:.14s">EEL<br>레진 아트퍼니처 웹사이트</h1>
+    <p class="reveal" style="--d:.21s">제품이 공간을 채우고, 공간이 제품을 빛나게 한다. 프리미엄 수제 레진 테이블 브랜드의 e-커머스 + BTO(Build-to-Order) 경험 설계.</p>
+    <div class="case-stats reveal" style="--d:.28s">
       <div><p class="stat-label">Role</p><p class="stat-val">Brand Design · Web Design</p></div>
       <div><p class="stat-label">기여도</p><p class="stat-val">공동창업 · 기획 100%</p></div>
       <div><p class="stat-label">기간</p><p class="stat-val">2025 – 2026</p></div>
@@ -150,5 +163,8 @@
   <a href="../" style="font-size:13px;color:#888">← Back to Works</a>
 </footer>
 
+<script>
+  document.body.classList.add('loaded');
+</script>
 </body>
 </html>

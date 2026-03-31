@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920" />
+  <title>Clog – 검증 + 회고</title>
+  <link rel="stylesheet" href="design-system.css" />
+  <style>
+    body { display: flex; }
+
+    /* ── Left sidebar ── */
+    .sidebar {
+      width: 560px;
+      flex-shrink: 0;
+      background: var(--dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 72px 52px;
+    }
+    .sidebar-label {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .sidebar-title {
+      font-size: 44px;
+      font-weight: 900;
+      color: white;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+    .sidebar-desc {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.85;
+    }
+
+    /* Test meta in sidebar */
+    .sidebar-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 36px;
+    }
+    .sidebar-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .smi-val {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      min-width: 52px;
+    }
+    .smi-label {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .sidebar-bottom {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── Right content ── */
+    .content {
+      flex: 1;
+      padding: 60px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 28px;
+      overflow: hidden;
+    }
+
+    /* Section labels */
+    .sec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      flex-shrink: 0;
+    }
+
+    /* ── RQ Validation ── */
+    .rq-section { flex-shrink: 0; }
+    .rq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .rq-card {
+      background: white;
+      border: 1.5px solid var(--gray-100);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .rq-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .rq-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: 0.06em;
+    }
+    .rq-badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .rq-badge.confirmed {
+      background: var(--blue-mid);
+      color: var(--blue);
+    }
+    .rq-badge.amber {
+      background: #FFF7ED;
+      color: #D97706;
+    }
+    .rq-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .rq-body {
+      background: var(--blue-bg);
+      border-radius: 8px;
+      padding: 10px 14px;
+      border: 1px solid rgba(30,65,192,0.08);
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--gray-500);
+      line-height: 1.55;
+    }
+
+    /* ── Lessons ── */
+    .lesson-section { flex-shrink: 0; }
+    .lesson-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .lesson-card {
+      display: flex;
+      gap: 18px;
+      padding: 16px 20px;
+      background: var(--gray-50);
+      border-radius: 12px;
+      border: 1.5px solid var(--gray-100);
+    }
+    .lesson-card.blue {
+      background: var(--blue-bg);
+      border-color: rgba(30,65,192,0.15);
+    }
+    .lesson-card.dark {
+      background: var(--gray-50);
+      border-color: var(--gray-100);
+    }
+    .lesson-card.gray {
+      background: var(--gray-50);
+      border-color: var(--gray-100);
+    }
+    .lc-num {
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 28px;
+    }
+    .lesson-card.blue .lc-num { color: var(--blue); }
+    .lesson-card.dark .lc-num { color: var(--dark); }
+    .lesson-card.gray .lc-num { color: var(--gray-300); }
+    .lc-text strong {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      display: block;
+      margin-bottom: 3px;
+    }
+    .lc-text p {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--gray-500);
+      line-height: 1.55;
+    }
+
+    /* ── Next ── */
+    .next-section { flex-shrink: 0; }
+    .next-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .next-item {
+      background: white;
+      border: 1.5px solid var(--gray-100);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+    .ni-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .ni-text {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+  <!-- Left sidebar -->
+  <div class="sidebar">
+    <div>
+      <p class="sidebar-label">Step 06 · 검증 + 회고</p>
+      <h1 class="sidebar-title">3명에게<br>보여줬더니,<br>빠진 게 보였다</h1>
+      <p class="sidebar-desc">Hi-Fi 프로토타입 테스트로<br>발견한 개선점과 교훈</p>
+
+      <div class="sidebar-meta">
+        <div class="sidebar-meta-item">
+          <span class="smi-val">방법</span>
+          <span class="smi-label">Hi-Fi 프로토타입 · Think-Aloud</span>
+        </div>
+        <div class="sidebar-meta-item">
+          <span class="smi-val">참여자</span>
+          <span class="smi-label">클라이머 3명</span>
+        </div>
+        <div class="sidebar-meta-item">
+          <span class="smi-val">태스크</span>
+          <span class="smi-label">3개 핵심 태스크</span>
+        </div>
+        <div class="sidebar-meta-item">
+          <span class="smi-val">주요 개선</span>
+          <span class="smi-label">3건</span>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-bottom">Clog · Climbing Log<br>2020.10 – 2020.11</div>
+  </div>
+
+  <!-- Right content -->
+  <div class="content">
+
+    <!-- RQ Validation -->
+    <div class="rq-section">
+      <p class="sec-label">Research Question Validation</p>
+      <div class="rq-grid">
+        <div class="rq-card">
+          <div class="rq-header">
+            <span class="rq-tag">RQ1</span>
+            <span class="rq-badge confirmed">확인 ✓</span>
+          </div>
+          <p class="rq-title">체크인이 기록 습관의 시작이 된다</p>
+          <div class="rq-body">체크인 후 기록 연결이 약했지만, 시작 비용 제거는 유효했다</div>
+        </div>
+        <div class="rq-card">
+          <div class="rq-header">
+            <span class="rq-tag">RQ2</span>
+            <span class="rq-badge amber">확인 + 발견 ★</span>
+          </div>
+          <p class="rq-title">정보 통합은 맞았다, 근데 종류가 달랐다</p>
+          <div class="rq-body">운영 시간이 아니라 난이도표·리뷰가 의사결정의 핵심이었다</div>
+        </div>
+        <div class="rq-card">
+          <div class="rq-header">
+            <span class="rq-tag">RQ3</span>
+            <span class="rq-badge confirmed">확인 ✓</span>
+          </div>
+          <p class="rq-title">캘린더가 성장 체감을 만든다</p>
+          <div class="rq-body">빈 캘린더의 좌절감 → 빈 상태 UX가 필요하다는 발견</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- What I Learned -->
+    <div class="lesson-section">
+      <p class="sec-label">What I Learned</p>
+      <div class="lesson-grid">
+        <div class="lesson-card blue">
+          <div class="lc-num">01</div>
+          <div class="lc-text">
+            <strong>문제는 사용자 언어로 정의해야 한다</strong>
+            <p>"기록 앱"이 아니라 "실력이 늘고 있는지 모르겠다"에서 시작해야 했다</p>
+          </div>
+        </div>
+        <div class="lesson-card dark">
+          <div class="lc-num">02</div>
+          <div class="lc-text">
+            <strong>기능 축소가 경험을 개선한다</strong>
+            <p>체크인·검색·캘린더 세 가지로 좁히고 나서야 플로우가 자연스러워졌다</p>
+          </div>
+        </div>
+        <div class="lesson-card gray">
+          <div class="lc-num">03</div>
+          <div class="lc-text">
+            <strong>데이터가 없으면 설득이 안 된다</strong>
+            <p>8명의 인터뷰가 "내 문제"를 "우리 문제"로 만들어줬다</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next -->
+    <div class="next-section">
+      <p class="sec-label">Next — 출시 후 검증하고 싶은 가설</p>
+      <div class="next-grid">
+        <div class="next-item">
+          <p class="ni-label">가설 01</p>
+          <p class="ni-text">체크인이 실제로 기록 습관을 만드는가</p>
+        </div>
+        <div class="next-item">
+          <p class="ni-label">가설 02</p>
+          <p class="ni-text">캘린더가 동기부여를 올리는가</p>
+        </div>
+        <div class="next-item">
+          <p class="ni-label">가설 03</p>
+          <p class="ni-text">앱 내 검색이 블로그·지인 추천을 대체하는가</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer" style="position:fixed; bottom:36px; right:80px;">
+    <span class="page-num" style="font-size:13px; color:rgba(255,255,255,0.3); font-weight:300;">p. 12</span>
+  </div>
+</body>
+</html>

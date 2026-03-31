@@ -78,6 +78,19 @@
       z-index: 50;
     }
 
+    /* Reveal animation */
+    @keyframes revealUp {
+      from { clip-path: inset(100% 0 0 0); opacity: 0; transform: translateY(20px); }
+      to { clip-path: inset(0); opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      animation: revealUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation-delay: var(--d, 0s);
+      animation-play-state: paused;
+    }
+    body.loaded .reveal { animation-play-state: running; }
+
     @media (max-width: 768px) {
       .case-hero { padding: 48px 24px 40px; }
       .case-stats { gap: 24px; }
@@ -100,20 +113,18 @@
 <div class="page-wrap">
 
   <div class="case-hero">
-    <a href="../" class="back-link">← Back to Works</a>
-    <div class="case-meta">
+    <a href="../" class="back-link reveal" style="--d:0s">← Back to Works</a>
+    <div class="case-meta reveal" style="--d:.07s">
       <span class="meta-tag">UX Research</span>
       <span class="meta-tag">UI Design</span>
       <span class="meta-tag neutral">B2C Service</span>
       <span class="meta-tag neutral">AI · Legal</span>
     </div>
-    <h1>ALLAW<br>법률 AI 앱</h1>
-    <p>4050세대의 73%가 법률 문제를 경험하지만, 변호사 상담까지 도달하는 비율은 12%에 불과하다. 법률적 공백을 채우는 AI 기반 법률 상담 서비스.</p>
-    <div class="case-stats">
-      <div class="stat-item"><p class="stat-label">Role</p><p class="stat-val">UX Research · UI Design</p></div>
-      <div class="stat-item"><p class="stat-label">기여도</p><p class="stat-val">1인 100%</p></div>
-      <div class="stat-item"><p class="stat-label">기간</p><p class="stat-val">2022 – 2023</p></div>
-      <div class="stat-item"><p class="stat-label">Pages</p><p class="stat-val">11 Slides</p></div>
+    <h1 class="reveal" style="--d:.14s">ALLAW<br>법률 AI 앱</h1>
+    <p class="reveal" style="--d:.21s">4050세대의 73%가 법률 문제를 경험하지만, 변호사 상담까지 도달하는 비율은 12%에 불과하다. 법률적 공백을 채우는 AI 기반 법률 상담 서비스.</p>
+    <div class="case-stats reveal" style="--d:.28s">
+      <div class="stat-item"><p class="stat-label">Role</p><p class="stat-val">서비스 기획 · UX Research · UI Design</p></div>
+      <div class="stat-item"><p class="stat-label">기간</p><p class="stat-val">2025 – 2026</p></div>
     </div>
   </div>
 
@@ -167,6 +178,9 @@
     });
   }, { threshold: 0.5 });
   slides.forEach(s => obs.observe(s));
+
+  // Entrance animation
+  document.body.classList.add('loaded');
 </script>
 </body>
 </html>
