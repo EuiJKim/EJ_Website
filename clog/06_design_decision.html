@@ -6,8 +6,8 @@
   <title>Clog – 설계 이터레이션</title>
   <link rel="stylesheet" href="design-system.css" />
   <style>
-    .page { padding-bottom: 60px; }
-    .page-header { margin-bottom: 28px; }
+    .page { padding-bottom: 50px; }
+    .page-header { margin-bottom: 20px; }
 
     .subtitle {
       font-size: 15px;
@@ -31,7 +31,7 @@
       background: var(--white);
       border: 1.5px solid var(--gray-100);
       border-radius: 16px;
-      padding: 28px 24px 24px;
+      padding: 22px 20px 20px;
       display: flex;
       flex-direction: column;
       min-height: 0;
@@ -44,7 +44,7 @@
 
     /* Card header */
     .iter-header {
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .iter-num {
@@ -81,7 +81,7 @@
       align-items: flex-start;
       justify-content: center;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .screen-col {
@@ -112,8 +112,8 @@
     }
 
     .screen-frame {
-      width: 150px;
-      height: 220px;
+      width: 200px;
+      height: 340px;
       border-radius: 12px;
       overflow: hidden;
       border: 1.5px solid var(--gray-100);
@@ -148,13 +148,34 @@
       font-weight: 700;
     }
 
+    /* User feedback quote */
+    .iter-user-quote {
+      background: var(--blue-bg);
+      border-radius: 10px;
+      border: 1.5px solid rgba(30,65,192,0.11);
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--gray-700);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .iter-user-quote .source {
+      font-size: 11px;
+      color: var(--gray-500);
+      margin-top: 6px;
+      font-style: normal;
+    }
+
     /* Change description box — Clog quote-block style */
     .iter-change-box {
       background: var(--blue-bg);
       border-radius: 12px;
       padding: 16px 18px;
       border: 1.5px solid rgba(30,65,192,0.11);
-      margin-top: auto;
+      margin-top: 0;
     }
 
     .change-action {
@@ -198,6 +219,10 @@
         <p class="iter-title">클라이밍장 상세 —<br>정보가 부족하다</p>
         <span class="iter-rq-tag">RQ2 발견</span>
       </div>
+      <div class="iter-user-quote">
+        <p>"운영시간만 보고는 갈지 말지 결정 못 해요. 난이도가 내 수준에 맞는지가 제일 중요한데."</p>
+        <p class="source">— 참여자 A</p>
+      </div>
       <div class="iter-screens">
         <div class="screen-col">
           <span class="screen-label-tag as-is">AS-IS</span>
@@ -226,6 +251,10 @@
         <p class="iter-title">리뷰 작성 —<br>별점만으로 부족하다</p>
         <span class="iter-rq-tag">RQ2 발견</span>
       </div>
+      <div class="iter-user-quote">
+        <p>"별점 3개로는 이 암장이 어떤 곳인지 알 수 없어요. 한마디라도 쓸 수 있으면 좋겠어요."</p>
+        <p class="source">— 참여자 B</p>
+      </div>
       <div class="iter-screens">
         <div class="screen-col">
           <span class="screen-label-tag as-is">AS-IS</span>
@@ -253,6 +282,10 @@
         <p class="iter-num">#03</p>
         <p class="iter-title">검색 빈 상태 —<br>가이드가 없다</p>
         <span class="iter-rq-tag">RQ3 발견</span>
+      </div>
+      <div class="iter-user-quote">
+        <p>"검색을 눌렀는데 뭘 써야 할지 모르겠어요. 인기 있는 곳 먼저 보여주면 좋겠어요."</p>
+        <p class="source">— 참여자 C</p>
       </div>
       <div class="iter-screens">
         <div class="screen-col">

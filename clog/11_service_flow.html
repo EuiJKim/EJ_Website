@@ -8,14 +8,23 @@
   <style>
     .page { padding-bottom: 60px; }
 
+    .subtitle {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--gray-500);
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
     /* Stage groups container */
     .flow-container {
       flex: 1;
       min-height: 0;
       display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      margin-top: 8px;
+      gap: 12px;
+      align-items: center;
+      margin-top: 28px;
+      max-width: 1680px;
     }
 
     /* Each stage group */
@@ -37,7 +46,7 @@
 
     .stage-screens {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: flex-start;
     }
 
@@ -60,8 +69,16 @@
       gap: 8px;
     }
 
+    .stage-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--gray-500);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
     .phone-frame {
-      width: 160px;
+      width: 155px;
       height: 280px;
       border-radius: 12px;
       border: 2px solid var(--gray-100);
@@ -93,13 +110,20 @@
     }
 
     /* Legend bar */
+    .flow-summary {
+      text-align: center;
+      font-size: 14px;
+      color: var(--gray-500);
+      margin-top: 28px;
+    }
+
     .legend-bar {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 28px;
-      margin-top: 28px;
-      padding: 14px 0;
+      margin-top: 16px;
+      padding: 18px 0;
       border-top: 1px solid var(--gray-100);
     }
 
@@ -110,14 +134,14 @@
     }
 
     .legend-dot {
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
       border-radius: 3px;
       flex-shrink: 0;
     }
 
     .legend-label {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 500;
       color: var(--gray-500);
     }
@@ -134,7 +158,7 @@
   <div class="page-header">
     <p class="t-step-label">Step 05 · 서비스 플로우</p>
     <h1 class="t-headline">체크인 한 번이 성장 캘린더로 이어지기까지</h1>
-    <p style="font-size:15px; font-weight:300; color:var(--gray-500); margin-top:10px; line-height:1.6;">체크인 &rarr; 기록 &rarr; 탐색 &rarr; 성장 확인 &middot; 전 과정</p>
+    <p class="subtitle">체크인 &rarr; 기록 &rarr; 탐색 &rarr; 성장 확인 &middot; 전 과정</p>
   </div>
 
   <div class="flow-container">
@@ -142,6 +166,7 @@
     <!-- Stage: 진입 -->
     <div class="stage-group stage-enter">
       <div class="stage-header">진입</div>
+      <p class="stage-desc">앱 실행 &rarr; 위치 기반 암장 탐지</p>
       <div class="stage-screens">
         <div class="phone-mock">
           <div class="phone-frame"><img src="img_splash.png" alt="스플래시" /></div>
@@ -159,6 +184,7 @@
     <!-- Stage: 기록 -->
     <div class="stage-group stage-record">
       <div class="stage-header">기록</div>
+      <p class="stage-desc">체크인 &rarr; 루트·컨디션 기록 &rarr; 리뷰</p>
       <div class="stage-screens">
         <div class="phone-mock">
           <div class="phone-frame"><img src="img_checkin.jpg" alt="체크인" /></div>
@@ -180,6 +206,7 @@
     <!-- Stage: 탐색 -->
     <div class="stage-group stage-explore">
       <div class="stage-header">탐색</div>
+      <p class="stage-desc">검색 &rarr; 클라이밍장 상세 확인</p>
       <div class="stage-screens">
         <div class="phone-mock">
           <div class="phone-frame"><img src="img_search_result.jpg" alt="검색 결과" /></div>
@@ -197,6 +224,7 @@
     <!-- Stage: 성장 확인 -->
     <div class="stage-group stage-growth">
       <div class="stage-header">성장 확인</div>
+      <p class="stage-desc">캘린더로 기록 누적 &rarr; 배지 달성</p>
       <div class="stage-screens">
         <div class="phone-mock">
           <div class="phone-frame"><img src="img_calendar.jpg" alt="캘린더" /></div>
@@ -210,6 +238,9 @@
     </div>
 
   </div>
+
+  <!-- Flow summary -->
+  <p class="flow-summary">체크인 1회 평균 소요: 약 30초 — 기록의 시작 비용을 최소화했다</p>
 
   <!-- Legend -->
   <div class="legend-bar">

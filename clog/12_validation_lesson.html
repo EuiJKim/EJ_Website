@@ -75,6 +75,13 @@
       font-weight: 300;
       line-height: 1.7;
     }
+    .sidebar-role {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
 
     /* ── Right content ── */
     .content {
@@ -82,8 +89,8 @@
       padding: 60px 72px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      gap: 28px;
+      justify-content: center;
+      gap: 40px;
       overflow: hidden;
     }
 
@@ -109,7 +116,7 @@
       background: white;
       border: 1.5px solid var(--gray-100);
       border-radius: 12px;
-      padding: 16px 18px;
+      padding: 18px 20px;
     }
     .rq-header {
       display: flex;
@@ -166,7 +173,7 @@
     .lesson-card {
       display: flex;
       gap: 18px;
-      padding: 16px 20px;
+      padding: 20px 24px;
       background: var(--gray-50);
       border-radius: 12px;
       border: 1.5px solid var(--gray-100);
@@ -201,10 +208,16 @@
       margin-bottom: 3px;
     }
     .lc-text p {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 300;
       color: var(--gray-500);
       line-height: 1.55;
+    }
+
+    /* ── Footer override for sidebar layout ── */
+    .page-footer {
+      left: 580px;
+      right: 72px;
     }
 
     /* ── Next ── */
@@ -218,7 +231,7 @@
       background: white;
       border: 1.5px solid var(--gray-100);
       border-radius: 10px;
-      padding: 12px 16px;
+      padding: 14px 18px;
     }
     .ni-label {
       font-size: 9px;
@@ -229,7 +242,7 @@
       margin-bottom: 5px;
     }
     .ni-text {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 500;
       color: var(--dark);
       line-height: 1.45;
@@ -263,7 +276,10 @@
         </div>
       </div>
     </div>
-    <div class="sidebar-bottom">Clog · Climbing Log<br>2020.10 – 2020.11</div>
+    <div class="sidebar-bottom">
+      <span class="sidebar-role">역할: 서비스 기획 · UI 디자인 / 기여도: 1인 100%</span>
+      Clog · Climbing Log<br>2020.10 – 2020.11
+    </div>
   </div>
 
   <!-- Right content -->
@@ -309,6 +325,7 @@
           <div class="lc-text">
             <strong>문제는 사용자 언어로 정의해야 한다</strong>
             <p>"기록 앱"이 아니라 "실력이 늘고 있는지 모르겠다"에서 시작해야 했다</p>
+            <p style="margin-top:4px; font-style:italic; color:var(--gray-400);">기능보다 상황이 먼저였다.</p>
           </div>
         </div>
         <div class="lesson-card dark">
@@ -349,8 +366,9 @@
 
   </div>
 
-  <div class="page-footer" style="position:fixed; bottom:36px; right:80px;">
-    <span class="page-num" style="font-size:13px; color:rgba(255,255,255,0.3); font-weight:300;">p. 12</span>
+  <div class="page-footer">
+    <span class="project-name">Climbing Project</span>
+    <span class="page-num">p. 12</span>
   </div>
 </body>
 </html>

@@ -16,17 +16,17 @@
 
     /* ── 2+1 Layout ── */
     .rq-layout {
-      flex: 1;
-      min-height: 0;
       display: grid;
       grid-template-columns: 55% 1fr;
       gap: 28px;
+      align-items: start;
     }
 
     .rq-left {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 28px;
+      align-items: start;
     }
 
     /* ── Card base ── */
@@ -117,9 +117,6 @@
     /* ── Card body ── */
     .rq-body {
       padding: 22px 26px 24px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
       border-top: 1px solid var(--gray-100);
     }
 
@@ -179,7 +176,6 @@
       font-weight: 300;
       color: var(--gray-700);
       line-height: 1.75;
-      flex: 1;
     }
 
     .rq-card.featured .rq-insight {
@@ -189,6 +185,25 @@
     .rq-insight strong {
       font-weight: 700;
       color: var(--dark);
+    }
+
+    /* ── RQ subtitle in body ── */
+    .rq-question {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--gray-500);
+      line-height: 1.55;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      background: var(--gray-50);
+      border-radius: 8px;
+      border: 1px solid var(--gray-100);
+    }
+
+    .rq-card.featured .rq-question {
+      background: var(--blue-bg);
+      border-color: rgba(30,65,192,0.11);
+      color: var(--gray-700);
     }
 
     /* ── Bottom note ── */
@@ -262,6 +277,7 @@
         </div>
         <div class="rq-body">
           <p class="rq-title">체크인은 통했다</p>
+          <p class="rq-question">RQ1: 기록의 시작 비용을 줄이면 습관이 될까?</p>
           <div class="rq-quote">
             <p>"체크인 누르니까 바로 기록이 시작돼요. 이거면 매일 할 수 있을 것 같아요"</p>
             <p class="source">— 참여자 A</p>
@@ -287,6 +303,7 @@
         </div>
         <div class="rq-body">
           <p class="rq-title">캘린더는 답이었다</p>
+          <p class="rq-question">RQ3: 기록이 쌓이면 성장을 체감할까?</p>
           <div class="rq-quote">
             <p>"3개월째 다니는데 처음이랑 뭐가 달라졌는지 모르겠어요. 이렇게 보니까 확실히 늘었네."</p>
             <p class="source">— 참여자 C</p>
@@ -314,6 +331,7 @@
       </div>
       <div class="rq-body">
         <p class="rq-title">정보를 모으는 건 맞았다 — 근데 어떤 정보가 달랐다</p>
+        <p class="rq-question">RQ2: 사용자는 어떤 정보를 모아서 결정할까?</p>
         <div class="rq-quote">
           <p>"운영시간만 보고는 갈지 말지 결정 못 해요. 난이도가 내 수준에 맞는지가 제일 중요한데."</p>
           <p class="source">— 참여자 A</p>
