@@ -84,15 +84,7 @@
     }
     .phone-mock img { display: block; object-fit: contain; object-position: top; }
     .screen-overlay {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 28px 14px 14px;
-      background: linear-gradient(to top, rgba(10,20,60,0.68) 0%, transparent 100%);
-      font-size: 12px;
-      font-weight: 700;
-      color: white;
-      text-align: center;
-      line-height: 1.4;
+      display: none;
     }
     .phone-mock.main-phone { box-shadow: 0 32px 80px rgba(30,65,192,0.26); }
     .phone-mock.main-phone img { width: 300px; height: 534px; }
@@ -181,7 +173,7 @@
           <div class="screen-overlay">월별 방문 기록 한눈에</div>
         </div>
         <div class="phone-label">
-          <span class="pl-num">1</span>월별 방문 기록
+          <span class="pl-num">1</span>월별 캘린더로 방문 패턴 확인
         </div>
       </div>
       <div class="phone-col">
@@ -190,7 +182,7 @@
           <div class="screen-overlay">날짜 탭 → 루트·컨디션·부상 상세 기록</div>
         </div>
         <div class="phone-label">
-          <span class="pl-num">2</span>날짜별 상세 보기
+          <span class="pl-num">2</span>날짜별 루트·컨디션·부상 기록
         </div>
       </div>
       <div class="phone-col side-col">
