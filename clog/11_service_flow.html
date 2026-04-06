@@ -6,7 +6,7 @@
   <title>Clog – 11장 Service Flow</title>
   <link rel="stylesheet" href="design-system.css" />
   <style>
-    .page { padding-bottom: 60px; }
+    .page { padding-bottom: 20px; padding-top: 48px; }
 
     .subtitle {
       font-size: 15px;
@@ -16,15 +16,25 @@
       line-height: 1.6;
     }
 
-    /* Stage groups container */
+    /* Stage groups container — 2-row layout */
     .flow-container {
       flex: 1;
       min-height: 0;
       display: flex;
+      flex-wrap: wrap;
+      gap: 20px 12px;
+      align-items: flex-start;
+      justify-content: center;
+      margin-top: 16px;
+      max-width: 1680px;
+    }
+
+    .flow-row {
+      display: flex;
       gap: 12px;
       align-items: center;
-      margin-top: 28px;
-      max-width: 1680px;
+      justify-content: center;
+      width: 100%;
     }
 
     /* Each stage group */
@@ -54,7 +64,7 @@
     .stage-arrow {
       display: flex;
       align-items: center;
-      padding-top: 160px;
+      padding-top: 80px;
       font-size: 22px;
       color: var(--gray-300);
       font-weight: 700;
@@ -78,8 +88,8 @@
     }
 
     .phone-frame {
-      width: 155px;
-      height: 280px;
+      width: 160px;
+      height: 284px;
       border-radius: 20px;
       border: 2px solid var(--gray-100);
       overflow: hidden;
@@ -114,7 +124,7 @@
       text-align: center;
       font-size: 14px;
       color: var(--gray-500);
-      margin-top: 28px;
+      margin-top: 12px;
     }
 
     .legend-bar {
@@ -163,86 +173,79 @@
 
   <div class="flow-container">
 
-    <!-- Stage: 진입 -->
-    <div class="stage-group stage-enter">
-      <div class="stage-header">진입</div>
-      <p class="stage-desc">앱 실행 &rarr; 위치 기반 암장 탐지</p>
-      <div class="stage-screens">
-        <div class="phone-mock">
-          <div class="phone-frame"><img loading="lazy" decoding="async" src="img_splash.png" alt="스플래시" width="155" height="280" /></div>
-          <span class="phone-caption">스플래시</span>
+    <!-- Row 1: 진입 → 기록 -->
+    <div class="flow-row">
+      <div class="stage-group stage-enter">
+        <div class="stage-header">진입</div>
+        <p class="stage-desc">앱 실행 &rarr; 위치 기반 암장 탐지</p>
+        <div class="stage-screens">
+          <div class="phone-mock">
+            <div class="phone-frame"><img loading="lazy" decoding="async" src="img_main.jpg" alt="메인 지도" width="190" height="340" /></div>
+            <span class="phone-caption">메인 지도</span>
+          </div>
         </div>
-        <div class="phone-mock">
-          <div class="phone-frame"><img loading="lazy" decoding="async" src="img_main.jpg" alt="메인 지도" width="155" height="280" /></div>
-          <span class="phone-caption">메인 지도</span>
+      </div>
+
+      <div class="stage-arrow">&rarr;</div>
+
+      <div class="stage-group stage-record">
+        <div class="stage-header">기록</div>
+        <p class="stage-desc">체크인 &rarr; 루트·컨디션 기록 &rarr; 리뷰</p>
+        <div class="stage-screens">
+          <div class="phone-mock">
+            <div class="phone-frame"><img loading="lazy" decoding="async" src="img_checkin.jpg" alt="체크인" width="190" height="340" /></div>
+            <span class="phone-caption">체크인</span>
+          </div>
+          <div class="phone-mock">
+            <div class="phone-frame"><img loading="lazy" decoding="async" src="img_main_checkedin.jpg" alt="체크인 완료" width="190" height="340" /></div>
+            <span class="phone-caption">체크인 완료</span>
+          </div>
+          <div class="phone-mock">
+            <div class="phone-frame"><img loading="lazy" decoding="async" src="img_popup_review_v2.jpg" alt="리뷰 작성" width="190" height="340" /></div>
+            <span class="phone-caption">리뷰 작성</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="stage-arrow">&rarr;</div>
-
-    <!-- Stage: 기록 -->
-    <div class="stage-group stage-record">
-      <div class="stage-header">기록</div>
-      <p class="stage-desc">체크인 &rarr; 루트·컨디션 기록 &rarr; 리뷰</p>
-      <div class="stage-screens">
-        <div class="phone-mock">
-          <div class="phone-frame"><img loading="lazy" decoding="async" src="img_checkin.jpg" alt="체크인" width="155" height="280" /></div>
-          <span class="phone-caption">체크인</span>
-        </div>
-        <div class="phone-mock">
-          <div class="phone-frame"><img loading="lazy" decoding="async" src="img_main_checkedin.jpg" alt="체크인 완료" width="155" height="280" /></div>
-          <span class="phone-caption">체크인 완료</span>
-        </div>
-        <div class="phone-mock">
-          <div class="phone-frame"><img loading="lazy" decoding="async" src="img_popup_review_v2.jpg" alt="리뷰 v2" width="155" height="280" /></div>
-          <span class="phone-caption">리뷰 v2</span>
+    <!-- Row 2: 탐색 → 성장 확인 -->
+    <div class="flow-row">
+      <div class="stage-group stage-explore">
+        <div class="stage-header">탐색</div>
+        <p class="stage-desc">검색 &rarr; 클라이밍장 상세 확인</p>
+        <div class="stage-screens">
+          <div class="phone-mock">
+            <div class="phone-frame"><img loading="lazy" decoding="async" src="img_search_result.jpg" alt="검색 결과" width="190" height="340" /></div>
+            <span class="phone-caption">검색 결과</span>
+          </div>
+          <div class="phone-mock">
+            <div class="phone-frame"><img loading="lazy" decoding="async" src="img_climbing_detail_v2.jpg" alt="클라이밍장 상세" width="190" height="340" /></div>
+            <span class="phone-caption">클라이밍장 상세</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="stage-arrow">&rarr;</div>
+      <div class="stage-arrow">&rarr;</div>
 
-    <!-- Stage: 탐색 -->
-    <div class="stage-group stage-explore">
-      <div class="stage-header">탐색</div>
-      <p class="stage-desc">검색 &rarr; 클라이밍장 상세 확인</p>
-      <div class="stage-screens">
-        <div class="phone-mock">
-          <div class="phone-frame"><img loading="lazy" decoding="async" src="img_search_result.jpg" alt="검색 결과" width="155" height="280" /></div>
-          <span class="phone-caption">검색 결과</span>
-        </div>
-        <div class="phone-mock">
-          <div class="phone-frame"><img loading="lazy" decoding="async" src="img_climbing_detail_v2.jpg" alt="클라이밍장 상세" width="155" height="280" /></div>
-          <span class="phone-caption">클라이밍장 상세</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="stage-arrow">&rarr;</div>
-
-    <!-- Stage: 성장 확인 -->
-    <div class="stage-group stage-growth">
-      <div class="stage-header">성장 확인</div>
-      <p class="stage-desc">캘린더로 기록 누적 &rarr; 배지 달성</p>
-      <div class="stage-screens">
-        <div class="phone-mock">
-          <div class="phone-frame"><img loading="lazy" decoding="async" src="img_calendar.jpg" alt="캘린더" width="155" height="280" /></div>
-          <span class="phone-caption">캘린더</span>
-        </div>
-        <div class="phone-mock">
-          <div class="phone-frame"><img loading="lazy" decoding="async" src="img_badge.jpg" alt="배지" width="155" height="280" /></div>
-          <span class="phone-caption">배지</span>
+      <div class="stage-group stage-growth">
+        <div class="stage-header">성장 확인</div>
+        <p class="stage-desc">캘린더로 기록 누적 &rarr; 배지 달성</p>
+        <div class="stage-screens">
+          <div class="phone-mock">
+            <div class="phone-frame"><img loading="lazy" decoding="async" src="img_calendar.jpg" alt="캘린더" width="190" height="340" /></div>
+            <span class="phone-caption">캘린더</span>
+          </div>
+          <div class="phone-mock">
+            <div class="phone-frame"><img loading="lazy" decoding="async" src="img_badge.jpg" alt="배지" width="190" height="340" /></div>
+            <span class="phone-caption">배지</span>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- Flow summary -->
-  <p class="flow-summary">체크인 1회 평균 소요: 약 30초 — 기록의 시작 비용을 최소화했다</p>
-
-  <!-- Legend -->
+  <!-- Legend + summary combined -->
   <div class="legend-bar">
     <div class="legend-item">
       <div class="legend-dot" style="background:#F5F5F5; border:1px solid #ddd;"></div>
@@ -260,6 +263,8 @@
       <div class="legend-dot" style="background:#FFF7ED;"></div>
       <span class="legend-label">성장 확인</span>
     </div>
+    <span class="legend-label" style="margin-left: 20px; color: var(--gray-300);">|</span>
+    <span class="legend-label">체크인 1회 평균 소요: 약 30초</span>
   </div>
 
 </div>
