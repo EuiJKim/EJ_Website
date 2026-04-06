@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "PreCommit": [
+      {
+        "command": "cd C:/Users/ASUS/Desktop/portfolio_site && npx html-validate index.html allaw/index.html clog/index.html resin/index.html 2>&1 || echo 'HTML validation warnings found'",
+        "description": "HTML validation before commit"
+      }
+    ]
+  }
+}
