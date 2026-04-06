@@ -6,7 +6,7 @@
   <title>Clog – 7장 Key Concept</title>
   <link rel="stylesheet" href="design-system.css" />
   <style>
-    .page { padding-bottom: 60px; }
+    .page { padding-bottom: 20px; padding-top: 48px; }
 
     .subtitle {
       font-size: 15px;
@@ -53,7 +53,7 @@
       min-height: 0;
       display: grid;
       grid-template-columns: 1fr 1fr 1.35fr;
-      grid-template-rows: 1fr;
+      grid-template-rows: auto;
       gap: 28px;
     }
 
@@ -72,7 +72,7 @@
 
     /* 상단 컬러 헤더 */
     .cb-header {
-      padding: 28px 28px 22px;
+      padding: 22px 24px 18px;
       background: var(--gray-50);
     }
     .concept-block.core .cb-header {
@@ -119,8 +119,8 @@
 
     /* 폰 스크린 이미지 영역 */
     .cb-screen {
-      height: 480px;
-      flex-shrink: 0;
+      flex: 1;
+      min-height: 200px;
       position: relative;
       display: flex;
       align-items: center;
@@ -155,7 +155,7 @@
 
     /* 하단 설명 */
     .cb-body {
-      padding: 20px 28px 24px;
+      padding: 16px 24px 18px;
       border-top: 1px solid var(--gray-100);
     }
     .concept-block.core .cb-body { border-top-color: rgba(30,65,192,0.15); }
@@ -164,7 +164,7 @@
       display: flex;
       gap: 10px;
       align-items: flex-start;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
     .cb-point:last-child { margin-bottom: 0; }
     .cb-dot {
@@ -255,8 +255,7 @@
         <p class="cb-num">FEATURE 03 · CORE</p>
         <p class="cb-en">Calendar Growth</p>
         <p class="cb-ko">성장 캘린더 — 기록이 쌓이면 보인다</p>
-        <p class="cb-rq">RQ3 &rarr; 기록이 쌓여 성장이 보인다</p>
-        <p style="font-size:12px; font-weight:500; color:rgba(255,255,255,0.55); margin-top:6px;">8명 중 7명 — "얼마나 늘었는지 모르겠다"</p>
+        <p class="cb-rq">RQ3 · 6/8명 성장 체감 못함</p>
       </div>
       <div class="cb-screen">
         <img loading="lazy" decoding="async" src="img_calendar.jpg" alt="캘린더 화면" height="480" />
