@@ -42,6 +42,51 @@
 
     a { text-decoration: none; color: inherit; }
 
+    /* ── Aurora background ── */
+    .hero-area {
+      position: relative;
+    }
+    .aurora {
+      position: fixed;
+      inset: -60%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .aurora-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0;
+      animation: blobPulse var(--dur) ease-in-out infinite alternate;
+      animation-delay: var(--delay, 0s);
+    }
+    .aurora-blob:nth-child(1) {
+      width: 60%; height: 50%;
+      top: 10%; left: 5%;
+      background: #0f1a2e;
+      --dur: 8s; --delay: 0s;
+    }
+    .aurora-blob:nth-child(2) {
+      width: 50%; height: 60%;
+      bottom: 0; right: 5%;
+      background: #151e35;
+      --dur: 10s; --delay: 2s;
+    }
+    .aurora-blob:nth-child(3) {
+      width: 40%; height: 40%;
+      top: 30%; left: 40%;
+      background: #0d1525;
+      --dur: 12s; --delay: 4s;
+    }
+    html.light .aurora-blob:nth-child(1) { background: #e8f5f2; }
+    html.light .aurora-blob:nth-child(2) { background: #dff0ed; }
+    html.light .aurora-blob:nth-child(3) { background: #e2f3f0; }
+    @keyframes blobPulse {
+      0%   { opacity: 0; transform: translate(0, 0) scale(0.9); }
+      50%  { opacity: 0.6; }
+      100% { opacity: 0; transform: translate(40px, -30px) scale(1.15); }
+    }
+    .wrap { position: relative; z-index: 1; }
     /* ── Wrapper ── */
     .wrap {
       max-width: 1100px;
@@ -522,34 +567,42 @@
         transition: none !important;
       }
       .scroll-progress { animation: none; transform: scaleX(1); }
+      .aurora { animation: none; }
       .word { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
   </style>
 </head>
 <body>
+<div class="aurora">
+  <div class="aurora-blob"></div>
+  <div class="aurora-blob"></div>
+  <div class="aurora-blob"></div>
+</div>
 <div class="scroll-progress"></div>
 <div class="wrap">
 
-  <!-- Header -->
-  <header class="reveal" style="--d:0s">
-    <div>
-      <h1 class="name">김의준</h1>
-      <p class="name-sub">서비스 기획 · UX Research</p>
-    </div>
-    <div class="header-links">
-      <a href="#about">About</a>
-      <a href="mailto:sjkim942884@gmail.com">Email</a>
-      <button class="theme-toggle" aria-label="테마 전환">
-        <span class="theme-icon">☀</span> Light
-      </button>
-    </div>
-  </header>
+  <!-- Hero area with aurora -->
+  <div class="hero-area">
+    <header class="reveal" style="--d:0s">
+      <div>
+        <h1 class="name">김의준</h1>
+        <p class="name-sub">서비스 기획 · UX Research</p>
+      </div>
+      <div class="header-links">
+        <a href="#about">About</a>
+        <a href="mailto:sjkim942884@gmail.com">Email</a>
+        <button class="theme-toggle" aria-label="테마 전환">
+          <span class="theme-icon">☀</span> Light
+        </button>
+      </div>
+    </header>
 
-  <!-- Intro -->
-  <div class="intro reveal" style="--d:.07s">
+    <div class="intro reveal" style="--d:.07s">
     <p>가설을 세우고, 리서치로 부딪히고, 틀린 걸 고쳐서 설계합니다.<br>
     <em>사용자가 말하는 방식이 설계의 출발점입니다.</em></p>
   </div>
+
+  </div><!-- /hero-area -->
 
   <!-- Work -->
   <div class="work-section" id="works">
