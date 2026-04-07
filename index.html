@@ -24,6 +24,7 @@
       font-family: 'DM Sans', -apple-system, sans-serif;
       font-size: 18px;
       line-height: 1.5;
+      font-feature-settings: 'kern' 1;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
     }
@@ -50,6 +51,7 @@
     .name {
       font-size: 20px;
       font-weight: 500;
+      letter-spacing: -0.02em;
       color: var(--ink);
     }
     .name-sub {
@@ -79,11 +81,12 @@
       border-bottom: 1px solid var(--line);
     }
     .intro p {
-      font-size: 24px;
+      font-size: clamp(24px, 3vw, 32px);
       font-weight: 300;
       color: var(--ink);
-      line-height: 1.75;
+      line-height: 1.55;
       max-width: 720px;
+      text-wrap: balance;
     }
     .intro p em {
       font-style: italic;
@@ -103,13 +106,14 @@
     .work-header span {
       font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
     /* 각 행 */
     .work-row {
+      position: relative;
       display: grid;
       grid-template-columns: 1fr auto auto;
       align-items: center;
@@ -119,6 +123,20 @@
       transition: background 0.12s;
       margin: 0 -64px;
       padding: 32px 64px;
+    }
+    .work-row::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0;
+      background: #1E41C0;
+      transition: width 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .work-row:hover::before,
+    .work-row:focus-visible::before {
+      width: 3px;
     }
     .work-row:hover,
     .work-row:focus-visible { background: var(--hover-bg); outline: none; }
@@ -130,6 +148,7 @@
     .work-title {
       font-size: 22px;
       font-weight: 500;
+      letter-spacing: -0.01em;
       color: var(--ink);
       margin-bottom: 6px;
     }
@@ -297,8 +316,8 @@
 
   <!-- Intro -->
   <div class="intro reveal" style="--d:.07s">
-    <p>문제를 발견하고 서비스 구조로 답을 만듭니다.<br>
-    <em>리서치가 출발점이고, 기획이 결과물입니다.</em></p>
+    <p>가설을 세우고, 리서치로 부딪히고, 틀린 걸 고쳐서 설계합니다.<br>
+    <em>사용자가 말하는 방식이 설계의 출발점입니다.</em></p>
   </div>
 
   <!-- Work -->
@@ -311,7 +330,7 @@
     <a href="allaw/" class="work-row reveal" style="--d:.21s" data-preview="allaw/assets/Resume_2.jpg">
       <div class="work-left">
         <h2 class="work-title">ALLAW — 법률 AI 앱<span class="work-arrow"> →</span></h2>
-        <p class="work-desc">73%가 법률 문제를 경험하지만 12%만 변호사에 도달한다. 이 공백을 채우는 AI 법률 상담 서비스.</p>
+        <p class="work-desc">변호사가 말하는 방식이 장벽이었다. 법률 용어를 사용자 언어로 바꾸는 AI 상담 서비스.</p>
       </div>
       <span class="work-type">UX Research · UI Design</span>
       <span class="work-year">2025</span>
@@ -320,7 +339,7 @@
     <a href="clog/" class="work-row reveal" style="--d:.28s" data-preview="clog/img_main.jpg">
       <div class="work-left">
         <h2 class="work-title">Clog — 클라이밍 기록 앱<span class="work-arrow"> →</span></h2>
-        <p class="work-desc">열심히 다니는데 실력이 늘고 있는 건지 모르겠어요. 방문·루트·컨디션을 한 곳에 남기는 성장 기록 앱.</p>
+        <p class="work-desc">"3개월째 다니는데 뭐가 달라졌는지 모르겠어요." 이 한마디에서 시작한 클라이밍 성장 기록 앱.</p>
       </div>
       <span class="work-type">UX Research · UI Design</span>
       <span class="work-year">2024</span>
