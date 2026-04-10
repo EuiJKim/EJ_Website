@@ -81,6 +81,142 @@
       z-index: 50;
     }
 
+    /* Research Context */
+    .research-context {
+      padding: 48px 48px 32px;
+      border-bottom: 1px solid var(--gray-20);
+    }
+    .rc-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .rc-title {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.4;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .rc-body {
+      font-size: 15px;
+      color: var(--gray-50);
+      line-height: 1.7;
+      max-width: 640px;
+      margin-bottom: 32px;
+    }
+    .rc-section { margin-bottom: 40px; }
+    .rc-section:last-child { margin-bottom: 0; }
+
+    .rc-hypotheses {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .rc-hypo {
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--gray-20);
+      background: var(--bg);
+    }
+    .rc-hypo.validated { border-left: 3px solid var(--accent); }
+    .rc-hypo.rejected { border-left: 3px solid #b45309; }
+    .rc-hypo-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .rc-hypo.validated .rc-hypo-badge { color: var(--accent); background: rgba(30,65,192,0.1); }
+    .rc-hypo.rejected .rc-hypo-badge { color: #b45309; background: rgba(180,83,9,0.1); }
+    .rc-hypo-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .rc-hypo-detail {
+      font-size: 13px;
+      color: var(--gray-50);
+      line-height: 1.6;
+    }
+
+    .rc-decisions {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .rc-decision {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--gray-20);
+    }
+    .rc-num {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+      width: 32px;
+    }
+    .rc-decision-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .rc-decision-detail {
+      font-size: 13px;
+      color: var(--gray-50);
+      line-height: 1.5;
+    }
+
+    .rc-quotes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .rc-quote {
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--gray-20);
+      background: var(--bg);
+    }
+    .rc-quote p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .rc-quote cite {
+      font-size: 12px;
+      font-style: normal;
+      color: var(--gray-50);
+    }
+    .rc-quote.after {
+      border-left: 3px solid var(--accent);
+      background: rgba(30,65,192,0.03);
+    }
+
+    @media (max-width: 768px) {
+      .research-context { padding: 32px 24px 24px; }
+      .rc-hypotheses { grid-template-columns: 1fr; }
+      .rc-quotes { grid-template-columns: 1fr; }
+    }
+
     /* Reveal animation */
     @keyframes revealUp {
       from { clip-path: inset(100% 0 0 0); opacity: 0; transform: translateY(20px); }
@@ -231,6 +367,71 @@
       📱 Try Prototype
     </button>
     <p class="proto-desc reveal" style="--d:.40s">인터랙티브 채팅 UI — 3개 법률 시나리오, AI 응답 시뮬레이션, ~2분 체험</p>
+  </div>
+
+  <!-- Research Context -->
+  <div class="research-context">
+    <div class="rc-section">
+      <p class="rc-label">Research Foundation</p>
+      <h3 class="rc-title">73%가 법률 문제를 경험하지만, 12%만 변호사에 도달한다</h3>
+      <p class="rc-body">왜 88%는 상담까지 가지 못할까? 심층 인터뷰 12명과 설문 89명을 통해 세 가지 가설을 세우고 검증했습니다.</p>
+    </div>
+
+    <div class="rc-hypotheses">
+      <div class="rc-hypo validated">
+        <span class="rc-hypo-badge">✓ 검증</span>
+        <p class="rc-hypo-title">가설 1: 법률 용어가 진입 장벽이다</p>
+        <p class="rc-hypo-detail">인터뷰 대상 44%가 "변호사가 하는 말을 이해하지 못했다"고 응답. 용어 자체가 아니라 '변호사의 말하는 방식'이 장벽.</p>
+      </div>
+      <div class="rc-hypo validated">
+        <span class="rc-hypo-badge">✓ 검증</span>
+        <p class="rc-hypo-title">가설 2: 단계별 안내가 있으면 행동한다</p>
+        <p class="rc-hypo-detail">Low-Fi 테스트에서 "다음에 뭘 해야 하는지 알면 진행하겠다"는 응답 78%. 프로세스 가시성이 핵심.</p>
+      </div>
+      <div class="rc-hypo rejected">
+        <span class="rc-hypo-badge">✗ 기각</span>
+        <p class="rc-hypo-title">가설 3: 음성 상담이 텍스트보다 선호된다</p>
+        <p class="rc-hypo-detail">실제 테스트에서 음성 입력 사용률 23%에 불과. 사용자는 민감한 법률 문제를 말로 꺼내기 꺼려했다. → 채팅 우선 설계로 피봇.</p>
+      </div>
+    </div>
+
+    <div class="rc-quotes">
+      <blockquote class="rc-quote">
+        <p>"변호사한테 물어보고 싶은데, 뭘 물어봐야 할지 모르겠어요."</p>
+        <cite>— 사용자 인터뷰, 52세 남성, 서울</cite>
+      </blockquote>
+      <blockquote class="rc-quote after">
+        <p>"AI가 먼저 정리해줘서, 이제 변호사한테 구체적인 질문을 할 수 있어요."</p>
+        <cite>— 사용성 테스트 2차, 동일 참여자</cite>
+      </blockquote>
+    </div>
+
+    <div class="rc-section">
+      <p class="rc-label">Key Design Decisions</p>
+      <div class="rc-decisions">
+        <div class="rc-decision">
+          <span class="rc-num">01</span>
+          <div>
+            <p class="rc-decision-title">법률 용어 → 사용자 언어 자동 변환</p>
+            <p class="rc-decision-detail">AI가 변호사 답변을 일상어로 번역. "소멸시효" → "청구할 수 있는 기한이 지남"</p>
+          </div>
+        </div>
+        <div class="rc-decision">
+          <span class="rc-num">02</span>
+          <div>
+            <p class="rc-decision-title">단계별 안내 플로우</p>
+            <p class="rc-decision-detail">사용자가 "다음에 뭘 해야 하지?"를 묻기 전에 AI가 후속 질문을 제안</p>
+          </div>
+        </div>
+        <div class="rc-decision">
+          <span class="rc-num">03</span>
+          <div>
+            <p class="rc-decision-title">채팅 우선 인터페이스</p>
+            <p class="rc-decision-detail">음성 가설이 기각된 후, 텍스트 채팅을 1순위로 설계. 음성은 보조 입력으로 전환</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="slides-section" id="slides">
