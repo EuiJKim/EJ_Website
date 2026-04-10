@@ -349,6 +349,30 @@
     html.light .about-intro em {
       background: rgba(var(--accent-rgb),0.03);
     }
+    .about-range {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .about-range-item {
+      padding: 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .about-range-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .about-range-detail {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
     .about-grid {
       display: grid;
       grid-template-columns: 1.5fr 1fr;
@@ -696,7 +720,7 @@
         transform: none !important;
       }
       .scroll-progress { animation: none; transform: scaleX(1); }
-      .aurora { animation: none; }
+      .aurora, .aurora-blob { animation: none !important; opacity: 0.3 !important; }
       .word { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
   </style>
@@ -742,7 +766,7 @@
       <div class="hero-card-info">
         <span class="hero-card-badge" data-accent="blue">2025</span>
         <p class="hero-card-title">ALLAW — 법률 AI 앱</p>
-        <p class="hero-card-desc">변호사가 말하는 방식이 장벽이었다. 법률 용어를 사용자 언어로 바꾸는 AI 상담 서비스.</p>
+        <p class="hero-card-desc">변호사가 말하는 방식이 장벽이었다. 심층 인터뷰와 설문(n=89)으로 혁신저항 요인을 분석하고, AI 기반 법률 상담 서비스를 설계했다.</p>
         <span class="hero-card-type">UX Research · UI Design</span>
       </div>
     </a>
@@ -753,7 +777,7 @@
       <div class="hero-card-info">
         <span class="hero-card-badge" data-accent="green">2024</span>
         <p class="hero-card-title">Clog — 클라이밍 기록 앱</p>
-        <p class="hero-card-desc">"3개월째 다니는데 뭐가 달라졌는지 모르겠어요." 이 한마디에서 시작한 성장 기록 앱.</p>
+        <p class="hero-card-desc">"3개월째 다니는데 뭐가 달라졌는지 모르겠어요." 가설 3개를 세우고 2개를 검증해서 만든 클라이밍 성장 기록 앱.</p>
         <span class="hero-card-type">UX Research · UI Design</span>
       </div>
     </a>
@@ -764,7 +788,7 @@
       <div class="hero-card-info">
         <span class="hero-card-badge" data-accent="amber">2026</span>
         <p class="hero-card-title">EEL — 레진 아트퍼니처</p>
-        <p class="hero-card-desc">프리미엄 수제 레진 테이블 브랜드. e-커머스 + BTO 경험 설계.</p>
+        <p class="hero-card-desc">프리미엄 수제 레진 테이블 브랜드. 공동창업 · 기획 100%. 3D 커스터마이저 + BTO 주문 플로우 설계.</p>
         <span class="hero-card-type">Brand · Web Design</span>
       </div>
     </a>
@@ -780,6 +804,21 @@
     <h2 class="about-header">About</h2>
     <p class="about-intro">사용자는 '어렵다'고 말하지만, 뭐가 어려운지는 말하지 못합니다.<br>
     <em>표면적인 답 뒤에 숨은 진짜 장벽을 찾는 게 제 리서치이고, 거기서 세운 가설이 틀렸을 때 비로소 설계가 시작됩니다.</em></p>
+
+    <div class="about-range">
+      <div class="about-range-item">
+        <span class="about-range-label">B2C SaaS</span>
+        <span class="about-range-detail">AI + Legal Tech</span>
+      </div>
+      <div class="about-range-item">
+        <span class="about-range-label">Consumer App</span>
+        <span class="about-range-detail">커뮤니티 + 성장 기록</span>
+      </div>
+      <div class="about-range-item">
+        <span class="about-range-label">D2C Commerce</span>
+        <span class="about-range-detail">브랜드 + 3D 커스터마이징</span>
+      </div>
+    </div>
 
     <div class="about-grid">
       <!-- 경력 -->
@@ -921,15 +960,21 @@
 
     const magneticEls = document.querySelectorAll('.header-links a, footer a');
     const strength = 0.3;
+    let magTicking = false;
 
     magneticEls.forEach(el => {
       el.addEventListener('mousemove', (e) => {
-        const rect = el.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) * strength;
-        const dy = (e.clientY - cy) * strength;
-        el.style.transform = `translate(${dx}px, ${dy}px)`;
+        if (magTicking) return;
+        magTicking = true;
+        requestAnimationFrame(() => {
+          const rect = el.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = (e.clientX - cx) * strength;
+          const dy = (e.clientY - cy) * strength;
+          el.style.transform = `translate(${dx}px, ${dy}px)`;
+          magTicking = false;
+        });
       });
 
       el.addEventListener('mouseleave', () => {
@@ -938,17 +983,23 @@
     });
   })();
 
-  // ── 3D tilt on hero cards ──
+  // ── 3D tilt on hero cards (throttled) ──
   (() => {
     if (!window.matchMedia('(hover: hover)').matches ||
         window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+    let ticking = false;
     document.querySelectorAll('.hero-card').forEach(card => {
       card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(800px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) translateY(-4px)`;
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `perspective(800px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) translateY(-4px)`;
+          ticking = false;
+        });
       });
 
       card.addEventListener('mouseleave', () => {
