@@ -7,14 +7,14 @@
   <title>Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #111;
       --ink: #f0f0ec;
-      --muted: #777;
+      --muted: #888;
       --line: #2a2a2a;
       --hover-bg: #1a1a1a;
       color-scheme: dark;
@@ -22,7 +22,7 @@
     html.light {
       --bg: #f9f9f7;
       --ink: #111;
-      --muted: #999;
+      --muted: #666;
       --line: #e0e0e0;
       --hover-bg: #f0f0ec;
       color-scheme: light;
@@ -33,7 +33,8 @@
       background: var(--bg);
       color: var(--ink);
       font-family: 'DM Sans', -apple-system, sans-serif;
-      font-size: 18px;
+      font-size: 16px;
+      font-weight: 400;
       line-height: 1.5;
       font-feature-settings: 'kern' 1;
       -webkit-font-smoothing: antialiased;
@@ -86,9 +87,10 @@
       50%  { opacity: 0.6; }
       100% { opacity: 0; transform: translate(40px, -30px) scale(1.15); }
     }
-    .wrap { position: relative; z-index: 1; }
     /* ── Wrapper ── */
     .wrap {
+      position: relative;
+      z-index: 1;
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 64px;
@@ -105,14 +107,14 @@
       border-bottom: 1px solid var(--line);
     }
     .name {
-      font-size: 20px;
-      font-weight: 500;
+      font-size: 18px;
+      font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--ink);
     }
     .name-sub {
-      font-size: 17px;
-      font-weight: 300;
+      font-size: 15px;
+      font-weight: 400;
       color: var(--muted);
       margin-top: 6px;
     }
@@ -121,8 +123,8 @@
       gap: 32px;
     }
     .header-links a {
-      font-size: 17px;
-      font-weight: 300;
+      font-size: 15px;
+      font-weight: 400;
       color: var(--muted);
       transition: color 0.1s;
       display: inline-flex;
@@ -136,7 +138,7 @@
       background: none;
       border: 1px solid var(--line);
       border-radius: 20px;
-      padding: 6px 14px;
+      padding: 8px 16px;
       font-family: inherit;
       font-size: 13px;
       font-weight: 400;
@@ -145,7 +147,7 @@
       transition: color 0.2s, border-color 0.2s;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       min-height: 44px;
     }
     .theme-toggle:hover {
@@ -155,19 +157,19 @@
 
     /* ── Intro ── */
     .intro {
-      padding: 64px 0 56px;
+      padding: 64px 0;
       border-bottom: 1px solid var(--line);
     }
     .intro p {
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 300;
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 500;
       color: var(--ink);
       line-height: 1.55;
-      max-width: 720px;
+      max-width: 780px;
       text-wrap: balance;
     }
     .intro p em {
-      font-style: italic;
+      font-style: normal;
       color: var(--muted);
     }
 
@@ -181,26 +183,26 @@
       padding: 28px 0 16px;
       border-bottom: 1px solid var(--line);
     }
-    .work-header span {
-      font-size: 13px;
+    .work-header-title {
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
-    /* 각 행 */
+    /* 각 행 — 카드 with 썸네일 */
     .work-row {
       position: relative;
       display: grid;
-      grid-template-columns: 1fr auto auto;
+      grid-template-columns: 280px 1fr auto;
       align-items: center;
-      gap: 24px;
+      gap: 32px;
       border-bottom: 1px solid var(--line);
       cursor: pointer;
-      transition: background 0.12s;
+      transition: background 0.15s;
       margin: 0 -64px;
-      padding: 32px 64px;
+      padding: 24px 64px;
     }
     .work-row::before {
       content: '';
@@ -217,49 +219,69 @@
       width: 3px;
     }
     .work-row:hover,
-    .work-row:focus-visible { background: var(--hover-bg); outline: none; }
+    .work-row:focus-visible { background: var(--hover-bg); outline: none; border-radius: 4px; }
     .work-row:hover .work-arrow,
     .work-row:focus-visible .work-arrow { opacity: 1; }
     .work-row:focus-visible { box-shadow: inset 0 0 0 2px #1E41C0; }
 
-    .work-left {}
-    .work-title {
-      font-size: 22px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      margin-bottom: 6px;
+    .work-thumb {
+      width: 280px;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s;
     }
-    .work-row:hover .work-title { text-decoration: none; }
-    .work-desc {
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.6;
+    .work-row:hover .work-thumb {
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
     }
 
-    .work-type {
+    .work-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .work-title {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .work-year-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    /* 프로젝트별 액센트 */
+    .work-row[data-accent="blue"] .work-year-badge { color: #1E41C0; background: rgba(30,65,192,0.15); }
+    .work-row[data-accent="green"] .work-year-badge { color: #0d9668; background: rgba(13,150,104,0.15); }
+    .work-row[data-accent="amber"] .work-year-badge { color: #b45309; background: rgba(180,83,9,0.15); }
+    .work-row[data-accent="blue"]::before { background: #1E41C0; }
+    .work-row[data-accent="green"]::before { background: #0d9668; }
+    .work-row[data-accent="amber"]::before { background: #b45309; }
+    .work-row:hover .work-title { text-decoration: none; }
+    .work-desc {
       font-size: 14px;
       font-weight: 400;
       color: var(--muted);
-      white-space: nowrap;
-      text-align: right;
+      line-height: 1.6;
+      margin-bottom: 8px;
     }
-
-    .work-year {
-      font-size: 14px;
-      font-weight: 300;
+    .work-type {
+      font-size: 12px;
+      font-weight: 500;
       color: var(--muted);
-      white-space: nowrap;
-      width: 44px;
-      text-align: right;
+      letter-spacing: 0.03em;
     }
 
     .work-arrow {
       opacity: 0;
       font-size: 18px;
       color: var(--ink);
-      margin-left: 8px;
     }
 
     /* ── About section ── */
@@ -268,7 +290,7 @@
       border-bottom: 1px solid var(--line);
     }
     .about-header {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -276,15 +298,17 @@
       margin-bottom: 40px;
     }
     .about-intro {
-      font-size: clamp(20px, 2.5vw, 26px);
-      font-weight: 300;
+      font-size: clamp(16px, 1.9vw, 20px);
+      font-weight: 400;
       line-height: 1.6;
       max-width: 640px;
-      margin-bottom: 56px;
+      margin-bottom: 48px;
     }
     .about-intro em {
-      font-style: italic;
+      font-style: normal;
       color: var(--muted);
+      display: block;
+      margin-top: 16px;
     }
     .about-grid {
       display: grid;
@@ -292,35 +316,62 @@
       gap: 48px 64px;
     }
     .about-block-title {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 16px;
     }
     .about-item {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .about-item:last-child { margin-bottom: 0; }
     .about-item-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 500;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
     .about-item-sub {
-      font-size: 14px;
-      font-weight: 300;
+      font-size: 13px;
+      font-weight: 400;
       color: var(--muted);
       line-height: 1.5;
     }
     .about-item-detail {
-      font-size: 13px;
-      font-weight: 300;
+      font-size: 12px;
+      font-weight: 400;
       color: var(--muted);
       line-height: 1.6;
       margin-top: 4px;
     }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      transition: border-color 0.15s;
+    }
+    .skill-tag:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+    .skill-tag.accent {
+      color: #1E41C0;
+      border-color: rgba(30,65,192,0.3);
+      background: rgba(30,65,192,0.08);
+    }
+    .skill-tag.accent:hover {
+      border-color: #1E41C0;
+    }
+
     .about-contact-row {
       display: flex;
       gap: 32px;
@@ -328,7 +379,7 @@
       margin-top: 4px;
     }
     .about-contact-row a {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 400;
       color: var(--ink);
       transition: color 0.15s;
@@ -341,21 +392,21 @@
 
     /* ── Footer ── */
     footer {
-      padding: 64px 0 72px;
+      padding: 64px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 16px;
     }
     footer p {
-      font-size: 16px;
-      font-weight: 300;
+      font-size: 14px;
+      font-weight: 400;
       color: var(--muted);
     }
     footer a {
-      font-size: 16px;
-      font-weight: 300;
+      font-size: 14px;
+      font-weight: 400;
       color: var(--muted);
       transition: color 0.1s;
       display: inline-flex;
@@ -394,7 +445,7 @@
       transition-delay: 0ms;
     }
     .work-row:hover .work-title {
-      transform: translateX(4px);
+      transform: translateX(8px);
       text-decoration: none;
     }
 
@@ -438,7 +489,7 @@
       width: 260px;
       aspect-ratio: 16/9;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.6);
+      border: 1px solid var(--line);
       box-shadow: 0 8px 32px rgba(0,0,0,0.12);
       z-index: 100;
       transition: opacity 0.2s ease;
@@ -477,6 +528,14 @@
     footer a {
       transition: color 0.1s, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
+    .header-links a:focus-visible,
+    footer a:focus-visible,
+    .about-contact-row a:focus-visible,
+    .theme-toggle:focus-visible {
+      outline: 2px solid #1E41C0;
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
 
     /* ── Page transition ── */
     .wrap {
@@ -489,16 +548,17 @@
 
     /* ── Mobile ── */
     @media (max-width: 768px) {
-      .wrap { padding: 0 28px; }
-      .work-row { margin: 0 -28px; padding: 28px 28px; }
+      .wrap { padding: 0 24px; }
+      .work-row { margin: 0 -24px; padding: 24px; }
       header { padding: 48px 0 56px; }
-      .intro p { font-size: 20px; }
-      .work-type { display: none; }
+      .intro p { font-size: 16px; }
       .work-row { grid-template-columns: 1fr auto; }
-      .work-title { font-size: 19px; }
+      .work-thumb { width: 100%; grid-column: 1 / -1; }
+      .work-title { font-size: 16px; }
     }
     @media (hover: none) {
       .work-preview { display: none; }
+      .work-row:active { background: var(--hover-bg); }
     }
 
     /* ── Scroll-driven work row reveal ── */
@@ -607,49 +667,60 @@
   <!-- Work -->
   <div class="work-section" id="works">
     <div class="work-header reveal" style="--d:.14s">
-      <span>Work</span>
-      <span>Year</span>
+      <h2 class="work-header-title">Work</h2>
     </div>
 
-    <a href="allaw/" class="work-row reveal" style="--d:.21s" data-preview="allaw/assets/Resume_2.jpg">
+    <a href="allaw/" class="work-row reveal" style="--d:.21s" data-preview="allaw/assets/Resume_2.jpg" data-accent="blue">
+      <img class="work-thumb" src="allaw/assets/Resume_2.jpg" alt="ALLAW 프로젝트 썸네일" loading="lazy" />
       <div class="work-left">
-        <h2 class="work-title">ALLAW — 법률 AI 앱<span class="work-arrow"> →</span></h2>
+        <div class="work-meta">
+          <h2 class="work-title">ALLAW — 법률 AI 앱</h2>
+          <span class="work-year-badge">2025</span>
+        </div>
         <p class="work-desc">변호사가 말하는 방식이 장벽이었다. 법률 용어를 사용자 언어로 바꾸는 AI 상담 서비스.</p>
+        <span class="work-type">UX Research · UI Design</span>
       </div>
-      <span class="work-type">UX Research · UI Design</span>
-      <span class="work-year">2025</span>
+      <span class="work-arrow">→</span>
     </a>
 
-    <a href="clog/" class="work-row reveal" style="--d:.28s" data-preview="clog/img_main.jpg">
+    <a href="clog/" class="work-row reveal" style="--d:.28s" data-preview="clog/img_main.jpg" data-accent="green">
+      <img class="work-thumb" src="clog/img_main.jpg" alt="Clog 프로젝트 썸네일" loading="lazy" />
       <div class="work-left">
-        <h2 class="work-title">Clog — 클라이밍 기록 앱<span class="work-arrow"> →</span></h2>
+        <div class="work-meta">
+          <h2 class="work-title">Clog — 클라이밍 기록 앱</h2>
+          <span class="work-year-badge">2024</span>
+        </div>
         <p class="work-desc">"3개월째 다니는데 뭐가 달라졌는지 모르겠어요." 이 한마디에서 시작한 클라이밍 성장 기록 앱.</p>
+        <span class="work-type">UX Research · UI Design</span>
       </div>
-      <span class="work-type">UX Research · UI Design</span>
-      <span class="work-year">2024</span>
+      <span class="work-arrow">→</span>
     </a>
 
-    <a href="resin/" class="work-row reveal" style="--d:.35s" data-preview="resin/thumb.jpg">
+    <a href="resin/" class="work-row reveal" style="--d:.35s" data-preview="resin/thumb.jpg" data-accent="amber">
+      <img class="work-thumb" src="resin/thumb.jpg" alt="EEL 프로젝트 썸네일" loading="lazy" />
       <div class="work-left">
-        <h2 class="work-title">EEL — 레진 아트퍼니처 웹사이트<span class="work-arrow"> →</span></h2>
+        <div class="work-meta">
+          <h2 class="work-title">EEL — 레진 아트퍼니처 웹사이트</h2>
+          <span class="work-year-badge">2026</span>
+        </div>
         <p class="work-desc">프리미엄 수제 레진 테이블 브랜드. e-커머스 + BTO(Build-to-Order) 경험 설계.</p>
+        <span class="work-type">Brand · Web Design</span>
       </div>
-      <span class="work-type">Brand · Web Design</span>
-      <span class="work-year">2026</span>
+      <span class="work-arrow">→</span>
     </a>
 
   </div>
 
   <!-- About -->
   <div class="about-section reveal" id="about" style="--d:.42s">
-    <p class="about-header">About</p>
+    <h2 class="about-header">About</h2>
     <p class="about-intro">사용자는 '어렵다'고 말하지만, 뭐가 어려운지는 말하지 못합니다.<br>
     <em>표면적인 답 뒤에 숨은 진짜 장벽을 찾는 게 제 리서치이고, 거기서 세운 가설이 틀렸을 때 비로소 설계가 시작됩니다.</em></p>
 
     <div class="about-grid">
       <!-- 경력 -->
       <div>
-        <p class="about-block-title">Experience</p>
+        <h3 class="about-block-title">Experience</h3>
         <div class="about-item">
           <p class="about-item-title">엠에스(MS)컴퍼니</p>
           <p class="about-item-sub">UI/UX 기획 · 모바일 디자인 — 2022.06 ~ 2023.01</p>
@@ -663,7 +734,7 @@
 
       <!-- 학력 -->
       <div>
-        <p class="about-block-title">Education</p>
+        <h3 class="about-block-title">Education</h3>
         <div class="about-item">
           <p class="about-item-title">국민대학교 테크노디자인전문대학원</p>
           <p class="about-item-sub">석사 · 스마트 경험 디자인 · 인터랙션랩 — 2023.09 ~ 2025.08</p>
@@ -677,9 +748,24 @@
         </div>
       </div>
 
+      <!-- 스킬 -->
+      <div>
+        <h3 class="about-block-title">Skills & Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag accent">UX Research</span>
+          <span class="skill-tag accent">Service Design</span>
+          <span class="skill-tag">User Interview</span>
+          <span class="skill-tag">Usability Testing</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Prototyping</span>
+          <span class="skill-tag">React Native</span>
+          <span class="skill-tag">HTML/CSS</span>
+        </div>
+      </div>
+
       <!-- 연락처 -->
       <div>
-        <p class="about-block-title">Contact</p>
+        <h3 class="about-block-title">Contact</h3>
         <div class="about-contact-row">
           <a href="mailto:sjkim942884@gmail.com">sjkim942884@gmail.com</a>
           <a href="tel:01082832893">010-8283-2893</a>
