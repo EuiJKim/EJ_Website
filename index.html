@@ -7,7 +7,7 @@
   <title>Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -134,8 +134,8 @@
       border-bottom: 1px solid var(--line);
     }
     .name {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--ink);
     }
@@ -193,7 +193,7 @@
       font-size: clamp(20px, 2.4vw, 26px);
       font-weight: 600;
       color: var(--ink);
-      line-height: 1.55;
+      line-height: 1.65;
       max-width: 780px;
       text-wrap: balance;
     }
@@ -247,6 +247,9 @@
     html.light .hero-card:hover {
       box-shadow: 0 16px 48px rgba(var(--accent-rgb),0.12);
     }
+    .hero-card:active {
+      transform: scale(0.98);
+    }
     .hero-card-img-wrap {
       aspect-ratio: 16/10;
       overflow: hidden;
@@ -269,7 +272,7 @@
     }
     .hero-card-title {
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--ink);
       letter-spacing: -0.01em;
     }
@@ -292,6 +295,10 @@
       font-weight: 600;
       padding: 4px 10px;
       border-radius: 4px;
+      transition: background 0.15s;
+    }
+    .hero-card:hover .hero-card-badge {
+      background: rgba(var(--accent-rgb),0.25);
     }
     .hero-card-badge[data-accent="blue"] { color: var(--accent); background: rgba(var(--accent-rgb),0.15); }
     .hero-card-badge[data-accent="green"] { color: var(--green); background: rgba(var(--green-rgb), 0.15); }
@@ -388,6 +395,41 @@
       line-height: 1.6;
       margin-top: 8px;
     }
+    .credential-card {
+      margin-top: 16px;
+      padding: 16px 20px;
+      background: rgba(var(--accent-rgb), 0.04);
+      border: 1px solid rgba(var(--accent-rgb), 0.15);
+      border-radius: 8px;
+    }
+    .credential-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .credential-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .credential-abstract {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .credential-link {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      transition: opacity 0.15s;
+    }
+    .credential-link:hover { opacity: 0.7; }
+
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
@@ -539,9 +581,10 @@
     .theme-toggle:focus-visible,
     .skill-tag:focus-visible,
     .hero-card:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
+      outline: 3px solid var(--accent);
+      outline-offset: 6px;
       border-radius: 12px;
+      box-shadow: 0 0 0 1px var(--bg);
     }
 
     /* ── Page transition ── */
@@ -564,7 +607,7 @@
     @media (max-width: 768px) {
       .wrap { padding: 0 24px; }
       header { padding: 48px 0; }
-      .intro p { font-size: 16px; }
+      .intro p { font-size: 18px; padding: 0; }
       .about-grid { grid-template-columns: 1fr; }
       .hero-card-desc,
       .hero-card-type,
@@ -572,6 +615,14 @@
       .about-item-detail,
       .about-block-title,
       .skill-tag { font-size: 14px; }
+    }
+
+    /* ── Landscape ── */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero-area { padding: 24px 0; }
+      .intro p { font-size: clamp(16px, 2vw, 20px); }
+      header { padding: 32px 0; }
+      .hero-cards { grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 24px 0 32px; }
     }
 
     /* ── Scroll-driven intro fade ── */
@@ -747,9 +798,13 @@
         <div class="about-item">
           <p class="about-item-title">국민대학교 테크노디자인전문대학원</p>
           <p class="about-item-sub">석사 · 스마트 경험 디자인 · 인터랙션랩 — 2023.09 ~ 2025.08</p>
-          <p class="about-item-detail">GPA 4.34 / 4.5<br>
-          졸업논문 — 법률 앱 사용자 경험 제고를 위한 혁신 저항요인 분석 및 사용자 중심 디자인 전략 연구<br>
-          게재논문 — 법률앱 사용자의 혁신저항 및 사용의도에 관한 연구 (DOI: 10.29056/jncist.2025.04.02)</p>
+          <p class="about-item-detail">GPA 4.34 / 4.5</p>
+          <div class="credential-card">
+            <p class="credential-label">📄 게재논문 — JNCIST 2025</p>
+            <p class="credential-title">법률앱 사용자의 혁신저항 및 사용의도에 관한 연구</p>
+            <p class="credential-abstract">법률앱 사용자 44%의 혁신저항 요인을 분석하고, 용어 간소화·단계별 안내·AI 설명 3가지 UX 전략을 제안. 89명 대상 검증 결과 2개 전략에서 76%+ 효과를 확인.</p>
+            <a href="https://doi.org/10.29056/jncist.2025.04.02" target="_blank" rel="noopener" class="credential-link">DOI: 10.29056/jncist.2025.04.02 →</a>
+          </div>
         </div>
         <div class="about-item">
           <p class="about-item-title">Rochester Institute of Technology</p>
