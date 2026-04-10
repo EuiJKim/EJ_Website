@@ -14,15 +14,22 @@
     :root {
       --bg: #111;
       --ink: #f0f0ec;
-      --muted: #888;
+      --muted: #b8b8b8;
       --line: #2a2a2a;
       --hover-bg: #1a1a1a;
+      --accent: #1E41C0;
+      --accent-rgb: 30, 65, 192;
+      --green: #0d9668;
+      --green-rgb: 13, 150, 104;
+      --amber: #b45309;
+      --amber-rgb: 180, 83, 9;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
       color-scheme: dark;
     }
     html.light {
       --bg: #f9f9f7;
       --ink: #111;
-      --muted: #666;
+      --muted: #333;
       --line: #e0e0e0;
       --hover-bg: #f0f0ec;
       color-scheme: light;
@@ -42,6 +49,26 @@
     }
 
     a { text-decoration: none; color: inherit; }
+
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 16px;
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 300;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: top 0.2s;
+    }
+    .skip-link:focus-visible {
+      top: 16px;
+    }
 
     /* ── Aurora background ── */
     .hero-area {
@@ -129,7 +156,9 @@
       transition: color 0.1s;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       min-height: 44px;
+      min-width: 44px;
     }
     .header-links a:hover { color: var(--ink); }
 
@@ -162,7 +191,7 @@
     }
     .intro p {
       font-size: clamp(20px, 2.4vw, 26px);
-      font-weight: 500;
+      font-weight: 600;
       color: var(--ink);
       line-height: 1.55;
       max-width: 780px;
@@ -173,116 +202,109 @@
       color: var(--muted);
     }
 
-    /* ── Work list ── */
-    .work-section {
-      padding-top: 0;
-    }
-    .work-header {
-      display: flex;
-      justify-content: space-between;
-      padding: 28px 0 16px;
-      border-bottom: 1px solid var(--line);
-    }
-    .work-header-title {
+    .section-label {
       font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--muted);
+      margin-top: 48px;
+      margin-bottom: 0;
     }
 
-    /* 각 행 — 카드 with 썸네일 */
-    .work-row {
-      position: relative;
+    /* ── Hero showcase cards ── */
+    .hero-cards {
       display: grid;
-      grid-template-columns: 280px 1fr auto;
-      align-items: center;
-      gap: 32px;
-      border-bottom: 1px solid var(--line);
-      cursor: pointer;
-      transition: background 0.15s;
-      margin: 0 -64px;
-      padding: 24px 64px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 48px 0 64px;
     }
-    .work-row::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 0;
-      background: #1E41C0;
-      transition: width 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .work-row:hover::before,
-    .work-row:focus-visible::before {
-      width: 3px;
-    }
-    .work-row:hover,
-    .work-row:focus-visible { background: var(--hover-bg); outline: none; border-radius: 4px; }
-    .work-row:hover .work-arrow,
-    .work-row:focus-visible .work-arrow { opacity: 1; }
-    .work-row:focus-visible { box-shadow: inset 0 0 0 2px #1E41C0; }
-
-    .work-thumb {
-      width: 280px;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      border-radius: 8px;
+    .hero-card {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
       border: 1px solid var(--line);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-      transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s;
+      background: var(--hover-bg);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s, border-color 0.3s;
+      transform-style: preserve-3d;
+      will-change: transform;
+      opacity: 0;
+      animation: cardReveal 0.6s var(--ease) both;
     }
-    .work-row:hover .work-thumb {
-      transform: scale(1.04);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    body.loaded .hero-card:nth-child(1) { animation-delay: 0.2s; }
+    body.loaded .hero-card:nth-child(2) { animation-delay: 0.35s; }
+    body.loaded .hero-card:nth-child(3) { animation-delay: 0.5s; }
+    .hero-card { animation-play-state: paused; }
+    body.loaded .hero-card { animation-play-state: running; }
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    .work-meta {
+    .hero-card:hover {
+      box-shadow: 0 20px 60px rgba(var(--accent-rgb),0.2);
+      border-color: rgba(var(--accent-rgb),0.3);
+    }
+    html.light .hero-card:hover {
+      box-shadow: 0 16px 48px rgba(var(--accent-rgb),0.12);
+    }
+    .hero-card-img-wrap {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+    .hero-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s var(--ease);
+    }
+    .hero-card:hover .hero-card-img-wrap img {
+      transform: scale(1.05);
+    }
+    .hero-card-info {
+      padding: 16px 20px 20px;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
+      gap: 8px;
     }
-    .work-title {
-      font-size: 20px;
+    .hero-card-title {
+      font-size: 16px;
       font-weight: 600;
-      letter-spacing: -0.02em;
       color: var(--ink);
+      letter-spacing: -0.01em;
     }
-    .work-year-badge {
+    .hero-card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      width: 100%;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+    .hero-card-type {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-top: 8px;
+    }
+    .hero-card-badge {
       font-size: 11px;
       font-weight: 600;
       padding: 4px 10px;
       border-radius: 4px;
     }
-    /* 프로젝트별 액센트 */
-    .work-row[data-accent="blue"] .work-year-badge { color: #1E41C0; background: rgba(30,65,192,0.15); }
-    .work-row[data-accent="green"] .work-year-badge { color: #0d9668; background: rgba(13,150,104,0.15); }
-    .work-row[data-accent="amber"] .work-year-badge { color: #b45309; background: rgba(180,83,9,0.15); }
-    .work-row[data-accent="blue"]::before { background: #1E41C0; }
-    .work-row[data-accent="green"]::before { background: #0d9668; }
-    .work-row[data-accent="amber"]::before { background: #b45309; }
-    .work-row:hover .work-title { text-decoration: none; }
-    .work-desc {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 8px;
-    }
-    .work-type {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--muted);
-      letter-spacing: 0.03em;
+    .hero-card-badge[data-accent="blue"] { color: var(--accent); background: rgba(var(--accent-rgb),0.15); }
+    .hero-card-badge[data-accent="green"] { color: var(--green); background: rgba(var(--green-rgb), 0.15); }
+    .hero-card-badge[data-accent="amber"] { color: var(--amber); background: rgba(var(--amber-rgb), 0.15); }
+
+    @media (max-width: 768px) {
+      .hero-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 32px 0 48px;
+      }
     }
 
-    .work-arrow {
-      opacity: 0;
-      font-size: 18px;
-      color: var(--ink);
-    }
 
     /* ── About section ── */
     .about-section {
@@ -290,60 +312,81 @@
       border-bottom: 1px solid var(--line);
     }
     .about-header {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
       margin-bottom: 40px;
     }
     .about-intro {
       font-size: clamp(16px, 1.9vw, 20px);
       font-weight: 400;
-      line-height: 1.6;
-      max-width: 640px;
-      margin-bottom: 48px;
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: 56px;
     }
     .about-intro em {
       font-style: normal;
-      color: var(--muted);
+      color: var(--ink);
       display: block;
-      margin-top: 16px;
+      margin-top: 20px;
+      padding: 20px 24px;
+      font-size: 1.1em;
+      font-weight: 500;
+      line-height: 1.6;
+      background: rgba(var(--accent-rgb),0.04);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+    }
+    html.light .about-intro em {
+      background: rgba(var(--accent-rgb),0.03);
     }
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px 64px;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 56px 80px;
     }
     .about-block-title {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
+      color: var(--ink);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--line);
     }
     .about-item {
       margin-bottom: 24px;
+      padding: 16px 20px;
+      border-left: 3px solid var(--line);
+      border-radius: 0 8px 8px 0;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .about-item:hover {
+      border-left-color: var(--accent);
+      background: var(--hover-bg);
     }
     .about-item:last-child { margin-bottom: 0; }
     .about-item-title {
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 17px;
+      font-weight: 600;
       margin-bottom: 4px;
+      color: var(--ink);
     }
     .about-item-sub {
       font-size: 13px;
-      font-weight: 400;
+      font-weight: 500;
       color: var(--muted);
       line-height: 1.5;
     }
     .about-item-detail {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 400;
       color: var(--muted);
       line-height: 1.6;
-      margin-top: 4px;
+      margin-top: 8px;
     }
     .skill-tags {
       display: flex;
@@ -351,43 +394,77 @@
       gap: 8px;
     }
     .skill-tag {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 500;
-      padding: 4px 12px;
-      border-radius: 6px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
       border: 1px solid var(--line);
       color: var(--muted);
-      transition: border-color 0.15s;
+      transition: border-color 0.15s, color 0.15s;
     }
     .skill-tag:hover {
       border-color: var(--ink);
       color: var(--ink);
     }
     .skill-tag.accent {
-      color: #1E41C0;
-      border-color: rgba(30,65,192,0.3);
-      background: rgba(30,65,192,0.08);
+      color: var(--accent);
+      border-color: rgba(var(--accent-rgb),0.3);
+      background: rgba(var(--accent-rgb),0.08);
     }
     .skill-tag.accent:hover {
-      border-color: #1E41C0;
+      border-color: var(--accent);
+      background: rgba(var(--accent-rgb),0.15);
     }
 
+    .about-contact-intro {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
     .about-contact-row {
       display: flex;
-      gap: 32px;
+      gap: 16px;
       flex-wrap: wrap;
-      margin-top: 4px;
+      margin-top: 8px;
     }
     .about-contact-row a {
       font-size: 14px;
-      font-weight: 400;
+      font-weight: 500;
       color: var(--ink);
-      transition: color 0.15s;
+      transition: color 0.15s, border-color 0.15s;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
     }
-    .about-contact-row a:hover { color: var(--muted); }
+    .about-contact-row a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(var(--accent-rgb),0.05);
+    }
+    .about-contact-row a.primary {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(var(--accent-rgb),0.08);
+      font-weight: 600;
+    }
+    .about-contact-row a.primary:hover {
+      background: rgba(var(--accent-rgb),0.15);
+    }
+    @media (max-width: 1024px) {
+      .about-grid { gap: 40px 56px; }
+    }
     @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .about-section { padding: 56px 0 48px; }
+      .about-intro { margin-bottom: 40px; }
+      .about-intro em { padding: 16px 20px; }
     }
 
     /* ── Footer ── */
@@ -431,7 +508,7 @@
 
     .reveal {
       opacity: 0;
-      animation: revealUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation: revealUp 0.5s var(--ease) both;
       animation-delay: var(--d, 0s);
       animation-play-state: paused;
     }
@@ -439,102 +516,32 @@
       animation-play-state: running;
     }
 
-    /* ── Hover enhancements (staggered) ── */
-    .work-title {
-      transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      transition-delay: 0ms;
-    }
-    .work-row:hover .work-title {
-      transform: translateX(8px);
-      text-decoration: none;
-    }
-
-    .work-desc {
-      transition: color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      transition-delay: 0ms;
-    }
-    .work-row:hover .work-desc {
-      color: var(--ink);
-      transition-delay: 40ms;
-    }
-
-    .work-arrow {
-      transition: opacity 0.2s, transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      transition-delay: 0ms;
-      transform: translateX(-8px);
-    }
-    .work-row:hover .work-arrow {
-      opacity: 1;
-      transform: translateX(0);
-      transition-delay: 80ms;
-    }
-
     /* ── Word-by-word reveal ── */
     .word {
       display: inline-block;
       opacity: 0;
       transform: translateY(8px);
-      transition: opacity 0.4s, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: opacity 0.4s, transform 0.4s var(--ease);
     }
     .words-visible .word {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* ── Thumbnail preview ── */
-    .work-preview {
-      position: fixed;
-      pointer-events: none;
-      opacity: 0;
-      width: 260px;
-      aspect-ratio: 16/9;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      z-index: 100;
-      transition: opacity 0.2s ease;
-      transform: scale(0.96);
-      object-fit: cover;
-      will-change: transform;
-      left: 0;
-      top: 0;
-    }
-    .work-preview.visible {
-      opacity: 1;
-    }
-    .preview-label {
-      position: fixed;
-      pointer-events: none;
-      opacity: 0;
-      z-index: 101;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: opacity 0.2s ease;
-      left: 0;
-      top: 0;
-      margin-top: calc(260px * 9 / 16 + 8px);
-      margin-left: 4px;
-      will-change: transform;
-    }
-    .preview-label.visible {
-      opacity: 1;
-    }
-
     /* ── Magnetic links ── */
     .header-links a,
     footer a {
-      transition: color 0.1s, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: color 0.1s, transform 0.3s var(--ease);
     }
     .header-links a:focus-visible,
     footer a:focus-visible,
     .about-contact-row a:focus-visible,
-    .theme-toggle:focus-visible {
-      outline: 2px solid #1E41C0;
+    .theme-toggle:focus-visible,
+    .skill-tag:focus-visible,
+    .hero-card:focus-visible {
+      outline: 2px solid var(--accent);
       outline-offset: 4px;
-      border-radius: 2px;
+      border-radius: 12px;
     }
 
     /* ── Page transition ── */
@@ -546,34 +553,37 @@
       transform: translateY(-12px);
     }
 
+    /* ── Tablet ── */
+    @media (max-width: 1024px) {
+      .wrap { padding: 0 40px; }
+      .hero-cards { gap: 16px; }
+      .about-grid { gap: 32px 40px; }
+    }
+
     /* ── Mobile ── */
     @media (max-width: 768px) {
       .wrap { padding: 0 24px; }
-      .work-row { margin: 0 -24px; padding: 24px; }
-      header { padding: 48px 0 56px; }
+      header { padding: 48px 0; }
       .intro p { font-size: 16px; }
-      .work-row { grid-template-columns: 1fr auto; }
-      .work-thumb { width: 100%; grid-column: 1 / -1; }
-      .work-title { font-size: 16px; }
-    }
-    @media (hover: none) {
-      .work-preview { display: none; }
-      .work-row:active { background: var(--hover-bg); }
+      .about-grid { grid-template-columns: 1fr; }
+      .hero-card-desc,
+      .hero-card-type,
+      .about-item-sub,
+      .about-item-detail,
+      .about-block-title,
+      .skill-tag { font-size: 14px; }
     }
 
-    /* ── Scroll-driven work row reveal ── */
+    /* ── Scroll-driven intro fade ── */
     @supports (animation-timeline: view()) {
-      @keyframes scrollReveal {
-        from { opacity: 0; transform: translateY(24px); }
-        to { opacity: 1; transform: translateY(0); }
+      @keyframes introScrollFade {
+        0% { opacity: 1; filter: blur(0); }
+        100% { opacity: 0; filter: blur(4px); transform: translateY(-16px); }
       }
-      .work-row.reveal {
-        animation: scrollReveal linear both;
+      .hero-area {
+        animation: introScrollFade linear both;
         animation-timeline: view();
-        animation-range: entry 0% entry 100%;
-      }
-      body.loaded .work-row.reveal {
-        animation-play-state: running;
+        animation-range: exit 0% exit 50%;
       }
     }
 
@@ -582,9 +592,9 @@
       position: fixed;
       top: 0;
       left: 0;
-      height: 2px;
+      height: 3px;
       width: 100%;
-      background: var(--ink);
+      background: linear-gradient(90deg, var(--accent), var(--green));
       transform-origin: left;
       transform: scaleX(0);
       z-index: 200;
@@ -618,13 +628,21 @@
         clip-path: none;
         transform: none;
       }
-      .work-title,
-      .work-desc,
-      .work-arrow,
-      .work-row::before,
-      .work-preview,
-      .wrap {
+      .hero-card {
+        animation: none !important;
+        opacity: 1 !important;
+      }
+      .hero-card,
+      .hero-card:hover,
+      .hero-card-img-wrap img,
+      .wrap,
+      .header-links a,
+      footer a,
+      .about-contact-row a,
+      .skill-tag,
+      .theme-toggle {
         transition: none !important;
+        transform: none !important;
       }
       .scroll-progress { animation: none; transform: scaleX(1); }
       .aurora { animation: none; }
@@ -633,6 +651,7 @@
   </style>
 </head>
 <body>
+<a href="#works" class="skip-link">본문으로 건너뛰기</a>
 <div class="aurora">
   <div class="aurora-blob"></div>
   <div class="aurora-blob"></div>
@@ -650,8 +669,8 @@
       </div>
       <div class="header-links">
         <a href="#about">About</a>
-        <a href="mailto:sjkim942884@gmail.com">Email</a>
-        <button class="theme-toggle" aria-label="테마 전환">
+        <a href="mailto:sjkim942884@gmail.com" aria-label="이메일: sjkim942884@gmail.com">Email</a>
+        <button class="theme-toggle" role="switch" aria-checked="false" aria-label="라이트 모드 전환">
           <span class="theme-icon">☀</span> Light
         </button>
       </div>
@@ -662,54 +681,48 @@
     <em>사용자가 말하는 방식이 설계의 출발점입니다.</em></p>
   </div>
 
+  <!-- Hero showcase cards -->
+  <h2 class="section-label reveal" style="--d:.12s">Selected Work</h2>
+  <div class="hero-cards reveal" style="--d:.14s">
+    <a href="allaw/" class="hero-card" data-accent="blue" aria-label="ALLAW — 법률 AI 앱. 변호사가 말하는 방식이 장벽이었다. 법률 용어를 사용자 언어로 바꾸는 AI 상담 서비스.">
+      <div class="hero-card-img-wrap">
+        <img src="allaw/assets/Resume_2.jpg" alt="ALLAW 법률 AI 앱 프로젝트 썸네일" loading="eager" />
+      </div>
+      <div class="hero-card-info">
+        <span class="hero-card-badge" data-accent="blue">2025</span>
+        <p class="hero-card-title">ALLAW — 법률 AI 앱</p>
+        <p class="hero-card-desc">변호사가 말하는 방식이 장벽이었다. 법률 용어를 사용자 언어로 바꾸는 AI 상담 서비스.</p>
+        <span class="hero-card-type">UX Research · UI Design</span>
+      </div>
+    </a>
+    <a href="clog/" class="hero-card" data-accent="green" aria-label="Clog — 클라이밍 기록 앱. 3개월째 다니는데 뭐가 달라졌는지 모르겠어요. 이 한마디에서 시작한 성장 기록 앱.">
+      <div class="hero-card-img-wrap">
+        <img src="clog/img_main.jpg" alt="Clog 클라이밍 기록 앱 프로젝트 썸네일" loading="eager" />
+      </div>
+      <div class="hero-card-info">
+        <span class="hero-card-badge" data-accent="green">2024</span>
+        <p class="hero-card-title">Clog — 클라이밍 기록 앱</p>
+        <p class="hero-card-desc">"3개월째 다니는데 뭐가 달라졌는지 모르겠어요." 이 한마디에서 시작한 성장 기록 앱.</p>
+        <span class="hero-card-type">UX Research · UI Design</span>
+      </div>
+    </a>
+    <a href="resin/" class="hero-card" data-accent="amber" aria-label="EEL — 레진 아트퍼니처. 프리미엄 수제 레진 테이블 브랜드. e-커머스 + BTO 경험 설계.">
+      <div class="hero-card-img-wrap">
+        <img src="resin/thumb.jpg" alt="EEL 레진 아트퍼니처 프로젝트 썸네일" loading="eager" />
+      </div>
+      <div class="hero-card-info">
+        <span class="hero-card-badge" data-accent="amber">2026</span>
+        <p class="hero-card-title">EEL — 레진 아트퍼니처</p>
+        <p class="hero-card-desc">프리미엄 수제 레진 테이블 브랜드. e-커머스 + BTO 경험 설계.</p>
+        <span class="hero-card-type">Brand · Web Design</span>
+      </div>
+    </a>
+  </div>
+
   </div><!-- /hero-area -->
 
-  <!-- Work -->
-  <div class="work-section" id="works">
-    <div class="work-header reveal" style="--d:.14s">
-      <h2 class="work-header-title">Work</h2>
-    </div>
-
-    <a href="allaw/" class="work-row reveal" style="--d:.21s" data-preview="allaw/assets/Resume_2.jpg" data-accent="blue">
-      <img class="work-thumb" src="allaw/assets/Resume_2.jpg" alt="ALLAW 프로젝트 썸네일" loading="lazy" />
-      <div class="work-left">
-        <div class="work-meta">
-          <h2 class="work-title">ALLAW — 법률 AI 앱</h2>
-          <span class="work-year-badge">2025</span>
-        </div>
-        <p class="work-desc">변호사가 말하는 방식이 장벽이었다. 법률 용어를 사용자 언어로 바꾸는 AI 상담 서비스.</p>
-        <span class="work-type">UX Research · UI Design</span>
-      </div>
-      <span class="work-arrow">→</span>
-    </a>
-
-    <a href="clog/" class="work-row reveal" style="--d:.28s" data-preview="clog/img_main.jpg" data-accent="green">
-      <img class="work-thumb" src="clog/img_main.jpg" alt="Clog 프로젝트 썸네일" loading="lazy" />
-      <div class="work-left">
-        <div class="work-meta">
-          <h2 class="work-title">Clog — 클라이밍 기록 앱</h2>
-          <span class="work-year-badge">2024</span>
-        </div>
-        <p class="work-desc">"3개월째 다니는데 뭐가 달라졌는지 모르겠어요." 이 한마디에서 시작한 클라이밍 성장 기록 앱.</p>
-        <span class="work-type">UX Research · UI Design</span>
-      </div>
-      <span class="work-arrow">→</span>
-    </a>
-
-    <a href="resin/" class="work-row reveal" style="--d:.35s" data-preview="resin/thumb.jpg" data-accent="amber">
-      <img class="work-thumb" src="resin/thumb.jpg" alt="EEL 프로젝트 썸네일" loading="lazy" />
-      <div class="work-left">
-        <div class="work-meta">
-          <h2 class="work-title">EEL — 레진 아트퍼니처 웹사이트</h2>
-          <span class="work-year-badge">2026</span>
-        </div>
-        <p class="work-desc">프리미엄 수제 레진 테이블 브랜드. e-커머스 + BTO(Build-to-Order) 경험 설계.</p>
-        <span class="work-type">Brand · Web Design</span>
-      </div>
-      <span class="work-arrow">→</span>
-    </a>
-
-  </div>
+  <!-- Work section anchor -->
+  <div id="works"></div>
 
   <!-- About -->
   <div class="about-section reveal" id="about" style="--d:.42s">
@@ -724,11 +737,7 @@
         <div class="about-item">
           <p class="about-item-title">엠에스(MS)컴퍼니</p>
           <p class="about-item-sub">UI/UX 기획 · 모바일 디자인 — 2022.06 ~ 2023.01</p>
-          <p class="about-item-detail">법률 플랫폼 ALLAW — Front-End(React Native Web App) 초기 화면 설계, UI/UX 디자인</p>
-        </div>
-        <div class="about-item">
-          <p class="about-item-title">선용어패럴</p>
-          <p class="about-item-sub">총무부 — 2023.04 ~ 2025.07</p>
+          <p class="about-item-detail">법률 플랫폼 ALLAW — UI/UX 기획 · React Native Web App 초기 화면 설계<br>초기창업패키지 7,000만원 선정</p>
         </div>
       </div>
 
@@ -754,10 +763,10 @@
         <div class="skill-tags">
           <span class="skill-tag accent">UX Research</span>
           <span class="skill-tag accent">Service Design</span>
-          <span class="skill-tag">User Interview</span>
+          <span class="skill-tag accent">User Interview</span>
+          <span class="skill-tag accent">Prototyping</span>
           <span class="skill-tag">Usability Testing</span>
           <span class="skill-tag">Figma</span>
-          <span class="skill-tag">Prototyping</span>
           <span class="skill-tag">React Native</span>
           <span class="skill-tag">HTML/CSS</span>
         </div>
@@ -766,8 +775,9 @@
       <!-- 연락처 -->
       <div>
         <h3 class="about-block-title">Contact</h3>
+        <p class="about-contact-intro">협업, 프로젝트 문의, 커피챗 환영합니다.</p>
         <div class="about-contact-row">
-          <a href="mailto:sjkim942884@gmail.com">sjkim942884@gmail.com</a>
+          <a href="mailto:sjkim942884@gmail.com" class="primary">sjkim942884@gmail.com</a>
           <a href="tel:01082832893">010-8283-2893</a>
         </div>
       </div>
@@ -777,12 +787,9 @@
   <!-- Footer -->
   <footer class="reveal" style="--d:.49s">
     <p>김의준 · Seoul, KR</p>
-    <a href="mailto:sjkim942884@gmail.com">sjkim942884@gmail.com</a>
+    <a href="mailto:sjkim942884@gmail.com" aria-label="이메일 보내기: sjkim942884@gmail.com">sjkim942884@gmail.com</a>
   </footer>
 
-  <!-- Thumbnail preview -->
-  <img class="work-preview" src="" alt="">
-  <span class="preview-label">View Project</span>
 
 </div>
 
@@ -796,8 +803,12 @@
     const btn = document.querySelector('.theme-toggle');
     if (!btn) return;
 
-    function updateBtn() {
+    const updateBtn = () => {
       const isLight = document.documentElement.classList.contains('light');
+      btn.setAttribute('aria-checked', isLight);
+      btn.setAttribute('aria-label', isLight
+        ? '현재 라이트 모드 · 다크 모드로 전환'
+        : '현재 다크 모드 · 라이트 모드로 전환');
       btn.innerHTML = isLight
         ? '<span class="theme-icon">☽</span> Dark'
         : '<span class="theme-icon">☀</span> Light';
@@ -848,73 +859,10 @@
     }
   });
 
-  // ── Momentum-based thumbnail preview ──
-  (() => {
-    const preview = document.querySelector('.work-preview');
-    const label = document.querySelector('.preview-label');
-    const rows = document.querySelectorAll('.work-row[data-preview]');
-    if (!preview || !rows.length) return;
-
-    let targetX = 0, targetY = 0;
-    let currentX = 0, currentY = 0;
-    let prevX = 0, prevY = 0;
-    let rafId = null;
-    let isVisible = false;
-
-    function lerp(a, b, t) { return a + (b - a) * t; }
-
-    function animate() {
-      currentX = lerp(currentX, targetX, 0.12);
-      currentY = lerp(currentY, targetY, 0.12);
-
-      // Velocity-based tilt (max 3 degrees)
-      const vx = currentX - prevX;
-      const vy = currentY - prevY;
-      const tiltX = Math.max(-3, Math.min(3, vy * 0.3));
-      const tiltY = Math.max(-3, Math.min(3, -vx * 0.3));
-      prevX = currentX;
-      prevY = currentY;
-
-      const transform = `translate3d(${currentX}px, ${currentY}px, 0) rotate3d(1, 0, 0, ${tiltX}deg) rotate3d(0, 1, 0, ${tiltY}deg)`;
-      preview.style.transform = isVisible ? transform + ' scale(1)' : transform + ' scale(0.96)';
-      if (label) {
-        label.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
-      }
-
-      rafId = requestAnimationFrame(animate);
-    }
-
-    rows.forEach(row => {
-      row.addEventListener('mouseenter', () => {
-        preview.src = row.dataset.preview;
-        preview.classList.add('visible');
-        if (label) label.classList.add('visible');
-        isVisible = true;
-        if (!rafId) rafId = requestAnimationFrame(animate);
-      });
-
-      row.addEventListener('mouseleave', () => {
-        preview.classList.remove('visible');
-        if (label) label.classList.remove('visible');
-        isVisible = false;
-        setTimeout(() => {
-          if (!isVisible && rafId) {
-            cancelAnimationFrame(rafId);
-            rafId = null;
-          }
-        }, 300);
-      });
-
-      row.addEventListener('mousemove', (e) => {
-        targetX = e.clientX + 20;
-        targetY = e.clientY - 60;
-      });
-    });
-  })();
-
   // ── Magnetic link effect ──
   (() => {
-    if (!window.matchMedia('(hover: hover)').matches) return;
+    if (!window.matchMedia('(hover: hover)').matches ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const magneticEls = document.querySelectorAll('.header-links a, footer a');
     const strength = 0.3;
@@ -935,19 +883,35 @@
     });
   })();
 
+  // ── 3D tilt on hero cards ──
+  (() => {
+    if (!window.matchMedia('(hover: hover)').matches ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    document.querySelectorAll('.hero-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(800px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  })();
+
   // ── Page transition on click ──
   (() => {
     const wrap = document.querySelector('.wrap');
-    const rows = document.querySelectorAll('.work-row');
+    const cards = document.querySelectorAll('.hero-card');
 
-    rows.forEach(row => {
-      row.addEventListener('click', (e) => {
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
         e.preventDefault();
-        const href = row.getAttribute('href');
+        const href = card.getAttribute('href');
         wrap.classList.add('leaving');
-        document.querySelector('.work-preview').classList.remove('visible');
-        const label = document.querySelector('.preview-label');
-        if (label) label.classList.remove('visible');
         setTimeout(() => { window.location = href; }, 250);
       });
     });

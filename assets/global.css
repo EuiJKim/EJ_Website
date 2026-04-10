@@ -6,7 +6,7 @@
   --dark:    #f0f0ec;
   --gray-90: #e0e0dc;
   --gray-70: #aaa;
-  --gray-50: #888;
+  --gray-50: #999;
   --gray-20: #2a2a2a;
   --gray-10: #1a1a1a;
   --white:   #111;
@@ -20,7 +20,7 @@ html.light {
   --dark:    #0f0f0f;
   --gray-90: #1a1a1a;
   --gray-70: #444;
-  --gray-50: #666;
+  --gray-50: #333;
   --gray-20: #d4d4d4;
   --gray-10: #f5f5f5;
   --white:   #ffffff;
