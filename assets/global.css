@@ -114,6 +114,70 @@ footer {
 .footer-name { font-size: 14px; font-weight: 600; color: var(--dark); }
 .footer-right { font-size: 13px; color: var(--gray-50); }
 
+/* ── Case Study Common ── */
+.case-hero {
+  padding: 72px 48px 56px;
+  border-bottom: 1px solid var(--gray-20);
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--gray-50);
+  margin-bottom: 40px; transition: color 0.15s;
+  min-height: 44px;
+}
+.back-link:hover { color: var(--dark); }
+.case-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.meta-tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  padding: 4px 12px; border-radius: 20px; text-transform: uppercase;
+  background: var(--accent-light); color: var(--accent);
+}
+.meta-tag.neutral { background: var(--gray-10); color: var(--gray-70); }
+.case-hero h1 {
+  font-size: clamp(28px, 4vw, 52px); font-weight: 700;
+  letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px;
+}
+.case-hero p {
+  font-size: 17px; font-weight: 300; color: var(--gray-70);
+  line-height: 1.7; max-width: 640px; margin-bottom: 36px;
+}
+.case-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+.stat-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  color: var(--gray-50); text-transform: uppercase; margin-bottom: 4px;
+}
+.stat-val { font-size: 15px; font-weight: 500; color: var(--dark); }
+
+/* Reveal animation (subpages) */
+@keyframes revealUp {
+  from { clip-path: inset(100% 0 0 0); opacity: 0; transform: translateY(20px); }
+  to { clip-path: inset(0); opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  animation: revealUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-delay: var(--d, 0s);
+  animation-play-state: paused;
+}
+body.loaded .reveal { animation-play-state: running; }
+
+/* Skip link (subpages) */
+.skip-link {
+  position: fixed; top: -100px; left: 16px;
+  background: var(--accent); color: #fff;
+  padding: 12px 16px; border-radius: 4px;
+  font-size: 14px; font-weight: 500;
+  z-index: 300; min-height: 44px;
+  display: inline-flex; align-items: center;
+  transition: top 0.2s;
+}
+.skip-link:focus-visible { top: 16px; }
+
+@media (max-width: 768px) {
+  .case-hero { padding: 48px 24px 40px; }
+  .case-stats { gap: 24px; }
+}
+
 /* ── View Transitions ── */
 @view-transition { navigation: auto; }
 ::view-transition-old(root) {

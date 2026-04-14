@@ -7,23 +7,8 @@
   <title>EEL — 레진 아트퍼니처 웹사이트 | Portfolio</title>
   <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light')</script>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0/model-viewer.min.js"></script>
-  <link rel="stylesheet" href="../assets/global.css?v=3" />
+  <link rel="stylesheet" href="../assets/global.css?v=4" />
   <style>
-    .case-hero {
-      padding: 72px 48px 56px;
-      border-bottom: 1px solid var(--gray-20);
-    }
-    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--gray-50); margin-bottom: 40px; transition: color 0.15s; min-height: 44px; }
-    .back-link:hover { color: var(--dark); }
-    .case-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-    .meta-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; background: var(--accent-light); color: var(--accent); }
-    .meta-tag.neutral { background: var(--gray-10); color: var(--gray-70); }
-    .case-hero h1 { font-size: clamp(28px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px; }
-    .case-hero p { font-size: 17px; font-weight: 300; color: var(--gray-70); line-height: 1.7; max-width: 640px; margin-bottom: 36px; }
-    .case-stats { display: flex; gap: 48px; flex-wrap: wrap; }
-    .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--gray-50); text-transform: uppercase; margin-bottom: 4px; }
-    .stat-val { font-size: 15px; font-weight: 500; color: var(--dark); }
-
     /* Live site preview */
     .live-section {
       padding: 48px 48px 32px;
@@ -72,21 +57,8 @@
     .wip-notice p { font-size: 14px; color: var(--accent); font-weight: 400; line-height: 1.6; }
     .wip-notice strong { font-weight: 600; }
 
-    /* Reveal animation */
-    @keyframes revealUp {
-      from { clip-path: inset(100% 0 0 0); opacity: 0; transform: translateY(20px); }
-      to { clip-path: inset(0); opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 0;
-      animation: revealUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-      animation-delay: var(--d, 0s);
-      animation-play-state: paused;
-    }
-    body.loaded .reveal { animation-play-state: running; }
-
     @media (max-width: 768px) {
-      .case-hero, .live-section, .context-section { padding-left: 24px; padding-right: 24px; }
+      .live-section, .context-section { padding-left: 24px; padding-right: 24px; }
       .context-grid { grid-template-columns: 1fr; }
       .wip-notice { margin: 32px 24px 0; }
       .case-stats { gap: 24px; }
