@@ -21,11 +21,11 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #111;
-      --ink: #f0f0ec;
-      --muted: #b8b8b8;
-      --line: #2a2a2a;
-      --hover-bg: #1a1a1a;
+      --bg: #f9f9f7;
+      --ink: #111;
+      --muted: #333;
+      --line: #e0e0e0;
+      --hover-bg: #f0f0ec;
       --accent: #1E41C0;
       --accent-rgb: 30, 65, 192;
       --green: #0d9668;
@@ -33,15 +33,15 @@
       --amber: #b45309;
       --amber-rgb: 180, 83, 9;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      color-scheme: dark;
-    }
-    html.light {
-      --bg: #f9f9f7;
-      --ink: #111;
-      --muted: #333;
-      --line: #e0e0e0;
-      --hover-bg: #f0f0ec;
       color-scheme: light;
+    }
+    html.dark {
+      --bg: #111;
+      --ink: #f0f0ec;
+      --muted: #b8b8b8;
+      --line: #2a2a2a;
+      --hover-bg: #1a1a1a;
+      color-scheme: dark;
     }
 
     html { scroll-behavior: smooth; }
@@ -100,24 +100,24 @@
     .aurora-blob:nth-child(1) {
       width: 60%; height: 50%;
       top: 10%; left: 5%;
-      background: #0f1a2e;
+      background: #e8f5f2;
       --dur: 8s; --delay: 0s;
     }
     .aurora-blob:nth-child(2) {
       width: 50%; height: 60%;
       bottom: 0; right: 5%;
-      background: #151e35;
+      background: #dff0ed;
       --dur: 10s; --delay: 2s;
     }
     .aurora-blob:nth-child(3) {
       width: 40%; height: 40%;
       top: 30%; left: 40%;
-      background: #0d1525;
+      background: #e2f3f0;
       --dur: 12s; --delay: 4s;
     }
-    html.light .aurora-blob:nth-child(1) { background: #e8f5f2; }
-    html.light .aurora-blob:nth-child(2) { background: #dff0ed; }
-    html.light .aurora-blob:nth-child(3) { background: #e2f3f0; }
+    html.dark .aurora-blob:nth-child(1) { background: #0f1a2e; }
+    html.dark .aurora-blob:nth-child(2) { background: #151e35; }
+    html.dark .aurora-blob:nth-child(3) { background: #0d1525; }
     @keyframes blobPulse {
       0%   { opacity: 0; transform: translate(0, 0) scale(0.9); }
       50%  { opacity: 0.6; }
@@ -250,11 +250,11 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .hero-card:hover {
-      box-shadow: 0 20px 60px rgba(var(--accent-rgb),0.2);
+      box-shadow: 0 16px 48px rgba(var(--accent-rgb),0.12);
       border-color: rgba(var(--accent-rgb),0.3);
     }
-    html.light .hero-card:hover {
-      box-shadow: 0 16px 48px rgba(var(--accent-rgb),0.12);
+    html.dark .hero-card:hover {
+      box-shadow: 0 20px 60px rgba(var(--accent-rgb),0.25);
     }
     .hero-card:active {
       transform: scale(0.98);
@@ -359,12 +359,12 @@
       font-size: 1.1em;
       font-weight: 500;
       line-height: 1.6;
-      background: rgba(var(--accent-rgb),0.04);
+      background: rgba(var(--accent-rgb),0.03);
       border-left: 3px solid var(--accent);
       border-radius: 0 8px 8px 0;
     }
-    html.light .about-intro em {
-      background: rgba(var(--accent-rgb),0.03);
+    html.dark .about-intro em {
+      background: rgba(var(--accent-rgb),0.04);
     }
     .about-range {
       display: flex;
@@ -920,31 +920,31 @@
 </div>
 
 <script>
-  // ── Theme toggle (default: dark) ──
+  // ── Theme toggle (default: light) ──
   (() => {
     const saved = localStorage.getItem('theme');
-    if (saved === 'light') document.documentElement.classList.add('light');
-    // else: dark is default (no class needed)
+    if (saved === 'dark') document.documentElement.classList.add('dark');
+    // else: light is default (no class needed)
 
     const btn = document.querySelector('.theme-toggle');
     if (!btn) return;
 
     const updateBtn = () => {
-      const isLight = document.documentElement.classList.contains('light');
-      btn.setAttribute('aria-checked', isLight);
-      btn.setAttribute('aria-label', isLight
-        ? '현재 라이트 모드 · 다크 모드로 전환'
-        : '현재 다크 모드 · 라이트 모드로 전환');
-      btn.innerHTML = isLight
-        ? '<span class="theme-icon">☽</span> Dark'
-        : '<span class="theme-icon">☀</span> Light';
+      const isDark = document.documentElement.classList.contains('dark');
+      btn.setAttribute('aria-checked', isDark);
+      btn.setAttribute('aria-label', isDark
+        ? '현재 다크 모드 · 라이트 모드로 전환'
+        : '현재 라이트 모드 · 다크 모드로 전환');
+      btn.innerHTML = isDark
+        ? '<span class="theme-icon">☀</span> Light'
+        : '<span class="theme-icon">☽</span> Dark';
     }
     updateBtn();
 
     btn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('light');
+      document.documentElement.classList.toggle('dark');
       localStorage.setItem('theme',
-        document.documentElement.classList.contains('light') ? 'light' : 'dark'
+        document.documentElement.classList.contains('dark') ? 'dark' : 'light'
       );
       updateBtn();
     });
