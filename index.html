@@ -4,7 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="view-transition" content="same-origin" />
-  <title>Portfolio</title>
+  <title>김의준 — UX/UI Designer Portfolio</title>
+  <meta name="description" content="UX/UI 디자이너 김의준. 가설 기반 리서치로 AI 법률 상담, 클라이밍 기록, 레진 가구 커머스를 설계했습니다. 석사 · KCI 게재논문 · 3개 프로젝트.">
+  <meta property="og:title" content="김의준 — UX/UI Designer">
+  <meta property="og:description" content="Research-driven UX/UI Design. ALLAW (AI Legal), Clog (Climbing), EEL (Furniture E-commerce).">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://euijkim.github.io/EJ_Website/">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"김의준","jobTitle":"UX/UI Designer","url":"https://euijkim.github.io/EJ_Website/","alumniOf":[{"@type":"CollegeOrUniversity","name":"국민대학교 테크노디자인전문대학원"},{"@type":"CollegeOrUniversity","name":"Rochester Institute of Technology"}],"knowsAbout":["UX Research","Service Design","UI Design","Prototyping"]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -290,6 +299,14 @@
       letter-spacing: 0.04em;
       margin-top: 8px;
     }
+    .hero-card-metrics {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-top: 8px;
+      width: 100%;
+    }
+
     .hero-card-badge {
       font-size: 11px;
       font-weight: 600;
@@ -485,6 +502,16 @@
       background: rgba(var(--accent-rgb),0.15);
     }
 
+    .about-status {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 12px;
+      padding: 8px 16px;
+      background: rgba(var(--accent-rgb), 0.06);
+      border-radius: 6px;
+      display: inline-block;
+    }
     .about-contact-intro {
       font-size: 14px;
       color: var(--muted);
@@ -768,6 +795,7 @@
         <p class="hero-card-title">ALLAW — 법률 AI 앱</p>
         <p class="hero-card-desc">변호사가 말하는 방식이 장벽이었다. 심층 인터뷰와 설문(n=89)으로 혁신저항 요인을 분석하고, AI 기반 법률 상담 서비스를 설계했다.</p>
         <span class="hero-card-type">UX Research · UI Design</span>
+        <span class="hero-card-metrics">✓ 설문 89명 · 가설 검증 · KCI 논문 게재</span>
       </div>
     </a>
     <a href="clog/" class="hero-card" data-accent="green" aria-label="Clog — 클라이밍 기록 앱. 3개월째 다니는데 뭐가 달라졌는지 모르겠어요. 이 한마디에서 시작한 성장 기록 앱.">
@@ -779,6 +807,7 @@
         <p class="hero-card-title">Clog — 클라이밍 기록 앱</p>
         <p class="hero-card-desc">"3개월째 다니는데 뭐가 달라졌는지 모르겠어요." 가설 3개를 세우고 2개를 검증해서 만든 클라이밍 성장 기록 앱.</p>
         <span class="hero-card-type">UX Research · UI Design</span>
+        <span class="hero-card-metrics">✓ 가설 3개 중 2개 검증 · 1인 기획 100%</span>
       </div>
     </a>
     <a href="resin/" class="hero-card" data-accent="amber" aria-label="EEL — 레진 아트퍼니처. 프리미엄 수제 레진 테이블 브랜드. e-커머스 + BTO 경험 설계.">
@@ -790,6 +819,7 @@
         <p class="hero-card-title">EEL — 레진 아트퍼니처</p>
         <p class="hero-card-desc">프리미엄 수제 레진 테이블 브랜드. 공동창업 · 기획 100%. 3D 커스터마이저 + BTO 주문 플로우 설계.</p>
         <span class="hero-card-type">Brand · Web Design</span>
+        <span class="hero-card-metrics">✓ 라이브 운영 · 3D 커스터마이저 · 공동창업</span>
       </div>
     </a>
   </div>
@@ -869,10 +899,12 @@
       <!-- 연락처 -->
       <div>
         <h3 class="about-block-title">Contact</h3>
+        <p class="about-status">Currently open for UX/UI design roles & freelance projects.</p>
         <p class="about-contact-intro">협업, 프로젝트 문의, 커피챗 환영합니다.</p>
         <div class="about-contact-row">
           <a href="mailto:sjkim942884@gmail.com" class="primary">sjkim942884@gmail.com</a>
           <a href="tel:01082832893">010-8283-2893</a>
+          <a href="https://github.com/EuiJKim" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </div>
