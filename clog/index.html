@@ -79,40 +79,10 @@
       width: auto; height: auto; overflow: visible;
     }
 
-    /* Prototype button */
-    .proto-btn {
-      margin-top: 24px;
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px; border: 1px solid var(--accent); border-radius: 10px;
-      background: transparent; color: var(--accent);
-      font-family: inherit; font-size: 15px; font-weight: 600;
-      cursor: pointer; transition: background 0.15s, color 0.15s;
-    }
-    .proto-btn:hover { background: var(--accent); color: #fff; }
-
-    .proto-modal {
-      border: none; border-radius: 20px; padding: 0;
-      background: transparent; max-width: 415px; max-height: 90vh; overflow: visible;
-    }
-    .proto-modal::backdrop { background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
-    .proto-modal .modal-inner {
-      position: relative; border-radius: 40px; overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.3); border: 6px solid #222; background: #fff;
-    }
-    .proto-modal iframe { width: 375px; height: 667px; border: none; display: block; }
-    .proto-close {
-      position: absolute; top: -16px; right: -16px;
-      width: 36px; height: 36px; border-radius: 50%; border: none;
-      background: var(--dark); color: var(--bg); font-size: 18px;
-      cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;
-      transition: transform 0.15s;
-    }
-    .proto-close:hover { transform: scale(1.1); }
 
 
 
     @media (max-width: 768px) {
-      .proto-modal iframe { width: 340px; height: 604px; }
     }
   </style>
 </head>
@@ -147,10 +117,6 @@
       <div><p class="stat-label">기간</p><p class="stat-val">2024 – 2025</p></div>
       <div><p class="stat-label">Pages</p><p class="stat-val">12 Slides</p></div>
     </div>
-    <button class="proto-btn reveal" style="--d:.35s" onclick="document.getElementById('protoModal').showModal()">
-      📱 Try Prototype
-    </button>
-    <p style="font-size:12px;color:var(--gray-50);margin-top:8px;" class="reveal" style="--d:.40s">체크인 → 루트 기록 → 성장 차트 3단계 플로우, ~3분 체험</p>
   </div>
 
   <div style="height:24px"></div>
@@ -181,14 +147,6 @@
   <button onclick="scrollSlide(-1)" aria-label="이전 슬라이드">↑</button>
   <button onclick="scrollSlide(1)" aria-label="다음 슬라이드">↓</button>
 </div>
-
-<!-- Prototype Modal -->
-<dialog class="proto-modal" id="protoModal">
-  <div class="modal-inner">
-    <button class="proto-close" onclick="document.getElementById('protoModal').close()">✕</button>
-    <iframe src="prototype.html" loading="lazy" title="Clog 인터랙티브 프로토타입"></iframe>
-  </div>
-</dialog>
 
 <footer>
   <span class="footer-name">Clog — 클라이밍 기록 앱</span>
