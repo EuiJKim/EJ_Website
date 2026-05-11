@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>김의준 — 페이타랩 PM 지원서</title>
+  <meta name="description" content="페이타랩 Product Manager 포지션 지원 — 김의준" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')</script>
+  <link rel="stylesheet" href="../../assets/global.css?v=4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'DM Sans', 'Freesentation', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    .apply-wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 96px 48px 96px;
+    }
+
+    /* Header */
+    .apply-header {
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--gray-20);
+      margin-bottom: 56px;
+    }
+    .apply-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .apply-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .apply-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray-70);
+      line-height: 1.65;
+      max-width: 640px;
+    }
+    .apply-meta {
+      margin-top: 28px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--gray-50);
+    }
+    .apply-meta strong {
+      color: var(--dark);
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    /* Quick links */
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 64px;
+      padding: 20px 24px;
+      background: var(--accent-light);
+      border: 1px solid #c7cffe;
+      border-radius: 12px;
+    }
+    .quick-links-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    .quick-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid #c7cffe;
+      transition: background 0.15s, color 0.15s;
+    }
+    .quick-links a:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 80px;
+    }
+    .section-num {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .section h2 {
+      font-size: clamp(22px, 2.6vw, 28px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin-bottom: 28px;
+      color: var(--dark);
+    }
+    .section p {
+      font-size: 16px;
+      color: var(--gray-70);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .section p strong {
+      color: var(--dark);
+      font-weight: 600;
+    }
+    .section p em {
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Sub-heading inside section */
+    .sub-head {
+      margin-top: 40px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--gray-20);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.005em;
+    }
+
+    /* List with icons */
+    .pill-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+    }
+    .pill-list li {
+      position: relative;
+      padding: 16px 20px 16px 24px;
+      margin-bottom: 12px;
+      background: white;
+      border: 1px solid var(--gray-20);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+    }
+    html.dark .pill-list li { background: var(--gray-10); }
+    .pill-list .pill-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .pill-list .pill-desc {
+      font-size: 14px;
+      color: var(--gray-70);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Callout */
+    .callout {
+      margin: 32px 0;
+      padding: 24px 28px;
+      background: var(--accent-light);
+      border-radius: 12px;
+      border-left: 4px solid var(--accent);
+    }
+    .callout p {
+      font-size: 16px;
+      color: var(--dark);
+      font-weight: 500;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* Closing */
+    .closing {
+      padding: 40px 0 16px;
+      border-top: 1px solid var(--gray-20);
+      margin-top: 32px;
+    }
+    .closing p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--gray-70);
+      margin-bottom: 16px;
+    }
+
+    /* Contact card */
+    .contact-card {
+      margin-top: 40px;
+      padding: 28px 32px;
+      background: var(--dark);
+      color: var(--white);
+      border-radius: 14px;
+    }
+    html.dark .contact-card { background: var(--gray-10); color: var(--dark); }
+    .contact-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .contact-card .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      font-size: 14px;
+    }
+    .contact-card a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      opacity: 0.9;
+    }
+    .contact-card a:hover { opacity: 1; }
+
+    @media (max-width: 768px) {
+      .apply-wrap { padding: 72px 24px 72px; }
+      .apply-meta { gap: 16px; }
+      .quick-links { padding: 16px 18px; }
+    }
+
+    @media print {
+      nav, .scroll-progress, footer { display: none !important; }
+      body, html { background: white; color: black; }
+      .apply-wrap { padding: 32px 36px; max-width: none; }
+      .section { break-inside: avoid; margin-bottom: 40px; }
+      .pill-list li { background: white; break-inside: avoid; }
+      .contact-card { background: white; color: black; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+<div class="scroll-progress"></div>
+
+<nav>
+  <a href="../../" class="nav-logo">Portfolio</a>
+  <div class="nav-links">
+    <a href="../../#works">Works</a>
+    <a href="../../#about">About</a>
+  </div>
+  <a href="mailto:sjkim942884@gmail.com" class="nav-contact">Contact</a>
+</nav>
+
+<div class="page-wrap">
+<div class="apply-wrap">
+
+  <header class="apply-header">
+    <p class="apply-eyebrow">Application — Product Manager</p>
+    <h1 class="apply-title">페이타랩 PM 포지션 지원서<br>김의준</h1>
+    <p class="apply-sub">
+      "왜 지금 이 문제를 풀어야 하는가"에 답하는 방식과,
+      AI 도구로 오차를 줄이며 일하는 방식에 대한 글입니다.
+      포트폴리오는 메인 페이지에서 확인하실 수 있습니다.
+    </p>
+    <div class="apply-meta">
+      <span><strong>Position</strong>Product Manager</span>
+      <span><strong>Type</strong>정규직 · 상시 채용</span>
+      <span><strong>Submitted by</strong>김의준</span>
+    </div>
+  </header>
+
+  <div class="quick-links">
+    <span class="quick-links-label">⚡ Quick Access — 포트폴리오 빠른 이동</span>
+    <a href="../../">🏠 메인 포트폴리오</a>
+    <a href="../../allaw/">ALLAW — 법률 AI 앱</a>
+    <a href="../../clog/">Clog — 클라이밍 기록 앱</a>
+    <a href="../../resin/">EEL — 레진 가구 (Live)</a>
+  </div>
+
+  <!-- Section 1: Why PaytaLab -->
+  <section class="section">
+    <p class="section-num">QUESTION 01</p>
+    <h2>페이타랩에 지원하는 이유</h2>
+
+    <p>
+      저는 디자이너로 일을 시작했지만, 실제로 매일 해왔던 일은 "무엇을 만들 것인가"
+      보다 <strong>"왜 지금 이 문제를 풀어야 하는가"</strong>에 가까웠습니다.
+      ALLAW 프로젝트에서는 "법률 정보가 부족하다"는 통념을 인터뷰로 뒤집고,
+      "법률 언어가 진짜 장벽"이라는 가설로 문제를 재정의했습니다. 3가지 UX 전략을
+      89명에게 검증해 그중 2개에서 76% 이상의 효과를 확인했고, 1개가 사용성
+      테스트에서 기각되었을 때는 핵심 플로우를 다시 썼습니다. 이 과정은
+      KCI 등재후보지 JNCIST(2025)에 게재되어 외부 검증을 받았습니다.
+    </p>
+
+    <p>
+      페이타랩 채용공고에서 <em>"무엇을 만들지보다 왜 지금 이 문제를 풀어야
+      하는지를 명확히 하는 역할"</em>이라는 문장이 가장 강하게 끌렸습니다.
+      제가 이미 해온 방식이 PM이라는 직무 정의 안에 그대로 있다고 느꼈기
+      때문입니다. 다만 지금까지의 검증은 정성 위주(인터뷰·Think-Aloud·소표본)
+      였습니다. <strong>900만 사용자와 한국 카페 3곳 중 1곳이라는 PASSORDER의
+      스케일</strong> 위에서, 제 가설 검증 방식이 정량 데이터·A/B 실험과
+      만났을 때 어디까지 갈 수 있는지를 시험해보고 싶습니다.
+    </p>
+
+    <p>
+      마지막으로, 페이타랩이 <em>"AI 도구를 활용해 기획의 속도와 밀도를
+      높인다"</em>고 명시한 부분이 끌렸습니다. 저는 이 포트폴리오 웹사이트를
+      포함해 리서치·기획 문서까지 Claude Code·GPT·Gemini를 일하는 방식의
+      일부로 사용해왔습니다. 문서에 시간을 쓰기보다 빠르게 가설을 던지고
+      피드백을 받는 페이타랩의 일하는 방식과 결이 맞다고 생각합니다.
+    </p>
+  </section>
+
+  <!-- Section 2: How I'd work -->
+  <section class="section">
+    <p class="section-num">QUESTION 02</p>
+    <h2>입사 시 업무 진행 방식 및 계획</h2>
+
+    <p>
+      저의 일하는 방식은 두 축으로 정리됩니다. 첫째, <strong>"왜 지금 이 문제를
+      풀어야 하는가"를 데이터와 논리로 설명하는 것</strong>. 둘째, <strong>AI
+      도구로 실수의 오차범위를 줄이고 반복 업무를 자동화해, 의사결정에 더 많은
+      에너지를 쓰는 것</strong>입니다.
+    </p>
+
+    <h3 class="sub-head">1 · "왜 지금 이 문제인가"를 설명하는 4축 프레임</h3>
+
+    <p>
+      PM의 시간은 한정되어 있고, 스쿼드의 한 스프린트는 한 번뿐입니다.
+      그래서 어떤 문제든 "지금 푼다"의 정당성을 4가지 축으로 정리해
+      설명하려고 합니다.
+    </p>
+
+    <ul class="pill-list">
+      <li>
+        <p class="pill-title">① 영향 범위 (Impact)</p>
+        <p class="pill-desc">이 문제가 영향을 주는 사용자/매장 비중과 금전적 임팩트. 퍼널 데이터·CS VOC·매출 영향도로 정량화합니다.</p>
+      </li>
+      <li>
+        <p class="pill-title">② 시급성 (Urgency)</p>
+        <p class="pill-desc">지금 풀지 않으면 얼마나 비싸지는가. 경쟁사 움직임, 시즌성, 점주 이탈률 등 외부 변수로 설명합니다.</p>
+      </li>
+      <li>
+        <p class="pill-title">③ 풀 수 있는 자신감 (Feasibility)</p>
+        <p class="pill-desc">현재 데이터·기술·팀 역량으로 검증 가능한 가설인가. 못 푼다면 어떤 선행 조건이 필요한가.</p>
+      </li>
+      <li>
+        <p class="pill-title">④ 학습의 가치 (Learning)</p>
+        <p class="pill-desc">이 문제를 풀면서 우리가 무엇을 새로 알게 되는가. 성공해도 실패해도 남는 자산이 있는가.</p>
+      </li>
+    </ul>
+
+    <p>
+      이 네 가지를 <strong>한 페이지의 Problem Brief</strong>로 정리해 스쿼드
+      킥오프 때 공유하고, 동의가 안 되면 스프린트를 시작하지 않으려 합니다.
+      "무엇을 만들지" 논의 이전에, "왜 지금 이걸 만들지"의 합의를 먼저 만드는
+      것이 PM의 첫 책임이라고 믿습니다. ALLAW에서 "법률 정보가 부족하다"는
+      통념을 인터뷰로 뒤집어 "법률 언어가 진짜 장벽"이라는 다른 문제 정의로
+      옮겨갔던 경험이 이 사고방식의 출발점입니다.
+    </p>
+
+    <h3 class="sub-head">2 · AI · Claude Code로 오차 축소 + 업무 자동화</h3>
+
+    <p>
+      저는 이미 개인 포트폴리오 웹사이트부터 리서치·기획 문서까지 Claude Code,
+      GPT, Gemini를 일하는 방식의 일부로 사용해왔습니다. PM 업무에 들어가면
+      이 방식을 다음 세 방향으로 확장하고 싶습니다.
+    </p>
+
+    <ul class="pill-list">
+      <li>
+        <p class="pill-title">▸ 반복 업무의 자동화</p>
+        <p class="pill-desc">경쟁사 모니터링, VOC 클러스터링, 회고 노트 정리, 릴리즈 노트 초안 — AI가 80%를 만들고 사람이 20%를 검토·결정하는 흐름으로 전환. 매 스프린트마다 반복되는 작업의 시간을 절반 이하로 줄이는 것이 목표입니다.</p>
+      </li>
+      <li>
+        <p class="pill-title">▸ 오차범위의 축소</p>
+        <p class="pill-desc">PRD·실험 설계서·릴리즈 체크리스트 작성 시 AI에게 먼저 "내가 빠뜨릴 수 있는 엣지케이스, 모호한 표현, 측정 불가능한 지표가 있는지" 자가 검토를 시킵니다. 사람이 놓치는 빈틈을 시스템적으로 보완하는 방식입니다.</p>
+      </li>
+      <li>
+        <p class="pill-title">▸ 의사결정의 속도와 밀도</p>
+        <p class="pill-desc">같은 문제에 대해 AI에게 3-5개의 다른 가설·접근을 먼저 만들게 하고, 그중 어떤 것이 페이타랩 맥락에 가장 맞는지 사람이 골라 다듬는 워크플로우. "백지에서 시작"하지 않고 "선택지를 평가"하는 구조로 전환해 의사결정의 밀도를 높입니다.</p>
+      </li>
+    </ul>
+
+    <div class="callout">
+      <p>
+        핵심은 AI가 판단을 대신하는 것이 아니라, <strong>사람이 판단에만
+        집중할 수 있도록 주변 마찰을 최대한 줄이는 것</strong>입니다.
+        페이타랩이 "문서에 시간을 쓰기보다 빠르게 가설을 공유하고 피드백을
+        받는 방식"으로 일한다고 명시한 부분이 제가 추구하는 방향과 정확히
+        같다고 느꼈습니다.
+      </p>
+    </div>
+
+    <div class="closing">
+      <p>
+        요약하면, 저는 <strong>"왜 지금 이 문제를 풀어야 하는가"를 4가지 기준으로
+        논리화하고, AI 도구로 그 답을 만들어가는 속도와 정확도를 동시에
+        끌어올리는 방식</strong>으로 일하고 싶습니다.
+      </p>
+      <p>
+        PM은 결국 "한정된 시간 안에 가장 정확한 질문에 답하는 사람"이라고
+        생각합니다. 페이타랩의 스쿼드 운영 속도, 데이터 규모, AI 친화적인
+        문화는 그 일을 가장 빠르게 익히고 가장 멀리 밀고 갈 수 있는 환경이라고
+        봅니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div class="contact-card">
+    <h3>더 이야기 나누고 싶으시면 언제든 연락주세요.</h3>
+    <div class="row">
+      <span><strong>이메일</strong> <a href="mailto:sjkim942884@gmail.com">sjkim942884@gmail.com</a></span>
+      <span><strong>연락처</strong> <a href="tel:01082832893">010-8283-2893</a></span>
+      <span><strong>포트폴리오</strong> <a href="../../">euijkim.github.io/EJ_Website</a></span>
+      <span><strong>GitHub</strong> <a href="https://github.com/EuiJKim" target="_blank" rel="noopener">github.com/EuiJKim</a></span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  <span class="footer-name">김의준 · 페이타랩 PM 지원</span>
+  <a href="../../" style="font-size:13px;color:#888">← Back to Portfolio</a>
+</footer>
+
+<script>
+  document.body.classList.add('loaded');
+</script>
+</body>
+</html>
