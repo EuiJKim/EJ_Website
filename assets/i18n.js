@@ -4,7 +4,7 @@
 // Add a `.lang-toggle` button anywhere to toggle.
 (function () {
   const KEY = 'lang';
-  const DEFAULT = 'ko';
+  const DEFAULT = 'en';
   const koCache = new WeakMap();
   const ariaCache = new WeakMap();
   const titleCache = new WeakMap();
