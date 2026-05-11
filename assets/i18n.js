@@ -4,8 +4,16 @@
 // Add a `.lang-toggle` button anywhere to toggle.
 (function () {
   const KEY = 'lang';
-  const DEFAULT = 'en';
+  const DEFAULT = 'ko';
   const koCache = new WeakMap();
+
+  // URL override: ?lang=en or ?lang=ko forces that language and persists it.
+  try {
+    const param = new URLSearchParams(window.location.search).get('lang');
+    if (param === 'en' || param === 'ko') {
+      localStorage.setItem(KEY, param);
+    }
+  } catch (e) { /* no-op */ }
   const ariaCache = new WeakMap();
   const titleCache = new WeakMap();
 
