@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="view-transition" content="same-origin" />
-  <title>ALLAW — 법률 AI 앱 | Portfolio</title>
+  <title data-en="ALLAW — Legal AI App | Portfolio">ALLAW — 법률 AI 앱 | Portfolio</title>
   <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')</script>
   <link rel="stylesheet" href="../assets/global.css?v=4" />
+  <script defer src="../assets/i18n.js"></script>
   <style>
     /* Slides */
     .slides-section { padding: 0; }
@@ -52,7 +53,7 @@
 <body>
 <div class="scroll-progress"></div>
 
-<a href="#slides" class="skip-link">본문으로 건너뛰기</a>
+<a href="#slides" class="skip-link" data-en="Skip to content">본문으로 건너뛰기</a>
 
 <nav>
   <a href="../" class="nav-logo">Portfolio</a>
@@ -60,24 +61,27 @@
     <a href="../#works">Works</a>
     <a href="../#about">About</a>
   </div>
-  <a href="mailto:sjkim942884@gmail.com" class="nav-contact">Contact</a>
+  <div style="display:flex;align-items:center">
+    <button class="nav-lang lang-toggle" type="button" aria-label="Switch to English">EN</button>
+    <a href="mailto:sjkim942884@gmail.com" class="nav-contact">Contact</a>
+  </div>
 </nav>
 
 <div class="page-wrap">
 
   <div class="case-hero">
-    <a href="../" class="back-link reveal" style="--d:0s">← Back to Works</a>
+    <a href="../" class="back-link reveal" style="--d:0s" data-en="← Back to Works">← Back to Works</a>
     <div class="case-meta reveal" style="--d:.07s">
       <span class="meta-tag">UX Research</span>
       <span class="meta-tag">UI Design</span>
       <span class="meta-tag neutral">B2C Service</span>
       <span class="meta-tag neutral">AI · Legal</span>
     </div>
-    <h1 class="reveal" style="--d:.14s" aria-label="ALLAW — 법률 AI 앱">ALLAW<br>법률 AI 앱</h1>
-    <p class="reveal" style="--d:.21s">처음 법률 문제를 겪는 사람은 뭘 검색해야 하는지조차 모른다. 변호사가 쓰는 용어가 장벽이라는 걸 리서치에서 발견했고, 그 언어의 간극을 AI로 좁히는 서비스를 설계했다.</p>
+    <h1 class="reveal" style="--d:.14s" aria-label="ALLAW — 법률 AI 앱" data-en-aria="ALLAW — Legal AI App" data-en="ALLAW<br>Legal AI App">ALLAW<br>법률 AI 앱</h1>
+    <p class="reveal" style="--d:.21s" data-en="People facing legal issues for the first time don't even know what to search for. Research surfaced that lawyers' terminology itself was the barrier — so I designed an AI service that closes the language gap.">처음 법률 문제를 겪는 사람은 뭘 검색해야 하는지조차 모른다. 변호사가 쓰는 용어가 장벽이라는 걸 리서치에서 발견했고, 그 언어의 간극을 AI로 좁히는 서비스를 설계했다.</p>
     <div class="case-stats reveal" style="--d:.28s">
-      <div class="stat-item"><p class="stat-label">Role</p><p class="stat-val">서비스 기획 · UX Research · UI Design</p></div>
-      <div class="stat-item"><p class="stat-label">기간</p><p class="stat-val">2025 – 2026</p></div>
+      <div class="stat-item"><p class="stat-label">Role</p><p class="stat-val" data-en="Service Planning · UX Research · UI Design">서비스 기획 · UX Research · UI Design</p></div>
+      <div class="stat-item"><p class="stat-label" data-en="Timeline">기간</p><p class="stat-val">2025 – 2026</p></div>
     </div>
   </div>
 
@@ -99,12 +103,12 @@
 
 <div class="slide-counter" id="counter">1 / 11</div>
 <div class="slide-nav">
-  <button id="prev" onclick="scrollSlide(-1)" aria-label="이전 슬라이드">↑</button>
-  <button id="next" onclick="scrollSlide(1)" aria-label="다음 슬라이드">↓</button>
+  <button id="prev" onclick="scrollSlide(-1)" aria-label="이전 슬라이드" data-en-aria="Previous slide">↑</button>
+  <button id="next" onclick="scrollSlide(1)" aria-label="다음 슬라이드" data-en-aria="Next slide">↓</button>
 </div>
 
 <footer>
-  <span class="footer-name">ALLAW — 법률 AI 앱</span>
+  <span class="footer-name" data-en="ALLAW — Legal AI App">ALLAW — 법률 AI 앱</span>
   <a href="../clog/" class="footer-right">Next: Clog →</a>
 </footer>
 

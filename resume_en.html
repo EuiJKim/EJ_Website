@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eui Joon Kim — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --ink: #111;
+      --muted: #555;
+      --line: #d4d4d4;
+      --accent: #1E41C0;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 56px 64px 72px;
+    }
+
+    /* Header */
+    .header {
+      padding-bottom: 28px;
+      border-bottom: 2px solid var(--ink);
+      margin-bottom: 32px;
+    }
+    .name {
+      font-size: 32pt;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .title {
+      font-size: 12pt;
+      font-weight: 500;
+      color: var(--accent);
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+    }
+    .meta-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      font-size: 10pt;
+      color: var(--muted);
+    }
+    .meta-row a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .meta-row a:hover { color: var(--accent); }
+    .meta-row .dot { color: var(--line); }
+
+    /* Section */
+    section {
+      margin-top: 28px;
+    }
+    h2 {
+      font-size: 10pt;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 14px;
+    }
+
+    .summary p {
+      font-size: 11.5pt;
+      line-height: 1.65;
+      color: var(--ink);
+      max-width: 680px;
+    }
+
+    /* Item */
+    .item {
+      margin-bottom: 18px;
+    }
+    .item:last-child { margin-bottom: 0; }
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 4px;
+    }
+    .item-title {
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .item-date {
+      font-size: 10pt;
+      font-weight: 500;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .item-sub {
+      font-size: 10.5pt;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .item-detail {
+      font-size: 10.5pt;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    .item-detail ul {
+      list-style: none;
+      margin-top: 4px;
+    }
+    .item-detail li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 2px;
+    }
+    .item-detail li::before {
+      content: "·";
+      position: absolute;
+      left: 4px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Publication block */
+    .pub-card {
+      padding: 14px 18px;
+      background: rgba(30, 65, 192, 0.04);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+    }
+    .pub-title {
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .pub-venue {
+      font-size: 10pt;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .pub-abstract {
+      font-size: 10pt;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 6px;
+    }
+    .pub-doi {
+      font-size: 9.5pt;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      row-gap: 8px;
+      column-gap: 16px;
+    }
+    .skill-label {
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .skill-list {
+      font-size: 10.5pt;
+      color: var(--ink);
+    }
+
+    /* Print */
+    @media print {
+      html, body { background: white; }
+      .page { padding: 28px 36px; max-width: none; }
+      section { break-inside: avoid; }
+      .item, .pub-card { break-inside: avoid; }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <h1 class="name">Eui Joon Kim</h1>
+    <p class="title">UX/UI Designer · Service Planning · UX Research</p>
+    <div class="meta-row">
+      <span>Seoul, Republic of Korea</span>
+      <span class="dot">·</span>
+      <a href="mailto:sjkim942884@gmail.com">sjkim942884@gmail.com</a>
+      <span class="dot">·</span>
+      <span>+82 10-8283-2893</span>
+      <span class="dot">·</span>
+      <a href="https://github.com/EuiJKim" target="_blank" rel="noopener">github.com/EuiJKim</a>
+    </div>
+  </header>
+
+  <section class="summary">
+    <h2>Summary</h2>
+    <p>UX/UI designer who treats research as the starting point of design.
+       Background in Computer Science, with a master's research focus on
+       how users resist and adopt new interfaces. I work where research,
+       design, and implementation form a single loop — building hypotheses,
+       testing them with users, and rewriting the design when I'm wrong.</p>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">Kookmin University, Graduate School of Techno Design</span>
+        <span class="item-date">Sep 2023 – Aug 2025</span>
+      </div>
+      <p class="item-sub">M.S. in Smart Experience Design · Interaction Lab · Seoul, KR</p>
+      <p class="item-detail">GPA 4.34 / 4.5</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">Rochester Institute of Technology (RIT)</span>
+        <span class="item-date">Oct 2013 – Aug 2021</span>
+      </div>
+      <p class="item-sub">B.S. in Applied Arts and Sciences · Rochester, NY, USA</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Publication</h2>
+    <div class="pub-card">
+      <p class="pub-title">A Study on Innovation Resistance and Usage Intention of Legal App Users</p>
+      <p class="pub-venue">Journal of Next-generation Convergence Information Services Technology (JNCIST), 2025</p>
+      <p class="pub-abstract">Analyzed innovation resistance factors among legal app users (n=89).
+        Proposed three UX strategies — terminology simplification, step-by-step
+        guidance, and AI explanation. Two of the three strategies demonstrated
+        over 76% effectiveness in verification.</p>
+      <a href="https://doi.org/10.29056/jncist.2025.04.02" class="pub-doi" target="_blank" rel="noopener">DOI: 10.29056/jncist.2025.04.02 →</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">MS Company</span>
+        <span class="item-date">Jun 2022 – Jan 2023</span>
+      </div>
+      <p class="item-sub">UI/UX Designer (Mobile) · Seoul, KR</p>
+      <div class="item-detail">
+        <ul>
+          <li>Led UI/UX planning for ALLAW, a legal consultation platform</li>
+          <li>Designed initial screens for a React Native cross-platform app</li>
+          <li>Project selected for Korea's Early-Stage Startup Package
+              (₩70M / ~$50K USD government funding)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Selected Projects</h2>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">ALLAW — Legal AI Consultation App</span>
+        <span class="item-date">2025 – 2026</span>
+      </div>
+      <p class="item-detail">Designed an AI service that translates legal language into
+        everyday language. Conducted hypothesis-driven research (n=89 survey + 5-person
+        Think-Aloud testing). Validated 2 hypotheses, pivoted 1. Findings published
+        in a KCI-listed journal.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">Clog — Climbing Log App</span>
+        <span class="item-date">2024 – 2025</span>
+      </div>
+      <p class="item-detail">Solo-designed a mobile app that captures a climber's
+        check-in, location, and growth in one tap. Built three hypotheses; two
+        confirmed, one redirected.</p>
+    </div>
+
+    <div class="item">
+      <div class="item-head">
+        <span class="item-title">EEL — Resin Art Furniture</span>
+        <span class="item-date">2026</span>
+      </div>
+      <p class="item-detail">Co-founder. Designed brand identity, e-commerce flow,
+        and a 3D customizer for a build-to-order premium resin furniture brand.
+        Currently live.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <span class="skill-label">Research</span>
+      <span class="skill-list">UX Research · User Interview · Usability Testing · Service Design</span>
+
+      <span class="skill-label">Design</span>
+      <span class="skill-list">UI Design · Prototyping · Wireframing · Design System</span>
+
+      <span class="skill-label">Tools</span>
+      <span class="skill-list">Figma · React Native · HTML / CSS</span>
+
+      <span class="skill-label">Languages</span>
+      <span class="skill-list">Korean (native) · English (professional working)</span>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

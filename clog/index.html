@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="view-transition" content="same-origin" />
-  <title>Clog — 클라이밍 기록 앱 | Portfolio</title>
+  <title data-en="Clog — Climbing Log App | Portfolio">Clog — 클라이밍 기록 앱 | Portfolio</title>
   <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')</script>
   <link rel="stylesheet" href="../assets/global.css?v=4" />
+  <script defer src="../assets/i18n.js"></script>
   <style>
     /* 슬라이드 스택 */
     .slides-section { padding: 0; }
@@ -88,7 +89,7 @@
 </head>
 <body>
 <div class="scroll-progress"></div>
-<a href="#slides" class="skip-link">본문으로 건너뛰기</a>
+<a href="#slides" class="skip-link" data-en="Skip to content">본문으로 건너뛰기</a>
 
 <nav>
   <a href="../" class="nav-logo">Portfolio</a>
@@ -96,25 +97,28 @@
     <a href="../#works">Works</a>
     <a href="../#about">About</a>
   </div>
-  <a href="mailto:sjkim942884@gmail.com" class="nav-contact">Contact</a>
+  <div style="display:flex;align-items:center">
+    <button class="nav-lang lang-toggle" type="button" aria-label="Switch to English">EN</button>
+    <a href="mailto:sjkim942884@gmail.com" class="nav-contact">Contact</a>
+  </div>
 </nav>
 
 <div class="page-wrap">
 
   <div class="case-hero">
-    <a href="../" class="back-link reveal" style="--d:0s">← Back to Works</a>
+    <a href="../" class="back-link reveal" style="--d:0s" data-en="← Back to Works">← Back to Works</a>
     <div class="case-meta reveal" style="--d:.07s">
       <span class="meta-tag">UX Research</span>
       <span class="meta-tag">UI Design</span>
       <span class="meta-tag neutral">B2C Service</span>
       <span class="meta-tag neutral">Mobile</span>
     </div>
-    <h1 class="reveal" style="--d:.14s">Clog<br>클라이밍 기록 앱</h1>
-    <p class="reveal" style="--d:.21s">8년간 클라이밍을 하면서 느낀 문제에서 출발했다. "실력이 늘었는지 모르겠다"는 말에 가설 3개를 세웠고, 2개는 맞았고, 1개는 방향이 틀려서 고쳤다. 그 과정이 이 앱을 만들었다.</p>
+    <h1 class="reveal" style="--d:.14s" data-en="Clog<br>Climbing Log App">Clog<br>클라이밍 기록 앱</h1>
+    <p class="reveal" style="--d:.21s" data-en="Born from a question I'd carried for eight years of climbing: 'I can't tell if I'm actually getting better.' I built three hypotheses — two confirmed, one redirected. That process became this app.">8년간 클라이밍을 하면서 느낀 문제에서 출발했다. "실력이 늘었는지 모르겠다"는 말에 가설 3개를 세웠고, 2개는 맞았고, 1개는 방향이 틀려서 고쳤다. 그 과정이 이 앱을 만들었다.</p>
     <div class="case-stats reveal" style="--d:.28s">
-      <div><p class="stat-label">Role</p><p class="stat-val">서비스 기획 · UI Design</p></div>
-      <div><p class="stat-label">기여도</p><p class="stat-val">1인 100% (기획 · 리서치 · UI · 프로토타입)</p></div>
-      <div><p class="stat-label">기간</p><p class="stat-val">2024 – 2025</p></div>
+      <div><p class="stat-label">Role</p><p class="stat-val" data-en="Service Planning · UI Design">서비스 기획 · UI Design</p></div>
+      <div><p class="stat-label" data-en="Contribution">기여도</p><p class="stat-val" data-en="Solo (Planning · Research · UI · Prototype)">1인 100% (기획 · 리서치 · UI · 프로토타입)</p></div>
+      <div><p class="stat-label" data-en="Timeline">기간</p><p class="stat-val">2024 – 2025</p></div>
       <div><p class="stat-label">Pages</p><p class="stat-val">12 Slides</p></div>
     </div>
   </div>
@@ -122,7 +126,7 @@
   <div style="height:24px"></div>
   <div class="desktop-notice">
     <span style="font-size:18px">💡</span>
-    <p>이 케이스 스터디는 1920×1080 화면에 최적화되어 있습니다. 데스크톱에서 보시면 가장 잘 보입니다.</p>
+    <p data-en="This case study is optimized for a 1920×1080 display. It looks best on desktop.">이 케이스 스터디는 1920×1080 화면에 최적화되어 있습니다. 데스크톱에서 보시면 가장 잘 보입니다.</p>
   </div>
 
   <div class="slides-section" id="slides">
@@ -144,12 +148,12 @@
 
 <div class="slide-counter" id="counter">1 / 12</div>
 <div class="slide-nav">
-  <button onclick="scrollSlide(-1)" aria-label="이전 슬라이드">↑</button>
-  <button onclick="scrollSlide(1)" aria-label="다음 슬라이드">↓</button>
+  <button onclick="scrollSlide(-1)" aria-label="이전 슬라이드" data-en-aria="Previous slide">↑</button>
+  <button onclick="scrollSlide(1)" aria-label="다음 슬라이드" data-en-aria="Next slide">↓</button>
 </div>
 
 <footer>
-  <span class="footer-name">Clog — 클라이밍 기록 앱</span>
+  <span class="footer-name" data-en="Clog — Climbing Log App">Clog — 클라이밍 기록 앱</span>
   <a href="../resin/" style="font-size:13px;color:#888;min-height:44px;display:inline-flex;align-items:center">Next: EEL Resin →</a>
 </footer>
 

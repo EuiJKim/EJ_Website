@@ -4,10 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="view-transition" content="same-origin" />
-  <title>EEL — 레진 아트퍼니처 웹사이트 | Portfolio</title>
+  <title data-en="EEL — Resin Art Furniture Website | Portfolio">EEL — 레진 아트퍼니처 웹사이트 | Portfolio</title>
   <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')</script>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0/model-viewer.min.js"></script>
   <link rel="stylesheet" href="../assets/global.css?v=4" />
+  <script defer src="../assets/i18n.js"></script>
   <style>
     /* Live site preview */
     .live-section {
@@ -74,36 +75,39 @@
     <a href="../#works">Works</a>
     <a href="../#about">About</a>
   </div>
-  <a href="mailto:sjkim942884@gmail.com" class="nav-contact">Contact</a>
+  <div style="display:flex;align-items:center">
+    <button class="nav-lang lang-toggle" type="button" aria-label="Switch to English">EN</button>
+    <a href="mailto:sjkim942884@gmail.com" class="nav-contact">Contact</a>
+  </div>
 </nav>
 
 <div class="page-wrap">
 
   <div class="case-hero">
-    <a href="../" class="back-link reveal" style="--d:0s">← Back to Works</a>
+    <a href="../" class="back-link reveal" style="--d:0s" data-en="← Back to Works">← Back to Works</a>
     <div class="case-meta reveal" style="--d:.07s">
       <span class="meta-tag">Web Design</span>
       <span class="meta-tag">Brand</span>
       <span class="meta-tag neutral">e-Commerce</span>
       <span class="meta-tag neutral">BTO</span>
     </div>
-    <h1 class="reveal" style="--d:.14s">EEL<br>레진 아트퍼니처 웹사이트</h1>
-    <p class="reveal" style="--d:.21s">제품이 공간을 채우고, 공간이 제품을 빛나게 한다. 프리미엄 수제 레진 테이블 브랜드의 e-커머스 + BTO(Build-to-Order) 경험 설계.</p>
+    <h1 class="reveal" style="--d:.14s" data-en="EEL<br>Resin Art Furniture Website">EEL<br>레진 아트퍼니처 웹사이트</h1>
+    <p class="reveal" style="--d:.21s" data-en="The product fills the space, and the space makes the product shine. E-commerce and Build-to-Order experience design for a premium handcrafted resin table brand.">제품이 공간을 채우고, 공간이 제품을 빛나게 한다. 프리미엄 수제 레진 테이블 브랜드의 e-커머스 + BTO(Build-to-Order) 경험 설계.</p>
     <div class="case-stats reveal" style="--d:.28s">
       <div><p class="stat-label">Role</p><p class="stat-val">Brand Design · Web Design</p></div>
-      <div><p class="stat-label">기여도</p><p class="stat-val">공동창업 · 기획 100%</p></div>
-      <div><p class="stat-label">기간</p><p class="stat-val">2025 – 2026</p></div>
-      <div><p class="stat-label">Status</p><p class="stat-val">Live 운영 중</p></div>
+      <div><p class="stat-label" data-en="Contribution">기여도</p><p class="stat-val" data-en="Co-founder · 100% planning">공동창업 · 기획 100%</p></div>
+      <div><p class="stat-label" data-en="Timeline">기간</p><p class="stat-val">2025 – 2026</p></div>
+      <div><p class="stat-label">Status</p><p class="stat-val" data-en="Live in production">Live 운영 중</p></div>
     </div>
   </div>
 
   <div class="wip-notice">
-    <p><strong>현재 라이브 운영 중인 프로젝트입니다.</strong> 아래에서 3D 프리뷰와 실제 웹사이트를 직접 체험하실 수 있습니다. 브랜드 전략 → UX 플로우 → UI 시스템 설계 과정을 담은 상세 케이스 스터디는 2026 Q3 공개 예정입니다.</p>
+    <p data-en="&lt;strong&gt;Currently live in production.&lt;/strong&gt; You can interact with the 3D preview and the live website below. A detailed case study covering brand strategy → UX flow → UI system design will be published in Q3 2026."><strong>현재 라이브 운영 중인 프로젝트입니다.</strong> 아래에서 3D 프리뷰와 실제 웹사이트를 직접 체험하실 수 있습니다. 브랜드 전략 → UX 플로우 → UI 시스템 설계 과정을 담은 상세 케이스 스터디는 2026 Q3 공개 예정입니다.</p>
   </div>
 
   <div class="live-section" style="margin-top:32px">
     <p class="section-label">3D Product Preview</p>
-    <p style="font-size:14px;font-weight:300;color:var(--gray-50);margin-bottom:16px;">드래그하여 360° 회전 · 스크롤로 확대/축소</p>
+    <p style="font-size:14px;font-weight:300;color:var(--gray-50);margin-bottom:16px;" data-en="Drag to rotate 360° · Scroll to zoom">드래그하여 360° 회전 · 스크롤로 확대/축소</p>
     <model-viewer
       src="assets/table.glb"
       alt="EEL 레진 테이블 3D 프리뷰"
@@ -121,7 +125,7 @@
     <div class="live-preview">
       <iframe src="https://eel-studio.me/" loading="lazy" title="EEL 웹사이트"></iframe>
     </div>
-    <a href="https://eel-studio.me/" target="_blank" rel="noopener" class="live-btn">
+    <a href="https://eel-studio.me/" target="_blank" rel="noopener" class="live-btn" data-en="🔗 Open Live Site">
       🔗 라이브 사이트 열기
     </a>
   </div>
@@ -132,17 +136,17 @@
       <div class="ctx-card">
         <div class="ctx-icon">🌑</div>
         <p class="ctx-title">Dark Precision</p>
-        <p class="ctx-desc">어둠은 군더더기를 지운다. 제품 이미지와 텍스트만 남는다. 장식이 아닌 절제가 장인성이다.</p>
+        <p class="ctx-desc" data-en="Darkness erases the clutter. Only the product image and the words remain. Restraint, not ornament, is craftsmanship.">어둠은 군더더기를 지운다. 제품 이미지와 텍스트만 남는다. 장식이 아닌 절제가 장인성이다.</p>
       </div>
       <div class="ctx-card">
         <div class="ctx-icon">🛠</div>
-        <p class="ctx-title">BTO 커스텀 빌더</p>
-        <p class="ctx-desc">고객이 원하는 사이즈·색상·소재를 직접 선택하는 Build-to-Order 플로우 설계.</p>
+        <p class="ctx-title" data-en="BTO Custom Builder">BTO 커스텀 빌더</p>
+        <p class="ctx-desc" data-en="A Build-to-Order flow where customers choose their size, color, and material directly.">고객이 원하는 사이즈·색상·소재를 직접 선택하는 Build-to-Order 플로우 설계.</p>
       </div>
       <div class="ctx-card">
         <div class="ctx-icon">✦</div>
-        <p class="ctx-title">프리미엄 타이포그래피</p>
-        <p class="ctx-desc">Noto Serif KR + Fraunces 조합으로 한국어/영문 모두 고급스러운 세리프 경험 구현.</p>
+        <p class="ctx-title" data-en="Premium Typography">프리미엄 타이포그래피</p>
+        <p class="ctx-desc" data-en="Noto Serif KR + Fraunces deliver a refined serif experience in both Korean and English.">Noto Serif KR + Fraunces 조합으로 한국어/영문 모두 고급스러운 세리프 경험 구현.</p>
       </div>
     </div>
   </div>
@@ -150,8 +154,8 @@
 </div>
 
 <footer>
-  <span class="footer-name">EEL — 레진 아트퍼니처 웹사이트</span>
-  <a href="../" style="font-size:13px;color:#888">← Back to Works</a>
+  <span class="footer-name" data-en="EEL — Resin Art Furniture Website">EEL — 레진 아트퍼니처 웹사이트</span>
+  <a href="../" style="font-size:13px;color:#888" data-en="← Back to Works">← Back to Works</a>
 </footer>
 
 <script>
