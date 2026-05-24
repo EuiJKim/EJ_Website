@@ -157,6 +157,78 @@
       margin-bottom: 16px;
     }
 
+    /* Education timeline */
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-top: 16px;
+    }
+    .edu-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--gray-20);
+    }
+    .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .edu-date {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-50);
+      letter-spacing: 0.02em;
+      padding-top: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+    .edu-body .edu-degree {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .edu-body .edu-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+    .edu-body .edu-meta {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray-70);
+      line-height: 1.6;
+    }
+    .edu-body .edu-meta .sep { color: var(--gray-20); margin: 0 6px; }
+    .edu-body .edu-tags {
+      margin-top: 8px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .edu-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+    .edu-tag.neutral {
+      background: var(--gray-10);
+      color: var(--gray-70);
+    }
+
+    @media (max-width: 768px) {
+      .edu-item { grid-template-columns: 1fr; gap: 6px; }
+      .edu-date { padding-top: 0; }
+    }
+
     /* Contact card */
     .contact-card {
       margin-top: 40px;
@@ -362,6 +434,66 @@
         Claude Code 기반 워크플로우의 구체적 산출물은 함께 첨부한
         포트폴리오와 AI 사용 경험 자료에서 확인하실 수 있습니다.
       </p>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section">
+    <p class="section-num">EDUCATION</p>
+    <h2>학력</h2>
+    <p class="char-count">대학원 · 학사 · 고등학교</p>
+
+    <div class="edu-list">
+
+      <div class="edu-item">
+        <span class="edu-date">2023.08 — 2025.08</span>
+        <div class="edu-body">
+          <p class="edu-degree">대학원 · 석사 (졸업)</p>
+          <p class="edu-name">국민대학교 일반대학원</p>
+          <p class="edu-meta">
+            스마트경험디자인학과<span class="sep">·</span>인터랙션디자인랩
+            <span class="sep">·</span>서울특별시
+          </p>
+          <div class="edu-tags">
+            <span class="edu-tag">UX Research</span>
+            <span class="edu-tag">Interaction Design</span>
+            <span class="edu-tag neutral">학위논문 KCI 게재</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <span class="edu-date">2014.08 — 2021.08</span>
+        <div class="edu-body">
+          <p class="edu-degree">대학교 · 학사 (졸업)</p>
+          <p class="edu-name">Rochester Institute of Technology (RIT)</p>
+          <p class="edu-meta">
+            Web and Mobile & New Media Design
+            <span class="sep">·</span>Rochester, NY, USA
+            <span class="sep">·</span>GPA 2.94 / 4.00
+          </p>
+          <div class="edu-tags">
+            <span class="edu-tag">Web Design</span>
+            <span class="edu-tag">Mobile Design</span>
+            <span class="edu-tag neutral">미국 7년 학업</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <span class="edu-date">2011.08 — 2014.05</span>
+        <div class="edu-body">
+          <p class="edu-degree">고등학교 (졸업)</p>
+          <p class="edu-name">The King's Christian School</p>
+          <p class="edu-meta">
+            United States<span class="sep">·</span>주간 졸업
+          </p>
+          <div class="edu-tags">
+            <span class="edu-tag neutral">미국 고등 · 영어 체화</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
