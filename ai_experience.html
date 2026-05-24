@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 사용 경험 — 김의준</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --ink: #0a0a0a;
+      --muted: #555;
+      --gray: #888;
+      --line: #d4d4d4;
+      --soft: #f5f7ff;
+      --accent: #1E41C0;
+      --accent-soft: #eef1ff;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Noto Sans KR', 'DM Sans', -apple-system, sans-serif;
+      font-size: 10pt;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 297mm;
+      min-height: 210mm;
+      margin: 0 auto;
+      padding: 14mm 16mm;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 10mm;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--ink);
+    }
+    .header-left .eyebrow {
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .header-left h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .header-left h1 span {
+      color: var(--accent);
+    }
+    .header-right {
+      text-align: right;
+      font-size: 9pt;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .header-right .name {
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    /* ── Identity line ── */
+    .identity {
+      padding: 14px 18px;
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+    }
+    .identity p {
+      font-size: 12pt;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    .identity p strong {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ── Main 3-col grid ── */
+    .main {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 10mm;
+    }
+
+    /* Section heading */
+    .sec-heading {
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 10px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--line);
+      text-transform: uppercase;
+    }
+
+    /* Artifacts list */
+    .artifacts { display: flex; flex-direction: column; gap: 8px; }
+    .artifact {
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+    .artifact-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .artifact-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.005em;
+    }
+    .artifact-meta {
+      font-size: 8pt;
+      font-weight: 500;
+      color: var(--gray);
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .artifact-desc {
+      font-size: 9.5pt;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .artifact-desc strong { color: var(--ink); font-weight: 600; }
+
+    /* Impact metrics */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .metric {
+      padding: 12px 10px;
+      background: var(--soft);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .metric-label {
+      font-size: 8pt;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .metric-arrow {
+      font-size: 9pt;
+      color: var(--gray);
+      margin: 2px 0;
+    }
+    .metric-before {
+      font-size: 10pt;
+      color: var(--gray);
+      text-decoration: line-through;
+      font-weight: 500;
+    }
+    .metric-after {
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.01em;
+    }
+    .metric-after-sub {
+      font-size: 8.5pt;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Principle box */
+    .principle {
+      padding: 13px 15px;
+      background: var(--ink);
+      color: white;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .principle-label {
+      font-size: 8pt;
+      font-weight: 700;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.18em;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    .principle p {
+      font-size: 10.5pt;
+      font-weight: 500;
+      line-height: 1.55;
+    }
+    .principle p strong {
+      font-weight: 700;
+      color: #8FBFFF;
+    }
+
+    /* Tool stack */
+    .tools {
+      padding: 12px 14px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .tools-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 9.5pt;
+      padding: 3px 0;
+    }
+    .tools-row + .tools-row {
+      border-top: 1px solid var(--line);
+      margin-top: 4px;
+      padding-top: 7px;
+    }
+    .tools-key {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .tools-val {
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .tools-val .primary { color: var(--accent); font-weight: 700; }
+
+    /* Footer */
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 8pt;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+      padding-top: 6px;
+      border-top: 1px solid var(--line);
+    }
+    .foot a {
+      color: var(--gray);
+      text-decoration: none;
+    }
+
+    @media print {
+      html, body { background: white; }
+      .page { padding: 12mm 14mm; }
+    }
+
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <p class="eyebrow">Supplementary Material · AI 사용 경험</p>
+      <h1>Claude Code <span>워크플로우</span>를 가진 디자이너</h1>
+    </div>
+    <div class="header-right">
+      <p class="name">김의준 Kim Eui Joon</p>
+      <p>UX/UI Designer · 서비스 기획</p>
+      <p>sjkim942884@gmail.com · 010-8283-2893</p>
+      <p>euijkim.github.io/EJ_Website</p>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <div class="main">
+
+    <!-- LEFT: Identity + Artifacts -->
+    <div>
+      <div class="identity" style="margin-bottom: 14px;">
+        <p>
+          저는 <strong>AI를 "써본"</strong> 사람이 아니라,
+          <strong>AI와 함께 일하는 워크플로우 자체</strong>를 산출물로 가진
+          디자이너입니다. Claude Code는 단순한 챗봇이 아니라 파일과 코드베이스를
+          직접 읽고·쓰고·검증하는 도구이기에, 일회성 답변이 아닌 연속적 결과물을
+          만들어내는 파트너로 사용해왔습니다.
+        </p>
+      </div>
+
+      <h2 class="sec-heading">실제 산출물 · Real Artifacts</h2>
+      <div class="artifacts">
+
+        <div class="artifact">
+          <div class="artifact-head">
+            <span class="artifact-title">01 · 포트폴리오 웹사이트 + 다국어 i18n 시스템</span>
+            <span class="artifact-meta">euijkim.github.io/EJ_Website</span>
+          </div>
+          <p class="artifact-desc">
+            메인 + 3개 케이스 스터디 + 회사별 지원 페이지까지 5개 이상의 라우트를
+            <strong>Claude Code로 직접 구축</strong>. <code>?lang=en</code> URL 파라미터로
+            영어 모드 강제 진입, localStorage 동기화, <code>data-en</code> 속성 기반 1파일
+            i18n 시스템 설계.
+          </p>
+        </div>
+
+        <div class="artifact">
+          <div class="artifact-head">
+            <span class="artifact-title">02 · 자동화 PDF 생성 파이프라인</span>
+            <span class="artifact-meta">Puppeteer + pypdf</span>
+          </div>
+          <p class="artifact-desc">
+            이력서·자기소개서·포트폴리오 PDF를 <strong>HTML 한 번 수정으로 동시 재생성</strong>.
+            1920×1080 캡처, A4 인쇄 최적화, 다중 PDF 병합, 페이지 사이즈 자동
+            정규화(1440→1920pt 스케일링)까지 한 스크립트로 처리.
+          </p>
+        </div>
+
+        <div class="artifact">
+          <div class="artifact-head">
+            <span class="artifact-title">03 · 회사별 맞춤 지원 페이지 시스템</span>
+            <span class="artifact-meta">/apply/[company]/</span>
+          </div>
+          <p class="artifact-desc">
+            지원하는 회사마다 <strong>10분 안에 맞춤 자기소개서 페이지</strong>를
+            새로 만드는 템플릿화. 문토 · 페이타랩 · 인크로스 3개 운영 중. 인쇄 시
+            Quick Access 자동 숨김 등 print CSS 분리.
+          </p>
+        </div>
+
+        <div class="artifact">
+          <div class="artifact-head">
+            <span class="artifact-title">04 · 학술 분석 · 데이터 시각화 협업</span>
+            <span class="artifact-meta">ALLAW · KCI 2025</span>
+          </div>
+          <p class="artifact-desc">
+            89명 사용자 응답 분석에서 코드·차트 생성, Think-Aloud 발화 클러스터링,
+            논문 초안 구조화 작업을 AI와 반복 협업. <strong>판단은 사람이, 반복은
+            AI가</strong> 가져가는 흐름으로 학술 게재 수준까지 완성.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT: Impact + Principle + Tools -->
+    <div>
+      <h2 class="sec-heading">임팩트 · Before → After</h2>
+      <div class="impact-grid">
+        <div class="metric">
+          <p class="metric-label">다국어 i18n 구축</p>
+          <p class="metric-before">4 일</p>
+          <p class="metric-arrow">↓</p>
+          <p class="metric-after">2시간</p>
+          <p class="metric-after-sub">−95%</p>
+        </div>
+        <div class="metric">
+          <p class="metric-label">PDF 패키지 생성</p>
+          <p class="metric-before">4시간</p>
+          <p class="metric-arrow">↓</p>
+          <p class="metric-after">30초</p>
+          <p class="metric-after-sub">−99.8%</p>
+        </div>
+        <div class="metric">
+          <p class="metric-label">신규 지원 페이지</p>
+          <p class="metric-before">4시간</p>
+          <p class="metric-arrow">↓</p>
+          <p class="metric-after">20분</p>
+          <p class="metric-after-sub">−92%</p>
+        </div>
+      </div>
+
+      <h2 class="sec-heading">사용 원칙 · Working Principles</h2>
+      <div class="principle">
+        <p class="principle-label">CORE RULE</p>
+        <p>
+          AI가 판단을 대신하지 않는다.
+          <strong>사람이 판단에만 집중할 수 있도록 주변 마찰을 최대한 줄인다.</strong>
+        </p>
+      </div>
+
+      <div class="principle" style="background: #1a3aa3;">
+        <p class="principle-label">3-STEP WORKFLOW</p>
+        <p>
+          <strong>① 가설 3~5개를 AI가 먼저 만든다</strong> → 사람이 선택<br>
+          <strong>② 산출물의 80%를 AI가 채운다</strong> → 사람이 검토<br>
+          <strong>③ 자가 점검을 AI에게 시킨다</strong> → 누락 0%
+        </p>
+      </div>
+
+      <h2 class="sec-heading" style="margin-top: 14px;">도구 스택 · Tool Stack</h2>
+      <div class="tools">
+        <div class="tools-row">
+          <span class="tools-key">PRIMARY</span>
+          <span class="tools-val"><span class="primary">Claude Code</span> — 파일·코드·문서 직접 조작</span>
+        </div>
+        <div class="tools-row">
+          <span class="tools-key">SECONDARY</span>
+          <span class="tools-val">Gemini — 빠른 프롬프트 대화 · 자료 요약</span>
+        </div>
+        <div class="tools-row">
+          <span class="tools-key">DESIGN</span>
+          <span class="tools-val">Figma · Notion · HTML/CSS</span>
+        </div>
+        <div class="tools-row">
+          <span class="tools-key">PIPELINE</span>
+          <span class="tools-val">Puppeteer · pypdf · GitHub Pages</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="foot">
+    <span>김의준 · AI 사용 경험 정리 · 2026</span>
+    <a href="https://euijkim.github.io/EJ_Website/">euijkim.github.io/EJ_Website</a>
+  </div>
+
+</div>
+</body>
+</html>
