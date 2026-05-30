@@ -6,329 +6,198 @@
   <title>AI 사용 경험 — 김의준</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #ffffff;
-      --ink: #0a0a0a;
-      --muted: #555;
-      --gray: #8a8a8a;
-      --line: #dcdcdc;
-      --soft: #f5f7ff;
+      --ink: #1a1a1a;
+      --body: #333;
+      --muted: #777;
+      --line: #e2e2e2;
       --accent: #1E41C0;
-      --accent-soft: #eef1ff;
-      --accent-line: #c7cffe;
-      --noise: #b08900;
-      --noise-soft: #fbf4dd;
+      --soft: #f6f8fc;
     }
 
     html, body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'Noto Sans KR', 'DM Sans', -apple-system, sans-serif;
-      font-size: 10pt;
-      line-height: 1.5;
+      background: #fff;
+      color: var(--body);
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
+      font-weight: 400;
     }
 
     .page {
-      width: 297mm;
-      height: 210mm;
+      width: 210mm;
+      min-height: 297mm;
       margin: 0 auto;
-      padding: 12mm 14mm;
-      display: grid;
-      grid-template-rows: auto auto 1fr auto auto;
-      gap: 6mm;
+      padding: 22mm 22mm 20mm;
     }
-
-    /* Top strip */
-    .top-strip {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 8.5pt;
-      color: var(--gray);
-      letter-spacing: 0.1em;
-      padding-bottom: 7px;
-      border-bottom: 1px solid var(--line);
-      text-transform: uppercase;
-    }
-    .top-strip .name { color: var(--ink); font-weight: 700; letter-spacing: 0.05em; }
-    .top-strip .contact { text-transform: none; letter-spacing: 0.02em; }
 
     /* Header */
-    .header { text-align: center; }
-    .header .eyebrow {
-      font-size: 9pt; font-weight: 600; letter-spacing: 0.22em;
-      color: var(--accent); text-transform: uppercase; margin-bottom: 8px;
-    }
-    .header h1 {
-      font-size: 27pt; font-weight: 800; letter-spacing: -0.025em;
-      line-height: 1.15; color: var(--ink);
-    }
-    .header h1 .accent { color: var(--accent); }
-
-    /* HERO flow */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 52px 1.5fr 52px 1fr;
-      align-items: stretch;
-      gap: 0;
-    }
-    .stage {
-      border-radius: 12px;
-      padding: 16px 18px;
+    .head {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--ink);
+      margin-bottom: 24px;
     }
-    .stage-label {
-      font-size: 8pt; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; margin-bottom: 3px;
+    .head .t { font-size: 17pt; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+    .head .who { font-size: 9pt; color: var(--muted); text-align: right; line-height: 1.6; }
+    .head .who b { color: var(--ink); font-weight: 600; }
+
+    /* Intro */
+    .intro {
+      font-size: 11pt;
+      color: var(--body);
+      line-height: 1.8;
+      margin-bottom: 30px;
     }
-    .stage-title {
-      font-size: 13pt; font-weight: 800; letter-spacing: -0.01em;
+
+    /* Section */
+    .sec { margin-bottom: 26px; }
+    .sec-h {
+      display: flex; align-items: baseline; gap: 10px;
       margin-bottom: 12px;
     }
+    .sec-h .n {
+      font-size: 9pt; font-weight: 700; color: var(--accent);
+      font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;
+    }
+    .sec-h .h {
+      font-size: 12.5pt; font-weight: 700; color: var(--ink); letter-spacing: -0.01em;
+    }
+    .sec p { margin-bottom: 9px; }
+    .sec p:last-child { margin-bottom: 0; }
+    .sec .em { color: var(--accent); font-weight: 600; }
+    .sec strong { color: var(--ink); font-weight: 600; }
 
-    /* ① INPUT — noise */
-    .stage.input {
-      background: var(--noise-soft);
-      border: 1px solid #ecd98f;
-    }
-    .stage.input .stage-label { color: var(--noise); }
-    .stage.input .stage-title { color: #6b5400; }
-    .noise-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .noise-chips span {
-      font-size: 8.5pt; font-weight: 600; color: #6b5400;
-      background: #fff; border: 1px solid #e6d281;
-      border-radius: 20px; padding: 3px 10px;
-    }
-    .noise-desc { font-size: 9.5pt; color: #7a6200; line-height: 1.55; margin-top: auto; }
-    .noise-desc strong { font-weight: 700; }
-
-    /* ② SECOND BRAIN — hero center */
-    .stage.brain {
-      background: var(--accent-soft);
-      border: 1.5px solid var(--accent-line);
-      position: relative;
-    }
-    .stage.brain .stage-label { color: var(--accent); }
-    .stage.brain .stage-title { color: var(--ink); }
-    .brain-engine {
-      font-size: 9.5pt; font-weight: 600; color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .brain-engine .mono {
-      font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; font-weight: 500;
-    }
-    .domains { display: flex; gap: 8px; margin-bottom: 10px; }
-    .domain {
-      flex: 1;
-      background: #fff;
-      border: 1px solid var(--accent-line);
+    /* Flow line (understated) */
+    .flow {
+      display: flex; align-items: center; gap: 12px;
+      margin: 14px 0;
+      padding: 12px 16px;
+      background: var(--soft);
       border-radius: 8px;
-      padding: 9px 11px;
     }
-    .domain .d-tag {
-      font-size: 7.5pt; font-weight: 700; letter-spacing: 0.1em;
-      color: var(--accent); text-transform: uppercase; margin-bottom: 3px;
+    .flow .node {
+      font-size: 9.5pt; font-weight: 600; color: var(--ink);
+      text-align: center; line-height: 1.4;
     }
-    .domain .d-name { font-size: 9.5pt; font-weight: 700; color: var(--ink); line-height: 1.35; }
-    .brain-process {
-      font-size: 9pt; color: var(--muted); line-height: 1.6;
-      padding-top: 10px; border-top: 1px dashed var(--accent-line);
-    }
-    .brain-process strong { color: var(--ink); font-weight: 700; }
-    .brain-caption {
-      margin-top: auto;
-      font-size: 11pt; font-weight: 800; color: var(--accent);
-      letter-spacing: -0.01em; text-align: center;
-      padding-top: 12px;
-    }
+    .flow .node .s { display: block; font-size: 8pt; font-weight: 400; color: var(--muted); margin-top: 1px; }
+    .flow .ar { color: var(--muted); font-size: 11pt; }
 
-    /* ③ OUTPUT */
-    .stage.output {
-      background: #f4f9f4;
-      border: 1px solid #c9e3c9;
+    /* List */
+    .list { list-style: none; }
+    .list li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 11px;
+      line-height: 1.7;
     }
-    .stage.output .stage-label { color: #2f8a3f; }
-    .stage.output .stage-title { color: #1f5d2b; }
-    .out-list { display: flex; flex-direction: column; gap: 7px; }
-    .out-item {
-      font-size: 9.3pt; font-weight: 600; color: #1f5d2b;
-      background: #fff; border: 1px solid #cbe6cb;
-      border-left: 3px solid #3a9a4a;
-      border-radius: 0 7px 7px 0; padding: 8px 11px; line-height: 1.4;
+    .list li:last-child { margin-bottom: 0; }
+    .list li::before {
+      content: "";
+      position: absolute; left: 0; top: 11px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent);
     }
-    .out-item span { display: block; font-size: 8pt; font-weight: 400; color: #4f7a58; margin-top: 2px; }
+    .list li b { color: var(--ink); font-weight: 600; }
+    .list li .d { color: var(--muted); }
 
-    /* Arrows */
-    .arrow {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 5px;
+    /* Tools line */
+    .tools {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 9.5pt;
+      color: var(--muted);
+      line-height: 1.7;
     }
-    .arrow .sign { font-size: 20pt; color: var(--gray); font-weight: 300; line-height: 1; }
-    .arrow .lab {
-      font-size: 7.5pt; font-weight: 700; letter-spacing: 0.08em;
-      color: var(--gray); text-transform: uppercase; text-align: center;
-    }
-
-    /* Timeline ribbon */
-    .timeline {
-      background: var(--ink);
-      border-radius: 10px;
-      padding: 13px 18px;
-      color: #fff;
-    }
-    .timeline-head {
-      font-size: 8pt; font-weight: 700; letter-spacing: 0.16em;
-      color: rgba(255,255,255,0.55); text-transform: uppercase; margin-bottom: 9px;
-    }
-    .tl-track { display: flex; align-items: center; gap: 0; }
-    .tl-node {
-      flex: 1; text-align: center;
-      font-size: 9pt; font-weight: 600; color: #fff;
-      line-height: 1.3;
-    }
-    .tl-node .sub {
-      display: block; font-size: 7.5pt; font-weight: 400;
-      color: rgba(255,255,255,0.6); margin-top: 1px;
-    }
-    .tl-node.latest { color: #8FBFFF; }
-    .tl-arrow { color: rgba(255,255,255,0.4); font-size: 11pt; padding: 0 2px; }
-
-    /* Principle */
-    .principle {
-      display: flex; justify-content: space-between; align-items: center;
-      padding-top: 2px;
-    }
-    .principle .quote {
-      font-size: 12.5pt; font-weight: 800; color: var(--ink);
-      letter-spacing: -0.01em;
-    }
-    .principle .quote .accent { color: var(--accent); }
-    .principle .stack {
-      font-size: 8.5pt; color: var(--muted); text-align: right; line-height: 1.5;
-    }
-    .principle .stack b { color: var(--accent); font-weight: 700; }
+    .tools b { color: var(--ink); font-weight: 600; }
 
     @media print { html, body { background: #fff; } }
-    @page { size: A4 landscape; margin: 0; }
+    @page { size: A4; margin: 0; }
   </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- Top strip -->
-  <div class="top-strip">
-    <span class="name">김의준 · Kim Eui Joon</span>
-    <span>AI 사용 경험 · Supplementary</span>
-    <span class="contact">sjkim942884@gmail.com · euijkim.github.io/EJ_Website</span>
-  </div>
-
-  <!-- Header -->
-  <div class="header">
-    <p class="eyebrow">How I Use AI</p>
-    <h1>AI 정보 폭발을 <span class="accent">내 무기</span>로 바꾼다</h1>
-  </div>
-
-  <!-- HERO flow -->
-  <div class="hero">
-
-    <!-- ① INPUT -->
-    <div class="stage input">
-      <p class="stage-label">① Input · 노이즈</p>
-      <p class="stage-title">하루 수백 개의<br>AI 소식</p>
-      <div class="noise-chips">
-        <span>X (트위터)</span><span>YouTube</span><span>GitHub</span><span>뉴스레터</span>
-      </div>
-      <p class="noise-desc">
-        새 모델·도구·기법이 <strong>매일 수백 개</strong> 쏟아진다.
-        그대로 좇으면 정보 과부하에 빠질 뿐, 내 것이 되지 않는다.
-      </p>
-    </div>
-
-    <!-- arrow -->
-    <div class="arrow">
-      <span class="sign">→</span>
-      <span class="lab">정제</span>
-    </div>
-
-    <!-- ② SECOND BRAIN -->
-    <div class="stage brain">
-      <p class="stage-label">② My Second Brain · 정제 엔진</p>
-      <p class="stage-title">Obsidian × Claude Code</p>
-      <p class="brain-engine">
-        Claude Code 에이전트가 볼트를
-        <span class="mono">읽고·요약·상호링크·질의</span>한다 (LLM Wiki 패턴)
-      </p>
-      <div class="domains">
-        <div class="domain">
-          <p class="d-tag">Domain 1</p>
-          <p class="d-name">AI 트렌드<br>큐레이션</p>
-        </div>
-        <div class="domain">
-          <p class="d-tag">Domain 2</p>
-          <p class="d-name">EEL 레진가구<br>마케팅 전략</p>
-        </div>
-      </div>
-      <p class="brain-process">
-        무엇을 <strong>내 맥락에 남기고</strong> 무엇을 <strong>버릴지</strong> —
-        큐레이션 기준은 내가 세우고, 최종 판단도 내가 책임진다.
-      </p>
-      <p class="brain-caption">“맥락이 무기다”</p>
-    </div>
-
-    <!-- arrow -->
-    <div class="arrow">
-      <span class="sign">→</span>
-      <span class="lab">산출</span>
-    </div>
-
-    <!-- ③ OUTPUT -->
-    <div class="stage output">
-      <p class="stage-label">③ Output · 실제 결과</p>
-      <p class="stage-title">노이즈가<br>결과물이 된다</p>
-      <div class="out-list">
-        <div class="out-item">EEL 마케팅·광고 콘텐츠
-          <span>브랜드 기준 위에서 AI로 다버전 생성·교체</span>
-        </div>
-        <div class="out-item">AI 워크플로우 자동화
-          <span>포트폴리오·지원 페이지 시스템, i18n·PDF 파이프라인</span>
-        </div>
-        <div class="out-item">기획·전략 문서 초안
-          <span>축적된 맥락이 검색이 아니라 “답”을 준다</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Timeline ribbon -->
-  <div class="timeline">
-    <p class="timeline-head">프론티어 흡수 궤적 — 트렌드를 추적하고 내 작업에 흡수해왔다</p>
-    <div class="tl-track">
-      <span class="tl-node">프롬프트<span class="sub">단순 질의</span></span>
-      <span class="tl-arrow">→</span>
-      <span class="tl-node">Claude Code<span class="sub">harness · 파일·실행</span></span>
-      <span class="tl-arrow">→</span>
-      <span class="tl-node">agentic · subagent<span class="sub">다단계·병렬</span></span>
-      <span class="tl-arrow">→</span>
-      <span class="tl-node">MCP<span class="sub">외부 도구 연결</span></span>
-      <span class="tl-arrow">→</span>
-      <span class="tl-node latest">Second Brain<span class="sub">context engineering</span></span>
+  <div class="head">
+    <div class="t">AI 사용 경험</div>
+    <div class="who">
+      <b>김의준</b><br>
+      sjkim942884@gmail.com<br>
+      euijkim.github.io/EJ_Website
     </div>
   </div>
 
-  <!-- Principle -->
-  <div class="principle">
-    <p class="quote">“도구는 바뀌어도 <span class="accent">내 맥락</span>은 남는다.”</p>
-    <p class="stack">
-      <b>PRIMARY</b> Claude Code (harness)<br>
-      agentic · subagent · MCP · skills · context engineering
+  <p class="intro">
+    AI 관련 정보는 하루에도 수백 개씩 새로 나옵니다. 저는 그것을 전부
+    좇기보다, 필요한 것만 골라 정리해두고 실제 작업에 꺼내 쓰는 방식을
+    만들어 두었습니다. 아래는 제가 AI를 일에 들이는 구체적인 방식입니다.
+  </p>
+
+  <div class="sec">
+    <div class="sec-h"><span class="n">01</span><span class="h">정보를 정리하는 방식</span></div>
+    <p>
+      X와 유튜브, 깃허브에서 본 AI 자료 중 쓸 만한 것을
+      <strong>Obsidian</strong>에 모읍니다. 그리고
+      <strong>Claude Code</strong>가 이 노트들을 읽어 요약하고 서로 연결해,
+      나중에 일일이 찾지 않아도 질문만으로 꺼내 쓸 수 있게 정리해 둡니다.
     </p>
+    <div class="flow">
+      <span class="node">수집<span class="s">Obsidian 노트</span></span>
+      <span class="ar">→</span>
+      <span class="node">정리·연결<span class="s">Claude Code</span></span>
+      <span class="ar">→</span>
+      <span class="node">질문으로 활용<span class="s">작업에 투입</span></span>
+    </div>
+    <p>
+      지금은 두 가지 주제를 주로 쌓고 있습니다. 하나는 새로 나오는
+      <span class="em">AI 활용법</span>이고, 다른 하나는
+      <span class="em">EEL 레진가구의 마케팅 전략</span>입니다.
+      무엇을 남기고 무엇을 버릴지는 제가 직접 판단합니다.
+    </p>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="n">02</span><span class="h">실제로 활용한 결과</span></div>
+    <ul class="list">
+      <li>
+        <b>EEL 마케팅 콘텐츠</b> — 정리해둔 전략을 바탕으로 광고 카피와
+        콘텐츠를 AI로 여러 버전 만들고, <span class="d">브랜드에 맞는 것만 골라
+        다듬어 사용했습니다.</span>
+      </li>
+      <li>
+        <b>반복 작업 자동화</b> — 포트폴리오 사이트, 회사별 지원 페이지,
+        다국어 전환, PDF 생성 같은 일을 Claude Code로 만들어
+        <span class="d">손이 가던 시간을 줄였습니다.</span>
+      </li>
+      <li>
+        <b>기획·전략 초안</b> — 쌓아둔 맥락 덕분에 새 문서를 백지에서 쓰지 않고
+        <span class="d">초안을 빠르게 잡고 다듬는 데 집중합니다.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="n">03</span><span class="h">도구를 다뤄온 과정</span></div>
+    <p>
+      단순히 질문을 던지는 데서 시작해, 지금은 파일과 도구를 직접 다루는
+      Claude Code, 그리고 작업을 여러 단계로 나눠 처리하는 방식까지 쓰고
+      있습니다. 새 도구가 나오면 먼저 제 작업에 작게 적용해보고, 맞으면
+      방식에 들입니다. 도구는 계속 바뀌지만, 정리해둔 맥락은 그대로 남아
+      다음 작업의 바탕이 됩니다.
+    </p>
+  </div>
+
+  <div class="tools">
+    <b>주로 쓰는 도구</b> &nbsp; Claude Code · Obsidian · Gemini &nbsp;|&nbsp;
+    <b>방식</b> &nbsp; 컨텍스트 정리(Second Brain) · 단계별 작업 처리 · 외부 도구 연결
   </div>
 
 </div>
