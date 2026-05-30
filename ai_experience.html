@@ -14,13 +14,14 @@
       --bg: #ffffff;
       --ink: #0a0a0a;
       --muted: #555;
-      --gray: #888;
-      --line: #d4d4d4;
+      --gray: #8a8a8a;
+      --line: #dcdcdc;
       --soft: #f5f7ff;
       --accent: #1E41C0;
       --accent-soft: #eef1ff;
-      --human: #0a0a0a;
-      --ai:    #1E41C0;
+      --accent-line: #c7cffe;
+      --noise: #b08900;
+      --noise-soft: #fbf4dd;
     }
 
     html, body {
@@ -36,254 +37,185 @@
       width: 297mm;
       height: 210mm;
       margin: 0 auto;
-      padding: 16mm 18mm;
+      padding: 12mm 14mm;
       display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 10mm;
+      grid-template-rows: auto auto 1fr auto auto;
+      gap: 6mm;
     }
 
-    /* ── Top strip ── */
+    /* Top strip */
     .top-strip {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 9pt;
+      font-size: 8.5pt;
       color: var(--gray);
-      letter-spacing: 0.12em;
-      padding-bottom: 8px;
+      letter-spacing: 0.1em;
+      padding-bottom: 7px;
       border-bottom: 1px solid var(--line);
       text-transform: uppercase;
     }
-    .top-strip .name {
-      color: var(--ink);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-    }
-    .top-strip .contact {
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      text-transform: none;
-    }
+    .top-strip .name { color: var(--ink); font-weight: 700; letter-spacing: 0.05em; }
+    .top-strip .contact { text-transform: none; letter-spacing: 0.02em; }
 
-    /* ── Center: hero + diagram ── */
-    .center {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 14mm;
+    /* Header */
+    .header { text-align: center; }
+    .header .eyebrow {
+      font-size: 9pt; font-weight: 600; letter-spacing: 0.22em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 8px;
     }
+    .header h1 {
+      font-size: 27pt; font-weight: 800; letter-spacing: -0.025em;
+      line-height: 1.15; color: var(--ink);
+    }
+    .header h1 .accent { color: var(--accent); }
 
-    /* Hero block */
+    /* HERO flow */
     .hero {
-      text-align: center;
-    }
-    .hero .eyebrow {
-      font-size: 10pt;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      color: var(--accent);
-      margin-bottom: 14px;
-      text-transform: uppercase;
-    }
-    .hero h1 {
-      font-size: 32pt;
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.18;
-      color: var(--ink);
-    }
-    .hero h1 .accent {
-      color: var(--accent);
-    }
-    .hero .subtitle {
-      font-size: 13pt;
-      font-weight: 400;
-      color: var(--muted);
-      margin-top: 14px;
-      letter-spacing: 0.01em;
-    }
-    .hero .subtitle strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    /* Diagram */
-    .diagram {
       display: grid;
-      grid-template-columns: 1fr 60px 1.4fr;
+      grid-template-columns: 1fr 52px 1.5fr 52px 1fr;
       align-items: stretch;
       gap: 0;
     }
-
-    .col-human, .col-ai {
-      padding: 22px 26px;
+    .stage {
       border-radius: 12px;
-    }
-
-    .col-human {
-      background: var(--human);
-      color: white;
+      padding: 16px 18px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
-    .col-human .role-label {
-      font-size: 9pt;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      color: rgba(255,255,255,0.55);
-      text-transform: uppercase;
-      margin-bottom: 8px;
+    .stage-label {
+      font-size: 8pt; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; margin-bottom: 3px;
     }
-    .col-human .role-name {
-      font-size: 19pt;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      margin-bottom: 14px;
-    }
-    .col-human .role-name .sub {
-      font-size: 11pt;
-      font-weight: 400;
-      color: rgba(255,255,255,0.7);
-      display: block;
-      margin-top: 3px;
-    }
-    .col-human ul {
-      list-style: none;
-    }
-    .col-human ul li {
-      font-size: 10.5pt;
-      font-weight: 500;
-      color: white;
-      padding: 5px 0 5px 16px;
-      position: relative;
-      line-height: 1.55;
-    }
-    .col-human ul li::before {
-      content: "▸";
-      position: absolute;
-      left: 0;
-      color: rgba(255,255,255,0.55);
-      font-size: 9pt;
-      top: 5px;
+    .stage-title {
+      font-size: 13pt; font-weight: 800; letter-spacing: -0.01em;
+      margin-bottom: 12px;
     }
 
-    /* Arrows column */
-    .col-arrow {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
+    /* ① INPUT — noise */
+    .stage.input {
+      background: var(--noise-soft);
+      border: 1px solid #ecd98f;
     }
-    .arrow {
-      font-size: 14pt;
-      color: var(--gray);
-      font-weight: 300;
+    .stage.input .stage-label { color: var(--noise); }
+    .stage.input .stage-title { color: #6b5400; }
+    .noise-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .noise-chips span {
+      font-size: 8.5pt; font-weight: 600; color: #6b5400;
+      background: #fff; border: 1px solid #e6d281;
+      border-radius: 20px; padding: 3px 10px;
     }
-    .arrow-label {
-      font-size: 7.5pt;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      color: var(--gray);
-      text-transform: uppercase;
-      writing-mode: horizontal-tb;
-      text-align: center;
-      padding: 4px 0;
-    }
+    .noise-desc { font-size: 9.5pt; color: #7a6200; line-height: 1.55; margin-top: auto; }
+    .noise-desc strong { font-weight: 700; }
 
-    /* AI agents column */
-    .col-ai {
+    /* ② SECOND BRAIN — hero center */
+    .stage.brain {
       background: var(--accent-soft);
-      border: 1px solid #c7cffe;
-      display: flex;
-      flex-direction: column;
+      border: 1.5px solid var(--accent-line);
+      position: relative;
     }
-    .col-ai .role-label {
-      font-size: 9pt;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 8px;
+    .stage.brain .stage-label { color: var(--accent); }
+    .stage.brain .stage-title { color: var(--ink); }
+    .brain-engine {
+      font-size: 9.5pt; font-weight: 600; color: var(--accent);
+      margin-bottom: 10px;
     }
-    .col-ai .role-name {
-      font-size: 19pt;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      margin-bottom: 16px;
+    .brain-engine .mono {
+      font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; font-weight: 500;
     }
-    .col-ai .role-name .sub {
-      font-size: 11pt;
-      font-weight: 400;
-      color: var(--muted);
-      display: block;
-      margin-top: 3px;
-    }
-    .agent-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 10px;
-    }
-    .agent {
+    .domains { display: flex; gap: 8px; margin-bottom: 10px; }
+    .domain {
+      flex: 1;
+      background: #fff;
+      border: 1px solid var(--accent-line);
+      border-radius: 8px;
       padding: 9px 11px;
-      background: white;
-      border-radius: 7px;
-      border-left: 3px solid var(--accent);
     }
-    .agent .a-title {
-      font-size: 10pt;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.005em;
-      margin-bottom: 2px;
+    .domain .d-tag {
+      font-size: 7.5pt; font-weight: 700; letter-spacing: 0.1em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 3px;
     }
-    .agent .a-task {
-      font-size: 8.8pt;
-      font-weight: 400;
-      color: var(--muted);
-      line-height: 1.45;
+    .domain .d-name { font-size: 9.5pt; font-weight: 700; color: var(--ink); line-height: 1.35; }
+    .brain-process {
+      font-size: 9pt; color: var(--muted); line-height: 1.6;
+      padding-top: 10px; border-top: 1px dashed var(--accent-line);
     }
-
-    /* Bottom strip */
-    .bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 8px;
-      border-top: 1px solid var(--line);
-      gap: 18px;
-    }
-    .bottom-quote {
-      font-size: 12pt;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.005em;
-    }
-    .bottom-quote .accent {
-      color: var(--accent);
-    }
-    .bottom-stack {
-      font-size: 9pt;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-      text-align: right;
-      line-height: 1.55;
-    }
-    .bottom-stack .key {
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.06em;
+    .brain-process strong { color: var(--ink); font-weight: 700; }
+    .brain-caption {
+      margin-top: auto;
+      font-size: 11pt; font-weight: 800; color: var(--accent);
+      letter-spacing: -0.01em; text-align: center;
+      padding-top: 12px;
     }
 
-    @media print {
-      html, body { background: white; }
+    /* ③ OUTPUT */
+    .stage.output {
+      background: #f4f9f4;
+      border: 1px solid #c9e3c9;
     }
-    @page {
-      size: A4 landscape;
-      margin: 0;
+    .stage.output .stage-label { color: #2f8a3f; }
+    .stage.output .stage-title { color: #1f5d2b; }
+    .out-list { display: flex; flex-direction: column; gap: 7px; }
+    .out-item {
+      font-size: 9.3pt; font-weight: 600; color: #1f5d2b;
+      background: #fff; border: 1px solid #cbe6cb;
+      border-left: 3px solid #3a9a4a;
+      border-radius: 0 7px 7px 0; padding: 8px 11px; line-height: 1.4;
     }
+    .out-item span { display: block; font-size: 8pt; font-weight: 400; color: #4f7a58; margin-top: 2px; }
+
+    /* Arrows */
+    .arrow {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 5px;
+    }
+    .arrow .sign { font-size: 20pt; color: var(--gray); font-weight: 300; line-height: 1; }
+    .arrow .lab {
+      font-size: 7.5pt; font-weight: 700; letter-spacing: 0.08em;
+      color: var(--gray); text-transform: uppercase; text-align: center;
+    }
+
+    /* Timeline ribbon */
+    .timeline {
+      background: var(--ink);
+      border-radius: 10px;
+      padding: 13px 18px;
+      color: #fff;
+    }
+    .timeline-head {
+      font-size: 8pt; font-weight: 700; letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.55); text-transform: uppercase; margin-bottom: 9px;
+    }
+    .tl-track { display: flex; align-items: center; gap: 0; }
+    .tl-node {
+      flex: 1; text-align: center;
+      font-size: 9pt; font-weight: 600; color: #fff;
+      line-height: 1.3;
+    }
+    .tl-node .sub {
+      display: block; font-size: 7.5pt; font-weight: 400;
+      color: rgba(255,255,255,0.6); margin-top: 1px;
+    }
+    .tl-node.latest { color: #8FBFFF; }
+    .tl-arrow { color: rgba(255,255,255,0.4); font-size: 11pt; padding: 0 2px; }
+
+    /* Principle */
+    .principle {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 2px;
+    }
+    .principle .quote {
+      font-size: 12.5pt; font-weight: 800; color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .principle .quote .accent { color: var(--accent); }
+    .principle .stack {
+      font-size: 8.5pt; color: var(--muted); text-align: right; line-height: 1.5;
+    }
+    .principle .stack b { color: var(--accent); font-weight: 700; }
+
+    @media print { html, body { background: #fff; } }
+    @page { size: A4 landscape; margin: 0; }
   </style>
 </head>
 <body>
@@ -296,91 +228,106 @@
     <span class="contact">sjkim942884@gmail.com · euijkim.github.io/EJ_Website</span>
   </div>
 
-  <!-- Center -->
-  <div class="center">
+  <!-- Header -->
+  <div class="header">
+    <p class="eyebrow">How I Use AI</p>
+    <h1>AI 정보 폭발을 <span class="accent">내 무기</span>로 바꾼다</h1>
+  </div>
 
-    <!-- Hero -->
-    <div class="hero">
-      <p class="eyebrow">One Founder · One Business · Many AI Agents</p>
-      <h1>
-        한 사람이 운영하는 가구 사업.<br>
-        실행은 <span class="accent">AI 에이전트와 분담</span>했다.
-      </h1>
-      <p class="subtitle">
-        <strong>EEL — Resin Art Furniture</strong> · 프리미엄 수제 레진 가구 브랜드 ·
-        eel-studio.me
+  <!-- HERO flow -->
+  <div class="hero">
+
+    <!-- ① INPUT -->
+    <div class="stage input">
+      <p class="stage-label">① Input · 노이즈</p>
+      <p class="stage-title">하루 수백 개의<br>AI 소식</p>
+      <div class="noise-chips">
+        <span>X (트위터)</span><span>YouTube</span><span>GitHub</span><span>뉴스레터</span>
+      </div>
+      <p class="noise-desc">
+        새 모델·도구·기법이 <strong>매일 수백 개</strong> 쏟아진다.
+        그대로 좇으면 정보 과부하에 빠질 뿐, 내 것이 되지 않는다.
       </p>
     </div>
 
-    <!-- Diagram: Human / Arrows / AI -->
-    <div class="diagram">
+    <!-- arrow -->
+    <div class="arrow">
+      <span class="sign">→</span>
+      <span class="lab">정제</span>
+    </div>
 
-      <!-- LEFT: Human -->
-      <div class="col-human">
-        <p class="role-label">Human</p>
-        <p class="role-name">김의준<span class="sub">Founder · 1인 운영</span></p>
-        <ul>
-          <li>브랜드 컨셉 · 톤 · 취향 결정</li>
-          <li>가설 수립 · 가설 폐기 판단</li>
-          <li>우선순위 · 다음 분기 방향</li>
-          <li>최종 산출물 검수 · 진위 판단</li>
-        </ul>
-      </div>
-
-      <!-- MIDDLE: Arrows -->
-      <div class="col-arrow">
-        <div class="arrow-label">결정</div>
-        <div class="arrow">→</div>
-        <div class="arrow">←</div>
-        <div class="arrow-label">실행</div>
-      </div>
-
-      <!-- RIGHT: AI Agents -->
-      <div class="col-ai">
-        <p class="role-label">AI Agents</p>
-        <p class="role-name">Claude Code 기반 에이전트 스택<span class="sub">6 roles · 1 founder</span></p>
-        <div class="agent-grid">
-          <div class="agent">
-            <p class="a-title">🎨 Brand Designer</p>
-            <p class="a-task">타이포·컬러·시안 변주, 비주얼 가이드 초안</p>
-          </div>
-          <div class="agent">
-            <p class="a-title">🧱 Web Developer</p>
-            <p class="a-task">HTML·CSS·결제·3D 뷰어 통합, BTO 플로우 구현</p>
-          </div>
-          <div class="agent">
-            <p class="a-title">✍️ Copywriter</p>
-            <p class="a-task">상세페이지·광고 카피 N개 변주, 후킹 라인 A/B</p>
-          </div>
-          <div class="agent">
-            <p class="a-title">📣 Ad Operator</p>
-            <p class="a-task">Meta Ads 카피·이미지·타겟 가설 운영</p>
-          </div>
-          <div class="agent">
-            <p class="a-title">📊 Data Analyst</p>
-            <p class="a-task">주간 광고 성과 Brief, 다음 캠페인 가설 정리</p>
-          </div>
-          <div class="agent">
-            <p class="a-title">💬 Ops Manager</p>
-            <p class="a-task">FAQ·CS 응대 템플릿, 배송·환불 표준안</p>
-          </div>
+    <!-- ② SECOND BRAIN -->
+    <div class="stage brain">
+      <p class="stage-label">② My Second Brain · 정제 엔진</p>
+      <p class="stage-title">Obsidian × Claude Code</p>
+      <p class="brain-engine">
+        Claude Code 에이전트가 볼트를
+        <span class="mono">읽고·요약·상호링크·질의</span>한다 (LLM Wiki 패턴)
+      </p>
+      <div class="domains">
+        <div class="domain">
+          <p class="d-tag">Domain 1</p>
+          <p class="d-name">AI 트렌드<br>큐레이션</p>
+        </div>
+        <div class="domain">
+          <p class="d-tag">Domain 2</p>
+          <p class="d-name">EEL 레진가구<br>마케팅 전략</p>
         </div>
       </div>
+      <p class="brain-process">
+        무엇을 <strong>내 맥락에 남기고</strong> 무엇을 <strong>버릴지</strong> —
+        큐레이션 기준은 내가 세우고, 최종 판단도 내가 책임진다.
+      </p>
+      <p class="brain-caption">“맥락이 무기다”</p>
+    </div>
 
+    <!-- arrow -->
+    <div class="arrow">
+      <span class="sign">→</span>
+      <span class="lab">산출</span>
+    </div>
+
+    <!-- ③ OUTPUT -->
+    <div class="stage output">
+      <p class="stage-label">③ Output · 실제 결과</p>
+      <p class="stage-title">노이즈가<br>결과물이 된다</p>
+      <div class="out-list">
+        <div class="out-item">EEL 마케팅·광고 콘텐츠
+          <span>브랜드 기준 위에서 AI로 다버전 생성·교체</span>
+        </div>
+        <div class="out-item">AI 워크플로우 자동화
+          <span>포트폴리오·지원 페이지 시스템, i18n·PDF 파이프라인</span>
+        </div>
+        <div class="out-item">기획·전략 문서 초안
+          <span>축적된 맥락이 검색이 아니라 “답”을 준다</span>
+        </div>
+      </div>
     </div>
 
   </div>
 
-  <!-- Bottom -->
-  <div class="bottom">
-    <p class="bottom-quote">
-      "AI가 <span class="accent">실행</span>을 가져가고, 사람이 <span class="accent">결정</span>을 가져간다."
-    </p>
-    <p class="bottom-stack">
-      <span class="key">PRIMARY</span> Claude Code &nbsp;·&nbsp;
-      <span class="key">DESIGN</span> Figma · Adobe &nbsp;·&nbsp;
-      <span class="key">ADS</span> Meta Ads &nbsp;·&nbsp;
-      <span class="key">OPS</span> Cafe24 · Notion
+  <!-- Timeline ribbon -->
+  <div class="timeline">
+    <p class="timeline-head">프론티어 흡수 궤적 — 트렌드를 추적하고 내 작업에 흡수해왔다</p>
+    <div class="tl-track">
+      <span class="tl-node">프롬프트<span class="sub">단순 질의</span></span>
+      <span class="tl-arrow">→</span>
+      <span class="tl-node">Claude Code<span class="sub">harness · 파일·실행</span></span>
+      <span class="tl-arrow">→</span>
+      <span class="tl-node">agentic · subagent<span class="sub">다단계·병렬</span></span>
+      <span class="tl-arrow">→</span>
+      <span class="tl-node">MCP<span class="sub">외부 도구 연결</span></span>
+      <span class="tl-arrow">→</span>
+      <span class="tl-node latest">Second Brain<span class="sub">context engineering</span></span>
+    </div>
+  </div>
+
+  <!-- Principle -->
+  <div class="principle">
+    <p class="quote">“도구는 바뀌어도 <span class="accent">내 맥락</span>은 남는다.”</p>
+    <p class="stack">
+      <b>PRIMARY</b> Claude Code (harness)<br>
+      agentic · subagent · MCP · skills · context engineering
     </p>
   </div>
 
