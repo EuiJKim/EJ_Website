@@ -144,28 +144,19 @@
     }
     .download-btn:hover { background: #1a39a8; transform: translateY(-1px); }
 
-    /* Home button (screen only) — compact arrow */
+    /* Home button (screen only) — bare arrow */
     .home-btn {
       position: fixed;
-      top: 16px;
-      left: 16px;
+      top: 18px;
+      left: 20px;
       z-index: 100;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      background: #fff;
-      color: var(--accent);
-      font-size: 14pt;
+      color: var(--muted);
+      font-size: 17pt;
       line-height: 1;
       text-decoration: none;
-      border: 1.5px solid var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      transition: background 0.15s, color 0.15s, transform 0.15s;
+      transition: color 0.15s, transform 0.15s;
     }
-    .home-btn:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+    .home-btn:hover { color: var(--accent); transform: translateX(-2px); }
 
     @media print {
       html, body { background: white; }
@@ -176,7 +167,7 @@
     }
     @media (max-width: 768px) {
       .download-btn { top: 12px; right: 12px; padding: 8px 12px; font-size: 9pt; }
-      .home-btn { top: 12px; left: 12px; width: 28px; height: 28px; font-size: 12pt; }
+      .home-btn { top: 12px; left: 14px; font-size: 15pt; }
     }
     @page { size: A4; margin: 0; }
   </style>
