@@ -144,26 +144,26 @@
     }
     .download-btn:hover { background: #1a39a8; transform: translateY(-1px); }
 
-    /* Home button (screen only) */
+    /* Home button (screen only) — compact arrow */
     .home-btn {
       position: fixed;
-      top: 24px;
-      left: 24px;
+      top: 16px;
+      left: 16px;
       z-index: 100;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
       background: #fff;
       color: var(--accent);
-      font-size: 10pt;
-      font-weight: 600;
-      padding: 9px 15px;
-      border-radius: 8px;
+      font-size: 14pt;
+      line-height: 1;
       text-decoration: none;
       border: 1.5px solid var(--accent);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       transition: background 0.15s, color 0.15s, transform 0.15s;
-      font-family: 'Noto Sans KR', sans-serif;
     }
     .home-btn:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
 
@@ -176,13 +176,13 @@
     }
     @media (max-width: 768px) {
       .download-btn { top: 12px; right: 12px; padding: 8px 12px; font-size: 9pt; }
-      .home-btn { top: 12px; left: 12px; padding: 7px 11px; font-size: 9pt; }
+      .home-btn { top: 12px; left: 12px; width: 28px; height: 28px; font-size: 12pt; }
     }
     @page { size: A4; margin: 0; }
   </style>
 </head>
 <body>
-<a class="home-btn" href="./">← 포트폴리오 홈</a>
+<a class="home-btn" href="./" title="포트폴리오 홈" aria-label="포트폴리오 홈">←</a>
 <a class="download-btn" href="김의준_제네시스네스트_이력서.pdf" download>⬇ PDF 다운로드</a>
 <div class="page">
 
