@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eui Joon Kim — Selected Work</title>
-  <meta name="description" content="Selected UX/UI design work by Eui Joon Kim. Research-driven products across mobile apps, web, and brand: ALLAW (Legal AI) and EEL (Furniture)." />
+  <meta name="description" content="Selected UX/UI design work by Eui Joon Kim. Research-driven products across mobile apps, web, and brand: ALLAW (Legal AI), Flow (finance app concept), and EEL (Furniture)." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Eui Joon Kim — Selected Work" />
-  <meta property="og:description" content="Research-driven UX/UI design. ALLAW (Legal AI) and EEL (Furniture)." />
+  <meta property="og:description" content="Research-driven UX/UI design. ALLAW (Legal AI), Flow (finance app concept), and EEL (Furniture)." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -64,13 +64,13 @@
       .progress { animation: grow linear both; animation-timeline: scroll(); }
     }
 
-    /* ── Top label ── */
+    /* ── Top label (scrolls away with hero — never overlaps content) ── */
     .topbar {
-      position: fixed; top: 0; left: 0; right: 0;
+      position: absolute; top: 0; left: 0; right: 0;
       display: flex; justify-content: space-between; align-items: center;
       padding: 22px clamp(20px, 5vw, 64px);
       font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
-      mix-blend-mode: difference; color: #fff;
+      color: var(--muted);
       z-index: 90; pointer-events: none;
     }
 
@@ -186,6 +186,77 @@
     .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
     .thumb:hover img { transform: scale(1.08); }
 
+    /* ── Concept: live CSS phone mockups (not screenshots) ── */
+    .cframe {
+      position: relative; border-radius: 14px;
+      background:
+        radial-gradient(120% 120% at 70% 0%, rgba(var(--accent-rgb), 0.18), transparent 60%),
+        rgba(var(--accent-rgb), 0.07);
+      border: 1px solid rgba(var(--accent-rgb), 0.18);
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; padding: 34px 20px; min-height: 420px;
+    }
+    .cphone {
+      width: 226px; flex: 0 0 auto; background: #fff; border-radius: 30px; padding: 9px;
+      box-shadow: 0 30px 60px -24px rgba(0,0,0,.5); border: 1px solid rgba(0,0,0,.06);
+      transition: transform 0.5s var(--ease);
+    }
+    .cphone.a { transform: rotate(-3deg) translateY(6px); }
+    .cphone.b { transform: rotate(3deg) translateY(-10px); }
+    .project:hover .cphone.a { transform: rotate(-2deg) translateY(0); }
+    .project:hover .cphone.b { transform: rotate(2deg) translateY(-16px); }
+    .cscreen {
+      background: #f4f8f7; border-radius: 23px; overflow: hidden;
+      padding: 16px 15px 18px; font-size: 11px; line-height: 1.35; color: #0f1a17;
+    }
+    .cs-status { display: flex; justify-content: space-between; align-items: center; font-size: 10px; font-weight: 700; margin-bottom: 16px; }
+    .cs-status .dots { display: inline-flex; gap: 3px; }
+    .cs-status .dots i { width: 4px; height: 4px; border-radius: 50%; background: #0f1a17; opacity: .75; }
+    .cs-greet { font-size: 10.5px; color: #6b8079; font-weight: 500; }
+    .cs-name { font-size: 16px; font-weight: 700; letter-spacing: -.01em; margin-top: 1px; }
+    .cs-bal {
+      margin-top: 14px; border-radius: 16px; padding: 15px 16px; color: #eafff8;
+      background: linear-gradient(140deg, #103029 0%, #16453b 100%);
+      box-shadow: 0 14px 26px -14px rgba(16,48,41,.7);
+    }
+    .cs-bal .lbl { font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: #7fcab6; font-weight: 600; }
+    .cs-bal .amt { font-size: 25px; font-weight: 700; letter-spacing: -.02em; margin-top: 5px; }
+    .cs-bal .trend { display: inline-flex; align-items: center; gap: 4px; margin-top: 9px; font-size: 9.5px; font-weight: 600; color: #0f221d; background: #34d8b0; padding: 3px 8px; border-radius: 100px; }
+    .cs-chips { display: flex; gap: 7px; margin-top: 14px; }
+    .cs-chip { flex: 1; text-align: center; font-size: 9.5px; font-weight: 600; color: #0f3c33; background: #dff3ed; border-radius: 11px; padding: 9px 0; }
+    .cs-chip .ic { display: block; font-size: 13px; margin-bottom: 3px; }
+    .cs-sec { display: flex; justify-content: space-between; align-items: baseline; margin: 17px 0 10px; }
+    .cs-sec b { font-size: 12px; font-weight: 700; }
+    .cs-sec span { font-size: 9.5px; color: #8a9a94; font-weight: 600; }
+    .cs-bar { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+    .cs-bar .nm { width: 52px; font-size: 10px; font-weight: 600; color: #3d524c; }
+    .cs-bar .track { flex: 1; height: 7px; border-radius: 100px; background: #e2ece9; overflow: hidden; }
+    .cs-bar .fill { height: 100%; border-radius: 100px; }
+    .cs-bar .pc { width: 26px; text-align: right; font-size: 9.5px; font-weight: 700; color: #0f1a17; }
+    /* Insights screen */
+    .cs-title { font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
+    .cs-donut-wrap { display: flex; justify-content: center; margin: 20px 0 16px; }
+    .cs-donut {
+      width: 132px; height: 132px; border-radius: 50%;
+      background: conic-gradient(#0bbf9e 0 42%, #6366f1 42% 70%, #f59e0b 70% 100%);
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .cs-donut::after { content: ""; position: absolute; inset: 26px; border-radius: 50%; background: #f4f8f7; }
+    .cs-donut .ctr { position: relative; z-index: 1; text-align: center; }
+    .cs-donut .ctr .n { font-size: 17px; font-weight: 700; letter-spacing: -.02em; }
+    .cs-donut .ctr .t { font-size: 8.5px; color: #8a9a94; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+    .cs-leg { display: flex; flex-direction: column; gap: 9px; }
+    .cs-li { display: flex; align-items: center; gap: 9px; font-size: 10.5px; }
+    .cs-li .sw { width: 9px; height: 9px; border-radius: 3px; flex: 0 0 auto; }
+    .cs-li .nm { flex: 1; font-weight: 600; color: #3d524c; }
+    .cs-li .vl { font-weight: 700; color: #0f1a17; }
+    .cs-li .pc { width: 30px; text-align: right; color: #8a9a94; font-weight: 600; }
+    @media (max-width: 600px) {
+      .cphone.b { display: none; }
+      .cphone.a { transform: none; }
+      .cframe { min-height: 0; padding: 30px 16px; }
+    }
+
     /* dark variant */
     .project.dark {
       background: var(--ink); color: var(--paper);
@@ -245,7 +316,7 @@
       <h1 class="display reveal">I design from <em>research</em>, <span class="accent">not from guesses.</span></h1>
       <p class="hero-sub reveal">Three products across mobile apps, web, and brand — each built on a hypothesis I was willing to be proven wrong about. Below is what I found, and what I shipped.</p>
       <div class="hero-meta reveal">
-        <span><b>02</b> Selected projects</span>
+        <span><b>03</b> Selected projects</span>
         <span><b>2024 — 2026</b></span>
         <span>Mobile · Web · Brand</span>
       </div>
@@ -294,12 +365,75 @@
     </div>
   </section>
 
-  <!-- ── 02 EEL (dark) ── -->
+  <!-- ── 02 Flow — concept (live CSS UI) ── -->
+  <section class="project flip" style="--accent:#0d9488; --accent-rgb:13,148,136;">
+    <div class="wrap">
+      <div class="project-grid">
+        <div class="reveal">
+          <p class="p-index">02 — Concept</p>
+          <h2 class="p-title">Flow</h2>
+          <p class="p-kind">Personal Finance App · Redesign Concept</p>
+          <p class="p-essence">“Most finance apps drown you in numbers. This one answers one question — am I okay this month?”</p>
+          <p class="p-body">A self-initiated concept. I stripped a cluttered banking dashboard down to a single calm view — balance, this month’s spending, and where it went. Designed and built as a live, developer-ready interface, not a flat mockup.</p>
+          <div class="p-tags">
+            <span class="p-tag">UI Design</span>
+            <span class="p-tag">Mobile App</span>
+            <span class="p-tag">Design System</span>
+          </div>
+          <div class="p-metric">Self-initiated concept · cluttered → calm in two screens</div>
+        </div>
+        <div class="p-visual reveal">
+          <div class="cframe" role="img" aria-label="Flow finance app concept — two phone screens: a home dashboard with balance and monthly spending breakdown, and an insights screen with a spending donut chart.">
+            <!-- Phone A: Home -->
+            <div class="cphone a" aria-hidden="true">
+              <div class="cscreen">
+                <div class="cs-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+                <p class="cs-greet">Good morning</p>
+                <p class="cs-name">Alex Morgan</p>
+                <div class="cs-bal">
+                  <p class="lbl">Total balance</p>
+                  <p class="amt">$12,480</p>
+                  <span class="trend">↑ 2.4% this month</span>
+                </div>
+                <div class="cs-chips">
+                  <div class="cs-chip"><span class="ic">↑</span>Send</div>
+                  <div class="cs-chip"><span class="ic">↓</span>Request</div>
+                  <div class="cs-chip"><span class="ic">+</span>Top up</div>
+                </div>
+                <div class="cs-sec"><b>This month</b><span>$3,210 spent</span></div>
+                <div class="cs-bar"><span class="nm">Food</span><span class="track"><span class="fill" style="width:84%;background:#0bbf9e"></span></span><span class="pc">42%</span></div>
+                <div class="cs-bar"><span class="nm">Transport</span><span class="track"><span class="fill" style="width:56%;background:#6366f1"></span></span><span class="pc">28%</span></div>
+                <div class="cs-bar"><span class="nm">Shopping</span><span class="track"><span class="fill" style="width:60%;background:#f59e0b"></span></span><span class="pc">30%</span></div>
+              </div>
+            </div>
+            <!-- Phone B: Insights -->
+            <div class="cphone b" aria-hidden="true">
+              <div class="cscreen">
+                <div class="cs-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+                <p class="cs-title">Spending</p>
+                <p class="cs-greet" style="margin-top:2px">March overview</p>
+                <div class="cs-donut-wrap">
+                  <div class="cs-donut"><span class="ctr"><span class="n">$3,210</span><span class="t">this month</span></span></div>
+                </div>
+                <div class="cs-leg">
+                  <div class="cs-li"><span class="sw" style="background:#0bbf9e"></span><span class="nm">Food &amp; Drink</span><span class="vl">$1,348</span><span class="pc">42%</span></div>
+                  <div class="cs-li"><span class="sw" style="background:#6366f1"></span><span class="nm">Transport</span><span class="vl">$899</span><span class="pc">28%</span></div>
+                  <div class="cs-li"><span class="sw" style="background:#f59e0b"></span><span class="nm">Shopping</span><span class="vl">$963</span><span class="pc">30%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 03 EEL (dark) ── -->
   <section class="project dark" style="--accent:#c79a5e; --accent-rgb:199,154,94;">
     <div class="wrap">
       <div class="project-grid">
         <div class="reveal">
-          <p class="p-index">02 — 2026</p>
+          <p class="p-index">03 — 2026</p>
           <h2 class="p-title">EEL</h2>
           <p class="p-kind">Resin Art Furniture · D2C Commerce</p>
           <p class="p-essence">“A premium object deserves a premium way to buy it.”</p>
