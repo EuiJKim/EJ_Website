@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eui Joon Kim — Selected Work</title>
+  <meta name="description" content="Selected UX/UI design work by Eui Joon Kim. Three research-driven products across mobile apps, web, and brand: ALLAW, Clog, and EEL." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Eui Joon Kim — Selected Work" />
+  <meta property="og:description" content="Research-driven UX/UI design. ALLAW (Legal AI), Clog (Climbing), EEL (Furniture)." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f4f1ea;
+      --ink: #16130f;
+      --muted: #6b6459;
+      --line: #ddd6c8;
+      --paper: #faf8f2;
+      --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+      color-scheme: light;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--ink); color: var(--bg); }
+
+    .display {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+    }
+    .display em { font-style: italic; font-weight: 500; }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Progress bar ── */
+    .progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+      background: var(--ink); transform: scaleX(0); transform-origin: left;
+      z-index: 100;
+    }
+    @supports (animation-timeline: scroll()) {
+      @keyframes grow { to { transform: scaleX(1); } }
+      .progress { animation: grow linear both; animation-timeline: scroll(); }
+    }
+
+    /* ── Top label ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px clamp(20px, 5vw, 64px);
+      font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+      mix-blend-mode: difference; color: #fff;
+      z-index: 90; pointer-events: none;
+    }
+
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
+
+    /* ── Hero ── */
+    .hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding: 140px 0 80px; }
+    .hero h1 {
+      font-size: clamp(40px, 8.5vw, 116px);
+      max-width: 14ch;
+      margin: 22px 0 0;
+    }
+    .hero h1 .accent { color: var(--muted); }
+    .hero-sub {
+      font-size: clamp(16px, 1.7vw, 21px);
+      color: var(--muted);
+      max-width: 46ch;
+      margin-top: 36px;
+      line-height: 1.55;
+    }
+    .hero-meta {
+      display: flex; gap: 28px; flex-wrap: wrap;
+      margin-top: 48px; padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--muted);
+    }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-meta b { color: var(--ink); font-weight: 600; }
+
+    /* ── Marquee ── */
+    .marquee {
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      overflow: hidden; padding: 20px 0; white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-block; will-change: transform;
+      animation: scroll-x 28s linear infinite;
+    }
+    .marquee-track span {
+      font-family: 'Fraunces', serif; font-size: 26px; font-weight: 500;
+      font-style: italic; padding: 0 4px;
+    }
+    .marquee-track .dot { font-style: normal; color: var(--muted); padding: 0 22px; }
+    @keyframes scroll-x { to { transform: translateX(-50%); } }
+
+    /* ── Project ── */
+    .project {
+      padding: clamp(72px, 11vw, 150px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: center;
+    }
+    .project.flip .project-grid { direction: rtl; }
+    .project.flip .project-grid > * { direction: ltr; }
+
+    .p-index {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(15px, 1.4vw, 18px);
+      font-weight: 600; letter-spacing: 0.1em;
+      color: var(--accent);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .p-index::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    .p-title {
+      font-family: 'Fraunces', serif; font-weight: 600; letter-spacing: -0.02em;
+      font-size: clamp(34px, 5vw, 60px); line-height: 1; margin-top: 18px;
+    }
+    .p-kind { font-size: 14px; font-weight: 600; color: var(--accent); margin-top: 12px; letter-spacing: 0.02em; }
+    .p-essence {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+      font-size: clamp(19px, 2vw, 25px); line-height: 1.4;
+      margin-top: 26px; color: var(--ink);
+    }
+    .p-body { font-size: 16px; color: var(--muted); margin-top: 18px; max-width: 42ch; line-height: 1.65; }
+    .p-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+    .p-tag {
+      font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em;
+      padding: 7px 13px; border: 1px solid var(--line); border-radius: 100px; color: var(--muted);
+    }
+    .p-metric {
+      display: inline-flex; align-items: center; gap: 9px;
+      margin-top: 24px; font-size: 13.5px; font-weight: 600; color: var(--accent);
+    }
+    .p-metric::before { content: "✓"; font-size: 12px; }
+
+    /* visual frame */
+    .p-visual { display: flex; flex-direction: column; gap: 14px; }
+    .frame {
+      position: relative; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden;
+      background:
+        radial-gradient(120% 120% at 30% 0%, rgba(var(--accent-rgb), 0.16), transparent 60%),
+        rgba(var(--accent-rgb), 0.07);
+      border: 1px solid rgba(var(--accent-rgb), 0.18);
+      display: flex; align-items: center; justify-content: center; padding: 28px;
+    }
+    .frame img {
+      max-width: 100%; max-height: 100%; object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 24px 60px -20px rgba(0,0,0,0.35);
+      transition: transform 0.6s var(--ease);
+    }
+    .frame.tall img { max-height: 100%; width: auto; }
+    .project:hover .frame img { transform: scale(1.03); }
+    .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .thumb {
+      aspect-ratio: 1; border-radius: 10px; overflow: hidden;
+      background: rgba(var(--accent-rgb), 0.06); border: 1px solid var(--line);
+    }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+    .thumb:hover img { transform: scale(1.08); }
+
+    /* dark variant */
+    .project.dark {
+      background: var(--ink); color: var(--paper);
+      margin: 0 calc(50% - 50vw); padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%);
+    }
+    .project.dark .wrap { padding: 0 clamp(20px, 5vw, 64px); }
+    .project.dark .p-title, .project.dark .p-essence { color: var(--paper); }
+    .project.dark .p-body { color: #b9b1a3; }
+    .project.dark .p-tag { border-color: #3a352d; color: #b9b1a3; }
+    .project.dark .p-index::after { background: #3a352d; }
+    .project.dark .frame { border-color: rgba(var(--accent-rgb), 0.35); }
+
+    /* ── Outro ── */
+    .outro { padding: clamp(80px, 13vw, 170px) 0; text-align: center; }
+    .outro .display { font-size: clamp(30px, 5.5vw, 72px); max-width: 16ch; margin: 0 auto; }
+    .outro p { color: var(--muted); margin-top: 28px; font-size: 16px; }
+
+    footer {
+      padding: 40px 0; border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      font-size: 13px; color: var(--muted); font-weight: 500; letter-spacing: 0.03em;
+    }
+
+    /* ── Reveal ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    a:focus-visible, .frame:focus-visible {
+      outline: 3px solid var(--accent); outline-offset: 5px; border-radius: 6px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 860px) {
+      .project-grid { grid-template-columns: 1fr; gap: 36px; }
+      .project.flip .project-grid { direction: ltr; }
+      .frame { aspect-ratio: 16 / 11; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .marquee-track { animation: none; }
+      .frame img, .thumb img, .project:hover .frame img { transition: none; transform: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress"></div>
+  <div class="topbar">
+    <span>EUI JOON KIM</span>
+    <span>SELECTED WORK</span>
+  </div>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow reveal">UX / UI Designer — Seoul</p>
+      <h1 class="display reveal">I design from <em>research</em>, <span class="accent">not from guesses.</span></h1>
+      <p class="hero-sub reveal">Three products across mobile apps, web, and brand — each built on a hypothesis I was willing to be proven wrong about. Below is what I found, and what I shipped.</p>
+      <div class="hero-meta reveal">
+        <span><b>03</b> Selected projects</span>
+        <span><b>2024 — 2026</b></span>
+        <span>Mobile · Web · Brand</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Marquee ── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>UX Research</span><span class="dot">✦</span><span>UI Design</span><span class="dot">✦</span><span>Prototyping</span><span class="dot">✦</span><span>Design Systems</span><span class="dot">✦</span><span>User Interviews</span><span class="dot">✦</span><span>Service Design</span><span class="dot">✦</span>
+      <span>UX Research</span><span class="dot">✦</span><span>UI Design</span><span class="dot">✦</span><span>Prototyping</span><span class="dot">✦</span><span>Design Systems</span><span class="dot">✦</span><span>User Interviews</span><span class="dot">✦</span><span>Service Design</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ── 01 ALLAW ── -->
+  <section class="project" style="--accent:#1E41C0; --accent-rgb:30,65,192;">
+    <div class="wrap">
+      <div class="project-grid">
+        <div class="reveal">
+          <p class="p-index">01 — 2025</p>
+          <h2 class="p-title">ALLAW</h2>
+          <p class="p-kind">Legal AI App · B2C SaaS</p>
+          <p class="p-essence">“The way lawyers speak was the barrier.”</p>
+          <p class="p-body">In-depth interviews and a survey (n=89) exposed the real innovation-resistance factors behind legal apps. I translated legal language into everyday language and designed an AI consultation flow around it.</p>
+          <div class="p-tags">
+            <span class="p-tag">UX Research</span>
+            <span class="p-tag">UI Design</span>
+            <span class="p-tag">React Native</span>
+          </div>
+          <div class="p-metric">Survey n=89 · KCI-published research · gov-funded startup</div>
+        </div>
+        <div class="p-visual reveal">
+          <div class="frame">
+            <picture>
+              <source srcset="../allaw/assets/Resume_2.webp" type="image/webp" />
+              <img src="../allaw/assets/Resume_2.jpg" alt="ALLAW legal AI app — cover with three phone screens showing the AI consultation flow" loading="lazy" />
+            </picture>
+          </div>
+          <div class="thumbs">
+            <div class="thumb"><picture><source srcset="../allaw/assets/Resume_8.webp" type="image/webp"><img src="../allaw/assets/Resume_8.jpg" alt="ALLAW — three core features mapped from low-fi usability testing" loading="lazy" /></picture></div>
+            <div class="thumb"><picture><source srcset="../allaw/assets/Resume_5.webp" type="image/webp"><img src="../allaw/assets/Resume_5.jpg" alt="ALLAW — research and design process detail" loading="lazy" /></picture></div>
+            <div class="thumb"><picture><source srcset="../allaw/assets/Resume_11.webp" type="image/webp"><img src="../allaw/assets/Resume_11.jpg" alt="ALLAW — final UI design detail" loading="lazy" /></picture></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 02 Clog ── -->
+  <section class="project flip" style="--accent:#4f46e5; --accent-rgb:79,70,229;">
+    <div class="wrap">
+      <div class="project-grid">
+        <div class="reveal">
+          <p class="p-index">02 — 2024</p>
+          <h2 class="p-title">Clog</h2>
+          <p class="p-kind">Climbing Log App · Consumer</p>
+          <p class="p-essence">“I’ve climbed for three months but I can’t tell what’s changed.”</p>
+          <p class="p-body">I set three hypotheses about how climbers track progress. Two held, one was wrong — so I pivoted the core flow. Solo end-to-end: research, UX, UI, and a full design system.</p>
+          <div class="p-tags">
+            <span class="p-tag">UX Research</span>
+            <span class="p-tag">UI Design</span>
+            <span class="p-tag">Design System</span>
+          </div>
+          <div class="p-metric">3 hypotheses · 2 confirmed · 1 pivoted · solo designer</div>
+        </div>
+        <div class="p-visual reveal">
+          <div class="frame tall">
+            <img src="../clog/img_climbing_detail_v2.jpg" alt="Clog climbing app — gym detail screen with location, facilities, bouldering grades and reviews" loading="lazy" />
+          </div>
+          <div class="thumbs">
+            <div class="thumb"><img src="../clog/img_main.jpg" alt="Clog — home dashboard screen" loading="lazy" /></div>
+            <div class="thumb"><img src="../clog/img_calendar.jpg" alt="Clog — climbing log calendar view" loading="lazy" /></div>
+            <div class="thumb"><img src="../clog/img_badge.jpg" alt="Clog — achievement badge screen" loading="lazy" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 03 EEL (dark) ── -->
+  <section class="project dark" style="--accent:#c79a5e; --accent-rgb:199,154,94;">
+    <div class="wrap">
+      <div class="project-grid">
+        <div class="reveal">
+          <p class="p-index">03 — 2026</p>
+          <h2 class="p-title">EEL</h2>
+          <p class="p-kind">Resin Art Furniture · D2C Commerce</p>
+          <p class="p-essence">“A premium object deserves a premium way to buy it.”</p>
+          <p class="p-body">Business planning and web design for a handcrafted resin-table brand. I built the brand identity and a build-to-order experience with a 3D customizer at its center.</p>
+          <div class="p-tags">
+            <span class="p-tag">Brand</span>
+            <span class="p-tag">Web Design</span>
+            <span class="p-tag">3D Customizer</span>
+          </div>
+          <div class="p-metric">Business planning · Brand system · BTO commerce</div>
+        </div>
+        <div class="p-visual reveal">
+          <div class="frame">
+            <img src="../resin/thumb.jpg" alt="EEL resin art furniture — moody product photograph of a handcrafted resin cabinet with a warm glowing light" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Outro ── -->
+  <section class="outro">
+    <div class="wrap">
+      <p class="eyebrow reveal" style="margin-bottom:24px;">The thread</p>
+      <h2 class="display reveal">Find the real barrier. <em>Then</em> design.</h2>
+      <p class="reveal">Every project here started with a sentence a user actually said — and a hypothesis I was ready to throw away.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; width:100%;">
+      <span>EUI JOON KIM — UX/UI DESIGNER</span>
+      <span>SELECTED WORK · 2024–2026</span>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    (() => {
+      const els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        els.forEach(e => e.classList.add('in'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(e => io.observe(e));
+    })();
+  </script>
+</body>
+</html>
