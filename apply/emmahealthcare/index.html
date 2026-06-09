@@ -134,6 +134,20 @@
     .proj-card .prole { font-size: 13px; color: var(--gray-70); line-height: 1.55; }
     .proj-card .parrow { font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 10px; display: inline-block; }
 
+    /* Product proposal */
+    .prop-item { padding: 18px 20px; border-left: 3px solid var(--accent); background: var(--accent-light); border-radius: 0 10px 10px 0; margin-bottom: 14px; }
+    .prop-h { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 7px; letter-spacing: -0.01em; }
+    .prop-b { font-size: 14px; line-height: 1.7; color: var(--gray-70); }
+    .prop-b strong { color: var(--dark); font-weight: 600; }
+    .prop-note { font-size: 13px; color: var(--gray-50); margin-top: 14px; line-height: 1.65; }
+
+    /* Honest closing box */
+    .honest { padding: 26px 28px; border: 1px solid var(--gray-20); border-radius: 14px; background: var(--gray-10); margin-top: 16px; }
+    html.dark .honest { background: rgba(255,255,255,0.04); }
+    .honest p { font-size: 15px; line-height: 1.8; color: var(--gray-70); margin-bottom: 12px; }
+    .honest p:last-child { margin-bottom: 0; }
+    .honest strong { color: var(--dark); font-weight: 600; }
+
     @media (max-width: 768px) {
       .match-grid, .proj-grid { grid-template-columns: 1fr; }
       .cta-row { gap: 10px; }
@@ -387,6 +401,34 @@
     </p>
   </section>
 
+  <!-- Product proposal -->
+  <section class="section">
+    <p class="section-num">제품을 직접 살펴보고</p>
+    <h2>작은 UX 제언</h2>
+    <p>지원에 앞서 베베루시와 루시케어를 살펴봤습니다. 외부에 공개된 정보로 세운
+      가설이라 실제와 다를 수 있지만, 사용자 입장에서 떠오른 생각을 짧게 정리합니다.</p>
+    <div class="prop-item">
+      <p class="prop-h">베베루시 — 새벽 3시의 부모에게는 '데이터'보다 '안심'</p>
+      <p class="prop-b">베베루시는 심박·호흡·울음을 실시간으로 감지합니다. 다만 잠 못 잔
+        새벽의 부모가 가장 먼저 원하는 건 상세 그래프보다 <strong>"지금 아기가
+        안정적인가"</strong>라는 한 줄의 안심이라고 생각합니다. 평소에는 '안심' 상태
+        하나만 크게 보여주고, 조치가 필요할 때만 선명한 알림으로 전환하는 설계를
+        제안합니다. ALLAW에서 정보에 압도된 사용자를 위해 핵심만 남기고 단계적으로
+        안내했던 방식과 같은 접근입니다.</p>
+    </div>
+    <div class="prop-item">
+      <p class="prop-h">루시케어 — '왜 분석하는지'가 보이는 신뢰 설계</p>
+      <p class="prop-b">루시케어는 표정·음성·생체신호를 함께 보는 강력한 방식입니다.
+        그만큼 사용자는 "왜 내 얼굴을 분석하지?"라는 거부감을 느낄 수 있습니다.
+        측정 단계마다 <strong>목적과 데이터 사용처를 짧게 보여주고</strong> 사용자가
+        통제권을 느끼게 하는 동의 흐름은, 편안한 상태에서 측정하게 만들어 평가의
+        정확도에도 도움이 된다고 생각합니다. 마음이 약해진 사용자를 배려하는 설계라는
+        점에서, 제가 가장 잘하고 싶은 일입니다.</p>
+    </div>
+    <p class="prop-note">— 위 제언은 외부에서 본 짐작일 뿐입니다. 실제로 맞는지는
+      입사 후 사용자 데이터로 확인하는 것이 먼저라고 생각합니다.</p>
+  </section>
+
   <!-- Projects -->
   <section class="section">
     <p class="section-num">대표 프로젝트</p>
@@ -407,6 +449,19 @@
         <p class="prole">사업 기획 + 웹사이트 + AI 콘텐츠 제작.</p>
         <span class="parrow">웹·브랜드 보기 →</span>
       </a>
+    </div>
+  </section>
+
+  <!-- Honest note -->
+  <section class="section">
+    <p class="section-num">솔직하게</p>
+    <h2>경력은 짧지만, 결과로 채워왔습니다</h2>
+    <div class="honest">
+      <p>제 정식 재직 경력은 1년이 채 되지 않습니다. 그 점을 숨기지 않겠습니다.
+        대신 짧은 기간에 <strong>ALLAW(KCI 등재), Clog(1인 100% 설계),
+        EEL(사업·웹)</strong>까지 끝까지 끌고 간 산출물로 그 간극을 채워왔습니다.</p>
+      <p>정규직과 계약직 전환형 모두 열려 있고, <strong>합류 시점도 빠르게 맞출 수
+        있습니다.</strong> 짧은 연차는 빠른 학습과 밀도 있는 결과로 메우겠습니다.</p>
     </div>
   </section>
 
