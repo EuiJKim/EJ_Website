@@ -102,6 +102,43 @@
       color: white;
     }
 
+    /* Primary CTA buttons */
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 60px; }
+    .cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 600;
+      padding: 14px 22px; border-radius: 10px;
+      text-decoration: none; transition: background 0.15s, color 0.15s, transform 0.15s;
+      border: 1.5px solid var(--accent);
+    }
+    .cta-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px rgba(30, 65, 192, 0.22); }
+    .cta-primary:hover { background: #1a39a8; transform: translateY(-1px); }
+    .cta-secondary { background: #fff; color: var(--accent); }
+    .cta-secondary:hover { background: var(--accent-light); transform: translateY(-1px); }
+    html.dark .cta-secondary { background: transparent; }
+
+    /* Capability match cards */
+    .match-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+    .match-card { padding: 22px 20px; border: 1px solid var(--gray-20); border-radius: 12px; background: #fff; }
+    html.dark .match-card { background: var(--gray-10); }
+    .match-req { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 10px; letter-spacing: -0.01em; }
+    .match-req .tag { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; font-weight: 700; }
+    .match-ev { font-size: 14px; line-height: 1.65; color: var(--gray-70); }
+    .match-ev strong { color: var(--dark); font-weight: 600; }
+
+    /* Project cards */
+    .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+    .proj-card { display: block; padding: 20px; border: 1px solid var(--gray-20); border-radius: 12px; text-decoration: none; color: inherit; transition: border-color 0.15s, transform 0.15s; }
+    .proj-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .proj-card .pname { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 5px; letter-spacing: -0.01em; }
+    .proj-card .prole { font-size: 13px; color: var(--gray-70); line-height: 1.55; }
+    .proj-card .parrow { font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 10px; display: inline-block; }
+
+    @media (max-width: 768px) {
+      .match-grid, .proj-grid { grid-template-columns: 1fr; }
+      .cta-row { gap: 10px; }
+    }
+
     /* Section */
     .section {
       margin-bottom: 72px;
@@ -305,119 +342,68 @@
     </div>
   </header>
 
-  <div class="quick-links">
-    <span class="quick-links-label">⚡ Quick Access — 지원 자료 빠른 이동</span>
-    <a href="../../김의준_에이아이세스_이력서.html" target="_blank">📄 이력서 (웹)</a>
-    <a href="../../김의준_에이아이세스_이력서.pdf" target="_blank">⬇ 이력서 (PDF)</a>
-    <a href="../../AI사용경험_김의준.pdf" target="_blank">🤖 AI 사용 경험</a>
-    <a href="../../">🏠 메인 포트폴리오</a>
-    <a href="../../allaw/">ALLAW — 데이터 기반 리서치</a>
-    <a href="../../clog/">Clog — 화면설계</a>
+  <!-- Primary CTA -->
+  <div class="cta-row">
+    <a class="cta cta-primary" href="../../김의준_에이아이세스_이력서.html" target="_blank">📄 이력서 보기</a>
+    <a class="cta cta-secondary" href="../../김의준_에이아이세스_이력서.pdf" target="_blank">⬇ PDF 다운로드</a>
+    <a class="cta cta-secondary" href="../../AI사용경험_김의준.pdf" target="_blank">🤖 AI 사용 경험</a>
+    <a class="cta cta-secondary" href="../../" target="_blank">🏠 메인 포트폴리오</a>
   </div>
 
-  <!-- Q1 -->
+  <!-- Capability match -->
   <section class="section">
-    <p class="section-num">QUESTION 01</p>
-    <h2>지원 동기</h2>
+    <p class="section-num">채용 요건 × 내 경험</p>
+    <h2>공고가 찾는 역량, 이렇게 증명했습니다</h2>
+    <div class="match-grid">
+      <div class="match-card">
+        <p class="match-req"><span class="tag">우대 역량</span>데이터 기반 의사결정</p>
+        <p class="match-ev">법률 앱 ALLAW에서 <strong>설문 89명·사용성 테스트 5명</strong>으로 UX 전략 3개를 검증, 1개를 기각하고 재설계. 결과를 <strong>KCI 등재지에 게재</strong>.</p>
+      </div>
+      <div class="match-card">
+        <p class="match-req"><span class="tag">우대 역량</span>AI 활용 능력</p>
+        <p class="match-ev">자료를 AI가 정리·연결하는 <strong>'Second Brain' 워크플로우</strong> 운용. EEL 브랜드에선 AI로 콘텐츠 시안을 양산·선별해 제작 주기 단축. <em>(상세: AI 사용 경험)</em></p>
+      </div>
+      <div class="match-card">
+        <p class="match-req"><span class="tag">우대 역량</span>UI/UX · 프로토타이핑</p>
+        <p class="match-ev">Clog에서 <strong>12개 화면을 설계 문서로</strong> 정리, ALLAW 핵심 플로우를 스토리보드화. Figma로 화면·흐름을 직접 설계.</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- Motivation (short) -->
+  <section class="section">
+    <p class="section-num">왜 에이아이세스인가</p>
+    <h2>"AI는 전시 기술이 아니라 현장을 움직이는 도구"</h2>
     <p>
-      에이아이세스의 "AI는 전시되는 기술이 아니라 현장을 움직이는 도구"라는
-      방향에 깊이 공감해 지원했습니다. 저 역시 AI를 멋진 결과를 대신 만들어주는
-      존재가 아니라, 제가 세운 기준 위에서 분석과 반복을 빠르게 처리하는
-      도구로 써왔습니다. 기준과 최종 판단은 늘 제 몫으로 남겨둡니다.
-    </p>
-
-    <p>
-      M-Office와 M-Agent처럼 데이터를 근거로 의사결정을 돕는 AI 서비스는,
-      제가 그동안 해온 작업 — 사용자 데이터에서 인사이트를 찾아 화면과 흐름으로
-      바꾸는 일 — 과 정확히 같은 결을 가지고 있습니다. 법률 상담 앱 ALLAW에서는
-      사용자 행동을 분석해 가설을 세우고 화면까지 설계했고, 그 과정을 AI 도구로
-      더 빠르게 만들었습니다.
-    </p>
-
-    <p>
-      데이터로 방향을 잡고, AI로 속도를 내고, 결과는 제가 책임지는 이 방식을
-      에이아이세스의 실제 제품 위에서 검증하고 키우고 싶어 지원했습니다.
+      에이아이세스가 말하는 이 방향에 깊이 공감합니다. 저 역시 AI를 결과를 대신
+      만들어주는 존재가 아니라, 제가 세운 기준 위에서 분석과 반복을 빠르게 처리하는
+      도구로 써왔습니다. M-Office·M-Agent처럼 데이터를 근거로 의사결정을 돕는 제품은,
+      사용자 데이터에서 인사이트를 찾아 화면으로 바꾸는 제 작업과 정확히 같은 결입니다.
+      데이터로 방향을 잡고 AI로 속도를 내되, 최종 판단은 제가 책임지는 방식을
+      에이아이세스의 실제 제품 위에서 키우고 싶습니다.
     </p>
   </section>
 
-  <!-- Q2 -->
+  <!-- Projects -->
   <section class="section">
-    <p class="section-num">QUESTION 02</p>
-    <h2>직무 강점 — 데이터 기반 의사결정 + AI 활용</h2>
-
-    <p>
-      제 강점은 데이터로 방향을 정하고, AI로 속도를 내어, 분석에서 화면까지
-      혼자서도 결과물을 만들어내는 것입니다. 에이아이세스가 우대하는
-      "데이터 기반 의사결정"과 "AI 활용 능력"을 실제 작업으로 증명해왔습니다.
-    </p>
-
-    <p>
-      법률 상담 앱 ALLAW에서는 "법률 용어 자체가 장벽"이라는 문제 정의에서
-      출발해, 설문(89명)과 사용성 테스트(5명)로 3개의 UX 전략을 검증했습니다.
-      2개는 확정하고 1개는 사용성 테스트에서 기각되어 핵심 플로우를 다시
-      설계했으며, 그 결과를 <strong>KCI 등재지(JNCIST, 2025)에 논문으로
-      게재</strong>했습니다. 분석에서 멈추지 않고 화면까지 끌고 간 사례입니다.
-    </p>
-
-    <p>
-      클라이밍 기록 앱 Clog는 기획·리서치·UI·프로토타입을 1인 100%로 진행해,
-      체크인 한 번으로 위치·날짜·성과가 기록되는 흐름을 설계하고 12개 화면을
-      슬라이드 단위 설계 문서로 정리했습니다. 기획 의도와 화면을 함께 보여주는
-      방식이라, 개발자와 디자이너가 같은 기준으로 화면을 이해할 수 있습니다.
-    </p>
-
-    <p>
-      AI 활용 면에서는, 흩어진 자료를 AI가 정리·연결하는 'Second Brain'을
-      워크플로우에 들여 새 분야를 빠르게 학습하고 기획·리서치 문서의 초안을
-      잡습니다. 레진 가구 브랜드 EEL에서는 브랜드 기준을 먼저 세운 뒤 AI로
-      콘텐츠 시안을 여러 버전 생성하고 골라 다듬는 방식으로 제작 주기를
-      줄였습니다. 구체적인 활용 방식은 상단 'AI 사용 경험' 자료에 정리해
-      두었습니다. 다만 기준과 최종 판단은 항상 제가 책임집니다.
-    </p>
-  </section>
-
-  <!-- Q3 -->
-  <section class="section">
-    <p class="section-num">QUESTION 03</p>
-    <h2>협업 — 직군 사이의 기준을 맞추다</h2>
-
-    <p>
-      가장 기억에 남는 협업은 MS컴퍼니에서 ALLAW 초기 기획을 맡았을
-      때입니다. 팀은 기획자, 디자이너인 저, 개발자 2명, 사업 담당으로
-      구성됐고, <strong>입사 한 달 안에 중소벤처기업부 초기창업패키지
-      선정 심사를 통과</strong>해야 했습니다.
-    </p>
-
-    <p>
-      가장 큰 문제는 같은 단어를 직군마다 다르게 쓴다는 점이었습니다.
-      "이 기능 되나요"라는 한 질문에도 디자인, 개발, 사업이 생각하는
-      "된다"의 기준이 모두 달라서 회의가 결론 없이 끝나는 일이 잦았습니다.
-      한 달이라는 일정 안에서 이 패턴을 빠르게 깨야 했습니다.
-    </p>
-
-    <p>
-      저는 두 가지로 풀었습니다. 먼저 핵심 화면마다 <strong>사용자 가치,
-      개발 난이도, 사업 우선순위를 한 장에 정리</strong>해 직군별 기준
-      차이를 눈으로 보이게 만들었습니다. 그리고 의견이 갈릴 때는 항상
-      안을 2~3개씩 시각화해 가져가, 논의의 출발점을 "되느냐 마느냐"에서
-      "어느 쪽이 더 나으냐"로 옮겼습니다.
-    </p>
-
-    <p>
-      그 결과 화면 의사결정 속도가 눈에 띄게 빨라졌고, 한 달 안에 선정
-      심사를 통과해 <strong>7,000만원을 확보</strong>했습니다. 이 경험을
-      통해 저는 디자이너의 역할이 단순히 화면을 설계하는 데 그치지 않고,
-      서로 다른 언어와 관점을 가진 사람들을 같은 그림 앞에 모으는 데까지
-      이어진다는 것을 배웠습니다.
-    </p>
-
-    <div class="closing">
-      <p>
-        위에서 언급한 ALLAW 데이터 분석, Clog 화면 설계, EEL의 AI 콘텐츠
-        작업, 그리고 AI 활용 방식의 구체적 산출물은 상단 Quick Access의
-        포트폴리오 · 이력서 · AI 사용 경험 자료에서 확인하실 수 있습니다.
-      </p>
+    <p class="section-num">대표 프로젝트</p>
+    <h2>직접 만든 결과물</h2>
+    <div class="proj-grid">
+      <a class="proj-card" href="../../allaw/" target="_blank">
+        <p class="pname">ALLAW — 법률 상담 앱</p>
+        <p class="prole">데이터 기반 UX 리서치 + 화면 설계. KCI 등재 논문.</p>
+        <span class="parrow">리서치 보기 →</span>
+      </a>
+      <a class="proj-card" href="../../clog/" target="_blank">
+        <p class="pname">Clog — 클라이밍 기록 앱</p>
+        <p class="prole">1인 100% 기획·리서치·UI. 12화면 설계 문서.</p>
+        <span class="parrow">화면설계 보기 →</span>
+      </a>
+      <a class="proj-card" href="../../resin/" target="_blank">
+        <p class="pname">EEL — 레진 가구 브랜드</p>
+        <p class="prole">사업 기획 + 웹사이트 + AI 콘텐츠 제작.</p>
+        <span class="parrow">웹·브랜드 보기 →</span>
+      </a>
     </div>
   </section>
 
