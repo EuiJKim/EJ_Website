@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>김의준 — 엠마헬스케어 IT 서비스 기획자 지원</title>
+  <meta name="description" content="엠마헬스케어 IT 서비스 기획자 포지션 지원 — 김의준" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')</script>
+  <link rel="stylesheet" href="../../assets/global.css?v=4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'DM Sans', 'Freesentation', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    .apply-wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 96px 48px 96px;
+    }
+
+    /* Header */
+    .apply-header {
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--gray-20);
+      margin-bottom: 56px;
+    }
+    .apply-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .apply-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .apply-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray-70);
+      line-height: 1.65;
+      max-width: 640px;
+    }
+    .apply-meta {
+      margin-top: 28px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--gray-50);
+    }
+    .apply-meta strong {
+      color: var(--dark);
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    /* Quick links */
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 64px;
+      padding: 20px 24px;
+      background: var(--accent-light);
+      border: 1px solid #c7cffe;
+      border-radius: 12px;
+    }
+    .quick-links-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    .quick-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: white;
+      border: 1px solid #c7cffe;
+      transition: background 0.15s, color 0.15s;
+    }
+    .quick-links a:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* Primary CTA buttons */
+    .cta-label { font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--gray-50); margin-bottom: 12px; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 60px; }
+    .cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 600;
+      padding: 14px 22px; border-radius: 10px;
+      text-decoration: none; transition: background 0.15s, color 0.15s, transform 0.15s;
+      border: 1.5px solid var(--accent);
+    }
+    .cta-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px rgba(30, 65, 192, 0.22); }
+    .cta-primary:hover { background: #1a39a8; transform: translateY(-1px); }
+    .cta-secondary { background: #fff; color: var(--accent); }
+    .cta-secondary:hover { background: var(--accent-light); transform: translateY(-1px); }
+    html.dark .cta-secondary { background: transparent; }
+
+    /* Capability match cards */
+    .match-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+    .match-card { padding: 22px 20px; border: 1px solid var(--gray-20); border-radius: 12px; background: #fff; }
+    html.dark .match-card { background: var(--gray-10); }
+    .match-req { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 10px; letter-spacing: -0.01em; }
+    .match-req .tag { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; font-weight: 700; }
+    .match-ev { font-size: 14px; line-height: 1.65; color: var(--gray-70); }
+    .match-ev strong { color: var(--dark); font-weight: 600; }
+
+    /* Project cards */
+    .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+    .proj-card { display: block; padding: 20px; border: 1px solid var(--gray-20); border-radius: 12px; text-decoration: none; color: inherit; transition: border-color 0.15s, transform 0.15s; }
+    .proj-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .proj-card .pname { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 5px; letter-spacing: -0.01em; }
+    .proj-card .prole { font-size: 13px; color: var(--gray-70); line-height: 1.55; }
+    .proj-card .parrow { font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 10px; display: inline-block; }
+
+    /* Product proposal */
+    .prop-item { padding: 18px 20px; border-left: 3px solid var(--accent); background: var(--accent-light); border-radius: 0 10px 10px 0; margin-bottom: 14px; }
+    .prop-h { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 7px; letter-spacing: -0.01em; }
+    .prop-b { font-size: 14px; line-height: 1.7; color: var(--gray-70); }
+    .prop-b strong { color: var(--dark); font-weight: 600; }
+    .prop-note { font-size: 13px; color: var(--gray-50); margin-top: 14px; line-height: 1.65; }
+
+    /* Honest closing box */
+    .honest { padding: 26px 28px; border: 1px solid var(--gray-20); border-radius: 14px; background: var(--gray-10); margin-top: 16px; }
+    html.dark .honest { background: rgba(255,255,255,0.04); }
+    .honest p { font-size: 15px; line-height: 1.8; color: var(--gray-70); margin-bottom: 12px; }
+    .honest p:last-child { margin-bottom: 0; }
+    .honest strong { color: var(--dark); font-weight: 600; }
+
+    @media (max-width: 768px) {
+      .match-grid, .proj-grid { grid-template-columns: 1fr; }
+      .cta-row { gap: 10px; }
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 72px;
+    }
+    .section-num {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .section h2 {
+      font-size: clamp(22px, 2.6vw, 28px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+    .section .char-count {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gray-50);
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+    }
+    .section p {
+      font-size: 16px;
+      color: var(--gray-70);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .section p strong {
+      color: var(--dark);
+      font-weight: 600;
+    }
+    .section p em {
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Closing */
+    .closing {
+      padding: 40px 0 16px;
+      border-top: 1px solid var(--gray-20);
+      margin-top: 32px;
+    }
+    .closing p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--gray-70);
+      margin-bottom: 16px;
+    }
+
+    /* Education timeline */
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-top: 16px;
+    }
+    .edu-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--gray-20);
+    }
+    .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .edu-date {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-50);
+      letter-spacing: 0.02em;
+      padding-top: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+    .edu-body .edu-degree {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .edu-body .edu-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+    .edu-body .edu-meta {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray-70);
+      line-height: 1.6;
+    }
+    .edu-body .edu-meta .sep { color: var(--gray-20); margin: 0 6px; }
+    .edu-body .edu-tags {
+      margin-top: 8px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .edu-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+    .edu-tag.neutral {
+      background: var(--gray-10);
+      color: var(--gray-70);
+    }
+
+    @media (max-width: 768px) {
+      .edu-item { grid-template-columns: 1fr; gap: 6px; }
+      .edu-date { padding-top: 0; }
+    }
+
+    /* Contact card */
+    .contact-card {
+      margin-top: 40px;
+      padding: 28px 32px;
+      background: var(--dark);
+      color: var(--white);
+      border-radius: 14px;
+    }
+    html.dark .contact-card { background: var(--gray-10); color: var(--dark); }
+    .contact-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .contact-card .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      font-size: 14px;
+    }
+    .contact-card a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      opacity: 0.9;
+    }
+    .contact-card a:hover { opacity: 1; }
+
+    @media (max-width: 768px) {
+      .apply-wrap { padding: 72px 24px 72px; }
+      .apply-meta { gap: 16px; }
+      .quick-links { padding: 16px 18px; }
+    }
+
+    @media print {
+      nav, .scroll-progress, footer, .quick-links { display: none !important; }
+      body, html { background: white; color: black; }
+      .apply-wrap { padding: 28px 36px; max-width: none; }
+      .apply-header { margin-bottom: 24px; padding-bottom: 20px; }
+      .section { margin-bottom: 28px; }
+      .section h2 { margin-bottom: 8px; }
+      .contact-card { background: white; color: black; border: 1px solid #ccc; margin-top: 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="scroll-progress"></div>
+
+<nav>
+  <a href="../../" class="nav-logo">Portfolio</a>
+  <div class="nav-links">
+    <a href="../../#works">Works</a>
+    <a href="../../#about">About</a>
+  </div>
+  <a href="mailto:sjkim942884@gmail.com" class="nav-contact">Contact</a>
+</nav>
+
+<div class="page-wrap">
+<div class="apply-wrap">
+
+  <header class="apply-header">
+    <p class="apply-eyebrow">Application — IT Service Planner</p>
+    <h1 class="apply-title">엠마헬스케어 IT<br>서비스 기획자 지원 · 김의준</h1>
+    <p class="apply-sub">
+      사용자 데이터에서 결론을 만들고 화면과 흐름까지 직접 설계하는 기획자입니다.
+      정보·서비스에 약한 사용자가 쉽게 이해하도록 설계하는 데 강하며, AI를 도구로
+      부려 분석과 문서 작업의 속도를 높입니다.
+    </p>
+    <div class="apply-meta">
+      <span><strong>Position</strong>IT 서비스 기획자</span>
+      <span><strong>Type</strong>정규직 / 계약직</span>
+      <span><strong>Submitted by</strong>김의준</span>
+    </div>
+  </header>
+
+  <!-- Primary CTA — 필수 제출서류 4종 -->
+  <p class="cta-label">필수 제출서류 4종 — 클릭하면 바로 보거나 PDF로 받을 수 있습니다</p>
+  <div class="cta-row">
+    <a class="cta cta-primary" href="../../김의준_엠마헬스케어_이력서.html" target="_blank">📄 이력서</a>
+    <a class="cta cta-primary" href="../../김의준_엠마헬스케어_자기소개서.html" target="_blank">📝 자기소개서</a>
+    <a class="cta cta-primary" href="../../김의준_엠마헬스케어_경력기술서.html" target="_blank">📋 경력기술서</a>
+    <a class="cta cta-primary" href="../../김의준_포트폴리오.pdf" target="_blank">📐 포트폴리오</a>
+    <a class="cta cta-secondary" href="../../AI사용경험_김의준.pdf" target="_blank">🤖 AI 사용 경험</a>
+    <a class="cta cta-secondary" href="../../" target="_blank">🏠 메인 포트폴리오</a>
+  </div>
+
+  <!-- Capability match -->
+  <section class="section">
+    <p class="section-num">채용 요건 × 내 경험</p>
+    <h2>공고가 찾는 역량, 이렇게 증명했습니다</h2>
+    <div class="match-grid">
+      <div class="match-card">
+        <p class="match-req"><span class="tag">우대 역량</span>데이터 기반 의사결정</p>
+        <p class="match-ev">법률 앱 ALLAW에서 <strong>설문 89명·사용성 테스트 5명</strong>으로 UX 전략 3개를 검증, 1개를 기각하고 재설계. 결과를 <strong>KCI 등재지에 게재</strong>.</p>
+      </div>
+      <div class="match-card">
+        <p class="match-req"><span class="tag">우대 역량</span>AI 활용 능력</p>
+        <p class="match-ev">자료를 AI가 정리·연결하는 <strong>'Second Brain' 워크플로우</strong> 운용. EEL 브랜드에선 AI로 콘텐츠 시안을 양산·선별해 제작 주기 단축. <em>(상세: AI 사용 경험)</em></p>
+      </div>
+      <div class="match-card">
+        <p class="match-req"><span class="tag">우대 역량</span>웹 디자인 · Figma</p>
+        <p class="match-ev">Clog에서 <strong>12개 화면을 기획 문서·와이어프레임으로</strong> 정리, ALLAW 핵심 플로우를 스토리보드화. Figma로 화면·흐름을 직접 설계.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Motivation (short) -->
+  <section class="section">
+    <p class="section-num">왜 엠마헬스케어인가</p>
+    <h2>약한 사용자가 쉽게 쓰도록 설계하는 일</h2>
+    <p>
+      베베루시는 스스로 말하지 못하는 아기를, 루시케어는 마음이 힘든 사람을
+      향한 서비스입니다. 두 제품 모두 <strong>가장 취약한 사용자를 배려하는
+      설계</strong>가 핵심이라고 생각합니다. 저는 법률 상담 앱 ALLAW에서
+      "법률 용어 자체가 장벽"이라는 문제를 정의하고, 법을 모르는 사람도
+      이해할 수 있게 흐름을 다시 설계해 그 효과를 데이터로 검증했습니다.
+      약한 사용자를 위해 데이터로 방향을 잡고 화면까지 만드는 이 방식이,
+      엠마헬스케어가 만드는 헬스케어 서비스와 정확히 맞닿아 있다고 생각해
+      지원했습니다.
+    </p>
+  </section>
+
+  <!-- Product proposal -->
+  <section class="section">
+    <p class="section-num">제품을 직접 살펴보고</p>
+    <h2>작은 UX 제언</h2>
+    <p>지원에 앞서 베베루시와 루시케어를 살펴봤습니다. 외부에 공개된 정보로 세운
+      가설이라 실제와 다를 수 있지만, 사용자 입장에서 떠오른 생각을 짧게 정리합니다.</p>
+    <div class="prop-item">
+      <p class="prop-h">베베루시 — 새벽 3시의 부모에게는 '데이터'보다 '안심'</p>
+      <p class="prop-b">베베루시는 심박·호흡·울음을 실시간으로 감지합니다. 다만 잠 못 잔
+        새벽의 부모가 가장 먼저 원하는 건 상세 그래프보다 <strong>"지금 아기가
+        안정적인가"</strong>라는 한 줄의 안심이라고 생각합니다. 평소에는 '안심' 상태
+        하나만 크게 보여주고, 조치가 필요할 때만 선명한 알림으로 전환하는 설계를
+        제안합니다. ALLAW에서 정보에 압도된 사용자를 위해 핵심만 남기고 단계적으로
+        안내했던 방식과 같은 접근입니다.</p>
+    </div>
+    <div class="prop-item">
+      <p class="prop-h">루시케어 — '왜 분석하는지'가 보이는 신뢰 설계</p>
+      <p class="prop-b">루시케어는 표정·음성·생체신호를 함께 보는 강력한 방식입니다.
+        그만큼 사용자는 "왜 내 얼굴을 분석하지?"라는 거부감을 느낄 수 있습니다.
+        측정 단계마다 <strong>목적과 데이터 사용처를 짧게 보여주고</strong> 사용자가
+        통제권을 느끼게 하는 동의 흐름은, 편안한 상태에서 측정하게 만들어 평가의
+        정확도에도 도움이 된다고 생각합니다. 마음이 약해진 사용자를 배려하는 설계라는
+        점에서, 제가 가장 잘하고 싶은 일입니다.</p>
+    </div>
+    <p class="prop-note">— 위 제언은 외부에서 본 짐작일 뿐입니다. 실제로 맞는지는
+      입사 후 사용자 데이터로 확인하는 것이 먼저라고 생각합니다.</p>
+  </section>
+
+  <!-- Projects -->
+  <section class="section">
+    <p class="section-num">대표 프로젝트</p>
+    <h2>직접 만든 결과물</h2>
+    <div class="proj-grid">
+      <a class="proj-card" href="../../allaw/" target="_blank">
+        <p class="pname">ALLAW — 법률 상담 앱</p>
+        <p class="prole">법률 약자도 이해하게 만든 UX 리서치 + 화면 설계. KCI 등재 논문.</p>
+        <span class="parrow">리서치 보기 →</span>
+      </a>
+      <a class="proj-card" href="../../clog/" target="_blank">
+        <p class="pname">Clog — 클라이밍 기록 앱</p>
+        <p class="prole">1인 100% 기획·리서치·UI. 12화면 설계 문서.</p>
+        <span class="parrow">화면설계 보기 →</span>
+      </a>
+      <a class="proj-card" href="../../resin/" target="_blank">
+        <p class="pname">EEL — 레진 가구 브랜드</p>
+        <p class="prole">사업 기획 + 웹사이트 + AI 콘텐츠 제작.</p>
+        <span class="parrow">웹·브랜드 보기 →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Honest note -->
+  <section class="section">
+    <p class="section-num">마지막으로</p>
+    <h2>결과로 증명해왔습니다</h2>
+    <div class="honest">
+      <p>연차는 길지 않지만, 짧은 기간에 <strong>ALLAW(KCI 등재), Clog(1인 100% 설계),
+        EEL(사업·웹)</strong>까지 기획부터 끝까지 끌고 간 산출물로 실력을 쌓아왔습니다.</p>
+      <p>정규직과 계약직 전환형 모두 열려 있고, <strong>합류 시점도 빠르게 맞출 수
+        있습니다.</strong> 맡겨주시면 빠른 학습과 밀도 있는 결과로 증명하겠습니다.</p>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section">
+    <p class="section-num">EDUCATION</p>
+    <h2>학력</h2>
+    <p class="char-count">대학원 · 학사 · 고등학교</p>
+
+    <div class="edu-list">
+
+      <div class="edu-item">
+        <span class="edu-date">2023.08 — 2025.08</span>
+        <div class="edu-body">
+          <p class="edu-degree">대학원 · 석사 (졸업)</p>
+          <p class="edu-name">국민대학교 테크노디자인전문대학원</p>
+          <p class="edu-meta">
+            스마트경험디자인학과<span class="sep">·</span>인터랙션디자인랩
+            <span class="sep">·</span>서울특별시
+            <span class="sep">·</span>GPA 4.34 / 4.5
+          </p>
+          <div class="edu-tags">
+            <span class="edu-tag">UX Research</span>
+            <span class="edu-tag">Interaction Design</span>
+            <span class="edu-tag neutral">학위논문 KCI 등재</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <span class="edu-date">2014.08 — 2021.08</span>
+        <div class="edu-body">
+          <p class="edu-degree">대학교 · 학사 (졸업)</p>
+          <p class="edu-name">Rochester Institute of Technology (RIT)</p>
+          <p class="edu-meta">
+            Web and Mobile & New Media Design
+            <span class="sep">·</span>Rochester, NY, USA
+            <span class="sep">·</span>GPA 2.94 / 4.00
+          </p>
+          <div class="edu-tags">
+            <span class="edu-tag">Web Design</span>
+            <span class="edu-tag">Mobile Design</span>
+            <span class="edu-tag neutral">미국 5년 학업 · 군 복무 2년</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <span class="edu-date">2011.08 — 2014.05</span>
+        <div class="edu-body">
+          <p class="edu-degree">고등학교 (졸업)</p>
+          <p class="edu-name">The King's Christian School</p>
+          <p class="edu-meta">
+            United States<span class="sep">·</span>주간 졸업
+          </p>
+          <div class="edu-tags">
+            <span class="edu-tag neutral">미국 고등 · 영어 체화</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div class="contact-card">
+    <h3>더 이야기 나누고 싶으시면 언제든 연락주세요.</h3>
+    <div class="row">
+      <span><strong>이메일</strong> <a href="mailto:sjkim942884@gmail.com">sjkim942884@gmail.com</a></span>
+      <span><strong>연락처</strong> <a href="tel:01082832893">010-8283-2893</a></span>
+      <span><strong>포트폴리오</strong> <a href="../../">euijkim.github.io/EJ_Website</a></span>
+      <span><strong>GitHub</strong> <a href="https://github.com/EuiJKim" target="_blank" rel="noopener">github.com/EuiJKim</a></span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  <span class="footer-name">김의준 · 엠마헬스케어 IT 서비스 기획자 지원</span>
+  <a href="../../" style="font-size:13px;color:#888">← Back to Portfolio</a>
+</footer>
+
+<script>
+  document.body.classList.add('loaded');
+</script>
+</body>
+</html>
