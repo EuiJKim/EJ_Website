@@ -66,6 +66,9 @@
       btn.setAttribute('aria-label',
         lang === 'en' ? 'Switch to Korean' : 'Switch to English');
     });
+
+    // Reveal the page once translation is applied (see anti-FOUC guard in <head>)
+    document.documentElement.classList.remove('lang-pending');
   }
 
   function toggle() {
