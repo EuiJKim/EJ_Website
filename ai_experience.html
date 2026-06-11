@@ -22,7 +22,7 @@
       color: var(--body);
       font-family: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', sans-serif;
       font-size: 10.5pt;
-      line-height: 1.75;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       font-weight: 400;
     }
@@ -31,7 +31,7 @@
       width: 210mm;
       min-height: 297mm;
       margin: 0 auto;
-      padding: 22mm 22mm 20mm;
+      padding: 15mm 20mm 13mm;
     }
 
     /* Header */
@@ -51,12 +51,12 @@
     .intro {
       font-size: 11pt;
       color: var(--body);
-      line-height: 1.8;
-      margin-bottom: 30px;
+      line-height: 1.65;
+      margin-bottom: 18px;
     }
 
     /* Section */
-    .sec { margin-bottom: 26px; }
+    .sec { margin-bottom: 16px; }
     .sec-h {
       display: flex; align-items: baseline; gap: 10px;
       margin-bottom: 12px;
@@ -68,7 +68,7 @@
     .sec-h .h {
       font-size: 12.5pt; font-weight: 700; color: var(--ink); letter-spacing: -0.01em;
     }
-    .sec p { margin-bottom: 9px; }
+    .sec p { margin-bottom: 7px; }
     .sec p:last-child { margin-bottom: 0; }
     .sec .em { color: var(--accent); font-weight: 600; }
     .sec strong { color: var(--ink); font-weight: 600; }
@@ -76,8 +76,8 @@
     /* Flow line (understated) */
     .flow {
       display: flex; align-items: center; gap: 12px;
-      margin: 14px 0;
-      padding: 12px 16px;
+      margin: 10px 0;
+      padding: 9px 14px;
       background: var(--soft);
       border-radius: 8px;
     }
@@ -93,8 +93,8 @@
     .list li {
       position: relative;
       padding-left: 16px;
-      margin-bottom: 11px;
-      line-height: 1.7;
+      margin-bottom: 7px;
+      line-height: 1.6;
     }
     .list li:last-child { margin-bottom: 0; }
     .list li::before {
@@ -108,8 +108,8 @@
 
     /* Tools line */
     .tools {
-      margin-top: 28px;
-      padding-top: 16px;
+      margin-top: 16px;
+      padding-top: 12px;
       border-top: 1px solid var(--line);
       font-size: 9.5pt;
       color: var(--muted);
@@ -134,18 +134,44 @@
   </div>
 
   <p class="intro">
-    AI 관련 정보는 하루에도 수백 개씩 새로 나옵니다. 저는 그것을 전부
-    좇기보다, 필요한 것만 골라 정리해두고 실제 작업에 꺼내 쓰는 방식을
-    만들어 두었습니다. 아래는 제가 AI를 일에 들이는 구체적인 방식입니다.
+    저는 AI를 기존 방식 위에 얹지 않습니다. 일하는 방식 자체를 AI에 맞게
+    다시 짭니다. 직접 다 하기보다 위임할 것은 위임하고, 저는 기준과 판단에
+    집중합니다. 아래는 제가 AI를 일에 들이는 구체적인 방식입니다.
   </p>
 
   <div class="sec">
-    <div class="sec-h"><span class="n">01</span><span class="h">정보를 정리하는 방식</span></div>
+    <div class="sec-h"><span class="n">01</span><span class="h">위임하고 조율한다</span></div>
     <p>
-      X와 유튜브, 깃허브에서 본 AI 자료 중 쓸 만한 것을
-      <strong>Obsidian</strong>에 모읍니다. 그리고
-      <strong>Claude Code</strong>가 이 노트들을 읽어 요약하고 서로 연결해,
-      나중에 일일이 찾지 않아도 질문만으로 꺼내 쓸 수 있게 정리해 둡니다.
+      예전에는 모든 걸 직접 했습니다. 지금은 반복되고 규칙이 분명한 일을
+      AI에 위임하고, 저는 <strong>기준을 세우고 결과를 판단하는 역할</strong>을
+      맡습니다. 위임은 생각보다 어려워서, 매일 하는 일부터 의식적으로 넘기며
+      그 감각을 키워왔습니다.
+    </p>
+    <div class="flow">
+      <span class="node">기존 방식 버리기<span class="s">Unlearn</span></span>
+      <span class="ar">→</span>
+      <span class="node">다시 설계<span class="s">Redefine</span></span>
+      <span class="ar">→</span>
+      <span class="node">위임·실행<span class="s">Execute</span></span>
+      <span class="ar">→</span>
+      <span class="node">다듬기<span class="s">Iterate</span></span>
+    </div>
+    <p>
+      레진 가구 브랜드 <span class="em">EEL</span>이 그 예입니다.
+      '콘텐츠는 사람이 하나씩 만든다'는 방식을 버리고, '브랜드 기준을 먼저
+      세운 뒤 AI로 시안을 여러 버전 만들고 골라 다듬는' 과정으로 통째로
+      바꿨습니다. 한 제품의 콘텐츠 제작 주기가 일주일에서 하루로 줄었습니다.
+    </p>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="n">02</span><span class="h">컨텍스트를 정리한다</span></div>
+    <p>
+      AI의 결과는 같은 모델이라도 무엇을 쥐여주느냐에 따라 달라집니다. 그래서
+      일에 필요한 맥락을 미리 정리해 둡니다. X·유튜브·깃허브에서 본 자료 중
+      쓸 만한 것을 <strong>Obsidian</strong>에 모으고,
+      <strong>Claude Code</strong>가 이를 요약·연결해 질문만으로 꺼내 쓸 수
+      있게 합니다.
     </p>
     <div class="flow">
       <span class="node">수집<span class="s">Obsidian 노트</span></span>
@@ -155,26 +181,20 @@
       <span class="node">질문으로 활용<span class="s">작업에 투입</span></span>
     </div>
     <p>
-      지금은 두 가지를 주로 쌓고 있습니다. 하나는 새로 나오는
-      <span class="em">AI 활용법</span>이고, 다른 하나는
-      <span class="em">맡은 프로젝트에 필요한 도메인 지식</span>입니다.
-      무엇을 남기고 무엇을 버릴지는 제가 직접 판단합니다.
+      핵심은 <span class="em">다 담지 않는 것</span>입니다. 전부 쌓으면 정작
+      필요할 때 모래사장에서 바늘 찾기가 됩니다. 무엇을 남기고 무엇을 버릴지는
+      제가 직접 판단합니다. 지금은 새로 나오는 AI 활용법과 맡은 프로젝트에
+      필요한 도메인 지식을 주로 쌓고 있습니다.
     </p>
   </div>
 
   <div class="sec">
-    <div class="sec-h"><span class="n">02</span><span class="h">AI를 활용해 만든 결과</span></div>
+    <div class="sec-h"><span class="n">03</span><span class="h">그렇게 만든 결과</span></div>
     <ul class="list">
       <li>
         <b>새로운 분야를 빠르게 학습</b> — 맡은 분야의 자료를 모아 정리하면,
         <span class="d">짧은 시간 안에 그 분야의 맥락으로 판단하고 대화할 수 있는
         상태가 됩니다.</span>
-      </li>
-      <li>
-        <b>AI 트렌드를 바로 적용</b> — 새로 나온 기법을 흘려보내지 않고
-        정리해뒀다가 바로 씁니다. <span class="d">예를 들어 한 번에 여러 시안을
-        생성하고 기준으로 골라내는 방식을 정리해뒀다가, 콘텐츠·카피 초안
-        작업에 적용해 후보를 빠르게 좁혔습니다.</span>
       </li>
       <li>
         <b>기획·리서치 문서 초안</b> — 쌓아둔 맥락 덕분에 문서를 백지에서
@@ -186,17 +206,6 @@
         줄였습니다.</span>
       </li>
     </ul>
-  </div>
-
-  <div class="sec">
-    <div class="sec-h"><span class="n">03</span><span class="h">도구를 다뤄온 과정</span></div>
-    <p>
-      단순히 질문을 던지는 데서 시작해, 지금은 파일과 도구를 직접 다루는
-      Claude Code, 그리고 작업을 여러 단계로 나눠 처리하는 방식까지 쓰고
-      있습니다. 새 도구가 나오면 먼저 제 작업에 작게 적용해보고, 맞으면
-      방식에 들입니다. 도구는 계속 바뀌지만, 정리해둔 맥락은 그대로 남아
-      다음 작업의 바탕이 됩니다.
-    </p>
   </div>
 
   <div class="tools">
