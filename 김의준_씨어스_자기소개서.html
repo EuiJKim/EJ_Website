@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>김의준 — 자기소개서 (엠마헬스케어)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#fff; --ink:#111; --muted:#555; --line:#d4d4d4; --accent:#1E41C0; --soft:#f6f8fc; }
+    html, body {
+      background: var(--bg); color: var(--ink);
+      font-family: 'Noto Sans KR','DM Sans',-apple-system,sans-serif;
+      font-size: 11pt; line-height: 1.85; -webkit-font-smoothing: antialiased;
+    }
+    .page { max-width: 820px; margin: 0 auto; padding: 52px 64px 60px; }
+
+    .header { padding-bottom: 16px; border-bottom: 2px solid var(--ink); margin-bottom: 30px; }
+    .doc-label { font-size: 11pt; font-weight: 700; letter-spacing: 0.22em; color: var(--accent); margin-bottom: 8px; }
+    .name { font-size: 22pt; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+    .meta-row { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px 13px; font-size: 9.5pt; color: var(--muted); }
+    .meta-row a { color: var(--muted); text-decoration: none; }
+    .meta-row .dot { color: var(--line); }
+
+    .lead {
+      font-size: 11.5pt; line-height: 1.8; color: var(--ink); font-weight: 500;
+      padding: 18px 22px; background: var(--soft); border-radius: 10px;
+      border-left: 3px solid var(--accent); margin-bottom: 30px;
+    }
+
+    .sec { margin-bottom: 26px; }
+    .sec:last-child { margin-bottom: 0; }
+    .sec h2 {
+      font-size: 11pt; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.04em; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 9px;
+    }
+    .sec h2::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); display: inline-block; }
+    .sec p { font-size: 11pt; line-height: 1.85; color: #2a2a2a; }
+    .sec p strong { color: var(--ink); font-weight: 600; }
+
+    /* buttons (screen only) */
+    .download-btn {
+      position: fixed; top: 24px; right: 24px; z-index: 100;
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--accent); color: #fff; font-size: 10pt; font-weight: 600;
+      padding: 10px 16px; border-radius: 8px; text-decoration: none;
+      box-shadow: 0 4px 14px rgba(30,65,192,0.28); transition: background .15s, transform .15s;
+    }
+    .download-btn:hover { background: #1a39a8; transform: translateY(-1px); }
+    .home-btn {
+      position: fixed; top: 18px; left: 20px; z-index: 100;
+      color: var(--muted); font-size: 11pt; line-height: 1; text-decoration: none;
+      transition: color .15s, transform .15s;
+    }
+    .home-btn:hover { color: var(--accent); transform: translateX(-2px); }
+
+    @media print {
+      html, body { background: #fff; }
+      .page { padding: 24px 40px; max-width: none; }
+      .sec { break-inside: avoid; }
+      .download-btn, .home-btn { display: none !important; }
+    }
+    @media (max-width: 768px) {
+      .page { padding: 40px 24px; }
+      .download-btn { top: 12px; right: 12px; padding: 8px 12px; font-size: 9pt; }
+      .home-btn { top: 12px; left: 14px; font-size: 10pt; }
+    }
+    @page { size: A4; margin: 0; }
+  </style>
+</head>
+<body>
+<a class="home-btn" href="./" title="포트폴리오 홈" aria-label="포트폴리오 홈">←</a>
+<a class="download-btn" href="김의준_씨어스_자기소개서.pdf" download>⬇ PDF 다운로드</a>
+<div class="page">
+
+  <header class="header">
+    <div class="doc-label">자기소개서</div>
+    <h1 class="name">김의준</h1>
+    <div class="meta-row">
+      <span>㈜씨어스 · 서비스/UI·UX 기획 지원</span>
+      <span class="dot">·</span>
+      <a href="mailto:sjkim942884@gmail.com">sjkim942884@gmail.com</a>
+      <span class="dot">·</span>
+      <span>010-8283-2893</span>
+    </div>
+  </header>
+
+  <p class="lead">
+    정보와 서비스에 약한 사용자가 쉽게 이해하도록, 데이터에서 출발해 화면까지
+    직접 설계하는 기획자입니다. 어려운 정보 앞에서 위축되는 사용자를 위한 설계를
+    가장 잘합니다.
+  </p>
+
+  <div class="sec">
+    <h2>지원 동기</h2>
+    <p>
+      씨어스의 'Medicine Smarter' — 복잡한 의료를 사용자에게 더 쉽게 만든다는 방향에
+      끌렸습니다. 저는 법률 상담 앱 ALLAW를 설계하며 '법을 모른다'는 이유로 도움받기를
+      포기하는 사람들을 봤고, 어려운 법률 용어를 일상어로 바꿔 한 번에 하나씩 묻는
+      흐름으로 다시 설계했습니다. 도메인은 법률이었지만, 전문적이고 장벽 높은 정보를
+      사용자 편에서 풀어주는 일이라는 점에서 디지털 헬스케어와 결이 같다고 생각합니다.
+      환자와 사용자가 어려운 의료를 쉽게 쓰도록 만드는 일이, 제가 가장 하고 싶은 일입니다.
+    </p>
+  </div>
+
+  <div class="sec">
+    <h2>직무 역량</h2>
+    <p>
+      저는 감이 아니라 데이터로 방향을 잡습니다. ALLAW에서는 사용자 89명 설문과
+      사용성 테스트로 UX 전략 세 가지를 검증했고, 효과가 확인된 둘을 반영하고 하나는
+      기각해 핵심 플로우를 다시 그렸습니다. 이 과정을 <strong>KCI 등재지에
+      게재</strong>했습니다(JNCIST, 2025). 클라이밍 기록 앱 Clog는 기획·리서치·화면
+      설계·프로토타입까지 1인 100%로, 프로젝트를 시작부터 끝까지 직접 끌고 갔습니다.
+      MS컴퍼니에서는 기획·개발·사업의 서로 다른 기준을 한 장에 정리해 의사결정을 빠르게
+      만들었고, 그 협업은 초기창업패키지 7,000만원 선정으로 이어졌습니다.
+    </p>
+  </div>
+
+  <div class="sec">
+    <h2>입사 후</h2>
+    <p>
+      평소엔 조용한 편이지만 다른 사람 말을 잘 듣고, 맡은 일은 끝까지 집요하게 봅니다.
+      씨어스에서 환자와 사용자가 어려운 의료를 더 쉽게 쓰도록, 리서치부터 화면까지 직접
+      만들며 기여하겠습니다.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
