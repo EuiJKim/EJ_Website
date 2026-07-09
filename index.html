@@ -36,6 +36,8 @@
       --green-rgb: 13, 150, 104;
       --amber: #b45309;
       --amber-rgb: 180, 83, 9;
+      --purple: #6d28d9;
+      --purple-rgb: 109, 40, 217;
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
       color-scheme: light;
     }
@@ -345,6 +347,7 @@
     .hero-card-badge[data-accent="blue"] { color: var(--accent); background: rgba(var(--accent-rgb),0.15); }
     .hero-card-badge[data-accent="green"] { color: var(--green); background: rgba(var(--green-rgb), 0.15); }
     .hero-card-badge[data-accent="amber"] { color: var(--amber); background: rgba(var(--amber-rgb), 0.15); }
+    .hero-card-badge[data-accent="purple"] { color: var(--purple); background: rgba(var(--purple-rgb), 0.15); }
 
     @media (max-width: 768px) {
       .hero-cards {
@@ -846,6 +849,18 @@
         <p class="hero-card-desc" data-en="Premium handcrafted resin table brand. Led business planning and web design. Brand identity + 3D customizer + Build-to-Order flow.">프리미엄 수제 레진 테이블 브랜드. 사업 기획 + 웹 디자인 담당. 브랜드 아이덴티티 + 3D 커스터마이저 + BTO 주문 플로우 설계.</p>
         <span class="hero-card-type">Brand · Web Design</span>
         <span class="hero-card-metrics" data-en="✓ Business Planning · Brand System · 3D Customizer">✓ 사업 기획 · 브랜드 시스템 · 3D 커스터마이저</span>
+      </div>
+    </a>
+    <a href="ax-hackathon/" class="hero-card" data-accent="purple" aria-label="AX 해커톤 — 근거 기반 컴플라이언스 린터 3종. 규제기관이 지목한 문제를 공개 근거로 입증하고, 배포 전에 차단하는 Codex 플러그인 3종을 AI와 함께 개발." data-en-aria="AX Hackathon — Evidence-Based Compliance Linters. Proved regulator-named problems with public evidence, then built three Codex plugins that block violations before deployment.">
+      <div class="hero-card-img-wrap">
+        <img src="ax-hackathon/thumb.svg" alt="AX 해커톤 컴플라이언스 린터 터미널 셀프테스트 화면" loading="eager" />
+      </div>
+      <div class="hero-card-info">
+        <span class="hero-card-badge" data-accent="purple">2026</span>
+        <p class="hero-card-title" data-en="AX Hackathon — Compliance Linters">AX 해커톤 — 컴플라이언스 린터 3종</p>
+        <p class="hero-card-desc" data-en="Regulators had already named the problems. I turned official docs, statutes, and enforcement records into deterministic lint rules that block violations before deployment — three Codex plugins, built solo with AI.">규제기관이 이미 지목한 문제들. 공식 문서·법조문·행정처분을 결정론적 린트 규칙으로 변환해, 배포 전에 위반을 차단하는 Codex 플러그인 3종을 AI와 함께 혼자 만들었다.</p>
+        <span class="hero-card-type">AI Engineering · Codex Plugin · MCP</span>
+        <span class="hero-card-metrics" data-en="✓ 3 Plugins · 27 Rules · Golden 41/41 · 81 Unit Tests">✓ 플러그인 3종 · 규칙 27개 · 골든셋 41/41 · 유닛 81개</span>
       </div>
     </a>
   </div>
