@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Malgun Gothic','Apple SD Gothic Neo',sans-serif">
+  <rect width="800" height="500" fill="#f6f8f7"/>
+
+  <!-- 입력 바 -->
+  <rect x="70" y="52" width="660" height="58" rx="10" fill="#ffffff" stroke="#e2e6e4"/>
+  <text x="94" y="88" font-size="21" fill="#9aa39e">면역력 강화에 좋은 프리미엄 영양제…</text>
+  <rect x="586" y="62" width="128" height="38" rx="8" fill="#03c75a"/>
+  <text x="650" y="88" font-size="19" font-weight="700" fill="#ffffff" text-anchor="middle">검수하기</text>
+
+  <!-- 결과 헤더 -->
+  <text x="70" y="164" font-size="21" font-weight="800" fill="#222222">검수 결과 <tspan fill="#03c75a">2</tspan>건</text>
+  <line x1="70" y1="180" x2="730" y2="180" stroke="#222222" stroke-width="2.5"/>
+
+  <!-- 결과 1: 위반 -->
+  <circle cx="84" cy="222" r="6" fill="#e5364b"/>
+  <text x="104" y="230" font-size="21" font-weight="700" fill="#222222">면역력 강화 영양제</text>
+  <rect x="320" y="206" width="88" height="32" rx="6" fill="#fff1f1" stroke="#ffd6da"/>
+  <text x="364" y="228" font-size="16" font-weight="700" fill="#e5364b" text-anchor="middle">위반 유력</text>
+  <text x="104" y="262" font-size="16" fill="#8b9490">건강기능식품 오인 · 식품표시광고법 제8조</text>
+  <text x="104" y="290" font-size="16" fill="#8b9490">근거  식약처 적발 사례 — '영양제·면역력 강화(일반식품)'</text>
+
+  <!-- 대체 표현 박스 -->
+  <rect x="104" y="312" width="626" height="76" rx="8" fill="#eefaf2"/>
+  <text x="126" y="340" font-size="15" font-weight="700" fill="#0aa356">이렇게 바꿔보세요</text>
+  <text x="126" y="370" font-size="17" fill="#33403a">· 온 가족이 챙겨 먹는 든든한 하루 습관</text>
+
+  <!-- 결과 2: 적합 -->
+  <circle cx="84" cy="436" r="6" fill="#03c75a"/>
+  <text x="104" y="444" font-size="21" font-weight="700" fill="#222222">피부 보습에 신경 쓴 데일리 크림</text>
+  <rect x="440" y="420" width="60" height="32" rx="6" fill="#eefaf2" stroke="#c4ecd4"/>
+  <text x="470" y="442" font-size="16" font-weight="700" fill="#0aa356" text-anchor="middle">적합</text>
+</svg>
