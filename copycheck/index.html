@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="view-transition" content="same-origin" />
+  <title data-en="CopyCheck — An Ad-Compliance Checker, From Discovery to Launch | Portfolio">카피체크 — 아이템 발굴부터 출시까지, 근거로만 움직인 3주 | Portfolio</title>
+  <meta name="description" content="화장품·건기식 광고 문구의 표시광고 위반 위험을 문장 단위로 판정하는 도구. 후보 22건 스코어링, 실무자 인터뷰, eval 3라운드, 배포까지 — 모든 판단에 근거를 남긴 AI 기획 프로젝트.">
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')</script>
+  <link rel="stylesheet" href="../assets/global.css?v=4" />
+  <script defer src="../assets/i18n.js"></script>
+  <style>html.lang-pending body{visibility:hidden}</style>
+  <script>(function(){try{var p=new URLSearchParams(location.search).get('lang'),s=localStorage.getItem('lang');if(p==='en'||(p!=='ko'&&s==='en')){var d=document.documentElement;d.classList.add('lang-pending');setTimeout(function(){d.classList.remove('lang-pending');},600);}}catch(e){}})();</script>
+  <style>
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-50); margin-bottom: 16px; }
+    .body-section { padding: 48px; border-bottom: 1px solid var(--gray-20); }
+    .body-section:last-of-type { border-bottom: none; }
+    .body-lead { font-size: 17px; font-weight: 400; color: var(--dark); line-height: 1.75; max-width: 720px; margin-bottom: 12px; }
+    .body-copy { font-size: 15px; font-weight: 300; color: var(--gray-70); line-height: 1.75; max-width: 720px; }
+    .body-copy + .body-copy { margin-top: 14px; }
+    .body-copy strong { color: var(--dark); font-weight: 600; }
+
+    /* 인용(인터뷰 발화) */
+    .voice-list { max-width: 720px; display: flex; flex-direction: column; gap: 14px; margin: 20px 0 8px; }
+    .voice-item { padding: 18px 22px; border-radius: 12px; background: var(--gray-10); border-left: 3px solid var(--green, #0d9668); font-size: 14.5px; line-height: 1.7; color: var(--gray-70); font-weight: 300; }
+    .voice-item strong { color: var(--dark); font-weight: 600; }
+    .voice-quote { font-size: 15px; color: var(--dark); font-weight: 400; font-style: italic; }
+
+    /* eval 테이블 */
+    .verify-table { width: 100%; max-width: 720px; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+    .verify-table th { text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-50); padding: 10px 12px; border-bottom: 1px solid var(--gray-30, #ccc); }
+    .verify-table td { padding: 12px; border-bottom: 1px solid var(--gray-20); color: var(--gray-70); font-weight: 300; line-height: 1.6; }
+    .verify-table td:first-child { color: var(--dark); font-weight: 500; white-space: nowrap; }
+    .verify-table .num { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--green, #0d9668); }
+    .verify-table .fail { font-weight: 600; color: #d43d51; }
+
+    /* 정직 코너 */
+    .retract-list { max-width: 720px; display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .retract-item { padding: 18px 22px; border-radius: 12px; background: var(--accent-light); border: 1px solid #c7cffe; font-size: 14px; line-height: 1.7; color: var(--gray-70); font-weight: 300; }
+    .retract-item strong { color: var(--accent); font-weight: 600; }
+
+    /* 과정 스텝 */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
+    .step { padding: 20px 16px; border-radius: 12px; background: var(--gray-10); border: 1px solid var(--gray-20); }
+    .step-num { font-size: 22px; font-weight: 300; color: var(--gray-50); margin-bottom: 8px; }
+    .step-title { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+    .step-desc { font-size: 12.5px; font-weight: 300; color: var(--gray-70); line-height: 1.6; }
+
+    .live-cta { display: inline-block; margin-top: 20px; padding: 12px 28px; border-radius: 10px; background: var(--dark); color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; }
+    .live-cta:hover { opacity: .85; }
+
+    @media (max-width: 900px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) {
+      .body-section { padding-left: 24px; padding-right: 24px; }
+      .steps { grid-template-columns: 1fr; }
+      .case-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="scroll-progress"></div>
+
+<nav>
+  <a href="../" class="nav-logo">Portfolio</a>
+  <div class="nav-links">
+    <a href="../#works">Works</a>
+    <a href="../#about">About</a>
+  </div>
+  <div style="display:flex;align-items:center">
+    <button class="nav-lang lang-toggle" type="button" aria-label="Switch to English">EN</button>
+    <a href="mailto:sjkim942884@gmail.com" class="nav-contact">Contact</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="case-hero">
+    <a href="../" class="back-link reveal" style="--d:0s" data-en="← Back to Works">← Back to Works</a>
+    <div class="case-meta reveal" style="--d:.07s">
+      <span class="meta-tag">AI Product Planning</span>
+      <span class="meta-tag">Eval Design</span>
+      <span class="meta-tag neutral">User Research</span>
+      <span class="meta-tag neutral">Live Service</span>
+    </div>
+    <h1 class="reveal" style="--d:.14s" data-en="CopyCheck<br>From Discovery to Launch, on Evidence Alone">카피체크<br>아이템 발굴부터 출시까지, 근거로만 움직인 3주</h1>
+    <p class="reveal" style="--d:.21s" data-en="A marketer told me she spends 40 minutes checking whether a single ad phrase is legal — and still isn't sure. I built a tool that judges each sentence against statutes and real enforcement records, suggests compliant rewrites, and I proved it works by testing the AI three times until it stopped failing. It's live, and pilot users are on it.">한 마케터가 광고 문구 하나가 합법인지 확인하는 데 40분을 쓰고도 확신을 못 얻는다고 했습니다. 문장마다 법조문과 실제 적발 기록에 대조해 판정하고 바꿔 쓸 문장까지 제안하는 도구를 만들었고, AI가 틀리지 않을 때까지 세 번 시험해서 증명한 뒤 출시했습니다. 지금 파일럿 사용자가 쓰고 있습니다.</p>
+    <div class="case-stats reveal" style="--d:.28s">
+      <div><p class="stat-label" data-en="Role">기여도</p><p class="stat-val" data-en="Planning · Research · Eval — Solo (built with AI)">기획 · 리서치 · eval 설계 1인 (구현은 AI와 협업)</p></div>
+      <div><p class="stat-label" data-en="Timeline">기간</p><p class="stat-val" data-en="Jul 2026 · 3 days from pick to live">2026.07 · 선정→라이브 3일</p></div>
+      <div><p class="stat-label" data-en="Discovery">발굴</p><p class="stat-val" data-en="22 Candidates · 6 Interviews">후보 22건 · 인터뷰 6건</p></div>
+      <div><p class="stat-label" data-en="Verification">검증</p><p class="stat-val" data-en="3 Eval Rounds · 100% on Holdout">eval 3라운드 · 홀드아웃 100%</p></div>
+    </div>
+  </div>
+
+  <div class="body-section" style="padding-top:40px">
+    <p class="section-label">Overview</p>
+    <p class="body-lead" data-en="I didn't start with an idea. I started with 17 job postings.">아이디어에서 시작하지 않았습니다. 채용공고 17건에서 시작했습니다.</p>
+    <p class="body-copy" data-en="I'm moving into AI product planning without a formal planning career, so before building anything I reverse-engineered what hiring teams actually ask for. Two phrases kept repeating: &quot;shipped and measured after launch&quot; and &quot;evaluation fluency&quot; — can you make an AI feature and prove, with numbers, that it works. So I set one rule for this project: every decision gets evidence attached, and the process itself becomes the portfolio.">기획 경력 없이 AI 기획 직군으로 옮기는 중이라, 뭘 만들기 전에 채용하는 쪽이 실제로 뭘 요구하는지부터 역설계했습니다. 두 문장이 반복해서 나왔습니다. "출시하고, 출시 후에 측정해본 경험" 그리고 "evaluation fluency" — AI 기능을 만들고 그게 작동한다는 걸 숫자로 증명할 수 있는가. 그래서 이 프로젝트의 규칙을 하나로 정했습니다. 모든 결정에 근거를 붙이고, 그 과정 자체를 포트폴리오로 만들자.</p>
+    <p class="body-copy" data-en="Three research tracks (Korean pain points, global products missing in Korea, my own domain assets) produced 22 candidates. I scored them on a rubric I fixed in advance — problem evidence, whether AI is the core, whether quality can be measured — and took the top two into parallel validation.">리서치 세 갈래(한국 직군별 페인포인트, 해외엔 있는데 한국에 없는 것, 내 경험 자산과 닿는 것)에서 후보 22건이 나왔고, 미리 고정해둔 기준표 — 문제 증거가 있는가, AI가 핵심인가, 품질을 측정할 수 있는가 — 로 채점해 상위 2개를 병렬 검증에 올렸습니다.</p>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="The One I Killed">접은 아이템 이야기</p>
+    <p class="body-lead" data-en="The runner-up looked like a perfectly empty market. It wasn't.">2위 후보는 완벽한 공백 시장처럼 보였습니다. 아니었습니다.</p>
+    <p class="body-copy" data-en="An AI session-note scribe for counselors: proven overseas ($14M raised by two competitors), and my first scan of the Korean market found nothing. One deeper research pass later, I found a Korean service with the exact same positioning — down to the &quot;no recording needed&quot; privacy design I'd planned as my differentiator — already selling at ₩8,900/month. I killed the candidate the same day and wrote down why.">심리상담사용 AI 상담일지였습니다. 해외에서는 두 회사가 합쳐 1,400만 달러를 투자받으며 검증된 카테고리인데, 한국 시장을 처음 훑었을 때는 아무것도 안 보였습니다. 그런데 검증 단계에서 한 번 더 깊게 파자, 제가 차별화 포인트로 잡아뒀던 "녹음 없이 메모만" 설계까지 똑같은 국내 서비스가 이미 월 8,900원에 팔리고 있었습니다. 그날로 후보를 접고, 왜 접었는지를 기록으로 남겼습니다.</p>
+    <p class="body-copy" data-en="That miss taught me the cheapest lesson of the project: a &quot;gap&quot; found in one scan is a hypothesis, not a fact. It's also why I trust the surviving candidate more — it went through the same attempt to kill it, and lived.">이 실패가 프로젝트에서 가장 싸게 배운 교훈이었습니다. 한 번의 스캔으로 찾은 "공백"은 사실이 아니라 가설이라는 것. 그리고 살아남은 후보를 더 믿게 된 이유이기도 합니다 — 같은 방식으로 죽이려고 시도했는데, 살아남았으니까요.</p>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="What Users Actually Said">인터뷰에서 들은 말들</p>
+    <p class="body-copy" style="margin-bottom:8px" data-en="I interviewed practitioners — a supplement-brand marketer, a freelance copywriter — asking only about past behavior, never intentions. Three answers shaped the product:">건기식 브랜드 마케터, 상세페이지 프리랜서 같은 실무자들을 인터뷰했습니다. "쓰실 건가요?" 같은 의향 질문은 빼고 과거 행동만 물었습니다. 세 개의 답이 제품을 결정했습니다.</p>
+    <div class="voice-list">
+      <div class="voice-item"><span class="voice-quote" data-en="&quot;Honestly, I knew it was risky. I threw it in anyway.&quot;">"솔직히 알면서 한 번 던져본 것도 있어요."</span><br><span data-en="A rejected ad isn't an information problem — she knew the rule. The real cost came after: redoing the design (₩150K), re-running internal approval, missing the media slot. Four business days gone. The tool's job isn't to lecture; it's to make the safe version as persuasive as the risky one."><strong>반려는 정보 부족의 문제가 아니었습니다.</strong> 규정을 알면서도 던졌고, 진짜 비용은 그 뒤에 왔습니다 — 디자인 재작업 15만 원, 사내 컨펌 재순환, 매체 예약 놓침. 4영업일이 사라졌습니다. 도구가 할 일은 훈계가 아니라, 안전한 문장을 위험한 문장만큼 잘 팔리게 만들어주는 것이었습니다.</span></div>
+      <div class="voice-item"><span class="voice-quote" data-en="&quot;Forty minutes on one phrase, and I still wasn't sure.&quot;">"표현 하나에 40분을 쓰고도 확신이 없어요."</span><br><span data-en="Search results disagree with each other; the official casebook doesn't have her exact phrase; so she guesses conservatively. The judgment itself wasn't the product — the grounds for the judgment were."><strong>판단이 아니라 판단의 근거가 상품이었습니다.</strong> 블로그마다 결론이 다르고, 식약처 사례집엔 딱 그 표현이 없고, 결국 보수적으로 찍습니다. 그래서 결과에 조문·실제 적발 사례·기준 날짜를 반드시 붙이기로 했습니다.</span></div>
+      <div class="voice-item"><span class="voice-quote" data-en="&quot;I banned a phrase for two months. Turns out it was legal.&quot;">"'장 건강'을 두 달 동안 못 썼는데, 알고 보니 되는 표현이었어요."</span><br><span data-en="Over-blocking is a hidden cost nobody measures — a legal, effective claim sat unused out of fear. This is why my eval treats false positives as seriously as missed violations."><strong>과차단은 아무도 측정하지 않는 숨은 비용이었습니다.</strong> 합법이고 잘 팔리는 표현이 겁 때문에 두 달을 놀았습니다. 제 eval이 "놓친 위반"만큼 "잘못 잡은 정상 표현"을 심각하게 취급하는 이유입니다.</span></div>
+    </div>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="Proving the AI">AI를 증명한 방법</p>
+    <p class="body-lead" data-en="I built an answer key before trusting the model — and round 1 caught it failing.">모델을 믿기 전에 정답지부터 만들었습니다. 그리고 1라운드에서 모델이 틀리는 걸 잡았습니다.</p>
+    <p class="body-copy" data-en="Real enforcement records from the KFDA (actual banned phrases, with the statute each violated) plus officially permitted claims became a labeled test set. Then I measured the pipeline three times:">식약처가 실제로 적발한 문구들(위반 조항 포함)과 공식적으로 허용된 표현들을 모아 라벨이 달린 시험지를 만들었습니다. 그리고 파이프라인을 세 번 측정했습니다.</p>
+    <table class="verify-table">
+      <thead>
+        <tr><th data-en="Round">라운드</th><th data-en="Setup">구성</th><th data-en="Result">결과</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>v0</td><td data-en="Prompt only · 20 canonical cases">프롬프트 단독 · 전형 사례 20건</td><td><span class="num">100%</span> <span data-en="— but an easy test">— 단, 쉬운 시험지였습니다</span></td></tr>
+        <tr><td>v1</td><td data-en="Harder set: 22 new cases incl. implied claims, testimonial variants, boundary pairs">난도 상향 · 암시 표현·체험담 변형·경계쌍 포함 신규 22건</td><td><span class="fail" data-en="2 failures found">실패 2건 발견</span> <span data-en="(detection 100%, precision 94%)">(검출 100 · 정밀도 94)</span></td></tr>
+        <tr><td>v2</td><td data-en="+ Knowledge pack (52 enforcement records, permitted-claim lists, statute structure) injected per request">+ 지식팩(적발 기록 52건·허용 표현·조문 구조)을 요청마다 주입</td><td><span class="num" data-en="100 / 100 / 100 on a sealed holdout">홀드아웃 100 / 100 / 100</span></td></tr>
+      </tbody>
+    </table>
+    <p class="body-copy" style="margin-top:20px" data-en="The two v1 failures were the most valuable output of the project. The model rated &quot;tea that's good for your throat&quot; as merely borderline — it had no idea that exact phrase had already been busted by regulators. And it demanded clinical evidence for a phrase the guidelines explicitly permit. Same root cause both times: the model was running on memory. So I stopped letting it — verified sources now ride along with every request, and I re-measured on holdout cases the fixes had never seen. That measurement decided the architecture, not the other way around.">v1의 실패 2건이 이 프로젝트에서 가장 값진 산출물이었습니다. 모델은 "목에 좋은 차"를 애매하다고만 판정했는데, 그 표현이 이미 규제기관에 적발된 전례가 있다는 걸 몰랐던 겁니다. 반대로 지침이 명시적으로 허용하는 문구에는 불필요한 실증자료를 요구했습니다. 두 실패의 뿌리가 같았습니다 — <strong>모델이 기억에 의존해 판정하고 있었다는 것.</strong> 그래서 기억에 맡기는 걸 그만두고 검증된 자료를 요청마다 함께 태웠고, 개선 과정에서 한 번도 안 쓴 홀드아웃 케이스로 재측정했습니다. 아키텍처를 정한 건 측정이었지, 그 반대가 아니었습니다.</p>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="Process">진행 과정</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <p class="step-title" data-en="Aim, then Discover">과녁 → 발굴</p>
+        <p class="step-desc" data-en="17 job postings reverse-engineered → 3-track research → 22 candidates scored on a pre-fixed rubric.">채용공고 17건 역설계 → 3갈래 리서치 → 후보 22건을 사전 고정 기준표로 채점.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <p class="step-title" data-en="Validate & Kill">검증 · 탈락</p>
+        <p class="step-desc" data-en="Go/No-Go bars fixed before data. Interviews asked past behavior only. Runner-up killed on evidence.">데이터 보기 전에 Go/No-Go 기준 고정. 인터뷰는 과거 행동만. 2위 후보는 증거로 탈락.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <p class="step-title" data-en="Eval Loop">eval 루프</p>
+        <p class="step-desc" data-en="Answer key from real enforcement records → measure → diagnose failures → fix → re-measure on holdout.">실제 적발 기록으로 정답지 → 측정 → 실패 진단 → 개선 → 홀드아웃 재측정.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <p class="step-title" data-en="Ship & Re-verify">출시 · 재검증</p>
+        <p class="step-desc" data-en="Live API tests 8/8 before deploy; re-tested on the production URL after. Pilot loop running now.">배포 전 실호출 8/8, 배포 후 프로덕션 URL에서 재확인. 지금은 파일럿 루프.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="What I'd Tell You Before You Ask">먼저 말해두는 한계</p>
+    <p class="body-copy" style="margin-bottom:20px" data-en="Numbers look better without context, so here's the context I'd rather give you myself.">숫자는 맥락 없이 보면 더 좋아 보입니다. 그래서 맥락을 먼저 말해두는 편이 낫다고 생각했습니다.</p>
+    <div class="retract-list">
+      <div class="retract-item" data-en="<strong>n=2.</strong> The interview sample is two practitioners. Every figure from them (40 minutes, ₩150K) is quoted as a case, never as a generalization. Five pilot users are being onboarded to widen this."><strong>표본은 2명입니다.</strong> 인터뷰에서 나온 수치(40분, 15만 원)는 일반화가 아니라 사례로만 인용했습니다. 지금 파일럿 5명 온보딩으로 표본을 넓히는 중입니다.</div>
+      <div class="retract-item" data-en="<strong>The eval is built on public enforcement cases</strong> — which skew canonical. Real seller copy is longer and sneakier. Pilot users' actual copy, and their false-positive reports, become the next round's test set."><strong>eval은 공개 적발 사례 기반입니다.</strong> 전형적인 사례로 치우쳐 있고, 실전 셀러 문구는 더 길고 교묘합니다. 파일럿이 실제로 넣는 문구와 오탐 신고가 다음 라운드의 시험지가 되도록 설계해뒀습니다.</div>
+      <div class="retract-item" data-en="<strong>Synthetic data stayed labeled.</strong> Early persona interviews (AI role-play, used to rehearse the question guide) are marked 🔴 synthetic in every document and were never counted as user evidence."><strong>합성 데이터는 끝까지 라벨을 달았습니다.</strong> 질문지 리허설용 페르소나 인터뷰(AI 롤플레이)는 모든 문서에 🔴모의 표시를 했고, 사용자 증거로 계산한 적이 없습니다.</div>
+    </div>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="Live">라이브</p>
+    <p class="body-lead" data-en="The tool is running. You can paste a phrase right now.">도구는 돌아가고 있습니다. 지금 문구를 넣어볼 수 있습니다.</p>
+    <p class="body-copy" data-en="Paste ad copy → each sentence gets a verdict (likely violation / borderline / clear), the statute and a matching enforcement precedent, and 2–3 compliant rewrites that keep the selling point. Borderline phrases get a question back instead of a fake certainty. Next up: measuring agreement with actual review-board outcomes using 45 real review records a pilot user agreed to share.">문구를 붙여넣으면 문장마다 판정(위반 유력/경계/적합)과 조문, 유사 적발 전례, 소구점을 유지한 대체 문장 2~3개가 나옵니다. 애매한 문장엔 가짜 확신 대신 확인 질문을 돌려줍니다. 다음 단계는 파일럿 한 분이 공유를 수락한 실제 심의 기록 45건으로 &quot;실제 심의 결과와의 일치율&quot;을 재는 것입니다.</p>
+    <a class="live-cta" href="https://copycheck-henna.vercel.app" target="_blank" rel="noopener" data-en="Try CopyCheck →">카피체크 써보기 →</a>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-name" data-en="CopyCheck — From Discovery to Launch, on Evidence Alone">카피체크 — 아이템 발굴부터 출시까지, 근거로만 움직인 3주</span>
+  <a href="../" style="font-size:13px;color:#888" data-en="← Back to Works">← Back to Works</a>
+</footer>
+
+<script>
+  document.body.classList.add('loaded');
+</script>
+</body>
+</html>
