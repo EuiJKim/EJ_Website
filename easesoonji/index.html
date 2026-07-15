@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="view-transition" content="same-origin" />
+  <title data-en="Easesoonji — A Salon CRM Rebuilt on Measurement, 15 Taps Down to 3 | Portfolio">이지순지 — 15번의 탭을 3번으로, 실측으로 다시 만든 1인 헤어샵 CRM | Portfolio</title>
+  <meta name="description" content="경쟁 CRM 사용자의 실제 과업을 화면 단위로 재구성해 측정하고, 그 숫자를 기준으로 다시 설계한 1인 헤어샵 CRM. 매출 등록 15+ 인터랙션을 3번으로 — 실측, 지표 설계, 파일럿 온보딩까지의 서비스 기획 기록.">
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')</script>
+  <link rel="stylesheet" href="../assets/global.css?v=4" />
+  <script defer src="../assets/i18n.js"></script>
+  <style>html.lang-pending body{visibility:hidden}</style>
+  <script>(function(){try{var p=new URLSearchParams(location.search).get('lang'),s=localStorage.getItem('lang');if(p==='en'||(p!=='ko'&&s==='en')){var d=document.documentElement;d.classList.add('lang-pending');setTimeout(function(){d.classList.remove('lang-pending');},600);}}catch(e){}})();</script>
+  <style>
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-50); margin-bottom: 16px; }
+    .body-section { padding: 48px; border-bottom: 1px solid var(--gray-20); }
+    .body-section:last-of-type { border-bottom: none; }
+    .body-lead { font-size: 17px; font-weight: 400; color: var(--dark); line-height: 1.75; max-width: 720px; margin-bottom: 12px; }
+    .body-copy { font-size: 15px; font-weight: 300; color: var(--gray-70); line-height: 1.75; max-width: 720px; }
+    .body-copy + .body-copy { margin-top: 14px; }
+    .body-copy strong { color: var(--dark); font-weight: 600; }
+
+    /* 인용(파일럿 발화) */
+    .voice-list { max-width: 720px; display: flex; flex-direction: column; gap: 14px; margin: 20px 0 8px; }
+    .voice-item { padding: 18px 22px; border-radius: 12px; background: var(--gray-10); border-left: 3px solid var(--blue, #3d6ef7); font-size: 14.5px; line-height: 1.7; color: var(--gray-70); font-weight: 300; }
+    .voice-item strong { color: var(--dark); font-weight: 600; }
+    .voice-quote { font-size: 15px; color: var(--dark); font-weight: 400; font-style: italic; }
+
+    /* 벤치마크 테이블 */
+    .verify-table { width: 100%; max-width: 720px; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+    .verify-table th { text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-50); padding: 10px 12px; border-bottom: 1px solid var(--gray-30, #ccc); }
+    .verify-table td { padding: 12px; border-bottom: 1px solid var(--gray-20); color: var(--gray-70); font-weight: 300; line-height: 1.6; }
+    .verify-table td:first-child { color: var(--dark); font-weight: 500; white-space: nowrap; }
+    .verify-table .num { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--blue, #3d6ef7); }
+    .verify-table .warn { font-weight: 600; color: #b8860b; }
+
+    /* 정직 코너 */
+    .retract-list { max-width: 720px; display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .retract-item { padding: 18px 22px; border-radius: 12px; background: var(--accent-light); border: 1px solid #c7cffe; font-size: 14px; line-height: 1.7; color: var(--gray-70); font-weight: 300; }
+    .retract-item strong { color: var(--accent); font-weight: 600; }
+
+    /* 실서비스 스크린샷 */
+    .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 860px; margin-top: 24px; }
+    .shots figure { margin: 0; }
+    .shots img { width: 100%; height: auto; display: block; border-radius: 18px; border: 1px solid var(--gray-20); box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+    .shots figcaption { font-size: 12.5px; font-weight: 300; color: var(--gray-50); line-height: 1.6; margin-top: 10px; padding: 0 4px; }
+    .shots figcaption strong { color: var(--gray-70); font-weight: 600; }
+
+    /* KPI 트리 */
+    .kpi-tree { max-width: 720px; margin-top: 8px; padding: 22px 26px; border-radius: 12px; background: var(--gray-10); border: 1px solid var(--gray-20); font-size: 13.5px; line-height: 2; color: var(--gray-70); font-weight: 300; overflow-x: auto; }
+    .kpi-tree b { color: var(--dark); font-weight: 600; }
+    .kpi-tree .hero-metric { color: var(--blue, #3d6ef7); font-weight: 600; }
+
+    .live-cta { display: inline-block; margin-top: 20px; padding: 12px 28px; border-radius: 10px; background: var(--dark); color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; }
+    .live-cta:hover { opacity: .85; }
+
+    @media (max-width: 900px) { .shots { grid-template-columns: 1fr; max-width: 380px; } }
+    @media (max-width: 768px) {
+      .body-section { padding-left: 24px; padding-right: 24px; }
+      .case-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="scroll-progress"></div>
+
+<nav>
+  <a href="../" class="nav-logo">Portfolio</a>
+  <div class="nav-links">
+    <a href="../#works">Works</a>
+    <a href="../#about">About</a>
+  </div>
+  <div style="display:flex;align-items:center">
+    <button class="nav-lang lang-toggle" type="button" aria-label="Switch to English">EN</button>
+    <a href="mailto:sjkim942884@gmail.com" class="nav-contact">Contact</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="case-hero">
+    <a href="../" class="back-link reveal" style="--d:0s" data-en="← Back to Works">← Back to Works</a>
+    <div class="case-meta reveal" style="--d:.07s">
+      <span class="meta-tag">Service Planning</span>
+      <span class="meta-tag">Task Benchmark</span>
+      <span class="meta-tag neutral">Metrics Design</span>
+      <span class="meta-tag neutral">Live Service</span>
+    </div>
+    <h1 class="reveal" style="--d:.14s" data-en="Easesoonji<br>Fifteen Taps Down to Three — a CRM Rebuilt on Measurement">이지순지<br>15번의 탭을 3번으로, 실측으로 다시 만든 CRM</h1>
+    <p class="reveal" style="--d:.21s" data-en="I reconstructed, screen by screen, how a salon owner registers a single sale on Korea's best-selling salon CRM: over fifteen interactions. I built a CRM that finishes the same job in three taps, shipped it as a working service, and the salon that inspired the count is now onboarding as its first pilot. Every design decision in between started from a measured number, not a hunch.">국내에서 가장 많이 쓰이는 미용실 CRM에서 원장이 매출 한 건을 등록하는 과정을 화면 단위로 재구성해봤습니다. 15번이 넘는 인터랙션이 나왔습니다. 같은 일을 세 번의 탭으로 끝내는 CRM을 만들어 실서비스로 올렸고, 그 숫자의 출발점이 된 샵이 지금 첫 파일럿으로 옮겨오는 중입니다. 그 사이의 설계 결정은 전부 감이 아니라 측정된 숫자에서 시작했습니다.</p>
+    <div class="case-stats reveal" style="--d:.28s">
+      <div><p class="stat-label" data-en="Role">기여도</p><p class="stat-val" data-en="Planning · Research · Ops — Solo (built with AI)">기획 · 리서치 · 운영 1인 (구현은 AI와 협업)</p></div>
+      <div><p class="stat-label" data-en="Timeline">기간</p><p class="stat-val" data-en="Jul 2026 · 2 weeks in production">2026.07 · 출시 후 2주 차 운영 중</p></div>
+      <div><p class="stat-label" data-en="Benchmark">벤치마크</p><p class="stat-val" data-en="Sale entry: 15+ → 3 interactions">매출 등록 15+ → 3 인터랙션</p></div>
+      <div><p class="stat-label" data-en="Status">상태</p><p class="stat-val" data-en="Live · Pilot salon onboarding">라이브 · 파일럿 샵 온보딩</p></div>
+    </div>
+  </div>
+
+  <div class="body-section" style="padding-top:40px">
+    <p class="section-label">Overview</p>
+    <p class="body-lead" data-en="The user of this product cuts hair for a living. She doesn't sit at a desk.">이 제품의 사용자는 하루 종일 가위를 잡는 사람입니다. 데스크에 앉아 있을 시간이 없습니다.</p>
+    <p class="body-copy" data-en="A one-chair salon owner is the stylist, the receptionist, and the bookkeeper at once. Yet the dominant CRM in this market is a PC-era program sold at ₩19,900/month on a two-year contract — cancel early and you owe a penalty. The owners I observed weren't staying because they loved it. They were staying because leaving costs money.">1인 헤어샵 원장은 시술자이자 접수원이자 경리입니다. 그런데 이 시장의 1위 CRM은 월 19,900원에 2년 약정으로 파는 PC 시대의 프로그램이고, 중도 해지에는 위약금이 붙습니다. 제가 관찰한 원장님들이 그 제품을 계속 쓰는 이유는 만족이 아니었습니다. 떠나는 데 돈이 들기 때문이었습니다.</p>
+    <p class="body-copy" data-en="I had rare access: a salon actually running that product day to day, willing to show me their screens. Instead of starting from feature ideas, I started from a stopwatch question — how much work does their tool actually make them do?">저에게는 드문 접근권이 있었습니다. 그 제품을 매일 실제로 쓰는 샵이 화면을 보여주겠다고 한 것입니다. 그래서 기능 아이디어가 아니라 측정 질문에서 시작했습니다 — <strong>지금 쓰는 도구가 원장에게 실제로 얼마나 많은 일을 시키고 있는가?</strong></p>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="The Measurement">실측</p>
+    <p class="body-lead" data-en="One task, one metric: register a walk-in men's cut, paid by card. Count every interaction.">과업 하나, 지표 하나 — "워크인 손님, 남자 커트, 카드 결제 매출 등록"에 인터랙션이 몇 번 드는가.</p>
+    <p class="body-copy" data-en="A tap or click counts as one; a text field counts as one. I reconstructed the incumbent's flow from real screenshots of the pilot salon's setup, and measured my own product by actually completing the task in it.">탭·클릭 1회 = 1, 텍스트 입력 필드 1개 = 1로 셌습니다. 기존 제품 쪽은 파일럿 샵 실화면 스크린샷을 근거로 흐름을 재구성했고, 이지순지 쪽은 실제로 과업을 완주하며 측정했습니다.</p>
+    <table class="verify-table">
+      <thead>
+        <tr><th data-en="Product">제품</th><th data-en="Flow">흐름</th><th data-en="Interactions">인터랙션</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-en="Incumbent CRM">기존 1위 CRM</td><td data-en="Pick search type → type query → search → select customer (walk-ins detour to a separate screen) → ~5 taps to pick services → a 13-column grid → two popups → payment method → save">검색 유형 선택 → 검색어 입력 → 검색 → 고객 선택(비회원은 별도 화면 경유) → 시술 선택 ~5탭 → 13열 그리드 입력 → 팝업 2회 → 결제 수단 → 저장</td><td><span class="warn">15+</span> <span data-en="(reconstructed)">(재구성)</span></td></tr>
+        <tr><td data-en="Easesoonji · manual">이지순지 · 수동</td><td data-en="① 'Quick Sale' ② tap 'Men's Cut' (customer defaults to walk-in, payment defaults to card) ③ tap 'Save ₩25,000'">① '빠른 매출' ② 시술 '남자 커트' 탭 (고객=비회원 기본, 결제=카드 기본) ③ '25,000원 결제 저장'</td><td><span class="num">3</span> <span data-en="(measured)">(실측)</span></td></tr>
+        <tr><td data-en="Easesoonji · preset tile">이지순지 · 프리셋 타일</td><td data-en="① 'Quick Sale' ② tap a learned combo tile — service and discount applied together ③ save">① '빠른 매출' ② 자주 쓰는 조합 타일 탭 — 시술과 할인이 한 번에 적용 ③ 저장</td><td><span class="num">3</span> <span data-en="(measured)">(실측)</span></td></tr>
+      </tbody>
+    </table>
+    <p class="body-copy" style="margin-top:20px" data-en="Where did twelve interactions go? Into defaults. Walk-in customer is the default, so there's no search. Card is the default payment. And the app learns your frequent service-discount combos and turns them into one-tap tiles. Each default erases a step the incumbent makes you perform every single time. Design here wasn't about adding — it was about deciding what the owner should never have to do.">사라진 12번은 어디로 갔을까요? <strong>기본값 속으로 들어갔습니다.</strong> 워크인 손님이 기본이라 검색이 없고, 카드가 기본 결제라 고를 일이 없고, 자주 쓰는 시술·할인 조합은 앱이 학습해 원탭 타일로 만들어 둡니다. 기본값 하나하나가 기존 제품에서는 매번 수행해야 했던 단계 하나를 지웁니다. 여기서의 설계는 더하는 일이 아니라, <strong>원장이 영원히 안 해도 되는 일을 정하는 일</strong>이었습니다.</p>
+    <p class="body-copy" data-en="I re-verified the number on the production URL on July 15, 2026, with a rehearsal account: the save button lights up at exactly the third interaction, on both paths.">이 숫자는 2026년 7월 15일, 프로덕션 URL에서 리허설 계정으로 재검증했습니다. 두 경로 모두 정확히 세 번째 인터랙션에서 저장 버튼이 활성화됩니다.</p>
+    <div class="shots">
+      <figure>
+        <img src="img/home.webp" alt="이지순지 홈 — 오늘의 예약 아젠다와 예상 매출" loading="lazy" />
+        <figcaption data-en="<strong>Today, at a glance.</strong> Bookings, gaps, expected revenue — plus a nudge for unrecorded finished visits."><strong>홈 = 오늘.</strong> 예약·빈 시간·예상 매출, 그리고 기록 안 된 시술을 마감으로 안내하는 배너까지 한 화면.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/quicksale.webp" alt="빠른 매출 화면 — 프리셋 타일 선택 후 저장 버튼 활성" loading="lazy" />
+        <figcaption data-en="<strong>Quick Sale, two taps in.</strong> A learned combo tile applied service + discount at once; the save button is already live."><strong>빠른 매출, 두 번 탭한 상태.</strong> 학습된 조합 타일이 시술+할인을 한 번에 적용했고, 저장 버튼은 이미 켜져 있습니다.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/history.webp" alt="고객 카드 — 시술 히스토리와 지난 시술 그대로 재현 버튼" loading="lazy" />
+        <figcaption data-en="<strong>The hero feature.</strong> A regular's full history, and one button: 'repeat the last service as-is.'"><strong>히어로 기능.</strong> 단골의 시술 히스토리 전체와 버튼 하나 — "지난 시술 그대로 재현".</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="The Hero Feature">히어로 기능을 고른 근거</p>
+    <p class="body-lead" data-en="The incumbent's memo field is 30 characters. A hair-color recipe doesn't fit in 30 characters.">기존 제품의 메모칸은 30자입니다. 염색 배합은 30자에 들어가지 않습니다.</p>
+    <p class="body-copy" data-en="Color number, developer ratio, processing time, what worked and what didn't — that's the knowledge a returning customer actually pays for. Because it doesn't fit, owners keep a paper notebook next to the CRM, and the record splits in two. So the hero of this product is the visit history: structured recipe fields, before/after photos, and a 'repeat last service' button that pre-fills the whole record for the next visit.">약제 번호, 산화제 비율, 방치 시간, 지난번에 뭐가 좋았고 뭐가 아쉬웠는지 — 재방문 고객이 실제로 돈을 내는 지식은 이것입니다. 30자에 안 들어가니 원장님들은 CRM 옆에 수첩을 따로 두고, 기록은 두 곳으로 쪼개집니다. 그래서 이 제품의 히어로를 시술 히스토리로 정했습니다. 구조화된 레시피 필드, 전/후 사진, 그리고 다음 방문 때 기록 전체를 미리 채워주는 <strong>"지난 시술 그대로 재현"</strong> 버튼.</p>
+    <p class="body-copy" data-en="Booking and sales features exist in this product to feed the history. That hierarchy — one hero, everything else as supply lines — is also what the metrics below are built to test.">예약과 매출 기능은 이 제품에서 히스토리에 기록을 공급하기 위해 존재합니다. 히어로 하나에 나머지를 보급선으로 붙이는 이 위계는, 아래 지표 설계가 검증하려는 가설이기도 합니다.</p>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="Metrics">무엇을 지표로 삼았나</p>
+    <p class="body-lead" data-en="North Star: weekly saved visit records that include a recipe.">North Star — 주간 시술 기록 저장 건수, 단 레시피가 포함된 것만.</p>
+    <p class="body-copy" data-en="I rejected the obvious candidates on record. 'Weekly active days' measures habit, not accumulated value — you can check a booking and leave. 'Sales entries' only measures ledger replacement. Recipe-included records measure the one thing this product must prove: that structured history is worth keeping. It also happens to attack the incumbent's exact weakness — the 30-character memo.">뻔한 후보들은 기각 사유를 기록하고 버렸습니다. "주간 활성일수"는 습관을 재지만 가치 축적을 재지 못합니다 — 예약만 확인하고 나가도 활성이니까요. "매출 등록 건수"는 장부 대체 여부만 잽니다. 레시피 포함 기록은 이 제품이 증명해야 하는 단 하나 — 구조화된 히스토리가 쌓을 가치가 있다는 것 — 를 재고, 동시에 기존 제품의 정확한 약점(30자 메모)을 공략하는 지표입니다.</p>
+    <div class="kpi-tree" aria-label="KPI 트리">
+      <b data-en="North Star: weekly recipe-included visit records">북극성: 주간 시술 기록 건수 (레시피 포함)</b><br>
+      ├─ <span data-en="Value accumulation — record count · recipe rate · photo rate · ">가치 축적 — 기록 건수 · 레시피 포함률 · 사진 포함률 · </span><span class="hero-metric" data-en="'repeat last service' pre-fill uses/week ← direct test of the hero hypothesis">"지난 시술 재현" 프리필 사용/주 ← 히어로 가설 직접 검증</span><br>
+      ├─ <span data-en="Operational efficiency — sale-entry interaction count (the benchmark above) · preset-tile usage rate">운영 효율 — 매출 등록 인터랙션 수(위 벤치마크) · 프리셋 타일 사용률</span><br>
+      ├─ <span data-en="Inflow — link-booking count · Naver-merge count · no-show rate">유입 — 링크예약 유입 · 네이버 병합 건수 · 노쇼율</span><br>
+      └─ <span data-en="Engagement (n=1-adjusted) — weekly usage days · core actions per day">참여(n=1 보정) — 주간 사용일수 · 사용일당 핵심 행동 수</span>
+    </div>
+    <p class="body-copy" style="margin-top:20px" data-en="Five events that leave no database row of their own got explicit instrumentation — including phone_reveal, which tests whether masking phone numbers by default gets in the way of real work. The rule I set: at week 4, the numbers decide the next planning cycle. Zero pre-fill uses means the hero flow gets redesigned, not defended.">DB에 행을 남기지 않는 인터랙션 5종에는 별도 계측을 붙였습니다. 그중 phone_reveal은 "전화번호 마스킹 기본값이 실제 업무를 방해하는가"를 재는 이벤트입니다. 그리고 규칙을 하나 정해뒀습니다 — <strong>4주 차에 숫자가 다음 기획을 결정한다.</strong> 프리필 사용이 0건이면 히어로 동선은 변호가 아니라 재설계 대상입니다.</p>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="Positioning">포지셔닝</p>
+    <p class="body-lead" data-en="₩9,900 a month, no contract. The price is a product decision, not a discount.">월 9,900원, 무약정. 이 가격은 할인이 아니라 제품 결정입니다.</p>
+    <p class="body-copy" data-en="The incumbent's two-year contract works because switching feels dangerous. So the counter-position isn't 'cheaper' — it's 'nothing to lose': half the price, leave any month, and an importer that accepts the masked phone numbers you can actually export from your old tool. The number 9,900 keeps the product under the psychological ₩10K line while sustaining a solo-run service. What it deliberately gives up: contract-guaranteed revenue. What it bets on: a product good enough that no one needs to be locked in.">기존 제품의 2년 약정이 작동하는 이유는 갈아타기가 위험하게 느껴져서입니다. 그래서 반대 포지션은 "더 싸다"가 아니라 <strong>"잃을 게 없다"</strong>로 잡았습니다 — 절반 가격, 아무 달에나 떠날 수 있고, 기존 도구에서 실제로 내보낼 수 있는 마스킹된 번호 그대로 받아주는 임포터까지. 9,900원은 심리적 1만 원 선 아래에 있으면서 1인 운영 서비스를 지속할 수 있는 숫자입니다. 의도적으로 포기한 것은 약정이 보장하는 매출이고, 거는 것은 잠그지 않아도 남는 제품입니다.</p>
+    <p class="body-copy" data-en="Honest caveat, repeated in the limitations below: no one has paid yet. This positioning is a designed hypothesis awaiting its pilot-conversion test.">아래 한계에도 다시 적었지만 정직하게 — 아직 아무도 결제하지 않았습니다. 이 포지셔닝은 파일럿 전환으로 검증을 기다리는 설계된 가설입니다.</p>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="The Pilot Loop">파일럿 — 피드백이 기능이 되는 속도</p>
+    <p class="body-copy" style="margin-bottom:8px" data-en="The first pilot is the very salon whose screens started this project — a shop that pays for the incumbent today. Interviews ask only past behavior ('how did you close out last Tuesday?'), never intentions. And feedback ships:">첫 파일럿은 이 프로젝트를 시작하게 한 바로 그 샵 — 지금도 기존 제품에 돈을 내고 있는 곳입니다. 인터뷰는 의향이 아니라 과거 행동만 묻고("지난 화요일 마감은 어떻게 하셨어요?"), 들은 것은 기능으로 배송됩니다.</p>
+    <div class="voice-list">
+      <div class="voice-item"><span class="voice-quote" data-en="&quot;I close at 7, but bookings kept landing past closing.&quot;">"19시 퇴근인데 그 이상으로 시술이 잡혀요."</span><br><span data-en="→ Confirmed bookings now validate against per-day business hours: a service that would run past closing is blocked at save, with the reason spelled out. Waitlist and time-blocks stay free.">→ 확정 예약이 요일별 영업시간을 검증하도록 바꿨습니다. 마감을 넘겨 끝나는 시술은 저장 단계에서 이유와 함께 차단되고, 대기·차단 등록은 자유롭게 남겨뒀습니다.</span></div>
+      <div class="voice-item"><span class="voice-quote" data-en="&quot;Naver bookings come in, and then I copy them by hand.&quot;">"네이버 예약이 들어오면 그걸 또 옮겨 적어요."</span><br><span data-en="→ Naver reservations merge into the calendar via iCal — and when one disappears from the feed, it's auto-marked cancelled instead of silently lingering.">→ 네이버 예약을 iCal로 캘린더에 병합했습니다. 피드에서 사라진 예약은 조용히 남는 대신 자동으로 취소 처리됩니다.</span></div>
+      <div class="voice-item"><span class="voice-quote" data-en="&quot;My old tool only exports customer numbers with the middle digits masked.&quot;">"기존 프로그램은 고객 번호를 가운데 자리 가린 채로만 내보내줘요."</span><br><span data-en="→ The importer was redesigned to accept masked numbers as first-class input, matching duplicates by the last four digits. The migration path is built around what owners can actually export, not what would be convenient for me.">→ 임포터가 마스킹된 번호를 정식 입력으로 받도록 설계했고, 중복은 뒷자리 4개로 매칭합니다. 이사 경로는 제가 받기 편한 형식이 아니라 원장이 실제로 내보낼 수 있는 형식에 맞췄습니다.</span></div>
+    </div>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="What I'd Tell You Before You Ask">먼저 말해두는 한계</p>
+    <p class="body-copy" style="margin-bottom:20px" data-en="The headline number is real, but you should know exactly how it was made.">헤드라인 숫자는 진짜입니다. 다만 그 숫자가 어떻게 만들어졌는지는 정확히 알고 보셔야 합니다.</p>
+    <div class="retract-list">
+      <div class="retract-item" data-en="<strong>The incumbent's '15+' is a reconstruction,</strong> built from real screenshots of the pilot salon's setup — not a hands-on measurement. A stopwatch re-run on the salon's actual machine is scheduled as part of pilot onboarding, and the number will be replaced with whatever that yields."><strong>기존 제품의 "15+"는 재구성입니다.</strong> 파일럿 샵 실화면 스크린샷을 근거로 삼았지만 직접 조작 실측은 아닙니다. 파일럿 온보딩 때 실기기에서 스톱워치로 재측정하기로 되어 있고, 숫자는 그 결과로 교체됩니다.</div>
+      <div class="retract-item" data-en="<strong>My '3' depends on the layout.</strong> With the sidebar (desktop), it's 3 — re-verified on production. On the mobile tab bar the same task takes 4, because reaching Quick Sale costs one extra tap. The comparison table uses the sidebar path, and now you know why."><strong>"3"은 레이아웃에 따라 다릅니다.</strong> 사이드바가 있는 화면에서는 3이고(프로덕션 재검증), 모바일 탭바 경유는 빠른 매출까지 한 번이 더 들어 4입니다. 비교 표는 사이드바 경로 기준이며, 그 사실을 여기 밝혀둡니다.</div>
+      <div class="retract-item" data-en="<strong>Time estimates are model-converted.</strong> '8s vs 45s+' comes from a Keystroke-Level Model conversion of interaction counts, not stopwatch data. Interactions are the primary measurement; seconds are an estimate and labeled as such."><strong>시간은 모델 환산입니다.</strong> "8초 vs 45초+"는 인터랙션 수를 KLM(Keystroke-Level Model)으로 환산한 추정치이지 스톱워치 실측이 아닙니다. 1차 데이터는 인터랙션 수이고, 초 단위는 추정으로만 표기합니다.</div>
+      <div class="retract-item" data-en="<strong>n=1, and no one has paid.</strong> One pilot salon, onboarding in progress; the ₩9,900 pricing is unvalidated by a single payment. The metrics framework above exists precisely so these claims get tested instead of repeated."><strong>파일럿은 1곳이고, 결제는 0건입니다.</strong> 온보딩 진행 중인 샵 하나가 전부이며 9,900원 가격은 단 한 건의 결제로도 검증되지 않았습니다. 위의 지표 체계는 이 주장들이 반복되는 대신 시험받게 하려고 존재합니다.</div>
+    </div>
+  </div>
+
+  <div class="body-section">
+    <p class="section-label" data-en="Live">라이브</p>
+    <p class="body-lead" data-en="It's a real service in operation — which is why the link needs a login.">운영 중인 실서비스입니다 — 그래서 링크에는 로그인이 필요합니다.</p>
+    <p class="body-copy" data-en="Real customer data lives behind that login, so the screenshots above come from a rehearsal account with fictional customers. The public side you can see without an account is the customer-facing booking page each salon gets as a shareable link. Built with Next.js and Supabase, PWA-installable, deployed continuously — 95 commits in the first two weeks, most of them shaped by what the pilot salon said last.">로그인 뒤에는 실제 고객 데이터가 있어서, 위 스크린샷은 가상 고객으로 채운 리허설 계정에서 찍었습니다. 계정 없이 볼 수 있는 공개면은 샵마다 발급되는 손님용 링크예약 페이지입니다. Next.js와 Supabase로 만들어 PWA로 설치되고, 첫 2주 동안 95커밋 — 대부분이 파일럿 샵의 마지막 한마디가 정한 것들입니다.</p>
+    <a class="live-cta" href="https://ejsj.vercel.app" target="_blank" rel="noopener" data-en="Visit Easesoonji →">이지순지 보러 가기 →</a>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-name" data-en="Easesoonji — Fifteen Taps Down to Three, a CRM Rebuilt on Measurement">이지순지 — 15번의 탭을 3번으로, 실측으로 다시 만든 CRM</span>
+  <a href="../" style="font-size:13px;color:#888" data-en="← Back to Works">← Back to Works</a>
+</footer>
+
+<script>
+  document.body.classList.add('loaded');
+</script>
+</body>
+</html>
