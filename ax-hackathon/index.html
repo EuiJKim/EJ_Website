@@ -229,6 +229,36 @@
     <p class="body-copy" style="margin-top:20px" data-en="Independent review rounds caught real false negatives (quoted keys, a data-async attribute misread) — each fixed with a regression test. Known limits (regex literals, npm bundler loaders) are documented, not hidden.">독립 리뷰 라운드에서 실제 거짓음성(따옴표 키, data-async 속성 오인)을 잡아 회귀 테스트와 함께 수정했고, 알려진 한계(정규식 리터럴, npm 번들러 로더)는 감추지 않고 문서화했습니다.</p>
   </div>
 
+  <div class="body-section">
+    <p class="section-label" data-en="Finals">본선 — 인플루언서 시딩 엔진</p>
+    <p class="body-lead" data-en="The three linters advanced to the finals (5,300+ entrants) — Meditherapy track, a 3-hour solo build on-site.">이 플러그인 3종으로 본선에 진출했습니다(전체 참가 5,300여 명) — 메디테라피 트랙, 현장 3시간 개인전.</p>
+    <p class="body-copy" data-en="The problem: &quot;Design an influencer seeding engine that produces revenue — how do you guarantee and prove that revenue actually happened?&quot; Proving attribution is a problem even Google and Meta haven't solved (counterfactuals are unobservable, the journey fragments across platforms, and the measurer sells the ads). So I didn't try to observe causality — I designed experiments that make it identifiable: a unique coupon per influencer creates the conversion (discount) and records it (redemption) in one device.">문제는 "매출이 나는 인플루언서 시딩 엔진을 기획하라 — '매출이 났다'를 어떻게 보장하고 증명할 것인가"였습니다. 어트리뷰션 증명은 구글·메타도 못 푼 문제라(반사실 관측 불가·여정 파편화·측정자의 이해충돌), 관측 대신 실험을 설계했습니다 — 인플루언서별 전용코드 하나가 할인으로 전환을 만들고(보장) 리딤으로 그 매출을 기록합니다(증명).</p>
+    <div class="plugin-grid" style="margin-top:20px">
+      <div class="plugin-card">
+        <span class="plugin-company" data-en="Ontology">온톨로지</span>
+        <span class="plugin-name" data-en="Consumer-State World">소비자 상태 세계</span>
+        <p class="plugin-core" data-en="7 mind states (unaware→aware→…→purchase→repurchase→advocacy) with per-transition observability marked honestly: ● certain (code redemption) ◐ proxy ✗ unobservable (word of mouth) — unseen parts are drawn as unseen, not filled in.">마음 상태 7단계(모름→인지→…→구매→재구매→전파)에 전이별 관측 가능성을 표기 — ●확실(코드 리딤) ◐간접 ✗관측 불가(입소문). 못 보는 구간은 채워넣지 않고 못 본다고 그렸습니다.</p>
+        <p class="plugin-metrics" data-en="✓ Brand-agnostic — swap keywords to port to hair/fragrance">✓ 브랜드 비종속 — 키워드 교체로 헤어·향수 이식</p>
+      </div>
+      <div class="plugin-card">
+        <span class="plugin-company" data-en="Causal Ledger">인과 장부</span>
+        <span class="plugin-name" data-en="Certain vs Estimated">확실/추정 분리</span>
+        <p class="plugin-core" data-en="Code-redemption revenue (certain, a lower bound) and 48h-window lift (estimate) are never summed. Absolute values are imprecise, but every channel is measured with the same ruler — so comparisons for renewal decisions stay fair.">코드 리딤 매출(확실, 하한)과 48시간 시간창 상승(추정)을 절대 합산하지 않습니다. 절대값은 부정확해도 전 채널을 같은 자로 재므로 재계약 비교는 공정합니다.</p>
+        <p class="plugin-metrics" data-en="✓ Real data: 20 channels collected from YouTube · sales labeled [SYNTHETIC]">✓ 실수집 20채널 · 매출은 [SYNTHETIC] 명시</p>
+      </div>
+      <div class="plugin-card">
+        <span class="plugin-company" data-en="Self-Correcting Loop">자가 보정 루프</span>
+        <span class="plugin-name" data-en="Predict → Measure → Update">예측→실측→갱신</span>
+        <p class="plugin-core" data-en="Batch = 4 exploit + 1 explore (information budget). The pre-score #1 got demoted by measured redemptions while a mid-ranker became the ace — the system catches its own prediction errors. 22 self-tests incl. planting ground truth in synthetic data and verifying recovery.">배치 = 활용 4 + 탐색 1(정보 예산). 사전점수 1위가 실측 리딤으로 강등되고 중위 채널이 에이스로 승격 — 시스템이 자기 예측의 오류를 잡습니다. 합성 데이터에 정답을 심고 복원을 검증하는 것 포함 셀프테스트 22종.</p>
+        <p class="plugin-metrics" data-en="✓ One-command demo + ops manual for a solo marketer">✓ 원커맨드 시연 + 마케터 1인 운영 매뉴얼 동봉</p>
+      </div>
+    </div>
+    <div class="retract-list" style="margin-top:20px">
+      <div class="retract-item" data-en="<strong>Judge feedback, applied same-day:</strong> &quot;Include competitor analysis.&quot; I collected 80 seeding traces across 4 rival brands within hours — and discovered that our batch's #3 pick had been seeded by all four competitors (authenticity risk). One piece of feedback changed an actual decision, which is exactly what the loop is for."><strong>심사 피드백, 당일 반영:</strong> "경쟁사 분석도 포함하면 좋겠다" — 몇 시간 안에 경쟁 4사의 시딩 흔적 80건을 수집해 반영했고, 우리 배치 3순위 채널이 경쟁 4사를 전부 거친 협찬 과다 채널로 판명됐습니다. 피드백 하나가 실제 판단을 바꿨습니다 — 그게 루프의 존재 이유입니다.</div>
+    </div>
+    <a href="https://github.com/EuiJKim/influencer-seeding-engine" target="_blank" rel="noopener" class="live-btn" style="margin-top:20px" data-en="🔗 Seeding Engine on GitHub">🔗 시딩 엔진 GitHub에서 보기</a>
+  </div>
+
 </div>
 
 <footer>
