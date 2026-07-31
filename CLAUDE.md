@@ -22,6 +22,17 @@ portfolio_site/
     thumb.jpg
 ```
 
+## 지원 서류 디자인 시스템 (2026-07 확립)
+
+모든 A4 지원 서류(이력서·커버레터·경력기술서·포트폴리오 부록)는 **`지원/_문서템플릿.html`을 복사해서 시작**한다. 포트폴리오 사이트와 같은 톤: DM Sans + Pretendard(CDN 로드), --bg #f9f9f7, 모노톤, 헤어라인.
+
+- **괘선 표(border 있는 table) 금지** → `.row`(헤어라인 행) 또는 `.titem`(타임라인) 사용
+- 색 강조·이모지 금지, 배지는 `.pill`, 숫자 강조는 `.stats`(큰 라이트 웨이트)
+- PDF 변환: playwright `format: "A4", printBackground: true` + `document.fonts.ready` 대기 필수
+- 글 톤: 짧고 직설(전역 CLAUDE.md 규약 5). 매 문단이 같은 템플릿으로 끝나는 매핑 구조 금지
+- 숫자·사실 관계는 메모리(seers-interview-prep)와 `지원/` 폴더 문서를 원본으로 — 지원 서류의 구체 수치를 이 파일(공개 저장소)에 적지 말 것
+- ⚠️ **이 저장소는 공개(GitHub Pages)**: 이력서·자소서·면접 자료·개인정보는 절대 커밋 금지 (.gitignore로 차단됨)
+
 ## 로컬 프리뷰
 ```bash
 npx serve .

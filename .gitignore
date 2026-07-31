@@ -1,0 +1,25 @@
+# 의존성·도구 산출물
+node_modules/
+.gstack/
+.agents/
+_fullreview/
+_*.mjs
+clog/export/
+*.zip
+
+# 개인정보·지원 서류 (공개 사이트 저장소 — 절대 커밋 금지)
+지원/
+씨어스/
+오늘의집/
+해커톤/
+넥스트그라운드/
+지원서_마스터자료_김의준.md
+지원후보_공고리스트_*.md
+*이력서*
+*자기소개서*
+*자소서*
+*경력기술서*
+judge-rubric*
+새 텍스트 문서.txt
+"Eui Joon Kim — Resume.pdf"
+Eui Joon Kim*.pdf
