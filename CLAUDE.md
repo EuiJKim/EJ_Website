@@ -73,7 +73,8 @@ git push origin main  # → GitHub Pages 자동 배포
 
 ## 작업 규칙
 - global.css 수정 시 → allaw, clog, resin 3개 모두 확인
-- 메인 index.html의 인라인 CSS 구조 유지 (단일 파일 의도)
+- 메인 index.html의 인라인 CSS 구조 유지 (글·디자인·작은 움직임은 단일 파일). 예외: 3D 무대는 `assets/stage.js`(+ `assets/vendor/three.module.min.js` · 무대용 그림 `assets/stage/`) — 글이 먼저 뜨고 3D는 그 뒤에 불린다
+- 글꼴은 SUIT 하나(한글·영문) — `assets/fonts/SUIT-Variable.woff2`를 저장소에서 직접 불러온다(메인 기준, 2026-11 개편)
 - 프로젝트 간 네비게이션 일관성: ← Back to Works, Next: [프로젝트명] →
 - 이미지: lazy loading + 의미있는 alt 텍스트 필수
 - 커밋: conventional commits (feat/fix/style/content)

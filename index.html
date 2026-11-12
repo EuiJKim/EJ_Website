@@ -18,10 +18,9 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"김의준","jobTitle":"서비스 기획자 · UX Researcher","url":"https://euijkim.github.io/EJ_Website/","alumniOf":[{"@type":"CollegeOrUniversity","name":"국민대학교 테크노디자인전문대학원"},{"@type":"CollegeOrUniversity","name":"Rochester Institute of Technology"}],"knowsAbout":["UX Research","Service Design","UI Design","Prototyping"]}
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face { font-family: 'SUIT'; font-weight: 100 900; font-style: normal; font-display: swap; src: url('assets/fonts/SUIT-Variable.woff2') format('woff2'); }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -54,7 +53,7 @@
     html, body {
       background: var(--bg);
       color: var(--ink);
-      font-family: 'DM Sans', -apple-system, sans-serif;
+      font-family: 'SUIT', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
       font-size: 16px;
       font-weight: 400;
       line-height: 1.5;
@@ -248,113 +247,50 @@
       margin-bottom: 0;
     }
 
-    /* ── Hero showcase cards ── */
-    .hero-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      padding: 48px 0 64px;
-    }
-    .hero-card {
-      display: block;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--hover-bg);
-      transition: transform 0.3s var(--ease), box-shadow 0.3s, border-color 0.3s;
-      transform-style: preserve-3d;
-      will-change: transform;
-      opacity: 0;
-      animation: cardReveal 0.6s var(--ease) both;
-    }
-    body.loaded .hero-card:nth-child(1) { animation-delay: 0.2s; }
-    body.loaded .hero-card:nth-child(2) { animation-delay: 0.35s; }
-    body.loaded .hero-card:nth-child(3) { animation-delay: 0.5s; }
-    .hero-card { animation-play-state: paused; }
-    body.loaded .hero-card { animation-play-state: running; }
-    @keyframes cardReveal {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero-card:hover {
-      box-shadow: 0 16px 48px rgba(var(--accent-rgb),0.12);
-      border-color: rgba(var(--accent-rgb),0.3);
-    }
-    html.dark .hero-card:hover {
-      box-shadow: 0 20px 60px rgba(var(--accent-rgb),0.25);
-    }
-    .hero-card:active {
-      transform: scale(0.98);
-    }
-    .hero-card-img-wrap {
-      aspect-ratio: 16/10;
-      overflow: hidden;
-    }
-    .hero-card-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s var(--ease);
-    }
-    .hero-card:hover .hero-card-img-wrap img {
-      transform: scale(1.05);
-    }
-    .hero-card-info {
-      padding: 16px 20px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-    }
-    .hero-card-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-    }
-    .hero-card-desc {
-      font-size: 13px;
-      color: var(--muted);
-      width: 100%;
-      line-height: 1.5;
-      margin-top: 4px;
-    }
-    .hero-card-type {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      margin-top: 8px;
-    }
-    .hero-card-metrics {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--accent);
-      margin-top: 8px;
-      width: 100%;
-    }
+    /* ── Selected Work — 목록 + 3D 무대 ── */
+    .works { display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 56px; align-items: start; }
+    .work-list { padding: 14vh 0 30vh; }
+    .work-item { display: block; padding: 34px 0 36px; border-top: 1px solid var(--line); min-height: 32vh; opacity: 0.36; transition: opacity 0.5s var(--ease); }
+    .work-item:last-child { border-bottom: 1px solid var(--line); }
+    .work-item.on, .work-item:hover, .work-item:focus-visible { opacity: 1; }
+    .work-year { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: 0.06em; }
+    .work-title { font-size: clamp(20px, 2vw, 24px); font-weight: 700; letter-spacing: -0.015em; margin: 10px 0 12px; display: flex; align-items: baseline; gap: 10px; }
+    .work-title i { font-style: normal; font-size: 15px; font-weight: 400; color: var(--muted); transform: translateX(-4px); opacity: 0; transition: transform 0.4s var(--ease), opacity 0.4s var(--ease); }
+    .work-item.on .work-title i, .work-item:hover .work-title i { transform: none; opacity: 1; }
+    .work-desc { font-size: 15px; line-height: 1.75; color: var(--muted); max-width: 440px; }
+    .work-type { display: block; margin-top: 14px; font-size: 12.5px; color: var(--muted); letter-spacing: 0.01em; }
+    .work-metrics { display: block; margin-top: 6px; font-size: 12.5px; color: var(--accent); }
+    html.dark .work-metrics { color: #8fa6f2; }
+    .stage { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; }
+    .stage-inner { position: relative; width: 100%; height: min(78vh, 720px); }
+    .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity 0.8s var(--ease); }
+    .stage.gl canvas { opacity: 1; }
+    .stage-count { position: absolute; right: 0; bottom: 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: 0.08em; }
+    .stage-fb { position: absolute; inset: 8% 6%; width: 88%; height: 84%; object-fit: contain; display: none; border-radius: 10px; }
+    .stage.nogl .stage-fb { display: block; }
+    .stage.nogl canvas { display: none; }
+    .featured[hidden] { display: none; }
 
-    .hero-card-badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 4px;
-      transition: background 0.15s;
-    }
-    .hero-card:hover .hero-card-badge {
-      background: rgba(var(--accent-rgb),0.25);
-    }
-    .hero-card-badge[data-accent="blue"] { color: var(--accent); background: rgba(var(--accent-rgb),0.15); }
-    .hero-card-badge[data-accent="green"] { color: var(--green); background: rgba(var(--green-rgb), 0.15); }
-    .hero-card-badge[data-accent="amber"] { color: var(--amber); background: rgba(var(--amber-rgb), 0.15); }
-    .hero-card-badge[data-accent="purple"] { color: var(--purple); background: rgba(var(--purple-rgb), 0.15); }
+    /* ── Side Projects ── */
+    .side-section { padding: 72px 0 64px; border-top: 1px solid var(--line); }
+    .side-header { font-size: 12px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .side-note { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .side-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 24px; align-items: baseline; padding: 18px 0; border-top: 1px solid var(--line); transition: padding-left 0.3s var(--ease); }
+    .side-row:last-child { border-bottom: 1px solid var(--line); }
+    .side-row:hover { padding-left: 8px; }
+    .side-name { font-size: 16px; font-weight: 600; }
+    .side-desc { grid-column: 1; font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .side-go { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .side-row:hover .side-go { color: var(--ink); }
 
     @media (max-width: 768px) {
-      .hero-cards {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 32px 0 48px;
-      }
+      .works { display: flex; flex-direction: column-reverse; align-items: stretch; gap: 0; }   /* 무대가 위에 붙고 목록이 그 아래로 지나간다 */
+      .stage { height: 42vh; z-index: 2; margin: 0 -24px; padding: 0 24px; background: linear-gradient(var(--bg) 93%, transparent); }
+      .stage-inner { height: 38vh; }
+      .work-list { padding: 2vh 0 26vh; }
+      .work-item { min-height: 0; padding: 26px 0 30px; }
+      .side-row { grid-template-columns: 1fr; }
+      .side-go { grid-row: auto; grid-column: 1; }
     }
 
 
@@ -659,7 +595,8 @@
     .about-contact-row a:focus-visible,
     .theme-toggle:focus-visible,
     .skill-tag:focus-visible,
-    .hero-card:focus-visible {
+    .side-row:focus-visible,
+    .work-item:focus-visible {
       outline: 3px solid var(--accent);
       outline-offset: 6px;
       border-radius: 12px;
@@ -678,7 +615,7 @@
     /* ── Tablet ── */
     @media (max-width: 1024px) {
       .wrap { padding: 0 40px; }
-      .hero-cards { gap: 16px; }
+      .works { gap: 32px; }
       .about-grid { gap: 32px 40px; }
     }
 
@@ -688,8 +625,7 @@
       header { padding: 48px 0; }
       .intro p { font-size: 18px; padding: 0; }
       .about-grid { grid-template-columns: 1fr; }
-      .hero-card-desc,
-      .hero-card-type,
+      .work-desc { font-size: 14.5px; }
       .about-item-sub,
       .about-item-detail,
       .about-block-title,
@@ -701,7 +637,6 @@
       .hero-area { padding: 24px 0; }
       .intro p { font-size: clamp(16px, 2vw, 20px); }
       header { padding: 32px 0; }
-      .hero-cards { grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 24px 0 32px; }
     }
 
     /* ── Scroll-driven intro fade ── */
@@ -745,6 +680,8 @@
     ::view-transition-new(root) {
       animation: 0.3s ease-out 0.1s both fade-in, 0.3s ease-out 0.1s both slide-down;
     }
+    html.theme-vt::view-transition-old(root), html.theme-vt::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+    html.theme-vt::view-transition-new(root) { z-index: 2; }
     @keyframes fade-out { to { opacity: 0; } }
     @keyframes fade-in { from { opacity: 0; } }
     @keyframes slide-up { to { transform: translateY(-8px); } }
@@ -758,13 +695,7 @@
         clip-path: none;
         transform: none;
       }
-      .hero-card {
-        animation: none !important;
-        opacity: 1 !important;
-      }
-      .hero-card,
-      .hero-card:hover,
-      .hero-card-img-wrap img,
+      .work-item, .work-title i, .side-row, .stage canvas { transition: none !important; }
       .wrap,
       .header-links a,
       footer a,
@@ -812,87 +743,85 @@
     <em>사용자가 말하는 방식이 설계의 출발점입니다.</em></p>
   </div>
 
-  <!-- Hero showcase cards -->
-  <h2 class="section-label reveal" style="--d:.12s">Selected Work</h2>
-  <div class="hero-cards reveal" style="--d:.14s">
-    <a href="allaw/" class="hero-card" data-accent="blue" aria-label="ALLAW — 법률 AI 앱. 변호사가 말하는 방식이 장벽이었다. 법률 용어를 사용자 언어로 바꾸는 AI 상담 서비스." data-en-aria="ALLAW — Legal AI App. The way lawyers speak was the barrier. An AI service that translates legal language into everyday language.">
-      <div class="hero-card-img-wrap">
-        <picture><source srcset="allaw/assets/Resume_2.webp" type="image/webp"><img src="allaw/assets/Resume_2.jpg" alt="ALLAW 법률 AI 앱 프로젝트 썸네일" loading="eager" /></picture>
-      </div>
-      <div class="hero-card-info">
-        <span class="hero-card-badge" data-accent="blue">2025</span>
-        <p class="hero-card-title" data-en="ALLAW — Legal AI App">ALLAW — 법률 AI 앱</p>
-        <p class="hero-card-desc" data-en="The way lawyers speak was the barrier. In-depth interviews and a survey (n=89) revealed innovation-resistance factors, leading to the design of an AI-powered legal consultation service.">변호사가 말하는 방식이 장벽이었다. 심층 인터뷰와 설문(n=89)으로 혁신저항 요인을 분석하고, AI 기반 법률 상담 서비스를 설계했다.</p>
-        <span class="hero-card-type">UX Research · UI Design</span>
-        <span class="hero-card-metrics" data-en="✓ Survey n=89 · Hypothesis-driven · Published in KCI Journal">✓ 설문 89명 · 가설 검증 · KCI 논문 게재</span>
-      </div>
-    </a>
-    <a href="clog/" class="hero-card" data-accent="green" aria-label="Clog — 클라이밍 기록 앱. 3개월째 다니는데 뭐가 달라졌는지 모르겠어요. 이 한마디에서 시작한 성장 기록 앱." data-en-aria="Clog — Climbing Log App. 'I've been climbing for three months but I can't tell what's changed.' A growth-tracking app born from that single sentence.">
-      <div class="hero-card-img-wrap">
-        <img src="clog/img_splash.png" alt="Clog 클라이밍 기록 앱 프로젝트 썸네일" loading="eager" />
-      </div>
-      <div class="hero-card-info">
-        <span class="hero-card-badge" data-accent="green">2024</span>
-        <p class="hero-card-title" data-en="Clog — Climbing Log App">Clog — 클라이밍 기록 앱</p>
-        <p class="hero-card-desc" data-en="&quot;I've been climbing for three months but I can't tell what's changed.&quot; Three hypotheses; two confirmed, one redirected.">"3개월째 다니는데 뭐가 달라졌는지 모르겠어요." 가설 3개를 세웠고, 2개는 맞았고, 1개는 방향이 틀려서 고쳤다.</p>
-        <span class="hero-card-type">UX Research · UI Design</span>
-        <span class="hero-card-metrics" data-en="✓ 3 Hypotheses · 2 Confirmed · 1 Pivoted · Solo Designer">✓ 가설 3개 · 2개 확인 · 1개 피봇 · 1인 기획 100%</span>
-      </div>
-    </a>
-    <a href="resin/" class="hero-card" data-accent="amber" aria-label="EEL — 레진 아트퍼니처 웹사이트. 프리미엄 수제 레진 테이블 브랜드의 사업 기획과 웹 디자인. e-커머스 + BTO 경험 설계." data-en-aria="EEL — Resin Art Furniture Website. Business planning and web design for a premium handcrafted resin table brand. E-commerce and BTO experience design.">
-      <div class="hero-card-img-wrap">
-        <img src="resin/thumb.jpg" alt="EEL 레진 아트퍼니처 프로젝트 썸네일" loading="eager" />
-      </div>
-      <div class="hero-card-info">
-        <span class="hero-card-badge" data-accent="amber">2026</span>
-        <p class="hero-card-title" data-en="EEL — Resin Art Furniture">EEL — 레진 아트퍼니처</p>
-        <p class="hero-card-desc" data-en="Premium handcrafted resin table brand. Led business planning and web design. Brand identity + 3D customizer + Build-to-Order flow.">프리미엄 수제 레진 테이블 브랜드. 사업 기획 + 웹 디자인 담당. 브랜드 아이덴티티 + 3D 커스터마이저 + BTO 주문 플로우 설계.</p>
-        <span class="hero-card-type">Brand · Web Design</span>
-        <span class="hero-card-metrics" data-en="✓ Business Planning · Brand System · 3D Customizer">✓ 사업 기획 · 브랜드 시스템 · 3D 커스터마이저</span>
-      </div>
-    </a>
-    <a href="ax-hackathon/" class="hero-card" data-accent="purple" aria-label="AX 해커톤 — 근거 기반 컴플라이언스 린터 3종. 규제기관이 지목한 문제를 공개 근거로 입증하고, 배포 전에 차단하는 Codex 플러그인 3종을 AI와 함께 개발." data-en-aria="AX Hackathon — Evidence-Based Compliance Linters. Proved regulator-named problems with public evidence, then built three Codex plugins that block violations before deployment.">
-      <div class="hero-card-img-wrap">
-        <img src="ax-hackathon/thumb.svg" alt="AX 해커톤 컴플라이언스 린터 터미널 셀프테스트 화면" loading="eager" />
-      </div>
-      <div class="hero-card-info">
-        <span class="hero-card-badge" data-accent="purple">2026</span>
-        <p class="hero-card-title" data-en="AX Hackathon — Compliance Linters">AX 해커톤 — 컴플라이언스 린터 3종</p>
-        <p class="hero-card-desc" data-en="Regulators had already named the problems. I turned official docs, statutes, and enforcement records into deterministic lint rules that block violations before deployment — three Codex plugins, built solo with AI.">규제기관이 이미 지목한 문제들. 공식 문서·법조문·행정처분을 결정론적 린트 규칙으로 변환해, 배포 전에 위반을 차단하는 Codex 플러그인 3종을 AI와 함께 혼자 만들었다.</p>
-        <span class="hero-card-type">AI Engineering · Codex Plugin · MCP</span>
-        <span class="hero-card-metrics" data-en="✓ Finals (5,300+ entrants) · 3 Plugins + Seeding Engine · 103 Tests">✓ 본선 진출(5,300여 명 중) · 플러그인 3종 + 시딩 엔진 · 테스트 103종</span>
-      </div>
-    </a>
-    <a href="copycheck/" class="hero-card" data-accent="green" aria-label="카피체크 — 표시광고 사전검수 도구. 후보 22건 스코어링부터 인터뷰, eval 3라운드, 배포까지 근거로만 움직인 AI 기획 프로젝트. 라이브 서비스." data-en-aria="CopyCheck — An ad-compliance checker. From scoring 22 candidates through interviews, three eval rounds, and launch — an AI planning project run on evidence alone. Live service.">
-      <div class="hero-card-img-wrap">
-        <img src="copycheck/thumb.svg" alt="카피체크 문장별 판정 결과 화면" loading="eager" />
-      </div>
-      <div class="hero-card-info">
-        <span class="hero-card-badge" data-accent="green">2026</span>
-        <p class="hero-card-title" data-en="CopyCheck — Ad-Compliance Checker">카피체크 — 표시광고 사전검수</p>
-        <p class="hero-card-desc" data-en="A marketer spends 40 minutes checking one ad phrase and still isn't sure. I picked this problem out of 22 scored candidates, tested the AI three times until it stopped failing, and shipped it. Pilots are using it now.">마케터가 광고 문구 하나 확인에 40분을 쓰고도 확신을 못 얻는다. 후보 22건을 채점해 이 문제를 골랐고, AI가 틀리지 않을 때까지 세 번 시험한 뒤 출시했다. 지금 파일럿이 쓰고 있다.</p>
-        <span class="hero-card-type">AI Product Planning · Eval Design · Live</span>
-        <span class="hero-card-metrics" data-en="✓ 22 Candidates · 6 Interviews · 3 Eval Rounds · Live Service">✓ 후보 22건 · 인터뷰 6건 · eval 3라운드 · 라이브 서비스</span>
-      </div>
-    </a>
-    <a href="easesoonji/" class="hero-card" data-accent="blue" aria-label="이지보트(가제) — 1인 헤어샵 CRM. 경쟁 제품 사용자의 과업을 실측해 매출 등록 15+ 인터랙션을 3번으로 재설계하고, 지표 설계와 파일럿 온보딩까지 운영 중인 서비스 기획 프로젝트." data-en-aria="Easyboat (WT) — A one-chair salon CRM. Measured the incumbent user's real task, redesigned a 15+-interaction sale entry down to 3 taps, and runs live with metrics design and a pilot salon onboarding.">
-      <div class="hero-card-img-wrap">
-        <img src="easesoonji/thumb.svg" alt="이지보트 오늘 아젠다와 빠른 매출 3탭 화면" loading="eager" />
-      </div>
-      <div class="hero-card-info">
-        <span class="hero-card-badge" data-accent="blue">2026</span>
-        <p class="hero-card-title" data-en="Easyboat (WT) — One-Chair Salon CRM">이지보트(가제) — 1인 헤어샵 CRM</p>
-        <p class="hero-card-desc" data-en="The best-selling salon CRM makes an owner tap 15+ times to log one sale. I measured it, rebuilt the task down to 3 taps, and shipped a live service — the salon that inspired the count now uses it as the first pilot, five feedback rounds in.">1위 미용실 CRM은 매출 한 건에 15번 넘게 탭하게 만든다. 그 과업을 실측해 3번으로 다시 설계했고, 실서비스로 올렸다. 숫자의 출발점이 된 샵이 첫 파일럿으로 쓰는 중 — 피드백은 5라운드째다.</p>
-        <span class="hero-card-type">Service Planning · Task Benchmark · Live</span>
-        <span class="hero-card-metrics" data-en="✓ 15+ → 3 Interactions · North Star + 5 Events · 5 Pilot Feedback Rounds">✓ 15+ → 3 인터랙션 · 북극성 지표 + 계측 5종 · 파일럿 피드백 5라운드</span>
-      </div>
-    </a>
-  </div>
-
   </div><!-- /hero-area -->
+
+  <!-- 대표 작업 — 내용이 들어오면 hidden을 떼고 채운다(큰 제목 · 과정을 따라가는 장면 · 이미지 여러 장) -->
+  <section class="featured" id="featured" hidden></section>
+
+  <!-- Selected Work — 목록 + 3D 무대 -->
+  <h2 class="section-label reveal" style="--d:.12s">Selected Work</h2>
+  <div class="works reveal" style="--d:.14s">
+    <div class="work-list">
+      <a href="allaw/" class="work-item" data-k="allaw" aria-label="ALLAW — 법률 AI 앱. 변호사가 말하는 방식이 장벽이었다. 법률 용어를 사용자 언어로 바꾸는 AI 상담 서비스.">
+        <span class="work-year">2025</span>
+        <h3 class="work-title"><span data-en="ALLAW — Legal AI App">ALLAW — 법률 AI 앱</span><i aria-hidden="true">→</i></h3>
+        <p class="work-desc" data-en="The way lawyers speak was the barrier. In-depth interviews and a survey (n=89) revealed innovation-resistance factors, leading to the design of an AI-powered legal consultation service.">변호사가 말하는 방식이 장벽이었다. 심층 인터뷰와 설문(n=89)으로 혁신저항 요인을 분석하고, AI 기반 법률 상담 서비스를 설계했다.</p>
+        <span class="work-type">UX Research · UI Design</span>
+        <span class="work-metrics" data-en="✓ Survey n=89 · Hypothesis-driven · Published in KCI Journal">✓ 설문 89명 · 가설 검증 · KCI 논문 게재</span>
+      </a>
+      <a href="clog/" class="work-item" data-k="clog" aria-label="Clog — 클라이밍 기록 앱. 3개월째 다니는데 뭐가 달라졌는지 모르겠어요. 이 한마디에서 시작한 성장 기록 앱.">
+        <span class="work-year">2024</span>
+        <h3 class="work-title"><span data-en="Clog — Climbing Log App">Clog — 클라이밍 기록 앱</span><i aria-hidden="true">→</i></h3>
+        <p class="work-desc" data-en="&quot;I've been climbing for three months but I can't tell what's changed.&quot; Three hypotheses; two confirmed, one redirected.">"3개월째 다니는데 뭐가 달라졌는지 모르겠어요." 가설 3개를 세웠고, 2개는 맞았고, 1개는 방향이 틀려서 고쳤다.</p>
+        <span class="work-type">UX Research · UI Design</span>
+        <span class="work-metrics" data-en="✓ 3 Hypotheses · 2 Confirmed · 1 Pivoted · Solo Designer">✓ 가설 3개 · 2개 확인 · 1개 피봇 · 1인 기획 100%</span>
+      </a>
+      <a href="resin/" class="work-item" data-k="eel" aria-label="EEL — 레진 아트퍼니처 웹사이트. 프리미엄 수제 레진 테이블 브랜드의 사업 기획과 웹 디자인. e-커머스 + BTO 경험 설계.">
+        <span class="work-year">2026</span>
+        <h3 class="work-title"><span data-en="EEL — Resin Art Furniture">EEL — 레진 아트퍼니처</span><i aria-hidden="true">→</i></h3>
+        <p class="work-desc" data-en="Premium handcrafted resin table brand. Led business planning and web design. Brand identity + 3D customizer + Build-to-Order flow.">프리미엄 수제 레진 테이블 브랜드. 사업 기획 + 웹 디자인 담당. 브랜드 아이덴티티 + 3D 커스터마이저 + BTO 주문 플로우 설계.</p>
+        <span class="work-type">Brand · Web Design</span>
+        <span class="work-metrics" data-en="✓ Business Planning · Brand System · 3D Customizer">✓ 사업 기획 · 브랜드 시스템 · 3D 커스터마이저</span>
+      </a>
+      <a href="ax-hackathon/" class="work-item" data-k="ax" aria-label="AX 해커톤 — 근거 기반 컴플라이언스 린터 3종. 규제기관이 지목한 문제를 공개 근거로 입증하고, 배포 전에 차단하는 Codex 플러그인 3종을 AI와 함께 개발.">
+        <span class="work-year">2026</span>
+        <h3 class="work-title"><span data-en="AX Hackathon — Compliance Linters">AX 해커톤 — 컴플라이언스 린터 3종</span><i aria-hidden="true">→</i></h3>
+        <p class="work-desc" data-en="Regulators had already named the problems. I turned official docs, statutes, and enforcement records into deterministic lint rules that block violations before deployment — three Codex plugins, built solo with AI.">규제기관이 이미 지목한 문제들. 공식 문서·법조문·행정처분을 결정론적 린트 규칙으로 변환해, 배포 전에 위반을 차단하는 Codex 플러그인 3종을 AI와 함께 혼자 만들었다.</p>
+        <span class="work-type">AI Engineering · Codex Plugin · MCP</span>
+        <span class="work-metrics" data-en="✓ Finals (5,300+ entrants) · 3 Plugins + Seeding Engine · 103 Tests">✓ 본선 진출(5,300여 명 중) · 플러그인 3종 + 시딩 엔진 · 테스트 103종</span>
+      </a>
+      <a href="copycheck/" class="work-item" data-k="copy" aria-label="카피체크 — 표시광고 사전검수 도구. 후보 22건 스코어링부터 인터뷰, eval 3라운드, 배포까지 근거로만 움직인 AI 기획 프로젝트. 라이브 서비스.">
+        <span class="work-year">2026</span>
+        <h3 class="work-title"><span data-en="CopyCheck — Ad-Compliance Checker">카피체크 — 표시광고 사전검수</span><i aria-hidden="true">→</i></h3>
+        <p class="work-desc" data-en="A marketer spends 40 minutes checking one ad phrase and still isn't sure. I picked this problem out of 22 scored candidates, tested the AI three times until it stopped failing, and shipped it. Pilots are using it now.">마케터가 광고 문구 하나 확인에 40분을 쓰고도 확신을 못 얻는다. 후보 22건을 채점해 이 문제를 골랐고, AI가 틀리지 않을 때까지 세 번 시험한 뒤 출시했다. 지금 파일럿이 쓰고 있다.</p>
+        <span class="work-type">AI Product Planning · Eval Design · Live</span>
+        <span class="work-metrics" data-en="✓ 22 Candidates · 6 Interviews · 3 Eval Rounds · Live Service">✓ 후보 22건 · 인터뷰 6건 · eval 3라운드 · 라이브 서비스</span>
+      </a>
+      <a href="easesoonji/" class="work-item" data-k="ease" aria-label="이지보트(가제) — 1인 헤어샵 CRM. 경쟁 제품 사용자의 과업을 실측해 매출 등록 15+ 인터랙션을 3번으로 재설계하고, 지표 설계와 파일럿 온보딩까지 운영 중인 서비스 기획 프로젝트.">
+        <span class="work-year">2026</span>
+        <h3 class="work-title"><span data-en="Easyboat (WT) — One-Chair Salon CRM">이지보트(가제) — 1인 헤어샵 CRM</span><i aria-hidden="true">→</i></h3>
+        <p class="work-desc" data-en="The best-selling salon CRM makes an owner tap 15+ times to log one sale. I measured it, rebuilt the task down to 3 taps, and shipped a live service — the salon that inspired the count now uses it as the first pilot, five feedback rounds in.">1위 미용실 CRM은 매출 한 건에 15번 넘게 탭하게 만든다. 그 과업을 실측해 3번으로 다시 설계했고, 실서비스로 올렸다. 숫자의 출발점이 된 샵이 첫 파일럿으로 쓰는 중 — 피드백은 5라운드째다.</p>
+        <span class="work-type">Service Planning · Task Benchmark · Live</span>
+        <span class="work-metrics" data-en="✓ 15+ → 3 Interactions · North Star + 5 Events · 5 Pilot Feedback Rounds">✓ 15+ → 3 인터랙션 · 북극성 지표 + 계측 5종 · 파일럿 피드백 5라운드</span>
+      </a>
+    </div>
+    <div class="stage" id="stage" aria-hidden="true">
+      <div class="stage-inner">
+        <canvas id="stage-cv"></canvas>
+        <img class="stage-fb" id="stage-fb" alt="">
+        <span class="stage-count" id="stage-count">01 / 06</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Work section anchor -->
   <div id="works"></div>
+
+  <!-- Side Projects -->
+  <div class="side-section reveal" style="--d:.3s">
+    <h2 class="side-header">Side Projects</h2>
+    <p class="side-note" data-en="Things I build for fun, outside of work.">일과 별개로, 재미로 만드는 것들.</p>
+    <a class="side-row" href="https://euijkim.github.io/idle_for_us/" target="_blank" rel="noopener">
+      <span class="side-name" data-en="Martial-Arts Idle RPG">무협 방치형 RPG</span>
+      <span class="side-desc" data-en="A browser idle game — hunting grounds, bosses, guilds and a server-wide raid. Designed, balanced and shipped solo with AI.">브라우저에서 도는 방치형 게임. 사냥터 · 두목 · 문파 · 서버 공동 두목까지, AI와 함께 혼자 기획하고 밸런스를 잡아 운영 중.</span>
+      <span class="side-go" data-en="Play ↗">해 보기 ↗</span>
+    </a>
+    <a class="side-row" href="https://euijkim.github.io/doppel-game/game/td/" target="_blank" rel="noopener">
+      <span class="side-name" data-en="The Regressed Demon King Remembers My Towers">회귀한 마왕은 나의 타워를 기억한다</span>
+      <span class="side-desc" data-en="A tower defense where the waves are an AI director: it reads your towers, declares its plan, and comes exactly as declared.">웨이브가 표가 아니라 AI인 타워 디펜스. 마왕이 내 타워를 읽고, 선언하고, 선언한 그대로 온다.</span>
+      <span class="side-go" data-en="Play ↗">해 보기 ↗</span>
+    </a>
+  </div>
 
   <!-- About -->
   <div class="about-section reveal" id="about" style="--d:.42s">
@@ -1006,12 +935,26 @@
     }
     updateBtn();
 
-    btn.addEventListener('click', () => {
+    const flip = () => {
       document.documentElement.classList.toggle('dark');
       localStorage.setItem('theme',
         document.documentElement.classList.contains('dark') ? 'dark' : 'light'
       );
       updateBtn();
+    };
+    btn.addEventListener('click', () => {
+      // 단추에서 원이 퍼지며 바뀐다(지원하지 않거나 움직임 줄이기면 바로)
+      if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return flip();
+      const r = btn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+      const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      const root = document.documentElement;
+      root.classList.add('theme-vt');
+      const vt = document.startViewTransition(flip);
+      vt.ready.then(() => root.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`] },
+        { duration: 520, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', pseudoElement: '::view-transition-new(root)' }
+      )).catch(() => {});
+      vt.finished.finally(() => root.classList.remove('theme-vt'));
     });
   })();
 
@@ -1080,53 +1023,9 @@
     });
   })();
 
-  // ── 3D tilt on hero cards (throttled) ──
-  (() => {
-    if (!window.matchMedia('(hover: hover)').matches ||
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let ticking = false;
-    document.querySelectorAll('.hero-card').forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          const rect = card.getBoundingClientRect();
-          const x = (e.clientX - rect.left) / rect.width - 0.5;
-          const y = (e.clientY - rect.top) / rect.height - 0.5;
-          card.style.transform = `perspective(800px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) translateY(-4px)`;
-          ticking = false;
-        });
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
-  })();
-
-  // ── Page transition on click ──
-  (() => {
-    const wrap = document.querySelector('.wrap');
-    const cards = document.querySelectorAll('.hero-card');
-
-    cards.forEach(card => {
-      card.addEventListener('click', (e) => {
-        e.preventDefault();
-        const href = card.getAttribute('href');
-        wrap.classList.add('leaving');
-        setTimeout(() => { window.location = href; }, 250);
-      });
-    });
-
-    // Handle back navigation — reset state
-    window.addEventListener('pageshow', (e) => {
-      if (e.persisted) {
-        wrap.classList.remove('leaving');
-        document.body.classList.add('loaded');
-      }
-    });
-  })();
+  // ── 페이지를 떠날 때(뒤로 왔을 때) 상태 되돌리기 ──
+  window.addEventListener('pageshow', (e) => { if (e.persisted) document.body.classList.add('loaded'); });
 </script>
+<script type="module" src="assets/stage.js"></script>
 </body>
 </html>
