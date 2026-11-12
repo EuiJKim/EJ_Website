@@ -58,6 +58,8 @@
       font-weight: 400;
       line-height: 1.5;
       font-feature-settings: 'kern' 1;
+      word-break: keep-all;          /* 한글은 낱말 단위로 줄바꿈 */
+      overflow-wrap: break-word;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
     }
@@ -294,93 +296,85 @@
     }
 
 
-    /* ── About section ── */
+    /* ── About section — 목록과 같은 결: 가는 선 · 상자 없음 · 왼쪽 제목 칸 + 오른쪽 내용 ── */
     .about-section {
-      padding: 80px 0 64px;
+      padding: 96px 0 72px;
       border-bottom: 1px solid var(--line);
     }
     .about-header {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 40px;
+      color: var(--muted);
+      margin-bottom: 32px;
     }
     .about-intro {
-      font-size: clamp(16px, 1.9vw, 20px);
+      font-size: clamp(17px, 1.9vw, 20px);
       font-weight: 400;
-      line-height: 1.7;
-      max-width: 680px;
-      margin-bottom: 56px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 40px;
     }
     .about-intro em {
       font-style: normal;
-      color: var(--ink);
       display: block;
-      margin-top: 20px;
-      padding: 20px 24px;
-      font-size: 1.1em;
-      font-weight: 500;
+      margin-top: 14px;
+      font-size: clamp(20px, 2.3vw, 25px);
+      font-weight: 600;
       line-height: 1.6;
-      background: rgba(var(--accent-rgb),0.03);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 8px 8px 0;
-    }
-    html.dark .about-intro em {
-      background: rgba(var(--accent-rgb),0.04);
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-wrap: balance;
     }
     .about-range {
       display: flex;
-      gap: 16px;
-      margin-bottom: 48px;
       flex-wrap: wrap;
+      gap: 10px 0;
+      margin-bottom: 72px;
     }
     .about-range-item {
-      padding: 12px 20px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      padding-right: 20px;
+      margin-right: 20px;
+      border-right: 1px solid var(--line);
     }
+    .about-range-item:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
     .about-range-label {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--ink);
     }
     .about-range-detail {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
     }
 
-    .about-grid {
+    /* 블록마다 한 줄: 왼쪽 제목 · 오른쪽 내용 */
+    .about-grid { display: block; }
+    .about-grid > div {
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 56px 80px;
+      grid-template-columns: 200px minmax(0, 1fr);
+      column-gap: 48px;
+      padding: 32px 0;
+      border-top: 1px solid var(--line);
     }
+    .about-grid > div > * { grid-column: 2; }
+    .about-grid > div > .about-block-title { grid-column: 1; grid-row: 1 / span 20; }
     .about-block-title {
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--line);
+      color: var(--muted);
+      padding-top: 4px;
     }
-    .about-item {
-      margin-bottom: 24px;
-      padding: 16px 20px;
-      border-left: 3px solid var(--line);
-      border-radius: 0 8px 8px 0;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .about-item:hover {
-      border-left-color: var(--accent);
-      background: var(--hover-bg);
-    }
-    .about-item:last-child { margin-bottom: 0; }
+    .about-item { padding: 0 0 22px; }
+    .about-item:last-child { padding-bottom: 0; }
+    .about-item + .about-item { padding-top: 22px; border-top: 1px solid var(--line); }
     .about-item-title {
       font-size: 17px;
       font-weight: 600;
@@ -388,52 +382,49 @@
       color: var(--ink);
     }
     .about-item-sub {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-    .about-item-detail {
-      font-size: 13px;
-      font-weight: 400;
+      font-size: 14px;
       color: var(--muted);
       line-height: 1.6;
+    }
+    .about-item-detail {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
       margin-top: 8px;
     }
     .credential-card {
-      margin-top: 16px;
-      padding: 16px 20px;
-      background: rgba(var(--accent-rgb), 0.04);
-      border: 1px solid rgba(var(--accent-rgb), 0.15);
-      border-radius: 8px;
+      margin-top: 18px;
+      padding: 16px 0 0 18px;
+      border-left: 1px solid var(--line);
     }
     .credential-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: var(--accent);
-      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 6px;
     }
     .credential-title {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--ink);
       margin-bottom: 8px;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     .credential-abstract {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 12px;
+      line-height: 1.7;
+      margin-bottom: 10px;
     }
     .credential-link {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent);
-      transition: opacity 0.15s;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
+      transition: border-color 0.2s var(--ease);
     }
-    .credential-link:hover { opacity: 0.7; }
+    .credential-link:hover { border-color: var(--ink); }
 
     .skill-tags {
       display: flex;
@@ -443,85 +434,66 @@
     .skill-tag {
       font-size: 13px;
       font-weight: 500;
-      padding: 8px 16px;
-      border-radius: 20px;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
+      padding: 6px 14px;
+      border-radius: 999px;
       border: 1px solid var(--line);
       color: var(--muted);
-      transition: border-color 0.15s, color 0.15s;
-    }
-    .skill-tag:hover {
-      border-color: var(--ink);
-      color: var(--ink);
     }
     .skill-tag.accent {
-      color: var(--accent);
-      border-color: rgba(var(--accent-rgb),0.3);
-      background: rgba(var(--accent-rgb),0.08);
-    }
-    .skill-tag.accent:hover {
-      border-color: var(--accent);
-      background: rgba(var(--accent-rgb),0.15);
+      color: var(--ink);
+      border-color: var(--ink);
     }
 
     .about-status {
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 12px;
-      padding: 8px 16px;
-      background: rgba(var(--accent-rgb), 0.06);
-      border-radius: 6px;
-      display: inline-block;
+      color: var(--ink);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .about-status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(var(--green-rgb), 0.14);
+      flex: none;
     }
     .about-contact-intro {
       font-size: 14px;
       color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 16px;
+      line-height: 1.6;
+      margin-bottom: 18px;
     }
     .about-contact-row {
       display: flex;
-      gap: 16px;
+      gap: 8px 28px;
       flex-wrap: wrap;
-      margin-top: 8px;
     }
     .about-contact-row a {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       color: var(--ink);
-      transition: color 0.15s, border-color 0.15s;
       min-height: 44px;
       display: inline-flex;
       align-items: center;
-      padding: 8px 16px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      gap: 6px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s var(--ease);
     }
-    .about-contact-row a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-      background: rgba(var(--accent-rgb),0.05);
-    }
-    .about-contact-row a.primary {
-      color: var(--accent);
-      border-color: var(--accent);
-      background: rgba(var(--accent-rgb),0.08);
-      font-weight: 600;
-    }
-    .about-contact-row a.primary:hover {
-      background: rgba(var(--accent-rgb),0.15);
-    }
-    @media (max-width: 1024px) {
-      .about-grid { gap: 40px 56px; }
-    }
+    .about-contact-row a::after { content: "↗"; font-size: 12px; color: var(--muted); }
+    .about-contact-row a[href^="mailto"]::after, .about-contact-row a[href^="tel"]::after { content: ""; }
+    .about-contact-row a:hover { border-color: var(--ink); }
+    .about-contact-row a.primary { font-weight: 600; }
     @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .about-section { padding: 56px 0 48px; }
-      .about-intro { margin-bottom: 40px; }
-      .about-intro em { padding: 16px 20px; }
+      .about-section { padding: 64px 0 48px; }
+      .about-range { margin-bottom: 48px; flex-direction: column; gap: 8px; }
+      .about-range-item { border-right: 0; margin-right: 0; padding-right: 0; }
+      .about-grid > div { grid-template-columns: 1fr; row-gap: 14px; padding: 28px 0; }
+      .about-grid > div > *, .about-grid > div > .about-block-title { grid-column: 1; grid-row: auto; }
     }
 
     /* ── Footer ── */
@@ -616,7 +588,6 @@
     @media (max-width: 1024px) {
       .wrap { padding: 0 40px; }
       .works { gap: 32px; }
-      .about-grid { gap: 32px 40px; }
     }
 
     /* ── Mobile ── */
@@ -624,12 +595,10 @@
       .wrap { padding: 0 24px; }
       header { padding: 48px 0; }
       .intro p { font-size: 18px; padding: 0; }
-      .about-grid { grid-template-columns: 1fr; }
       .work-desc { font-size: 14.5px; }
       .about-item-sub,
       .about-item-detail,
-      .about-block-title,
-      .skill-tag { font-size: 14px; }
+      .skill-tag { font-size: 13px; }
     }
 
     /* ── Landscape ── */
@@ -808,7 +777,7 @@
   <div id="works"></div>
 
   <!-- Side Projects -->
-  <div class="side-section reveal" style="--d:.3s">
+  <div class="side-section reveal" style="--d:.3s" hidden>   <!-- 나중에 정리해서 연다 -->
     <h2 class="side-header">Side Projects</h2>
     <p class="side-note" data-en="Things I build for fun, outside of work.">일과 별개로, 재미로 만드는 것들.</p>
     <a class="side-row" href="https://euijkim.github.io/idle_for_us/" target="_blank" rel="noopener">
